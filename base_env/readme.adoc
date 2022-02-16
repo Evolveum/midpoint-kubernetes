@@ -1,4 +1,4 @@
-= Kubernetes @ midpoint-docker
+= Base environment @ midpoint-kubernetes
 :toc:
 
 This location contain files related to the dokumentation page - https://docs.evolveum.com/midpoint/install/kubernetes/ .
@@ -68,7 +68,7 @@ Also example of use of the post initial objects.
 
 [source]
 ----
-kubectl apply -f namespace-mp-demo.yaml -f configmap-poi.yaml -f secret-pw.yaml -f service-db -f statefulset-db-pg-native.yaml -f statefulset-pg-native_cm-sec.yaml
+kubectl apply -f namespace-mp-demo.yaml -f configmap-poi.yaml -f secret-pw.yaml -f service-db.yaml -f statefulset-db-pg-native.yaml -f statefulset-pg-native_cm-sec.yaml
 
 kubectl get -n mp-demo namespace/mp-demo configmap/mp-demo-poi secret/mp-demo service/mp-demo-db statefulset.apps/mp-demo-db statefulset.apps/mp-pg-demo
 
