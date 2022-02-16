@@ -1,8 +1,8 @@
-= Kubernetes - advance examples  @ midpoint-kubernetes
+= Kubernetes - advanced examples
 :toc:
 :toclevels: 4
 
-This location contain files related to the dokumentation page - https://docs.evolveum.com/midpoint/install/kubernetes/advance-example/ .
+This location contain files related to the dokumentation page - https://docs.evolveum.com/midpoint/install/kubernetes/advanced-example/ .
 
 [WARNING]
 We will handle advance configuration of the environment.
