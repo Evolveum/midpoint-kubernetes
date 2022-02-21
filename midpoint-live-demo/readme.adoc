@@ -6,3 +6,26 @@ This location contain files related to the Midpoint live demo .
 
 TODO
 
+
+
+Setup nfs on node:
+
+[source,bash]
+====
+apt-get install nfs-common
+
+cat << EOF >>/etc/systemd/resolved.conf
+#[Resolve]
+DNS=10.96.0.10
+Domains=~cluster.local
+EOF
+====
+
+[NOTE]
+*nfs-common* is the name of the package on the debian based distribution (including ubuntu) with the necessary NFS mount support.
+Once this package is available on the system the kubernetes can use nativly NFS in volume definition.
+
+[NOTE]
+To have resolvable cluster's FQDN it is needed to let the node's system know where is the DNS server located.
+Without this information the node is resolving using external DNS servers which have no informationabout cluster's domain.
+10.96.0.10 is IP address of cluster dns server. Your may be different.
