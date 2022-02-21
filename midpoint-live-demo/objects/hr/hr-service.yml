@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hr-db-service
+  namespace: mp-demo
+spec:
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: demo-hr-db
+  type: ClusterIP
+  sessionAffinity: None
+

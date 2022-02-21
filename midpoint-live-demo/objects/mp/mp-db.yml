@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mp-db
+  namespace: mp-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mp-db
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mp-db
+    spec:
+      volumes:
+        - name: init-db
+          emptyDir: {}
+      initContainers:
+        - name: mp-db-init
+          image: 'evolveum/midpoint:4.4-alpine'
+          command:
+            - /bin/bash
+            - /opt/midpoint/bin/midpoint.sh
+            - init-native
+          env:
+            - name: MP_INIT_DB_CONCAT
+              value: /opt/db-init/010-init.sql
+          resources: {}
+          volumeMounts:
+            - name: init-db
+              mountPath: /opt/db-init
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      containers:
+        - name: mp-demo-db
+          image: 'postgres:13-alpine'
+          ports:
+            - name: db
+              containerPort: 5432
+              protocol: TCP
+          env:
+            - name: POSTGRES_INITDB_ARGS
+              value: '--lc-collate=en_US.utf8 --lc-ctype=en_US.utf8'
+            - name: POSTGRES_USER
+              value: midpoint
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mp-secret
+                  key: password
+          resources: {}
+          volumeMounts:
+            - name: init-db
+              mountPath: /docker-entrypoint-initdb.d/
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 10
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  serviceName: mp-db-service
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10

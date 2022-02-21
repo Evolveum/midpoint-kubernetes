@@ -1,0 +1,100 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: demo-ldap
+  namespace: mp-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-ldap
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: demo-ldap
+    spec:
+      volumes:
+        - name: ldap-conf
+          emptyDir: {}
+        - name: ldap-data
+          emptyDir: {}
+        - name: custom-init-base
+          configMap:
+            name: ldap-init-map
+            defaultMode: 256
+        - name: dynschema
+          configMap:
+            name: ldap-dynschema-map
+            defaultMode: 256
+      containers:
+        - name: phpldapadmin
+          image: 'osixia/phpldapadmin:0.9.0'
+          ports:
+            - name: ldap-admin-port
+              containerPort: 1389
+              protocol: TCP
+          env:
+            - name: PHPLDAPADMIN_LDAP_HOSTS
+              value: >-
+                #PYTHON2BASH:[{'localhost': [{'login': [{'auth_type':
+                'config'},{'bind_id':
+                'cn=admin,dc=example,dc=com'},{'bind_pass': 'secret'}]}]}]
+            - name: PHPLDAPADMIN_SERVER_PATH
+              value: /ldapadmin
+            - name: PHPLDAPADMIN_HTTPS
+              value: 'false'
+            - name: PHPLDAPADMIN_LDAP_CLIENT_TLS
+              value: 'false'
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+        - name: ldap
+          image: 'osixia/openldap:1.5.0'
+          command:
+            - /container/tool/run
+          args:
+            - '--copy-service'
+          ports:
+            - name: ldap
+              containerPort: 389
+              protocol: TCP
+          env:
+            - name: LDAP_DOMAIN
+              value: example.com
+            - name: LDAP_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mp-secret
+                  key: ldap-password
+            - name: LDAP_TLS
+              value: 'false'
+          resources: {}
+          volumeMounts:
+            - name: ldap-conf
+              mountPath: /etc/ldap/slapd.d
+            - name: ldap-data
+              mountPath: /var/lib/ldap
+            - name: custom-init-base
+              mountPath: /container/service/slapd/assets/config/bootstrap/ldif/custom/
+            - name: dynschema
+              mountPath: >-
+                /container/service/slapd/assets/config/bootstrap/schema/dyngroup.schema
+              subPath: dyngroup.schema
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 10
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  serviceName: demo-service
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+

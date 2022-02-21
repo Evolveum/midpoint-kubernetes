@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tomcat-addressbook-ingress
+  namespace: mp-demo
+spec:
+  tls:
+    - hosts:
+        - mp-demo.lab.evolveum.com
+      secretName: cert-lab-evolveum
+  rules:
+    - host: mp-demo.lab.evolveum.com
+      http:
+        paths:
+          - path: /addressbook
+            pathType: Prefix
+            backend:
+              service:
+                name: tomcat-service
+                port:
+                  name: tomcat-port
+

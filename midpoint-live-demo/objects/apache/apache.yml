@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: apache
+  namespace: mp-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: apache
+    spec:
+      volumes:
+        - name: httpd-conf
+          configMap:
+            name: apache-map
+            defaultMode: 420
+        - name: var
+          emptyDir: {}
+        - name: httpd-conf-data
+          emptyDir: {}
+      initContainers:
+        - name: init
+          image: 'alpine:3.15.0'
+          command:
+            - /bin/sh
+            - '-c'
+            - >-
+              cd /var/ && mkdir -p www/library && cd www/library && touch
+              secret-diagram.txt && cp /httpd/httpd.conf /httpd-data/
+          resources: {}
+          volumeMounts:
+            - name: var
+              mountPath: /var/
+            - name: httpd-conf
+              mountPath: /httpd
+            - name: httpd-conf-data
+              mountPath: /httpd-data/
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      containers:
+        - name: httpd
+          image: 'httpd:2.4'
+          ports:
+            - name: web
+              containerPort: 80
+              protocol: TCP
+          resources: {}
+          volumeMounts:
+            - name: var
+              mountPath: /var/
+            - name: httpd-conf-data
+              mountPath: /usr/local/apache2/conf/httpd.conf
+              subPath: httpd.conf
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  serviceName: apache-demo
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tomcat-service
+  namespace: mp-demo
+spec:
+  ports:
+    - name: tomcat-port
+      protocol: TCP
+      port: 8080
+      targetPort: tomcat-port
+  selector:
+    app: tomcat
+  type: ClusterIP
+  sessionAffinity: None
+

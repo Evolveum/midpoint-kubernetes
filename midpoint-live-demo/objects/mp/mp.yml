@@ -1,0 +1,123 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mp
+  namespace: mp-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mp
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mp
+    spec:
+      volumes:
+        - name: mp-home
+          emptyDir: {}
+        - name: mp-secret
+          secret:
+            secretName: mp-secret
+            defaultMode: 420
+        - name: pio
+          configMap:
+            name: pio-map
+            defaultMode: 420
+        - name: import
+          configMap:
+            name: hr-map
+            defaultMode: 420
+        - name: extension-schema
+          configMap:
+            name: extension-map
+            defaultMode: 420
+        - name: nfs-volume
+          nfs:
+            server: 10.108.250.16
+            path: /
+      initContainers:
+        - name: mp-config-init
+          image: 'evolveum/midpoint:4.4.1-alpine'
+          command:
+            - /bin/bash
+            - /opt/midpoint/bin/midpoint.sh
+            - init-native
+          env:
+            - name: MP_INIT_CFG
+              value: /opt/mp-home
+          resources: {}
+          volumeMounts:
+            - name: mp-home
+              mountPath: /opt/mp-home
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      containers:
+        - name: mp
+          image: 'evolveum/midpoint:4.4.1-alpine'
+          ports:
+            - name: gui
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: MP_ENTRY_POINT
+              value: /opt/midpoint-dirs-docker-entrypoint
+            - name: MP_SET_midpoint_keystore_keyStorePath
+              value: /opt/midpoint/config-secrets/keystore.jceks
+            - name: MP_SET_midpoint_keystore_keyStorePassword_FILE
+              value: /opt/midpoint/config-secrets/keystore
+            - name: MP_SET_midpoint_repository_database
+              value: postgresql
+            - name: MP_SET_midpoint_repository_jdbcUsername
+              value: midpoint
+            - name: MP_SET_midpoint_repository_jdbcPassword_FILE
+              value: /opt/midpoint/config-secrets/password
+            - name: MP_SET_midpoint_repository_jdbcUrl
+              value: >-
+                jdbc:postgresql://mp-db-service.mp-demo.svc.cluster.local:5432/midpoint
+            - name: MP_UNSET_midpoint_repository_hibernateHbm2ddl
+              value: '1'
+            - name: MP_SET_midpoint_nodeIdSource
+              value: hostname
+            - name: MP_SET_midpoint_taskManager_clustered
+              value: 'true'
+            - name: MP_NO_ENV_COMPAT
+              value: '1'
+            - name: MP_MEM_MAX
+              value: 4096m
+            - name: MP_MEM_INIT
+              value: 2048m
+            - name: TZ
+              value: UTC
+          resources: {}
+          volumeMounts:
+            - name: mp-secret
+              mountPath: /opt/midpoint/config-secrets
+            - name: pio
+              mountPath: /opt/midpoint-dirs-docker-entrypoint/post-initial-objects
+            - name: import
+              mountPath: /opt/midpoint-dirs-docker-entrypoint/import
+            - name: extension-schema
+              mountPath: /opt/midpoint-dirs-docker-entrypoint/schema
+            - name: nfs-volume
+              mountPath: /opt/midpoint/var/import/
+            - name: mp-home
+              mountPath: /opt/midpoint/var
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 10
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  serviceName: mp-service
+  podManagementPolicy: OrderedReady
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      partition: 0
+  revisionHistoryLimit: 10
+
