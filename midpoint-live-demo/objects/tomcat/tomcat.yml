@@ -19,7 +19,7 @@ spec:
           emptyDir: {}
         - name: nfs-volume
           nfs:
-            server: 10.108.250.16
+            server: nfs-service.mp-demo.svc.cluster.local
             path: /
       initContainers:
         - name: init
