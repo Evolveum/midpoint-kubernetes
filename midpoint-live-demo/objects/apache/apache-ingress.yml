@@ -6,10 +6,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - mp-demo.lab.evolveum.com
-      secretName: cert-lab-evolveum
+        - demo.example.com
+      secretName: cert-mp-demo
   rules:
-    - host: mp-demo.lab.evolveum.com
+    - host: demo.example.com
       http:
         paths:
           - path: /library
