@@ -31,10 +31,12 @@ Without this information the node is resolving using external DNS servers which 
 10.96.0.10 is IP address of cluster dns server. Your may be different.
 
 
-Setup certificate:
+
+
+Create certificate:
 
 [NOTE]
-For quick test solution you can generate your own certificatem though it is not recommended:
+For quick test solution you can generate your own certificate though it is not recommended:
 
 openssl req -new -sha256 -newkey rsa:2048 -keyout tls.key -nodes -subj "/CN=test CA" | openssl x509 -req \
 -signkey tls.key -out tls.crt -days 3650 -sha256 -extfile <(cat <<EOF
@@ -52,24 +54,5 @@ openssl x509 -in tls.crt -text -noout
 [NOTE]
 It ts better to make trusted certificate with https://letsencrypt.org/
 
-
-Setup certificate:
-
 [NOTE]
-For quick test solution you can generate your own certificatem though it is not recommended:
-
-openssl req -new -sha256 -newkey rsa:2048 -keyout tls.key -nodes -subj "/CN=test CA" | openssl x509 -req \
--signkey tls.key -out tls.crt -days 3650 -sha256 -extfile <(cat <<EOF
-basicConstraints = CA:FALSE
-subjectKeyIdentifier = hash
-authorityKeyIdentifier = keyid,issuer:always
-keyUsage = digitalSignature, nonRepudiation, keyEncipherment
-subjectAltName = DNS:localhost, DNS:localhost.localdomain,DNS:*.localdomain, IP:127.0.0.1
-extendedKeyUsage = serverAuth
-EOF
-)
-
-openssl x509 -in tls.crt -text -noout
-
-[NOTE]
-It ts better to make trusted certificate with https://letsencrypt.org/
+To access your private domain you must configure your dns or in linux systems your /etc/hosts/ to redirect to cluster ip
