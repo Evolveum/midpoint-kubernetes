@@ -31,8 +31,6 @@ Without this information the node is resolving using external DNS servers which 
 10.96.0.10 is IP address of cluster dns server. Your may be different.
 
 
-
-
 Create certificate:
 
 [NOTE]
@@ -55,4 +53,4 @@ openssl x509 -in tls.crt -text -noout
 It ts better to make trusted certificate with https://letsencrypt.org/
 
 [NOTE]
-To access your private domain you must configure your dns or in linux systems your /etc/hosts/ to redirect to cluster ip
+In order to access midPoint using your private domain name you must setup the name-to-IP-address mapping in the DNS. Alternatively, you can edit your /etc/hosts file.
