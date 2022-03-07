@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mp-demo-nfs
+  namespace: mp-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mp-demo-nfs
+  template:
+    metadata:
+      labels:
+        app: mp-demo-nfs
+    spec:
+      initContainers:
+        - name: init-structure
+          image: 'k8s.gcr.io/volume-nfs'
+          command: ["/bin/bash","-c"]
+          args:
+            - mkdir -p /exports/poi ;
+              echo "post-initial-objects directory has been created..."
+          volumeMounts:
+          - mountPath: /exports
+            name: mp-demo-nfs-store
+          imagePullPolicy: IfNotPresent
+      containers:
+        - name: mp-demo-nfs
+          image: 'k8s.gcr.io/volume-nfs'
+          command: ["/bin/bash", "/usr/local/bin/run_nfs.sh", "/exports"]
+          ports:
+            - name: nfs
+              containerPort: 2048
+              protocol: TCP
+            - name: mountd
+              containerPort: 20048
+              protocol: TCP
+            - name: rpvbind
+              containerPort: 111
+              protocol: TCP
+          securityContext:
+            privileged: true
+          volumeMounts:
+          - mountPath: /exports
+            name: mp-demo-nfs-store
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 10
+  serviceName: mp-demo-nfs
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: mp-demo-nfs-store
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 256Mi
+        storageClassName: csi-rbd-hdd
+        volumeMode: Filesystem

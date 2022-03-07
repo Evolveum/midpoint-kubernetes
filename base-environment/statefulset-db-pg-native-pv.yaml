@@ -41,10 +41,27 @@ spec:
               value: midpoint
             - name: POSTGRES_PASSWORD
               value: SuperSecretPassword007
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
           volumeMounts:
             - name: init-db
               mountPath: /docker-entrypoint-initdb.d/
+            - name: mp-demo-pg-storage
+              mountPath: /var/lib/postgresql/data
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
       terminationGracePeriodSeconds: 10
   serviceName: mp-demo-db-service
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: mp-demo-pg-storage
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 50Gi
+        storageClassName: csi-rbd-ssd
+        volumeMode: Filesystem

@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mp-pg-demo
-          image: 'evolveum/midpoint:4.4-alpine'
+          image: 'evolveum/midpoint:4.4.1-alpine'
           ports:
             - name: gui
               containerPort: 8080

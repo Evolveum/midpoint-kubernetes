@@ -20,17 +20,13 @@ spec:
           secret:
             secretName: mp-demo
             defaultMode: 420
-        - name: keystore
-          secret:
-            secretName: mp-demo-keystore
-            defaultMode: 420            
         - name: mp-poi
           configMap:
             name: mp-demo-poi
             defaultMode: 420
       initContainers:
         - name: mp-config-init
-          image: 'evolveum/midpoint:4.4-alpine'
+          image: 'evolveum/midpoint:4.4.1-alpine'
           command: ["/bin/bash","/opt/midpoint/bin/midpoint.sh","init-native"]
           env:
             - name: MP_INIT_CFG
@@ -41,16 +37,12 @@ spec:
           imagePullPolicy: IfNotPresent
       containers:
         - name: mp-pg-demo
-          image: 'evolveum/midpoint:4.4-alpine'
+          image: 'evolveum/midpoint:4.4.1-alpine'
           ports:
             - name: gui
               containerPort: 8080
               protocol: TCP
           env:
-            - name: MP_SET_midpoint_keystore_keyStorePath
-              value: /opt/midpoint/mount-keystore/keystore.jceks
-            - name: MP_SET_midpoint_keystore_keyStorePassword_FILE
-              value: /opt/midpoint/mount-keystore/keystore                  
             - name: MP_ENTRY_POINT
               value: /opt/midpoint-dirs-docker-entrypoint
             - name: MP_SET_midpoint_repository_database
@@ -63,10 +55,6 @@ spec:
               value: jdbc:postgresql://mp-demo-db.mp-demo.svc.cluster.local:5432/midpoint
             - name: MP_UNSET_midpoint_repository_hibernateHbm2ddl
               value: "1"
-            - name: MP_SET_midpoint_nodeIdSource
-              value: hostname             
-            - name: MP_SET_midpoint_taskManager_clustered
-              value: "true"
             - name: MP_NO_ENV_COMPAT
               value: "1"
           volumeMounts:
@@ -74,9 +62,22 @@ spec:
               mountPath: /opt/midpoint/var
             - name: db-pass
               mountPath: /opt/midpoint/config-secrets
-            - name: keystore
-              mountPath: /opt/midpoint/mount-keystore
             - name: mp-poi
               mountPath: /opt/midpoint-dirs-docker-entrypoint/post-initial-objects
+            - name: mp-demo-poi-storage
+              mountPath: /opt/midpoint/var/post-initial-objects
           imagePullPolicy: IfNotPresent
   serviceName: mp-pg-demo
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: mp-demo-poi-storage
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 128Mi
+        storageClassName: csi-rbd-ssd
+        volumeMode: Filesystem

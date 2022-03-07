@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mp-demo-ldap
+  namespace: mp-demo
+spec:
+  ports:
+    - name: ldap
+      port: 389
+  selector:
+    app: mp-demo-nfs
+  type: NodePort

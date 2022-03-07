@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mp-demo-poi
+  namespace: mp-demo
+data:
+  201-test-role.xml: |-
+    <?xml version="1.0" encoding="UTF-8"?>
+    <role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" oid="00000000-cafe-0001-0000-000000000001">
+      <name>test Role</name>
+    </role>
+  301-test-org-root.xml: |-
+    <?xml version="1.0" encoding="UTF-8"?>
+    <org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" oid="00000000-cafe-0002-0000-000000000001">
+      <name>test Root Org</name>
+    </org>
+  302-test-org-member.xml: |-
+    <?xml version="1.0" encoding="UTF-8"?>
+    <org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" oid="00000000-cafe-0002-0000-000000000002">
+      <name>test member Org</name>
+      <assignment id="1">
+        <targetRef oid="00000000-cafe-0002-0000-000000000001" relation="org:default" type="OrgType" />
+      </assignment>
+    </org>
+  401-test-user.xml: |-
+    <?xml version="1.0" encoding="UTF-8"?>
+    <user xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+      <name>test user</name>
+      <assignment>
+        <targetRef oid="00000000-cafe-0001-0000-000000000001" relation="org:default" type="RoleType" />
+      </assignment>
+      <assignment>
+        <targetRef oid="00000000-cafe-0002-0000-000000000002" relation="org:default" type="OrgType" />
+      </assignment>
+    </user>
+  501-test-recompute-members.xml: |-
+    <task xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="00000000-cafe-0003-0000-000000000001">
+        <name>Recompute all direct members of Organization test member Org</name>
+        <assignment>
+            <targetRef oid="00000000-0000-0000-0000-000000000502" relation="org:default" type="c:ArchetypeType" />
+        </assignment>
+        <taskIdentifier>1646357194695-0-1</taskIdentifier>
+        <ownerRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType" />
+        <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+        <executionState>runnable</executionState>
+        <binding>loose</binding>
+        <schedule>
+            <misfireAction>executeImmediately</misfireAction>
+        </schedule>
+        <threadStopAction>restart</threadStopAction>
+        <activity>
+            <work>
+                <recomputation>
+                    <objects>
+                        <type>c:AssignmentHolderType</type>
+                        <query>
+                            <q:filter>
+                                <q:type>
+                                    <q:type>c:UserType</q:type>
+                                    <q:filter>
+                                        <q:exists>
+                                            <q:path>c:assignment</q:path>
+                                            <q:filter>
+                                                <q:ref>
+                                                    <q:path>c:targetRef</q:path>
+                                                    <q:value oid="00000000-cafe-0002-0000-000000000002" relation="org:default" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                                                    <q:value oid="00000000-cafe-0002-0000-000000000002" relation="org:manager" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                                                    <q:value oid="00000000-cafe-0002-0000-000000000002" relation="org:approver" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                                                    <q:value oid="00000000-cafe-0002-0000-000000000002" relation="org:owner" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                                                </q:ref>
+                                            </q:filter>
+                                        </q:exists>
+                                    </q:filter>
+                                </q:type>
+                            </q:filter>
+                        </query>
+                    </objects>
+                </recomputation>
+            </work>
+        </activity>
+    </task>

@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
     - name: mp-h2-demo
-      image: 'evolveum/midpoint:4.4-alpine'
+      image: 'evolveum/midpoint:4.4.1-alpine'
       ports:
         - name: gui
           containerPort: 8080

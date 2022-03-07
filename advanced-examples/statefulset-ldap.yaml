@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mp-demo-ldap
+  namespace: mp-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mp-demo-ldap
+  template:
+    metadata:
+      labels:
+        app: mp-demo-ldap
+    spec:
+      volumes:
+        - name: ldap-init
+          configMap:
+            name: mp-demo-ldap-init
+            defaultMode: 420
+      containers:
+        - name: mp-demo-ldap
+          image: 'osixia/openldap:stable'
+          command: ["/container/tool/run", "--copy-service"]
+          ports:
+            - name: ldap
+              containerPort: 389
+              protocol: TCP
+          env:
+            - name: "LDAP_DOMAIN"
+              value: "example.com"
+            - name: "LDAP_ADMIN_PASSWORD"
+              value: "sercret"
+            - name: "LDAP_TLS"
+              value: "false"
+          volumeMounts:
+          - mountPath: /container/service/slapd/assets/config/bootstrap/ldif/custom
+            name: ldap-init
+          - mountPath: /var/lib/ldap
+            name: mp-demo-ldap-store
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 10
+  serviceName: mp-demo-ldap
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: mp-demo-ldap-store
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 64Mi
+        storageClassName: csi-rbd-hdd
+        volumeMode: Filesystem
