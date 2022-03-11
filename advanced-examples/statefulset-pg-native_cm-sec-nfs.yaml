@@ -21,16 +21,24 @@ spec:
             secretName: mp-demo
             defaultMode: 420
         - name: mp-poi
-          configMap:
-            name: mp-demo-poi
+          projected:
+            sources:
+            - configMap:
+                name: mp-demo-poi-111-sysconf-deployment
+            - configMap:
+                name: mp-demo-poi-120-flexible-auth
+            - configMap:
+                name: mp-demo-poi-role-user-org-task
+            - configMap:
+                name: mp-demo-poi-ldap-res
             defaultMode: 420
-        - name: nfs-poi
+        - name: nfs
           nfs:
             server: mp-demo-nfs.mp-demo.svc.cluster.local
-            path: /exports/poi
+            path: /exports
       initContainers:
         - name: mp-config-init
-          image: 'evolveum/midpoint:4.4-alpine'
+          image: 'evolveum/midpoint:4.4.1-alpine'
           command: ["/bin/bash","/opt/midpoint/bin/midpoint.sh","init-native"]
           env:
             - name: MP_INIT_CFG
@@ -41,7 +49,7 @@ spec:
           imagePullPolicy: IfNotPresent
       containers:
         - name: mp-pg-demo
-          image: 'evolveum/midpoint:4.4-alpine'
+          image: 'evolveum/midpoint:4.4.1-alpine'
           ports:
             - name: gui
               containerPort: 8080
@@ -68,7 +76,8 @@ spec:
               mountPath: /opt/midpoint/config-secrets
             - name: mp-poi
               mountPath: /opt/midpoint-dirs-docker-entrypoint/post-initial-objects
-            - name: nfs-poi
+            - name: nfs
               mountPath: /opt/midpoint/var/post-initial-objects
+              subPath: poi
           imagePullPolicy: IfNotPresent
   serviceName: mp-pg-demo

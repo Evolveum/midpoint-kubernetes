@@ -34,10 +34,14 @@ spec:
             - name: "LDAP_TLS"
               value: "false"
           volumeMounts:
-          - mountPath: /container/service/slapd/assets/config/bootstrap/ldif/custom
-            name: ldap-init
-          - mountPath: /var/lib/ldap
-            name: mp-demo-ldap-store
+            - mountPath: /container/service/slapd/assets/config/bootstrap/ldif/custom
+              name: ldap-init
+            - mountPath: /var/lib/ldap
+              name: mp-demo-ldap-store
+              subPath: data
+            - mountPath: /etc/ldap/slapd.d
+              name: mp-demo-ldap-store
+              subPath: cfg
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
       terminationGracePeriodSeconds: 10

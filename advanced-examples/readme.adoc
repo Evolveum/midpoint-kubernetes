@@ -2,19 +2,19 @@
 :toc:
 :toclevels: 4
 
-This location contain files related to the dokumentation page - https://docs.evolveum.com/midpoint/install/kubernetes/advanced-examples/ .
+This location contain files related to the documentation page - https://docs.evolveum.com/midpoint/install/kubernetes/advanced-examples/ .
 
 [WARNING]
-We will handle advanced configuration of the environment.
+We will handle advance configuration of the environment.
 The goal is to show how it can be realized in the kubernetes environments.
 The prerequisite for the scenario is only default objects imported during the first system start.
 The objects are stored in the repository after the changes are applied.
 Once the system is set up and running we should not re-apply the changes if we don't explicitly want to do that.
 In some situation adding another the same labeled block of the setting may lead to conflict with schema and failure of the system.
 
-== Basic handling
+== basic handling
 
-For the base operation the small "cheat sheat" may be useful.
+For the base operation the small "cheat sheet" may be useful.
 
 .create / modify the object using the yaml file
 [source,bash]
@@ -41,32 +41,12 @@ kubectl logs -n mp-demo -f mp-pg-demo-0 -c mp-pg-demo
 [source,bash]
 kubectl exec -ti -n mp-demo mp-pg-demo-0 -c mp-pg-demo -- /bin/bash
 
-== Customization
-
-=== Deployment information @ System configuration
-
-.Re-aply the configuration : create or update based on current state of the object
-[source]
-kubectl apply -f statefulset-pg-native_cm-sec.yaml
-
-.Changing mount point for Post-init-objects to prevent their re-apply with new pod
-[source]
-kubectl scale -n mp-demo --replicas=0 statefulset/mp-pg-demo
-sed "s|/opt/midpoint-dirs-docker-entrypoint/post-initial-objects|/opt/midpoint-dirs-docker-entrypoints/post-initial-objects|" statefulset-pg-native_cm-sec.yaml | kubectl apply -f -
-kubectl scale -n mp-demo --replicas=1 statefulset/mp-pg-demo
-
-[TIP]
-The scaling related steps are optional as the changes on the statefulset definition will cause recreating of the pods.
-
-[NOTE]
-Be aware of the persistency of the keystore to not lost the access to already encrypted fields in the repository.
-
-=== Secret object with keystore object
+== Secret object with keystore object
 
 [source]
 keytool -genseckey -alias default -keystore keystore.jceks -storetype jceks -keyalg AES -keysize 128 -storepass changeit -keypass midpoint
 
-.Create the secert object from the file
+.Create the secret object from the file
 [source]
 kubectl create secret generic -n mp-demo mp-demo-keystore --from-file keystore.jceks --from-literal=keystore=changeit
 
@@ -74,9 +54,25 @@ kubectl create secret generic -n mp-demo mp-demo-keystore --from-file keystore.j
 [source]
 kubectl delete secret -n mp-demo mp-demo-keystore
 
-==== Clustered nodes
+== Clustered nodes - scaling
 
 .to run 3 node midpoint cluster
 [source]
 kubectl scale -n mp-demo --replicas=3 statefulset/mp-pg-demo
 
+== complex example
+
+[source]
+----
+# start environment
+kubectl apply -f ../base-environment/namespace-mp-demo.yaml -f ../base-environment/secret-pw.yaml -f ../base-environment/service-db.yaml -f ../base-environment/statefulset-db-pg-native-pv.yaml -f configmap-poi-111-sysconf-deployment.yaml -f configmap-poi-120-flexible-auth.yaml -f configmap-poi-role_user_org_task.yaml -f configmap-poi-ldap-res.yaml -f service-nfs.yaml -f statefulset-nfs.yaml -f service-ldap.yaml -f configmap-ldap-init.yaml -f statefulset-ldap.yaml  -f statefulset-pg-native_cm-sec-nfs.yaml -f service-midpoint.yaml -f secret-cert-mp-pg-demo.yaml -f ingress-midpoint.yaml
+
+# get the list of objects
+kubectl get -n mp-demo ingress,secret,service,statefulset,configmap
+
+# remove created objects (without persistent volumes)
+kubectl delete -n mp-demo ingress/mp-pg-demo secret/cert-mp-pg-demo service/mp-pg-demo statefulset/mp-pg-demo statefulset/mp-demo-ldap configmap/mp-demo-ldap-init service/mp-demo-ldap statefulset/mp-demo-nfs service/mp-demo-nfs configmap/mp-demo-poi-ldap-res configmap/mp-demo-poi-role-user-org-task configmap/mp-demo-poi-120-flexible-auth configmap/mp-demo-poi-111-sysconf-deployment statefulset/mp-demo-db service/mp-demo-db secret/mp-demo
+
+# remove also peristent volumes
+kubectl delete -n mp-demo pvc/mp-demo-ldap-store-mp-demo-ldap-0 pvc/mp-demo-nfs-store-mp-demo-nfs-0 pvc/mp-demo-pg-storage-mp-demo-db-0
+----

@@ -8,5 +8,5 @@ spec:
     - name: ldap
       port: 389
   selector:
-    app: mp-demo-nfs
+    app: mp-demo-ldap
   type: NodePort

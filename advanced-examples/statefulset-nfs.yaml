@@ -13,17 +13,6 @@ spec:
       labels:
         app: mp-demo-nfs
     spec:
-      initContainers:
-        - name: init-structure
-          image: 'k8s.gcr.io/volume-nfs'
-          command: ["/bin/bash","-c"]
-          args:
-            - mkdir -p /exports/poi ;
-              echo "post-initial-objects directory has been created..."
-          volumeMounts:
-          - mountPath: /exports
-            name: mp-demo-nfs-store
-          imagePullPolicy: IfNotPresent
       containers:
         - name: mp-demo-nfs
           image: 'k8s.gcr.io/volume-nfs'
