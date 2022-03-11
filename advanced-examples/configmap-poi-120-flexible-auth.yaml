@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mp-demo-poi
+  name: mp-demo-poi-120-flexible-auth
   namespace: mp-demo
 data:
   120-flexible-auth.xml: |-
