@@ -16,11 +16,20 @@ In some situation adding another the same labeled block of the setting may lead 
 
 === Start environent
 
+.environment with local home
 [source]
 ----
 # start environment
 kubectl apply -f ../base-environment/namespace-mp-demo.yaml -f ../base-environment/secret-pw.yaml -f ../base-environment/service-db.yaml -f ../base-environment/statefulset-db-pg-native-pv.yaml -f configmap-poi-111-sysconf-deployment.yaml -f configmap-poi-120-flexible-auth.yaml -f configmap-poi-role_user_org_task.yaml -f configmap-poi-ldap-res.yaml -f service-nfs.yaml -f statefulset-nfs.yaml -f service-ldap.yaml -f configmap-ldap-init.yaml -f statefulset-ldap.yaml  -f statefulset-pg-native_cm-sec-nfs.yaml -f service-midpoint.yaml -f secret-cert-mp-pg-demo.yaml -f ingress-midpoint.yaml
 ----
+
+.environment with shared home (NFS) - log saved to subfolder per MP node
+[source]
+----
+# start environment
+kubectl apply -f ../base-environment/namespace-mp-demo.yaml -f ../base-environment/secret-pw.yaml -f ../base-environment/service-db.yaml -f ../base-environment/statefulset-db-pg-native-pv.yaml -f configmap-poi-111-sysconf-deployment.yaml -f configmap-poi-120-flexible-auth.yaml -f configmap-poi-role_user_org_task.yaml -f configmap-poi-ldap-res.yaml -f service-nfs.yaml -f statefulset-nfs.yaml -f service-ldap.yaml -f configmap-ldap-init.yaml -f statefulset-ldap.yaml  -f statefulset-pg-native_cm-sec-nfs_home.yaml -f service-midpoint.yaml -f secret-cert-mp-pg-demo.yaml -f ingress-midpoint.yaml
+----
+
 
 === Check the objects
 
