@@ -45,7 +45,7 @@ spec:
             path: /
       initContainers:
         - name: mp-config-init
-          image: 'evolveum/midpoint:4.4-support-alpine'
+          image: 'registry.lab.evolveum.com/midpoint:demo-alpine'
           command:
             - /bin/bash
             - "-c"
@@ -68,7 +68,7 @@ spec:
           imagePullPolicy: IfNotPresent
       containers:
         - name: mp
-          image: 'evolveum/midpoint:4.4-support-alpine'
+          image: 'registry.lab.evolveum.com/midpoint:demo'
           ports:
             - name: gui
               containerPort: 8080
