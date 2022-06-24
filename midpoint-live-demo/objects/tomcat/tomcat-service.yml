@@ -13,4 +13,3 @@ spec:
     app: tomcat
   type: ClusterIP
   sessionAffinity: None
-

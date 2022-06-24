@@ -19,7 +19,7 @@ spec:
           emptyDir: {}
       initContainers:
         - name: mp-db-init
-          image: 'registry.lab.evolveum.com/midpoint:demo'
+          image: 'registry.lab.evolveum.com/midpoint:demo-alpine'
           command:
             - /bin/bash
             - /opt/midpoint/bin/midpoint.sh
@@ -70,3 +70,16 @@ spec:
     rollingUpdate:
       partition: 0
   revisionHistoryLimit: 10
+  volumeClaimTemplates:
+    - kind: PersistentVolumeClaim
+      apiVersion: v1
+      metadata:
+        name: mp-demo-db-storage
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 50Gi
+        storageClassName: csi-rbd-ssd
+        volumeMode: Filesystem

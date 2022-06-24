@@ -68,7 +68,7 @@ spec:
           imagePullPolicy: IfNotPresent
       containers:
         - name: mp
-          image: 'registry.lab.evolveum.com/midpoint:demo'
+          image: 'registry.lab.evolveum.com/midpoint:demo-alpine'
           ports:
             - name: gui
               containerPort: 8080
