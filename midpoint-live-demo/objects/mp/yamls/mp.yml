@@ -17,6 +17,8 @@ spec:
       volumes:
         - name: mp-home
           emptyDir: {}
+        - name: mp-lib
+          emptyDir: {}
         - name: mp-secret
           secret:
             secretName: mp-secret
@@ -25,6 +27,10 @@ spec:
           configMap:
             name: pio-map
             defaultMode: 420
+        - name: login-page
+          configMap:
+            name: login-page-map
+            defaultMode: 0777
         - name: import
           configMap:
             name: hr-map
@@ -42,8 +48,10 @@ spec:
           image: 'evolveum/midpoint:4.4-support-alpine'
           command:
             - /bin/bash
-            - /opt/midpoint/bin/midpoint.sh
-            - init-native
+            - "-c"
+            - |
+              /mnt/page/addLoginPage.sh
+              /opt/midpoint/bin/midpoint.sh init-native
           env:
             - name: MP_INIT_CFG
               value: /opt/mp-home
@@ -51,6 +59,10 @@ spec:
           volumeMounts:
             - name: mp-home
               mountPath: /opt/mp-home
+            - name: login-page
+              mountPath: /mnt/page
+            - name: mp-lib
+              mountPath: /mnt/lib
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
@@ -105,6 +117,8 @@ spec:
               mountPath: /opt/midpoint/var/import/
             - name: mp-home
               mountPath: /opt/midpoint/var
+            - name: mp-lib
+              mountPath: /opt/midpoint/lib
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: Always
