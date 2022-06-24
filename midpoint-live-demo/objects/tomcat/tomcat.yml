@@ -20,7 +20,7 @@ spec:
         - name: nfs-volume
           nfs:
             server: nfs-service.mp-demo.svc.cluster.local
-            path: /
+            path: /exports
       initContainers:
         - name: init
           image: 'alpine:3'

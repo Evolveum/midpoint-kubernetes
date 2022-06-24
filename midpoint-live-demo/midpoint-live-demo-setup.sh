@@ -39,7 +39,7 @@ kubectl create configmap -n mp-demo ldap-dynschema-map --from-file=$PWD/objects/
 # Import of ldap kuberntes objects
 kubectl apply -f $PWD/objects/ldap/yamls
 
-# Import od tomcat kubernetes objects
+# Import of tomcat kubernetes objects
 kubectl apply -f $PWD/objects/tomcat
 
 

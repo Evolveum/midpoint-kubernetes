@@ -546,7 +546,7 @@
                         <stage id="5">
                             <name>Manager</name>
                             <approverExpression>
-                                <script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:ScriptExpressionEvaluatorType">
+                                <script>
                                     <code>midpoint.getManagersOidsExceptUser(object)</code>
                                 </script>
                             </approverExpression>

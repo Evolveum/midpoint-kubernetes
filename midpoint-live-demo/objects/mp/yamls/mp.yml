@@ -39,7 +39,7 @@ spec:
             path: /
       initContainers:
         - name: mp-config-init
-          image: 'evolveum/midpoint:4.4.1-alpine'
+          image: 'evolveum/midpoint:4.4-support-alpine'
           command:
             - /bin/bash
             - /opt/midpoint/bin/midpoint.sh
@@ -56,7 +56,7 @@ spec:
           imagePullPolicy: IfNotPresent
       containers:
         - name: mp
-          image: 'evolveum/midpoint:4.4.1-alpine'
+          image: 'evolveum/midpoint:4.4-support-alpine'
           ports:
             - name: gui
               containerPort: 8080

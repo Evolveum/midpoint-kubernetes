@@ -30,6 +30,17 @@
     <user>
         <name>Raphael</name>
         <subtype>CONTRACTOR</subtype>
+        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000110" type="OrgType">
+            <!-- F0110 -->
+        </parentOrgRef>
+        <assignment>
+            <targetRef oid="c74a7d86-7798-11e2-964e-100000000110" type="OrgType">
+                <!-- F0110 -->
+            </targetRef>
+            <activation>
+                <effectiveStatus>enabled</effectiveStatus>
+            </activation>
+        </assignment>
         <extension>
             <ext:artisticName>Raphael</ext:artisticName>
         </extension>
@@ -104,6 +115,9 @@
         <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:manager" type="OrgType">
             <!-- F0000 -->
         </parentOrgRef>
+        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000110" relation="org:manager" type="OrgType">
+            <!-- F0110 -->
+        </parentOrgRef>
         <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000200" type="OrgType">
             <!-- F0200 -->
         </parentOrgRef>
@@ -137,6 +151,14 @@
         <assignment id="5">
             <targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" type="RoleType">
                 <!-- Patron -->
+            </targetRef>
+            <activation>
+                <effectiveStatus>enabled</effectiveStatus>
+            </activation>
+        </assignment>
+        <assignment id="6">
+            <targetRef oid="c74a7d86-7798-11e2-964e-100000000110" relation="org:manager" type="OrgType">
+                <!-- F0110 -->
             </targetRef>
             <activation>
                 <effectiveStatus>enabled</effectiveStatus>

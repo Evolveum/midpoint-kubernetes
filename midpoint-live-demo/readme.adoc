@@ -2,13 +2,11 @@
 :toc:
 :toclevels: 4
 
-This location contain files related to the Midpoint live demo .
+This location contain files related to the Midpoint live demo.
 
-TODO
+To successfully deploy midpoint live demo installation you must follow these steps:
 
-
-
-Setup nfs on node:
+1. Setup nfs on node:
 
 [source,bash]
 ====
@@ -23,15 +21,17 @@ EOF
 
 [NOTE]
 *nfs-common* is the name of the package on the debian based distribution (including ubuntu) with the necessary NFS mount support.
-Once this package is available on the system the kubernetes can use nativly NFS in volume definition.
+Once this package is available on the system the kubernetes can use natively NFS in volume definition.
 
 [NOTE]
 To have resolvable cluster's FQDN it is needed to let the node's system know where is the DNS server located.
-Without this information the node is resolving using external DNS servers which have no informationabout cluster's domain.
+Without this information the node is resolving using external DNS servers which have no information about cluster's domain.
 10.96.0.10 is IP address of cluster dns server. Your may be different.
 
+2. Create certificate:
 
-Create certificate:
+[NOTE]
+Basic certificate is available as default but it is highly recommended to use your own certificate. Default address is demo.example.com, when using your own certificate change addresses in ingress objects.
 
 [NOTE]
 For quick test solution you can generate your own certificate though it is not recommended:
@@ -50,7 +50,9 @@ EOF
 openssl x509 -in tls.crt -text -noout
 
 [NOTE]
-It ts better to make trusted certificate with https://letsencrypt.org/
+It is better to make trusted certificate with https://letsencrypt.org/
 
 [NOTE]
 In order to access midPoint using your private domain name you must setup the name-to-IP-address mapping in the DNS. Alternatively, you can edit your /etc/hosts file.
+
+3. Run midpoint-live-demo-setup.sh

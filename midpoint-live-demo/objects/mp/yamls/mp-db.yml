@@ -19,7 +19,7 @@ spec:
           emptyDir: {}
       initContainers:
         - name: mp-db-init
-          image: 'evolveum/midpoint:4.4.1-alpine'
+          image: 'evolveum/midpoint:4.4-support-alpine'
           command:
             - /bin/bash
             - /opt/midpoint/bin/midpoint.sh
