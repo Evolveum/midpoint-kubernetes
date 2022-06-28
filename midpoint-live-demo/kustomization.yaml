@@ -1,0 +1,37 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+ - namespaces/mp-demo.yml
+ - ymlConfigMaps/apache-conf-map.yml
+ - ymlConfigMaps/addressbook-script-map.yml
+ - ymlConfigMaps/mp-post-initial-objects-map.yml
+ - ymlConfigMaps/ldap-dynschema-map.yml
+ - ymlConfigMaps/hr-script-map.yml
+ - ymlConfigMaps/ldap-init-map.yml
+ - ymlConfigMaps/mp-hr-map.yml
+ - ymlConfigMaps/mp-extensions-map.yml
+ - ymlConfigMaps/mp-login-page-map.yml
+ - objects/certificates/yamls/cert-mp-demo.yml
+ - objects/ldap/yamls/ldap-admin-ingress.yml
+ - objects/ldap/yamls/ldap-service.yml
+ - objects/ldap/yamls/ldap.yml
+ - objects/ldap/yamls/ldap-admin-service.yml
+ - objects/addressbook/yamls/addressbook-service.yml
+ - objects/addressbook/yamls/addressbook.yml
+ - objects/mp/yamls/mp-ingress.yml
+ - objects/mp/yamls/mp-service.yml
+ - objects/mp/yamls/mp-db.yml
+ - objects/mp/yamls/mp-secret.yml
+ - objects/mp/yamls/mp.yml
+ - objects/mp/yamls/mp-db-service.yml
+ - objects/apache/yamls/apache.yml
+ - objects/apache/yamls/apache-ingress.yml
+ - objects/apache/yamls/apache-service.yml
+ - objects/nfs/nfs-service.yml
+ - objects/nfs/nfs-server.yml
+ - objects/tomcat/tomcat.yml
+ - objects/tomcat/tomcat-hr-ingress.yml
+ - objects/tomcat/tomcat-service.yml
+ - objects/tomcat/tomcat-addressbook-ingress.yml
+ - objects/hr/yamls/hr.yml
+ - objects/hr/yamls/hr-service.yml

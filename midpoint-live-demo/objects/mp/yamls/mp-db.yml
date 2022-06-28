@@ -70,16 +70,3 @@ spec:
     rollingUpdate:
       partition: 0
   revisionHistoryLimit: 10
-  volumeClaimTemplates:
-    - kind: PersistentVolumeClaim
-      apiVersion: v1
-      metadata:
-        name: mp-demo-db-storage
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 50Gi
-        storageClassName: csi-rbd-ssd
-        volumeMode: Filesystem

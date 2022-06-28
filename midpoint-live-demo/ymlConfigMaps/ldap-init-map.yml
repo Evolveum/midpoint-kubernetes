@@ -1,0 +1,221 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ldap-init-map
+  namespace: mp-demo
+data:
+  acl.ldif: |
+    dn:  olcDatabase={1}{{ LDAP_BACKEND }},cn=config
+    changetype: modify
+    replace: olcAccess
+    olcAccess: {0}to dn="cn=admin,{{ LDAP_BASE_DN }}"
+      by anonymous auth
+      by self write
+      by * none
+    olcAccess: {1}to attrs=userPassword,shadowLastChange
+      by dn="cn=idm,ou=Administrators,{{ LDAP_BASE_DN }}" write
+      by dn="cn=admin,{{ LDAP_BASE_DN }}" write
+      by anonymous auth
+      by self write
+      by * none
+    olcAccess: {2}to dn.base=""
+      by * read
+    olcAccess: {3}to dn.subtree="ou=people,{{ LDAP_BASE_DN }}" 
+      by dn="cn=idm,ou=Administrators,{{ LDAP_BASE_DN }}" write
+    olcAccess: {4}to dn.subtree="ou=groups,{{ LDAP_BASE_DN }}"
+      by dn="cn=idm,ou=Administrators,{{ LDAP_BASE_DN }}" write
+    olcAccess: {5}to *
+      by dn="cn=admin,{{ LDAP_BASE_DN }}" write
+      by dn="cn=idm,ou=Administrators,{{ LDAP_BASE_DN }}" read
+      by self read
+      by * none
+  baseEntry.ldif: >
+    dn: ou=administrators,{{ LDAP_BASE_DN }}
+
+    objectClass: top
+
+    objectClass: organizationalUnit
+
+    ou: administrators
+
+
+    dn: cn=idm,ou=administrators,dc=example,dc=com
+
+    objectclass: top
+
+    objectclass: person
+
+    cn: idm
+
+    sn: IDM Administrator
+
+    description: Special LDAP acccount used by the IDM to access the LDAP data.
+
+    userpassword: secret
+
+
+    dn: ou=groups,{{ LDAP_BASE_DN }}
+
+    #aci: (targetattr="*")(version 3.0; acl "IDM Access"; allow (all)
+    userdn="lda
+
+    # p:///cn=idm,ou=administrators,dc=example,dc=com";)
+
+    objectClass: top
+
+    objectClass: organizationalUnit
+
+    ou: groups
+
+
+    dn: ou=people,{{ LDAP_BASE_DN }}
+
+    #aci: (targetattr="*||ds-pwp-account-disabled")(version 3.0; acl "IDM
+    Access"
+
+    # ; allow (all) userdn="ldap:///cn=idm,ou=Administrators,dc=example,dc=com";
+
+    # )
+
+    objectClass: top
+
+    objectClass: organizationalUnit
+
+    ou: people
+
+
+    dn: uid=leonardo,ou=people,dc=example,dc=com
+
+    cn: Leonardo da Vinci
+
+    description: Managed by midPoint
+
+    employeenumber: 1
+
+    employeetype: FTE
+
+    givenname: Leonardo
+
+    objectclass: person
+
+    objectclass: inetOrgPerson
+
+    objectclass: organizationalPerson
+
+    objectclass: top
+
+    ou: Department of Machines
+
+    sn: da Vinci
+
+    telephonenumber: +39 6 8687797
+
+    uid: leonardo
+
+    userpassword: {SSHA}qI88nuG6ZJLGQGPro57LMwmQpI21A910wHU6Ng==
+
+
+    dn: uid=michelangelo,ou=people,dc=example,dc=com
+
+    cn: Michelangelo di Lodovico Buonarroti Simoni
+
+    description: Managed by midPoint
+
+    employeenumber: 4
+
+    employeetype: FTE
+
+    givenname: Michelangelo
+
+    objectclass: person
+
+    objectclass:inetOrgPerson
+
+    objectclass: organizationalPerson
+
+    objectclass: top
+
+    sn: di Lodovico Buonarroti Simoni
+
+    uid: michelangelo
+
+    userpassword: {SSHA}UHv5XEvAm6jOmu5qCkc1MpJAw/DDaBBES10OJQ==
+
+
+    dn: cn=employees,ou=groups,dc=example,dc=com
+
+    cn: employees
+
+    objectclass: groupOfNames
+
+    objectclass: top
+
+    member: uid=leonardo,ou=people,dc=example,dc=com
+
+    member: uid=michelangelo,ou=people,dc=example,dc=com
+
+
+    dn: cn=library,ou=groups,dc=example,dc=com
+
+    cn: library
+
+    objectclass: groupOfNames
+
+    objectclass: top
+
+    member: uid=leonardo,ou=people,dc=example,dc=com
+
+
+    dn: cn=painters,ou=groups,dc=example,dc=com
+
+    cn: painters
+
+    objectclass: groupOfNames
+
+    objectclass: top
+
+    member: uid=leonardo,ou=People,dc=example,dc=com
+
+
+    dn: ou=Projects,dc=example,dc=com
+
+    objectClass: organizationalUnit
+
+    ou: Projects
+
+
+    dn: ou=Orgs,dc=example,dc=com
+
+    objectClass: organizationalUnit
+
+    ou: Orgs
+  ppolicy.ldif: |
+    #load password policy module
+    dn: cn=module{0},cn=config
+    changetype: modify
+    add: olcModuleLoad
+    olcModuleLoad: {2}ppolicy
+
+    #configure password policy module
+    dn: olcOverlay=ppolicy,olcDatabase={1}{{ LDAP_BACKEND }},cn=config
+    changetype: add
+    objectClass: olcPPolicyConfig
+    objectClass: olcOverlayConfig
+    olcOverlay: ppolicy
+    olcPPolicyDefault: cn=default,ou=pwpolicies,{{ LDAP_BASE_DN }}
+    olcPPolicyHashCleartext: TRUE
+    olcPPolicyUseLockout: TRUE
+  sssvlv.ldif: |
+    #load sssvlv module
+    dn: cn=module{0},cn=config
+    changetype: modify
+    add: olcModuleLoad
+    olcModuleLoad: {3}sssvlv
+
+    #configure sssvlv module
+    dn: olcOverlay=sssvlv,olcDatabase={1}{{ LDAP_BACKEND }},cn=config
+    changetype: add
+    objectClass: olcSssVlvConfig
+    objectClass: olcOverlayConfig
+    olcOverlay: sssvlv
+

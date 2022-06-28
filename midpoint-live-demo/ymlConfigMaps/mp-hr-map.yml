@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hr-map
+  namespace: mp-demo
+data:
+  midpoint-source.csv: |
+    "empnum","firstname","lastname","artname","emptype"
+    "1","Leonardo","da Vinci","Leonardo","FTE"
+    "2","Donatello","di Niccolo di Betto Bardi","Donatello","RETIRED"
+    "3","Raffaello","Sanzio da Urbino","Raphael","CONTRACTOR"
+    "4","Michelangelo","di Lodovico Buonarroti Simoni","Michelangelo","FTE"   
+

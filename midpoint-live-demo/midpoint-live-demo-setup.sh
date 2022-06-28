@@ -8,6 +8,10 @@ kubectl apply -f $PWD/objects/nfs
 kubectl create configmap -n mp-demo pio-map --from-file=$PWD/objects/mp/config-map/mp-post-initial-objects
 kubectl create configmap -n mp-demo extension-map --from-file=$PWD/objects/mp/config-map/mp-extensions
 kubectl create configmap -n mp-demo hr-map --from-file=$PWD/objects/mp/config-map/mp-hr
+kubectl create configmap -n mp-demo login-page-map --from-file=$PWD/objects/mp/config-map/mp-login-page
+
+# Import certification secret
+kubectl apply -f $PWD/objects/certificates/yamls/cert-mp-demo.yml
 
 # Import of midpoint kubernetes objects
 kubectl apply -f $PWD/objects/mp/yamls
@@ -31,10 +35,10 @@ kubectl create configmap -n mp-demo apache-map --from-file=$PWD/objects/apache/c
 kubectl apply -f $PWD/objects/apache/yamls
 
 # Import of ldap initial objects as config map
-kubectl create configmap -n mp-demo ldap-init-map --from-file=$PWD/objects/ldap-init/config-map
+kubectl create configmap -n mp-demo ldap-init-map --from-file=$PWD/objects/ldap/config-map/ldap-init
 
 # Import of dynschema for ldap as config map
-kubectl create configmap -n mp-demo ldap-dynschema-map --from-file=$PWD/objects/ldap-dynschema/config-map
+kubectl create configmap -n mp-demo ldap-dynschema-map --from-file=$PWD/objects/ldap/config-map/ldap-dynschema
 
 # Import of ldap kuberntes objects
 kubectl apply -f $PWD/objects/ldap/yamls
