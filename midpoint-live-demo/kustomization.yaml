@@ -4,10 +4,11 @@ resources:
  - namespaces/mp-demo.yml
  - ymlConfigMaps/apache-conf-map.yml
  - ymlConfigMaps/addressbook-script-map.yml
- - ymlConfigMaps/mp-post-initial-objects-map.yml
  - ymlConfigMaps/ldap-dynschema-map.yml
  - ymlConfigMaps/hr-script-map.yml
  - ymlConfigMaps/ldap-init-map.yml
+ - ymlConfigMaps/mp-post-initial-object-map.yml
+ - ymlConfigMaps/users-map.yml
  - ymlConfigMaps/mp-hr-map.yml
  - ymlConfigMaps/mp-extensions-map.yml
  - ymlConfigMaps/mp-login-page-map.yml
