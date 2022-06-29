@@ -56,3 +56,6 @@ It is better to make trusted certificate with https://letsencrypt.org/
 In order to access midPoint using your private domain name you must setup the name-to-IP-address mapping in the DNS. Alternatively, you can edit your /etc/hosts file.
 
 3. Run midpoint-live-demo-setup.sh
+
+
+For more information regarding midPoint demo please see https://docs.evolveum.com/midpoint/demo/
