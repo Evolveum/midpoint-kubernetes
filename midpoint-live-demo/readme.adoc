@@ -2,7 +2,12 @@
 :toc:
 :toclevels: 4
 
-This location contain files related to the Midpoint live demo.
+This location contain files related to the Midpoint live demo. 
+
+This readme will provide you a guide to succesfully deploy midPoint demo on your own kubernetes cluster. Information about midPoint demo like implementation details or walkthrough can you find here https://docs.evolveum.com/midpoint/demo/
+
+[NOTE]
+When you don't have available kubernetes cluster you can head to https://demo.evolveum.com/ where is midPoint demo deployed and available to everyone.
 
 To successfully deploy midpoint live demo installation you must follow these steps:
 
@@ -57,5 +62,4 @@ In order to access midPoint using your private domain name you must setup the na
 
 3. Run midpoint-live-demo-setup.sh
 
-
-For more information regarding midPoint demo please see https://docs.evolveum.com/midpoint/demo/
+4. Wait for midPoint to start and then head to https://docs.evolveum.com/midpoint/demo/#walkthrough for walkthrogh of midPoint demo enviroment.  
