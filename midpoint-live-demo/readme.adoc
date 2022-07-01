@@ -22,6 +22,8 @@ cat << EOF >>/etc/systemd/resolved.conf
 DNS=10.96.0.10
 Domains=~cluster.local
 EOF
+
+service systemd-resolved restart
 ====
 
 [NOTE]
