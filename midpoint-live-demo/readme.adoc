@@ -35,6 +35,9 @@ To have resolvable cluster's FQDN it is needed to let the node's system know whe
 Without this information the node is resolving using external DNS servers which have no information about cluster's domain.
 10.96.0.10 is IP address of cluster dns server. Your may be different.
 
+[NOTE]
+When you have docker desktop kubernetes on windows please ignore these commands and enter IP of nfs-service to nfs-volume in mp and tomcat statefulsets manually (replace nfs-service.mp-demo.svc.cluster.local).
+
 2. Create certificate:
 
 [NOTE]
