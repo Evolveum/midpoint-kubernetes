@@ -6,5 +6,4 @@ kind: Secret
 metadata:
   creationTimestamp: null
   name: cert-mp-demo
-  namespace: mp-demo
 type: kubernetes.io/tls
