@@ -175,4 +175,4 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: users-map
-  namespace: mp-demo
+  

@@ -1,3 +1,3 @@
 #!/bin/bash
 
-kubectl apply -k .
+kubectl apply -k . -n mp-demo
