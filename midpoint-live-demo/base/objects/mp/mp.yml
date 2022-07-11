@@ -84,13 +84,22 @@ spec:
               value: /opt/midpoint/config-secrets/keystore
             - name: MP_SET_midpoint_repository_database
               value: postgresql
+            - name: POD_NS
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
             - name: MP_SET_midpoint_repository_jdbcUsername
               value: midpoint
             - name: MP_SET_midpoint_repository_jdbcPassword_FILE
               value: /opt/midpoint/config-secrets/password
+            - name: MP_SET_midpoint_constants_LDAPADDRESS
+              value: 'ldap-service.${POD_NS}.svc.cluster.local'
+            - name: MP_SET_midpoint_constants_BOOKADDRESS
+              value: 'addressbook-db-service.${POD_NS}.svc.cluster.local'
             - name: MP_SET_midpoint_repository_jdbcUrl
               value: >-
-                jdbc:postgresql://mp-db-service.mp-demo.svc.cluster.local:5432/midpoint
+                jdbc:postgresql://mp-db-service.${POD_NS}.svc.cluster.local:5432/midpoint
             - name: MP_UNSET_midpoint_repository_hibernateHbm2ddl
               value: '1'
             - name: MP_SET_midpoint_nodeIdSource

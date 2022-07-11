@@ -1,0 +1,12 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mp
+spec:
+  template:
+    spec:
+      volumes:
+        - name: nfs-volume
+          nfs:
+            server: nfs-service.testdemo.svc.cluster.local
+            path: /

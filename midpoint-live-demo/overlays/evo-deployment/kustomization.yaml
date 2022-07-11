@@ -1,0 +1,8 @@
+kind: Kustomization
+
+resources:
+  - ../../base
+  
+patch:
+  - nfs-mp.yaml
+  - nfs-tomcat.yaml
