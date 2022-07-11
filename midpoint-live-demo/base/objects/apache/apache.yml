@@ -50,6 +50,12 @@ spec:
               containerPort: 80
               protocol: TCP
           resources: {}
+          env:
+            - name: POD_NS
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
           volumeMounts:
             - name: var
               mountPath: /var/
