@@ -1572,4 +1572,3 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: pio-map
-  namespace: mp-demo-k
