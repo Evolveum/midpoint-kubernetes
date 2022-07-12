@@ -45,6 +45,12 @@ spec:
             - name: tomcat-port
               containerPort: 8080
               protocol: TCP
+          env:
+            - name: POD_NS
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
           resources: {}
           volumeMounts:
             - name: shared-data

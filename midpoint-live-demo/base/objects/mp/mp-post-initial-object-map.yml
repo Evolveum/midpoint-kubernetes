@@ -387,7 +387,7 @@ data:
     \       </q:equal>\n\t      </filter>\n\t</connectorRef>\n\n\t<connectorConfiguration>\n\n\t\t<icfc:configurationProperties\n\t\t\t\txmlns:icscdbtable=\"http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-databasetable/org.identityconnectors.databasetable.DatabaseTableConnector\">\n\t\t\t<icscdbtable:user>midpoint</icscdbtable:user>\n
     \           \t\t<icscdbtable:password><clearValue>T0p-secret</clearValue></icscdbtable:password>\n
     \           \t\t<icscdbtable:jdbcDriver>org.postgresql.Driver</icscdbtable:jdbcDriver>\n
-    \           \t\t<icscdbtable:jdbcUrlTemplate>jdbc:postgresql://addressbook-db-service.mp-demo.svc.cluster.local:5432/midpoint</icscdbtable:jdbcUrlTemplate>\t\n\t\t\t<icscdbtable:port>5432</icscdbtable:port>\n\t\t\t<icscdbtable:host><expression><const>BOOKADDRESS</const></expression></icscdbtable:host>\n\t\t\t<icscdbtable:database>addressbook</icscdbtable:database>\n\t\t\t<icscdbtable:table>people</icscdbtable:table>\n\t\t\t<icscdbtable:keyColumn>username</icscdbtable:keyColumn>\n\t\t\t<icscdbtable:passwordColumn>password</icscdbtable:passwordColumn>\n\t\t\t<icscdbtable:enableEmptyString>false</icscdbtable:enableEmptyString>\n\t\t\t<icscdbtable:rethrowAllSQLExceptions>true</icscdbtable:rethrowAllSQLExceptions>\n\t\t\t<icscdbtable:nativeTimestamps>true</icscdbtable:nativeTimestamps>\n\t\t</icfc:configurationProperties>\n\n\t</connectorConfiguration>\n\n\t\t<schemaHandling>\n\n\t\t\t<objectType>\n\t\t\t\t<intent>default</intent>\n\t\t\t\t<displayName>Default
+    \           \t\t<icscdbtable:jdbcUrlTemplate><expression><const>BOOKJDBCADDRESS</const></expression></icscdbtable:jdbcUrlTemplate>\t\n\t\t\t<icscdbtable:port>5432</icscdbtable:port>\n\t\t\t<icscdbtable:host><expression><const>LDAPADDRESS</const></expression></icscdbtable:host>\n\t\t\t<icscdbtable:database>addressbook</icscdbtable:database>\n\t\t\t<icscdbtable:table>people</icscdbtable:table>\n\t\t\t<icscdbtable:keyColumn>username</icscdbtable:keyColumn>\n\t\t\t<icscdbtable:passwordColumn>password</icscdbtable:passwordColumn>\n\t\t\t<icscdbtable:enableEmptyString>false</icscdbtable:enableEmptyString>\n\t\t\t<icscdbtable:rethrowAllSQLExceptions>true</icscdbtable:rethrowAllSQLExceptions>\n\t\t\t<icscdbtable:nativeTimestamps>true</icscdbtable:nativeTimestamps>\n\t\t</icfc:configurationProperties>\n\n\t</connectorConfiguration>\n\n\t\t<schemaHandling>\n\n\t\t\t<objectType>\n\t\t\t\t<intent>default</intent>\n\t\t\t\t<displayName>Default
     Account</displayName>\n\t\t\t\t<default>true</default>\n\t\t\t\t<objectClass>ri:AccountObjectClass</objectClass>\n\n\t\t\t\t<attribute>\n\t\t\t\t\t<ref>icfs:uid</ref>\n\t\t\t\t\t<displayName>Entry
     ID</displayName>\n\t\t\t\t</attribute>\n\n\t\t\t\t<attribute>\n\t\t\t\t\t<ref>icfs:name</ref>\n\t\t\t\t\t<displayName>Username</displayName>\n\t\t\t\t\t<limitations>\n\t\t\t\t\t\t<minOccurs>0</minOccurs>\n\t\t\t\t\t</limitations>\n\t\t\t\t\t<outbound>\n\t\t\t\t\t\t<strength>weak</strength>\n\t\t\t\t\t\t<source>\n\t\t\t\t\t\t\t<path>$user/name</path>\n\t\t\t\t\t\t</source>\n\t\t\t\t\t</outbound>\n\t\t\t\t</attribute>\n\n\t\t\t\t<attribute>\n\t\t\t\t\t<ref>ri:first_name</ref>\n\t\t\t\t\t<displayName>First
     Name</displayName>\n\t\t\t\t\t<outbound>\n\t\t\t\t\t\t<source>\n\t\t\t\t\t\t\t<path>$user/givenName</path>\n\t\t\t\t\t\t</source>\n\t\t\t\t\t</outbound>\n\t\t\t\t\t\t\t\n\t\t\t\t</attribute>\n\t\t\t\t<attribute>\n\t\t\t\t\t<ref>ri:last_name</ref>\n\t\t\t\t\t<displayName>Last
@@ -511,13 +511,20 @@ data:
     \               </inbound>\n            </attribute>\n            <attribute id=\"15\">\n
     \               <c:ref xmlns:ri=\"http://midpoint.evolveum.com/xml/ns/public/resource/instance-3\">ri:employeeType</c:ref>\n
     \               <limitations>\n                    <maxOccurs>1</maxOccurs>\n
-    \               </limitations>\n                <outbound>\n                    <strength>strong</strength>\n
-    \                   <source>\n                        <c:path>$focus/subtype</c:path>\n
-    \                   </source>\n                </outbound>\n                <inbound
-    id=\"23\">\n                    <strength>weak</strength>\n                    <target>\n
-    \                       <c:path>$focus/subtype</c:path>\n                    </target>\n
-    \               </inbound>\n            </attribute>\n            <association
-    id=\"24\">\n                <c:ref xmlns:ri=\"http://midpoint.evolveum.com/xml/ns/public/resource/instance-3\">ri:ldapGroups</c:ref>\n
+    \               </limitations>\n                <inbound>\n                    <name>Archetype
+    by name</name>\n                    <strength>weak</strength>\n                    <expression>\n
+    \                       <assignmentTargetSearch>\n                            <targetType>ArchetypeType</targetType>\n
+    \                           <filter>\n                                <q:equal>\n
+    \                                   <q:path>name</q:path>\n                                    <expression>\n
+    \                                       <script>\n                                            <code>input</code>\n
+    \                                       </script>\n                                    </expression>\n
+    \                               </q:equal>\n                            </filter>\n
+    \                       </assignmentTargetSearch>\n                    </expression>\n
+    \                   <target>\n                            <path>assignment</path>\n
+    \                   </target>\n                    <condition>\n                        <script>\n
+    \                           <code>input != null</code>\n                        </script>\n
+    \                   </condition>\n                </inbound>\n            </attribute>\n
+    \           <association id=\"24\">\n                <c:ref xmlns:ri=\"http://midpoint.evolveum.com/xml/ns/public/resource/instance-3\">ri:ldapGroups</c:ref>\n
     \               <displayName>Group Membership</displayName>\n                <matchingRule
     xmlns:mr=\"http://prism.evolveum.com/xml/ns/public/matching-rule-3\">mr:stringIgnoreCase</matchingRule>\n
     \               <tolerant>true</tolerant>\n                <kind>entitlement</kind>\n
@@ -710,9 +717,19 @@ data:
     \                           <path>$user/name</path>\r\n                        </target>\r\n
     \                   </inbound>\r\n            </attribute>\r\n            <attribute
     id=\"6\">\r\n                <c:ref xmlns:ri=\"http://midpoint.evolveum.com/xml/ns/public/resource/instance-3\">ri:emptype</c:ref>\r\n
-    \               <displayName>Employee type</displayName>\r\n                <inbound
-    id=\"13\">\r\n                    <target>\r\n                        <c:path>$focus/subtype</c:path>\r\n
-    \                   </target>\r\n                </inbound>\r\n            </attribute>\r\n
+    \               <displayName>Employee type</displayName>\r\n                <inbound>\r\n
+    \                   <name>Archetype by name</name>\r\n                    <expression>\r\n
+    \                       <assignmentTargetSearch>\r\n                            <targetType>ArchetypeType</targetType>\r\n
+    \                           <filter>\r\n                                <q:equal>\r\n
+    \                                   <q:path>name</q:path>\r\n                                    <expression>\r\n
+    \                                       <script>\r\n                                            <code>input</code>\r\n
+    \                                       </script>\r\n                                    </expression>\r\n
+    \                               </q:equal>\r\n                            </filter>\r\n
+    \                       </assignmentTargetSearch>\r\n                    </expression>\r\n
+    \                   <target>\r\n                            <path>assignment</path>\r\n
+    \                   </target>\r\n                    <condition>\r\n                        <script>\r\n
+    \                           <code>input != null</code>\r\n                        </script>\r\n
+    \                   </condition>\r\n                </inbound>\r\n            </attribute>\r\n
     \           <activation>\r\n                <administrativeStatus>\r\n                    <inbound
     id=\"14\"/>\r\n                </administrativeStatus>\r\n            </activation>\r\n
     \           <credentials>\r\n                <password xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"
@@ -1160,20 +1177,72 @@ data:
     (OpenLDAP) -->\n            </resourceRef>\n            <kind>generic</kind>\n
     \           <intent>ou</intent>\n        </construction>\n        <order>1</order>\n
     \   </inducement>\n    <requestable>false</requestable>\n</role>\n</objects>\n"
-  165-lookup-empl-type.xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--\n  ~
-    Copyright (c) 2015 Evolveum\n  ~\n  ~ Licensed under the Apache License, Version
-    2.0 (the \"License\");\n  ~ you may not use this file except in compliance with
-    the License.\n  ~ You may obtain a copy of the License at\n  ~\n  ~     http://www.apache.org/licenses/LICENSE-2.0\n
-    \ ~\n  ~ Unless required by applicable law or agreed to in writing, software\n
-    \ ~ distributed under the License is distributed on an \"AS IS\" BASIS,\n  ~ WITHOUT
-    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n  ~ See the
-    License for the specific language governing permissions and\n  ~ limitations under
-    the License.\n  -->\n  \n<lookupTable oid=\"5783c174-d141-11e4-bb29-001e8c717e5b\"\n
-    \  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'\n   xmlns='http://midpoint.evolveum.com/xml/ns/public/common/common-3'\n
-    \  xmlns:c='http://midpoint.evolveum.com/xml/ns/public/common/common-3'\n   xmlns:t='http://prism.evolveum.com/xml/ns/public/types-3'\n
-    \  xmlns:q=\"http://prism.evolveum.com/xml/ns/public/query-3\"\n   xmlns:piracy='http://midpoint.evolveum.com/xml/ns/samples/piracy'>\n\t<name>Emp
-    type</name>\n\t<row>\n\t\t<key>FTE</key>\n\t\t<label>Full-time employee</label>\n\t</row>\n\t<row>\n\t\t<key>PTE</key>\n\t\t<label>Part-time
-    employee</label>\n\t</row>\n\t<row>\n\t\t<key>CONTRACTOR</key>\n\t\t<label>Contractor</label>\n\t</row>\n\t<row>\n\t\t<key>RETIRED</key>\n\t\t<label>Retired</label>\n\t</row>\n</lookupTable>\n"
+  161-archetypes.xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<objects xmlns=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n
+    \        xmlns:c=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n
+    \        xmlns:org=\"http://midpoint.evolveum.com/xml/ns/public/common/org-3\">\n
+    \   <archetype xmlns=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n
+    \              xmlns:c=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n
+    \              xmlns:org=\"http://midpoint.evolveum.com/xml/ns/public/common/org-3\"\n
+    \              xmlns:ri=\"http://midpoint.evolveum.com/xml/ns/public/resource/instance-3\"\n
+    \              oid=\"25add5de-133e-4f46-8dd8-e9c9cc306fda\">\n        <name>CONTRACTOR</name>\n
+    \       <iteration>0</iteration>\n        <iterationToken/>\n        <activation>\n
+    \           <effectiveStatus>enabled</effectiveStatus>\n            <enableTimestamp>2022-07-09T17:53:01.068Z</enableTimestamp>\n
+    \       </activation>\n        <displayName>Contractor</displayName>\n        <inducement
+    id=\"1\">\n            <targetRef oid=\"8d62985c-7797-11e2-94a6-001e8c717e5b\"
+    relation=\"org:default\" type=\"c:RoleType\">\n                <!-- Contractor
+    -->\n            </targetRef>\n        </inducement>\n        <inducement id=\"2\">\n
+    \           <construction>\n                <resourceRef oid=\"ebd0bf7b-7e80-4175-ba5e-4fd5de2ecd62\"
+    type=\"c:ResourceType\"/>\n                <strength>weak</strength>\n                <kind>account</kind>\n
+    \               <attribute>\n                    <ref>ri:employeeType</ref>\n
+    \                   <outbound>\n                        <strength>strong</strength>\n
+    \                       <expression>\n                            <value>CONTRACTOR</value>\n
+    \                       </expression>\n                    </outbound>\n                </attribute>\n
+    \           </construction>\n        </inducement>\n    </archetype>\n    <archetype
+    xmlns=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n               xmlns:c=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n
+    \              xmlns:org=\"http://midpoint.evolveum.com/xml/ns/public/common/org-3\"\n
+    \              xmlns:ri=\"http://midpoint.evolveum.com/xml/ns/public/resource/instance-3\"\n
+    \              oid=\"de3242b4-c043-4f80-9313-790fa3ebbfc9\" version=\"1\">\n        <name>FTE</name>\n
+    \       <iteration>0</iteration>\n        <iterationToken/>\n        <activation>\n
+    \           <effectiveStatus>enabled</effectiveStatus>\n            <enableTimestamp>2022-07-09T18:25:51.920Z</enableTimestamp>\n
+    \       </activation>\n        <displayName>Full time employee</displayName>\n
+    \       <inducement id=\"1\">\n            <targetRef oid=\"abf3884a-7778-11e2-abb7-001e8c717e5b\"
+    relation=\"org:default\" type=\"c:RoleType\">\n                <!-- Full Time
+    Employee -->\n            </targetRef>\n        </inducement>\n        <inducement
+    id=\"2\">\n            <construction>\n                <resourceRef oid=\"ebd0bf7b-7e80-4175-ba5e-4fd5de2ecd62\"
+    type=\"c:ResourceType\"/>\n                <strength>weak</strength>\n                <kind>account</kind>\n
+    \               <attribute>\n                    <ref>ri:employeeType</ref>\n
+    \                   <outbound>\n                        <strength>strong</strength>\n
+    \                       <expression>\n                            <value>FTE</value>\n
+    \                       </expression>\n                    </outbound>\n                </attribute>\n
+    \           </construction>\n        </inducement>\n    </archetype>\n    <archetype
+    xmlns=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n               xmlns:c=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n
+    \              xmlns:org=\"http://midpoint.evolveum.com/xml/ns/public/common/org-3\"\n
+    \              xmlns:ri=\"http://midpoint.evolveum.com/xml/ns/public/resource/instance-3\"\n
+    \              oid=\"0780e6a4-2133-4e83-b968-092fd7af28cc\">\n        <name>PTE</name>\n
+    \       <iteration>0</iteration>\n        <iterationToken/>\n        <activation>\n
+    \           <effectiveStatus>enabled</effectiveStatus>\n            <enableTimestamp>2022-07-12T11:02:02.141Z</enableTimestamp>\n
+    \       </activation>\n        <displayName>Part time employee</displayName>\n
+    \       <inducement id=\"1\">\n            <construction>\n                <resourceRef
+    oid=\"ebd0bf7b-7e80-4175-ba5e-4fd5de2ecd62\" type=\"c:ResourceType\"/>\n                <strength>weak</strength>\n
+    \               <kind>account</kind>\n                <attribute>\n                    <ref>ri:employeeType</ref>\n
+    \                   <outbound>\n                        <strength>strong</strength>\n
+    \                       <expression>\n                            <value>PTE</value>\n
+    \                       </expression>\n                    </outbound>\n                </attribute>\n
+    \           </construction>\n        </inducement>\n    </archetype>\n    <archetype
+    xmlns=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n               xmlns:c=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n
+    \              xmlns:org=\"http://midpoint.evolveum.com/xml/ns/public/common/org-3\"\n
+    \              xmlns:ri=\"http://midpoint.evolveum.com/xml/ns/public/resource/instance-3\"\n
+    \              oid=\"3c92eed8-1757-4327-8c73-f6f2518747ad\">\n        <name>RETIRED</name>\n
+    \       <iteration>0</iteration>\n        <iterationToken/>\n        <activation>\n
+    \           <effectiveStatus>enabled</effectiveStatus>\n            <enableTimestamp>2022-07-12T11:01:39.284Z</enableTimestamp>\n
+    \       </activation>\n        <displayName>Retired</displayName>\n        <inducement
+    id=\"1\">\n            <construction>\n                <resourceRef oid=\"ebd0bf7b-7e80-4175-ba5e-4fd5de2ecd62\"
+    type=\"c:ResourceType\"/>\n                <strength>weak</strength>\n                <kind>account</kind>\n
+    \               <attribute>\n                    <ref>ri:employeeType</ref>\n
+    \                   <outbound>\n                        <strength>strong</strength>\n
+    \                       <expression>\n                            <value>RETIRED</value>\n
+    \                       </expression>\n                    </outbound>\n                </attribute>\n
+    \           </construction>\n        </inducement>\n    </archetype>\n</objects>\n\n\n\n\t\n"
   170-orgs-objectTemplate.xml: |
     <objectTemplate xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
                     xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
@@ -1228,31 +1297,13 @@ data:
   171-DefaultUserTemplate.xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<objectTemplate
     xmlns=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\r\n                xmlns:c=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\r\n
     \               oid=\"84769304-7776-11e2-b582-001e8c717e5b\">\r\n    <name>Default
-    User Template</name>\r\n    <item>\r\n        <c:ref>subtype</c:ref>\r\n        <valueEnumerationRef
-    oid=\"5783c174-d141-11e4-bb29-001e8c717e5b\" type=\"LookupTableType\">\r\n            <!--
-    Emp type -->\r\n        </valueEnumerationRef>\r\n    </item>\r\n    <mapping>\r\n
-    \       <strength>weak</strength>\r\n        <source>\r\n            <path>$user/givenName</path>\r\n
-    \       </source>\r\n        <source>\r\n            <path>$user/familyName</path>\r\n
-    \       </source>\r\n        <expression>\r\n            <script>\r\n                <code>(givenName
+    User Template</name>\r\n    <mapping>\r\n        <strength>weak</strength>\r\n
+    \       <source>\r\n            <path>$user/givenName</path>\r\n        </source>\r\n
+    \       <source>\r\n            <path>$user/familyName</path>\r\n        </source>\r\n
+    \       <expression>\r\n            <script>\r\n                <code>(givenName
     == null ? '' : givenName) + ' ' + (familyName == null ? '' : familyName)</code>\r\n
     \           </script>\r\n        </expression>\r\n        <target>\r\n            <path>fullName</path>\r\n
-    \       </target>\r\n    </mapping>\r\n    <mapping>\r\n        <name>FTE role
-    from subtype</name>\r\n        <strength>strong</strength>\r\n        <source>\r\n
-    \           <path>subtype</path>\r\n        </source>\r\n        <expression>\r\n
-    \           <assignmentTargetSearch>\r\n                <targetType>RoleType</targetType>\r\n
-    \               <oid>abf3884a-7778-11e2-abb7-001e8c717e5b</oid> <!-- Full Time
-    Employee -->\r\n            </assignmentTargetSearch>\r\n        </expression>\r\n
-    \       <target>\r\n            <path>assignment</path>\r\n        </target>\r\n
-    \       <condition>\r\n            <script>\r\n                <code>subtype ==
-    'FTE'</code>\r\n            </script>\r\n        </condition>\r\n    </mapping>\r\n
-    \   <mapping>\r\n        <name>Contractor role from subtype</name>\r\n        <strength>strong</strength>\r\n
-    \       <source>\r\n            <path>subtype</path>\r\n        </source>\r\n
-    \       <expression>\r\n            <assignmentTargetSearch>\r\n                <targetType>RoleType</targetType>\r\n
-    \               <oid>8d62985c-7797-11e2-94a6-001e8c717e5b</oid> <!-- Contractor
-    -->\r\n            </assignmentTargetSearch>\r\n        </expression>\r\n        <target>\r\n
-    \           <path>assignment</path>\r\n        </target>\r\n        <condition>\r\n
-    \           <script>\r\n                <code>subtype == 'CONTRACTOR'</code>\r\n
-    \           </script>\r\n        </condition>\r\n    </mapping>\r\n</objectTemplate>\r\n"
+    \       </target>\r\n    </mapping>\r\n</objectTemplate>\r\n"
   180-orgs.xml: "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<objects xmlns=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n\txmlns:c=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"\n\txmlns:org=\"http://midpoint.evolveum.com/xml/ns/public/common/org-3\">\n\t\n\t<org
     xmlns=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\" xmlns:c=\"http://midpoint.evolveum.com/xml/ns/public/common/common-3\"
     xmlns:icfs=\"http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3\"
@@ -1521,3 +1572,4 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: pio-map
+  namespace: mp-demo-k
