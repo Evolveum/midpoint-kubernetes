@@ -1,6 +1,6 @@
 #!/bin/bash
 
-while getopts c:a:n:s:h flag
+while getopts n:s:c:a:h flag
 do
     case "${flag}" in
         n) NAMESPACE=${OPTARG};;
@@ -23,36 +23,34 @@ then
    NAMESPACE=mp-demo
 fi
 
-if [ -n $CERTADDRESS ]
-then
-   kubectl apply -f $CERTADDRESS || true
-   CERT=$(basename $CERTADDRESS)
-else
-   CERT="cert-mp-demo"
-fi
-
-sed -i "s/ingress_cert: .*/ingress_cert: $CERT/g" base/config.yaml
-
 if [ -z $HOST ]
 then
    HOST="demo.example.com"
 fi
 
-sed -i "s/ingress_host: .*/ingress_host: $HOST/g" base/config.yaml
+sed -i "s/ingress_host: .*/ingress_host: $HOST/g" config-files/options-map.yaml
 
 if [ -z $NAMESPACE ]
 then
    NAMESPACE="mp-demo"
 fi
 
-if [ -n $SERVER ]
+if [ $CERTADDRESS ]
 then
-   sed -i "s/nfs_server: .*/nfs_server: $SERVER/g" base/config.yaml
+   kubectl apply -f $CERTADDRESS -n $NAMESPACE 2> /dev/null || true
+   CERT=$(basename $CERTADDRESS)
 else
-   sed -i "s/nfs_server: .*/nfs_server: nfs-service.$NAMESPACE.svc.cluster.local/g" base/config.yaml
+   CERT="cert-mp-demo"
 fi
 
-kubectl create namespace $NAMESPACE || true
+sed -i "s/ingress_cert: .*/ingress_cert: $CERT/g" config-files/options-map.yaml
+
+if [ $SERVER ]
+then
+   sed -i "s/nfs_server: .*/nfs_server: $SERVER/g" config-files/options-map.yaml
+else
+   sed -i "s/nfs_server: .*/nfs_server: nfs-service.$NAMESPACE.svc.cluster.local/g" config-files/options-map.yaml
+fi
+
+kubectl create namespace $NAMESPACE 2> /dev/null || true
 kubectl apply -k ./base/ -n $NAMESPACE
-
-
