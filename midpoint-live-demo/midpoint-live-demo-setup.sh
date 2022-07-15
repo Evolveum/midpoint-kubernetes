@@ -14,18 +14,18 @@ do
     esac
 done
 
+if [ -z $NAMESPACE ]
+then
+   NAMESPACE=mp-demo
+fi
+
 if [ -n $SERVER ]
 then
    sed -i "s/nfs_server: .*/nfs_server: $SERVER/g" base/nfs-server-map.yaml
-elif [ -n $NAMESPACE ]
-then
+else
    sed -i "s/nfs_server: .*/nfs_server: nfs-service.$NAMESPACE.svc.cluster.local/g" base/nfs-server-map.yaml
 fi
 
-if [ -n $NAMESPACE ]
-then
-   sed -i "s/name: .*/name: $NAMESPACE/g" base/namespaces/namespace.yml
-   kubectl apply -k ./base/ -n $NAMESPACE
-else
-   kubectl apply -k ./base/ -n mp-demo
-fi
+kubectl create namespace $NAMESPACE || true
+kubectl apply -k ./base/ -n $NAMESPACE
+

@@ -20,8 +20,6 @@ replacements:
     
 resources:
  - nfs-server-map.yaml
-# Namespace in which midPoint demo is going to be located
- - namespaces/namespace.yml
 # NFS objects
  - objects/nfs/nfs-service.yml
  - objects/nfs/nfs-server.yml
