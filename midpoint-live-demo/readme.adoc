@@ -67,5 +67,6 @@ In order to access midPoint using your private domain name you must setup the na
 
 3. Run midpoint-live-demo-setup.sh
 Use -n flag for custom namespace (default is mp-demo) and -s for custom nfs server address (default is nfs-service.mp-demo.svc.cluster.local).
+Use -a flag for custom host fo ingresses (default is demo.example.com) and -c for custom certfificate secret. Default is packed with demo. Please use the same name for the file and the kubernetes object. Please be aware thah default certificate does only work with default host.
 
 4. Wait for midPoint to start and then head to https://docs.evolveum.com/midpoint/demo/#walkthrough for walkthrogh of midPoint demo enviroment.  

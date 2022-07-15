@@ -1,6 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nfs-server-map
+  name: config
 data:
   nfs_server: nfs-service.mp-demo.svc.cluster.local
+  ingress_host: demo.lab.evolveum.com
+  ingress_cert: cert-evo-demo

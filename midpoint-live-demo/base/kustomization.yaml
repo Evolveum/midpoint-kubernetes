@@ -4,7 +4,7 @@ kind: Kustomization
 replacements:
 - source:
     kind: ConfigMap
-    name: nfs-server-map
+    name: config
     fieldPath: data.nfs_server
   targets:
   - select:
@@ -17,9 +17,28 @@ replacements:
       name: tomcat
     fieldPaths:
     - spec.template.spec.volumes.[name=nfs-volume].nfs.server
+- source:
+    kind: ConfigMap
+    name: config
+    fieldPath: data.ingress_host
+  targets:
+  - select:
+      kind: Ingress
+    fieldPaths:
+    - spec.tls.0.hosts.0
+    - spec.rules.0.host
+- source:
+    kind: ConfigMap
+    name: config
+    fieldPath: data.ingress_cert
+  targets:
+  - select:
+      kind: Ingress
+    fieldPaths:
+    - spec.tls.0.secretName
     
 resources:
- - nfs-server-map.yaml
+ - config.yaml
 # NFS objects
  - objects/nfs/nfs-service.yml
  - objects/nfs/nfs-server.yml

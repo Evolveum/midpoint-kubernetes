@@ -1,9 +1,0 @@
-kind: Kustomization
-resources:
-  - ../../base
-patches:
-  - apache-ingress.yaml
-  - ldap-ingress.yaml
-  - mp-ingress.yaml
-  - tomcat-addressbook-ingress.yaml
-  - tomcat-hr-ingress.yaml
