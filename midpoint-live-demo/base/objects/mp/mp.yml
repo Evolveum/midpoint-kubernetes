@@ -101,7 +101,7 @@ spec:
               value: 'jdbc:postgresql://addressbook-db-service.$(POD_NS).svc.cluster.local:5432/midpoint'
             - name: MP_SET_midpoint_repository_jdbcUrl
               value: >-
-                jdbc:postgresql://mp-db-service.${POD_NS}.svc.cluster.local:5432/midpoint
+                jdbc:postgresql://mp-db-service.$(POD_NS).svc.cluster.local:5432/midpoint
             - name: MP_UNSET_midpoint_repository_hibernateHbm2ddl
               value: '1'
             - name: MP_SET_midpoint_nodeIdSource

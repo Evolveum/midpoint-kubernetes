@@ -1,8 +1,27 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
+replacements:
+- source:
+    kind: ConfigMap
+    name: nfs-server-map
+    fieldPath: data.nfs_server
+  targets:
+  - select:
+      kind: StatefulSet
+      name: mp
+    fieldPaths:
+    - spec.template.spec.volumes.[name=nfs-volume].nfs.server
+  - select:
+      kind: StatefulSet
+      name: tomcat
+    fieldPaths:
+    - spec.template.spec.volumes.[name=nfs-volume].nfs.server
+    
 resources:
+ - nfs-server-map.yaml
 # Namespace in which midPoint demo is going to be located
- - namespaces/mp-demo.yml
+ - namespaces/namespace.yml
 # NFS objects
  - objects/nfs/nfs-service.yml
  - objects/nfs/nfs-server.yml
@@ -25,7 +44,7 @@ resources:
  - objects/mp/mp-secret.yml 
  - objects/mp/mp-db.yml
  - objects/mp/mp.yml
- - objects/mp/mp-db-service.yml 
+ - objects/mp/mp-db-service.yml
  - objects/mp/mp-ingress.yml
  - objects/mp/mp-service.yml
 # Adressbook database initial script as config map

@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tomcat-addressbook-ingress
+spec:
+  tls:
+    - hosts:
+        - demo.lab.evolveum.com
+      secretName: cert-evo-demo
+  rules:
+    - host: demo.lab.evolveum.com
+
