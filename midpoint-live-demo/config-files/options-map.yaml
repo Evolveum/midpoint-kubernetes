@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: config
 data:
-  nfs_server: nfs-service.mp-demo.svc.cluster.local
+  nfs_server: nfs-service.testdemo.svc.cluster.local
   ingress_host: demo.lab.evolveum.com
-  ingress_cert: cert-evo-demo
+  ingress_cert: cert-lab-evolveum

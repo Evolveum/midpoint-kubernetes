@@ -1,5 +1,8 @@
 #!/bin/bash
 
+NAMESPACE=mp-demo
+HOST=demo.example.com
+
 while getopts n:s:c:a:h flag
 do
     case "${flag}" in
@@ -18,28 +21,26 @@ do
     esac
 done
 
-if [ -z $NAMESPACE ]
-then
-   NAMESPACE=mp-demo
-fi
-
-if [ -z $HOST ]
-then
-   HOST="demo.example.com"
-fi
-
 sed -i "s/ingress_host: .*/ingress_host: $HOST/g" config-files/options-map.yaml
-
-if [ -z $NAMESPACE ]
-then
-   NAMESPACE="mp-demo"
-fi
 
 if [ $CERTADDRESS ]
 then
    kubectl apply -f $CERTADDRESS -n $NAMESPACE 2> /dev/null || true
    CERT=$(basename $CERTADDRESS)
 else
+   cd config-files/certificate/
+   openssl req -new -sha256 -newkey rsa:2048 -keyout tls.key -nodes -subj "/CN=test CA" | openssl x509 -req \
+   -signkey tls.key -out tls.crt -days 3650 -sha256 -extfile <(cat <<EOF
+basicConstraints = CA:FALSE
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer:always
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment
+subjectAltName = DNS:demo.example.com
+extendedKeyUsage = serverAuth
+EOF
+)
+   kubectl create secret tls -n $NAMESPACE cert-mp-demo --cert=tls.crt --key=tls.key
+   cd ../..
    CERT="cert-mp-demo"
 fi
 
