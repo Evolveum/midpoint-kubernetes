@@ -28,6 +28,7 @@ then
    kubectl apply -f $CERTADDRESS -n $NAMESPACE 2> /dev/null || true
    CERT=$(basename $CERTADDRESS)
 else
+   mkdir config-files/certificate/
    cd config-files/certificate/
    openssl req -new -sha256 -newkey rsa:2048 -keyout tls.key -nodes -subj "/CN=test CA" | openssl x509 -req \
    -signkey tls.key -out tls.crt -days 3650 -sha256 -extfile <(cat <<EOF

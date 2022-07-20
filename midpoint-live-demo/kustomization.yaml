@@ -42,8 +42,6 @@ resources:
 # NFS base
  - base/nfs/nfs-service.yml
  - base/nfs/nfs-server.yml
-# Certificate for ingresses
- - config-files/certificate/cert-mp-demo.yml
 # LDAP base
  - base/ldap/ldap-dynschema-map.yml
  - base/ldap/ldap-init-map.yml
