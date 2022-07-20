@@ -3,13 +3,14 @@
 NAMESPACE=mp-demo
 HOST=demo.example.com
 
-while getopts n:s:c:a:h flag
+while getopts n:s:c:a:i:h flag
 do
     case "${flag}" in
         n) NAMESPACE=${OPTARG};;
         s) SERVER=${OPTARG};;
         c) CERTADDRESS=${OPTARG};;
         a) HOST=${OPTARG};;
+        i) INGRESSCLASS=${OPTARG};;
         h | *)
           echo "script usage:"
           echo "$0 [-s value] [-n value]"
@@ -17,11 +18,19 @@ do
           echo "-s 	 custom nfs server address. Default is nfs-service.<YOUR NAMESPACE>.svc.cluster.local"
           echo "-c 	 custom yaml certificate for ingresses. Default certificate is packed with demo. PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT"
           echo "-a 	 custom host for ingresses. Default host is demo.example.com. Please be aware that default certificate does work only with default host"
+          echo "-i    custom ingressClass name. Default is default on your machine (one with annotation ingressclass.kubernetes.io/is-default-class: true). Make sure that you do have ONE default ingressClass or use this option to set a custom one."
           ;; 
     esac
 done
 
 sed -i "s/ingress_host: .*/ingress_host: $HOST/g" config-files/options-map.yaml
+
+if [ -z $INGRESSCLASS ]
+then
+   INGRESSCLASS=$(kubectl get ingressClass -o=jsonpath='{.items[?(@.metadata.annotations.ingressclass\.kubernetes\.io/is-default-class=="true")].metadata.name}')
+fi
+
+sed -i "s/ingress_class_name: .*/ingress_class_name: $INGRESSCLASS/g" config-files/options-map.yaml
 
 if [ $CERTADDRESS ]
 then

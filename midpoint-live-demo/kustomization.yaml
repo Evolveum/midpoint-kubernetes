@@ -36,6 +36,15 @@ replacements:
       kind: Ingress
     fieldPaths:
     - spec.tls.0.secretName
+- source:
+    kind: ConfigMap
+    name: config
+    fieldPath: data.ingress_class_name
+  targets:
+  - select:
+      kind: Ingress
+    fieldPaths:
+    - spec.ingressClassName
     
 resources:
  - config-files/options-map.yaml

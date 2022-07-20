@@ -6,3 +6,4 @@ data:
   nfs_server: nfs-service.testdemo.svc.cluster.local
   ingress_host: demo.lab.evolveum.com
   ingress_cert: cert-lab-evolveum
+  ingress_class_name: haproxy

@@ -66,7 +66,14 @@ It is better to make trusted certificate with https://letsencrypt.org/
 In order to access midPoint using your private domain name you must setup the name-to-IP-address mapping in the DNS. Alternatively, you can edit your /etc/hosts file.
 
 3. Run midpoint-live-demo-setup.sh
+
+[NOTE]
+Please make sure that you do have ONE default ingressClass or use -i flag to set a custom one.
+
 Use -n flag for custom namespace (default is mp-demo) and -s for custom nfs server address (default is nfs-service.mp-demo.svc.cluster.local).
+Use -s flag for custom nfs server address. Default is nfs-service.<YOUR NAMESPACE>.svc.cluster.local
+Use -c flag for custom yaml certificate for ingresses. Default certificate is packed with demo. PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT
 Use -a flag for custom host fo ingresses (default is demo.example.com) and -c for custom certfificate secret. Default is packed with demo. Please use the same name for the file and the kubernetes object. Please be aware thah default certificate does only work with default host.
+Use -i flag for custom ingressClass name. Default is default on your machine (one with annotation ingressclass.kubernetes.io/is-default-class: true). Make sure that you do have ONE default ingressClass or use this option to set a custom one.
 
 4. Wait for midPoint to start and then head to https://docs.evolveum.com/midpoint/demo/#walkthrough for walkthrogh of midPoint demo enviroment.  
