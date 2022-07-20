@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: tomcat-hr-ingress
 spec:
+  ingressClassName: haproxy
   tls:
     - hosts:
         - demo.example.com

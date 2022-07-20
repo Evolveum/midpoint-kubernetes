@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: apache-ingress
 spec:
+  ingressClassName: haproxy
   tls:
     - hosts:
         - demo.example.com
