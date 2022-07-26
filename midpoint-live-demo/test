@@ -1,0 +1,5 @@
+ - base/midpoint-renaissance-demo-config/ldap/sssvlv.ldif
+ - base/midpoint-renaissance-demo-config/ldap/ - baseEntry.ldif
+ - base/midpoint-renaissance-demo-config/ldap/dyngroup.schema
+ - base/midpoint-renaissance-demo-config/ldap/ppolicy.ldif
+ - base/midpoint-renaissance-demo-config/ldap/acl.ldif

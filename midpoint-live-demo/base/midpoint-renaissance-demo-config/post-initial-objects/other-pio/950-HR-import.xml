@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<task xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+      xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+      oid="486f0af0-990b-4f15-b81e-17f9a8e90d1a">
+    <name>HR import</name>
+    <assignment>
+        <targetRef oid="00000000-0000-0000-0000-000000000503" type="c:ArchetypeType">
+            <!-- Import task -->
+        </targetRef>
+    </assignment>
+    <ownerRef oid="00000000-0000-0000-0000-000000000002" type="c:UserType">
+        <!-- administrator -->
+    </ownerRef>
+    <dependent>91919191-76e0-59e2-86d6-3d4f02d3ffff</dependent>
+    <executionState>runnable</executionState>
+    <activity>
+        <work>
+            <import>
+                <resourceObjects>
+                    <resourceRef oid="8844dcca-775d-11e2-a0ac-001e8c717e5b"
+                                 type="c:ResourceType">
+                        <!-- HR Feed -->
+                    </resourceRef>
+                    <kind>account</kind>
+                    <intent>default</intent>
+                </resourceObjects>
+            </import>
+        </work>
+    </activity>
+</task>

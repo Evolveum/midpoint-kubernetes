@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+	xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+	xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+	<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="8844dcca-775d-11e2-a0ac-001e8c717e5b" version="101">
+    <name>HR Feed</name>
+    <iteration>0</iteration>
+    <iterationToken/>
+    <connectorRef type="ConnectorType">
+        <filter>
+            <q:and>
+                <q:equal>
+                <q:path>c:connectorType</q:path>
+                <q:value>com.evolveum.polygon.connector.csv.CsvConnector</q:value>
+            </q:equal>
+                <q:equal>
+                    <q:path>connectorVersion</q:path>
+                    <q:value>2.4</q:value>
+                </q:equal>
+            </q:and>
+        </filter>
+    </connectorRef>
+    <connectorConfiguration xmlns:icfc="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:ConnectorConfigurationType">
+        <icfc:configurationProperties xmlns:gen593="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-csv/com.evolveum.polygon.connector.csv.CsvConnector" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="icfc:ConfigurationPropertiesType">
+            <gen593:multivalueDelimiter>;</gen593:multivalueDelimiter>
+            <gen593:fieldDelimiter>,</gen593:fieldDelimiter>
+            <gen593:quote>"</gen593:quote>
+            <gen593:filePath>/opt/midpoint/var/import/midpoint-source.csv</gen593:filePath>
+            <gen593:quoteMode>ALL</gen593:quoteMode>
+            <gen593:encoding>utf-8</gen593:encoding>
+            <gen593:nameAttribute>empnum</gen593:nameAttribute>
+            <gen593:uniqueAttribute>empnum</gen593:uniqueAttribute>
+        </icfc:configurationProperties>
+    </connectorConfiguration>
+    <schemaHandling>
+        <objectType id="1">
+            <intent>default</intent>
+            <displayName>Default Account</displayName>
+            <default>true</default>
+            <objectClass>ri:AccountObjectClass</objectClass>
+            <attribute id="2">
+                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:empnum</c:ref>
+                <displayName>Employee#</displayName>
+                <limitations>
+                    <minOccurs>0</minOccurs>
+                </limitations>
+                <inbound id="7">
+                    <target>
+                        <c:path>$focus/employeeNumber</c:path>
+                    </target>
+                </inbound>
+            </attribute>
+            <attribute id="3">
+                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:firstname</c:ref>
+                <displayName>First Name</displayName>
+                <description>Definition of Firstname attribute handling.</description>
+                <inbound id="8">
+                    <target>
+                        <c:path>$focus/givenName</c:path>
+                    </target>
+                </inbound>
+            </attribute>
+            <attribute id="4">
+                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:lastname</c:ref>
+                <displayName>Last name</displayName>
+                <inbound id="9">
+                    <target>
+                        <c:path>$focus/familyName</c:path>
+                    </target>
+                </inbound>
+            </attribute>
+            <attribute id="5">
+                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:artname</c:ref>
+                <displayName>Artistic name</displayName>
+                <inbound id="10">
+                    <target>
+                        <c:path xmlns:ext="http://prism.evolveum.com/xml/ns/demo/extension-electra">$focus/extension/ext:artisticName</c:path>
+                    </target>
+                </inbound>
+                <inbound id="11">
+                    <strength>weak</strength>
+                    <target>
+                        <c:path>$focus/nickName</c:path>
+                    </target>
+                </inbound>
+                    <inbound>
+                        <strength>weak</strength>
+                        <expression>
+                            <script>
+                                <code>basic.norm(input)</code>
+                            </script>
+                        </expression>
+                        <target>
+                            <path>$user/name</path>
+                        </target>
+                    </inbound>
+            </attribute>
+            <attribute id="6">
+                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:emptype</c:ref>
+                <displayName>Employee type</displayName>
+                <inbound>
+                    <name>Archetype by name</name>
+                    <expression>
+                        <assignmentTargetSearch>
+                            <targetType>ArchetypeType</targetType>
+                            <filter>
+                                <q:equal>
+                                    <q:path>name</q:path>
+                                    <expression>
+                                        <script>
+                                            <code>input</code>
+                                        </script>
+                                    </expression>
+                                </q:equal>
+                            </filter>
+                        </assignmentTargetSearch>
+                    </expression>
+                    <target>
+                            <path>assignment</path>
+                    </target>
+                    <condition>
+                        <script>
+                            <code>input != null</code>
+                        </script>
+                    </condition>
+                </inbound>
+            </attribute>
+            <activation>
+                <administrativeStatus>
+                    <inbound id="14"/>
+                </administrativeStatus>
+            </activation>
+            <credentials>
+                <password xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:ResourcePasswordDefinitionType">
+                    <inbound>
+                        <strength>weak</strength>
+                        <expression>
+                            <generate xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="c:GenerateExpressionEvaluatorType"/>
+                        </expression>
+                    </inbound>
+                </password>
+            </credentials>
+            <projection>
+                <assignmentPolicyEnforcement>none</assignmentPolicyEnforcement>
+            </projection>
+        </objectType>
+    </schemaHandling>
+    <capabilities>
+        <cachingMetadata>
+            <retrievalTimestamp>2020-03-27T11:29:20.069+01:00</retrievalTimestamp>
+            <serialNumber>866530a5fd88e47b-8999644dbb6a3682</serialNumber>
+        </cachingMetadata>
+        <native xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:CapabilityCollectionType">
+            <cap:schema/>
+            <cap:liveSync/>
+            <cap:testConnection/>
+            <cap:create/>
+            <cap:update>
+                <cap:addRemoveAttributeValues>true</cap:addRemoveAttributeValues>
+            </cap:update>
+            <cap:delete/>
+            <cap:script>
+                <cap:host>
+                    <cap:type>resource</cap:type>
+                </cap:host>
+                <cap:host>
+                    <cap:type>connector</cap:type>
+                </cap:host>
+            </cap:script>
+            <cap:read>
+                <cap:returnDefaultAttributesOption>false</cap:returnDefaultAttributesOption>
+            </cap:read>
+        </native>
+        <configured xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:CapabilityCollectionType">
+            <cap:activation>
+                <cap:status>
+                    <cap:attribute>ri:emptype</cap:attribute>
+                    <cap:enableValue>FTE</cap:enableValue>
+                    <cap:enableValue>PTE</cap:enableValue>
+                    <cap:enableValue>CONTRACTOR</cap:enableValue>
+                    <cap:disableValue>RETIRED</cap:disableValue>
+                    <cap:ignoreAttribute>false</cap:ignoreAttribute>
+                </cap:status>
+            </cap:activation>
+        </configured>
+    </capabilities>
+    <synchronization>
+        <objectSynchronization>
+            <enabled>true</enabled>
+            <correlation>
+                <q:equal>
+                    <q:path>employeeNumber</q:path>
+                    <expression>
+                        <path xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">$projection/attributes/ri:empnum</path>
+                    </expression>
+                </q:equal>
+                <q:description>
+	                    Correlation expression is a search query.
+	                    Following search query will look for users that have "name"
+	                    equal to the "name" attribute of the account (projection). Simply speaking,
+	                    it will look for match in usernames in the IDM and the resource.
+	                    The correlation rule always looks for users, so it will not match
+	                    any other object type.
+	                </q:description>
+            </correlation>
+            <reaction>
+                <situation>linked</situation>
+                <synchronize>true</synchronize>
+            </reaction>
+            <reaction>
+                <situation>deleted</situation>
+                <action>
+                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#deleteFocus</handlerUri>
+                </action>
+            </reaction>
+            <reaction>
+                <situation>unlinked</situation>
+                <action>
+                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
+                </action>
+            </reaction>
+            <reaction>
+                <situation>unmatched</situation>
+                <action>
+                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#addFocus</handlerUri>
+                </action>
+            </reaction>
+        </objectSynchronization>
+    </synchronization>
+</resource>
+
+</objects>

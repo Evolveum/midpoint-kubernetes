@@ -52,18 +52,10 @@ resources:
  - base/nfs/nfs-service.yml
  - base/nfs/nfs-server.yml
 # LDAP base
- - base/ldap/ldap-dynschema-map.yml
- - base/ldap/ldap-init-map.yml
  - base/ldap/ldap.yml
  - base/ldap/ldap-service.yml
  - base/ldap/ldap-admin-service.yml
  - base/ldap/ldap-admin-ingress.yml
-# Midpoint internal base in config maps. These are extensions, post initial base and initial hr resources.
- - base/mp/mp-post-initial-object-map.yml
- - base/mp/mp-hr-map.yml
- - base/mp/users-map.yml
- - base/mp/mp-extensions-map.yml
- - base/mp/mp-login-page-map.yml
 # MidPoint kubernetes base
  - base/mp/mp-secret.yml 
  - base/mp/mp-db.yml
@@ -71,18 +63,13 @@ resources:
  - base/mp/mp-db-service.yml
  - base/mp/mp-ingress.yml
  - base/mp/mp-service.yml
-# Adressbook database initial script as config map
- - base/addressbook/addressbook-script-map.yml
 # Addressbook kubernetes base
  - base/addressbook/addressbook.yml
  - base/addressbook/addressbook-service.yml
-# HR database initial script in config map
- - base/hr/hr-script-map.yml
 # HR kubernetes base
  - base/hr/hr.yml
  - base/hr/hr-service.yml
 # Apache server kubernetes base
- - base/apache/apache-conf-map.yml
  - base/apache/apache.yml
  - base/apache/apache-ingress.yml
  - base/apache/apache-service.yml
@@ -91,3 +78,53 @@ resources:
  - base/tomcat/tomcat-service.yml
  - base/tomcat/tomcat-hr-ingress.yml
  - base/tomcat/tomcat-addressbook-ingress.yml
+
+configMapGenerator:
+- name: users-map
+  files:
+    - base/midpoint-renaissance-demo-config/post-initial-objects/users/190-user-administrator.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/users/191-users.xml
+- name: pio-map
+  files:
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/998-task-HR-livesync.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/180-orgs.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/160-roles.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/200-Certify-campaign.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/161-archetypes.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/152-openldap.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/950-HR-import.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/154-LDAP-import-dry-run.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/171-DefaultUserTemplate.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/170-orgs-objectTemplate.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/153-hr.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/001-system-configuration.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/999-LDAP-live-sync.xml
+    - base/midpoint-renaissance-demo-config/post-initial-objects/other-pio/151-addressbook.xml
+- name: extension-map
+  files:
+    - base/midpoint-renaissance-demo-config/extension-schema/extension-electra.xsd
+- name: hr-map
+  files:
+    - base/midpoint-renaissance-demo-config/hr/midpoint-source.csv
+- name: hr-script-map
+  files:
+    - base/midpoint-renaissance-demo-config/hr/hr.sh
+- name: login-page-map
+  files:
+    - base/midpoint-renaissance-demo-config/login-page/addLoginPage.sh
+    - base/midpoint-renaissance-demo-config/login-page/PageLogin.html
+- name: ldap-init-map
+  files:
+    - base/midpoint-renaissance-demo-config/ldap/sssvlv.ldif
+    - base/midpoint-renaissance-demo-config/ldap/baseEntry.ldif
+    - base/midpoint-renaissance-demo-config/ldap/ppolicy.ldif
+    - base/midpoint-renaissance-demo-config/ldap/acl.ldif
+- name: ldap-dynschema-map
+  files:
+    - base/midpoint-renaissance-demo-config/ldap/dyngroup.schema
+- name: addressbook-script-map
+  files:
+    - base/midpoint-renaissance-demo-config/addressbook/addressbook.sh
+- name: apache-map
+  files:
+    - base/midpoint-renaissance-demo-config/apache/httpd.conf

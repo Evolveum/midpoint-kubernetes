@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+         xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+         xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+    <archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+               xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+               xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+               xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+               oid="25add5de-133e-4f46-8dd8-e9c9cc306fda">
+        <name>CONTRACTOR</name>
+        <iteration>0</iteration>
+        <iterationToken/>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+            <enableTimestamp>2022-07-09T17:53:01.068Z</enableTimestamp>
+        </activation>
+        <displayName>Contractor</displayName>
+        <inducement id="1">
+            <targetRef oid="8d62985c-7797-11e2-94a6-001e8c717e5b" relation="org:default" type="c:RoleType">
+                <!-- Contractor -->
+            </targetRef>
+        </inducement>
+        <inducement id="2">
+            <construction>
+                <resourceRef oid="ebd0bf7b-7e80-4175-ba5e-4fd5de2ecd62" type="c:ResourceType"/>
+                <strength>weak</strength>
+                <kind>account</kind>
+                <attribute>
+                    <ref>ri:employeeType</ref>
+                    <outbound>
+                        <strength>strong</strength>
+                        <expression>
+                            <value>CONTRACTOR</value>
+                        </expression>
+                    </outbound>
+                </attribute>
+            </construction>
+        </inducement>
+    </archetype>
+    <archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+               xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+               xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+               xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+               oid="de3242b4-c043-4f80-9313-790fa3ebbfc9" version="1">
+        <name>FTE</name>
+        <iteration>0</iteration>
+        <iterationToken/>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+            <enableTimestamp>2022-07-09T18:25:51.920Z</enableTimestamp>
+        </activation>
+        <displayName>Full time employee</displayName>
+        <inducement id="1">
+            <targetRef oid="abf3884a-7778-11e2-abb7-001e8c717e5b" relation="org:default" type="c:RoleType">
+                <!-- Full Time Employee -->
+            </targetRef>
+        </inducement>
+        <inducement id="2">
+            <construction>
+                <resourceRef oid="ebd0bf7b-7e80-4175-ba5e-4fd5de2ecd62" type="c:ResourceType"/>
+                <strength>weak</strength>
+                <kind>account</kind>
+                <attribute>
+                    <ref>ri:employeeType</ref>
+                    <outbound>
+                        <strength>strong</strength>
+                        <expression>
+                            <value>FTE</value>
+                        </expression>
+                    </outbound>
+                </attribute>
+            </construction>
+        </inducement>
+    </archetype>
+    <archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+               xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+               xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+               xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+               oid="0780e6a4-2133-4e83-b968-092fd7af28cc">
+        <name>PTE</name>
+        <iteration>0</iteration>
+        <iterationToken/>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+            <enableTimestamp>2022-07-12T11:02:02.141Z</enableTimestamp>
+        </activation>
+        <displayName>Part time employee</displayName>
+        <inducement id="1">
+            <construction>
+                <resourceRef oid="ebd0bf7b-7e80-4175-ba5e-4fd5de2ecd62" type="c:ResourceType"/>
+                <strength>weak</strength>
+                <kind>account</kind>
+                <attribute>
+                    <ref>ri:employeeType</ref>
+                    <outbound>
+                        <strength>strong</strength>
+                        <expression>
+                            <value>PTE</value>
+                        </expression>
+                    </outbound>
+                </attribute>
+            </construction>
+        </inducement>
+    </archetype>
+    <archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+               xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+               xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+               xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+               oid="3c92eed8-1757-4327-8c73-f6f2518747ad">
+        <name>RETIRED</name>
+        <iteration>0</iteration>
+        <iterationToken/>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+            <enableTimestamp>2022-07-12T11:01:39.284Z</enableTimestamp>
+        </activation>
+        <displayName>Retired</displayName>
+        <inducement id="1">
+            <construction>
+                <resourceRef oid="ebd0bf7b-7e80-4175-ba5e-4fd5de2ecd62" type="c:ResourceType"/>
+                <strength>weak</strength>
+                <kind>account</kind>
+                <attribute>
+                    <ref>ri:employeeType</ref>
+                    <outbound>
+                        <strength>strong</strength>
+                        <expression>
+                            <value>RETIRED</value>
+                        </expression>
+                    </outbound>
+                </attribute>
+            </construction>
+        </inducement>
+    </archetype>
+</objects>
+
+
+
+	
