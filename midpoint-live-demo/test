@@ -1,5 +1,2 @@
- - base/midpoint-renaissance-demo-config/ldap/sssvlv.ldif
- - base/midpoint-renaissance-demo-config/ldap/ - baseEntry.ldif
- - base/midpoint-renaissance-demo-config/ldap/dyngroup.schema
- - base/midpoint-renaissance-demo-config/ldap/ppolicy.ldif
- - base/midpoint-renaissance-demo-config/ldap/acl.ldif
+ - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/users/191-users.xml
+ - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/users/190-user-administrator.xml
