@@ -64,4 +64,4 @@ else
 fi
 
 kubectl create namespace $NAMESPACE 2> /dev/null || true
-kubectl apply -k ./base/ -n $NAMESPACE
+kubectl apply -k ./kustomize-base/ -n $NAMESPACE
