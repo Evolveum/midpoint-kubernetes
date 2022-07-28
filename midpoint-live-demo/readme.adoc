@@ -2,16 +2,23 @@
 :toc:
 :toclevels: 4
 
-This location contain files related to the Midpoint live demo. 
+This project contains files related to the midPoint live demo. In the `kustomize-base-directory` there are kubernetes objects and renaissance demo config files located. In `kustomize-env-config`, a certificate and variables for the demo environment are stored. These variables are configured by the setup script and then used by `kustomize` for replacing field values in kubernetes objects.
 
-This readme will provide you a guide to succesfully deploy midPoint demo on your own kubernetes cluster. Information about midPoint demo like implementation details or walkthrough can you find here https://docs.evolveum.com/midpoint/demo/
+This readme will provide you with a guide to successfully deploy the midPoint demo on your own kubernetes cluster. You can find more information about the midPoint demo (for example, a walkthrough or implementation details) here: https://docs.evolveum.com/midpoint/demo/.
+
+This document is composed of four steps:
+1. Actions on the host machine needed for the NFS to work. 
+2. Setting up a certificate for our environment. 
+3. Running the startup script.
+4. Following a walkthrough of the environment. 
 
 [NOTE]
-When you don't have available kubernetes cluster you can head to https://demo.evolveum.com/ where is midPoint demo deployed and available to everyone.
+When you don't have an available kubernetes cluster you can head to https://demo.evolveum.com/ where the midPoint demo is deployed and available to everyone.
 
-To successfully deploy midpoint live demo installation you must follow these steps:
+{empty}1. Setting up NFS on the host
 
-1. Setup nfs on node:
+[NOTE]
+You can skip this step if you want to use your own existing NFS server. To deploy a midPoint demo environment with a custom NFS server you can use the `-s` flag for a custom address.
 
 [source,bash]
 ====
@@ -27,25 +34,27 @@ service systemd-resolved restart
 ====
 
 [NOTE]
-*nfs-common* is the name of the package on the debian based distribution (including ubuntu) with the necessary NFS mount support.
-Once this package is available on the system the kubernetes can use natively NFS in volume definition.
+*nfs-common* is the name of the package on the Debian-based distribution (including Ubuntu) with the necessary NFS mount support.
+Once this package is available on the system the kubernetes can use native NFS in volume definition.
 
 [NOTE]
-To have resolvable cluster's FQDN it is needed to let the node's system know where is the DNS server located.
-Without this information the node is resolving using external DNS servers which have no information about cluster's domain.
-10.96.0.10 is IP address of cluster dns server. Your may be different.
+To have a resolvable cluster's FQDN it is needed to let the node's system know where the DNS server is located.
+Without this information, the node is resolving using external DNS servers which have no information about the cluster's domain.
+10.96.0.10 is the IP address of the cluster DNS server. Yours may be different.
 
 [NOTE]
-When you have docker desktop kubernetes on windows please ignore these commands and enter IP of nfs-service to nfs-volume in mp and tomcat statefulsets manually (replace nfs-service.mp-demo.svc.cluster.local).
+If you have docker desktop kubernetes on Windows, please ignore these commands and enter the IP of `nfs-service` to `nfs-volume` in mp and tomcat statefulsets manually (replace nfs-service.mp-demo.svc.cluster.local).
 
-2. Create certificate:
-
-[NOTE]
-Basic certificate is available as default but it is highly recommended to use your own certificate. Default address is demo.example.com, when using your own certificate change addresses in ingress objects.
+{empty}2. Creating a certificate
 
 [NOTE]
-For quick test solution you can generate your own certificate though it is not recommended:
+A basic certificate is available as default but it is highly recommended to use your own certificate. The default address is `demo.example.com`.
 
+[NOTE]
+For a quick test solution you can generate your own certificate, though it is not recommended:
+
+[source,bash]
+====
 openssl req -new -sha256 -newkey rsa:2048 -keyout tls.key -nodes -subj "/CN=test CA" | openssl x509 -req \
 -signkey tls.key -out tls.crt -days 3650 -sha256 -extfile <(cat <<EOF
 basicConstraints = CA:FALSE
@@ -58,22 +67,48 @@ EOF
 )
 
 openssl x509 -in tls.crt -text -noout
+====
 
 [NOTE]
-It is better to make trusted certificate with https://letsencrypt.org/
+It is better to make a trusted certificate with https://letsencrypt.org/
 
 [NOTE]
-In order to access midPoint using your private domain name you must setup the name-to-IP-address mapping in the DNS. Alternatively, you can edit your /etc/hosts file.
-
-3. Run midpoint-live-demo-setup.sh
+To access midPoint using your private domain name, you must set up the name-to-IP-address mapping in the DNS. Alternatively, you can edit your `/etc/hosts` file.
 
 [NOTE]
-Please make sure that you do have ONE default ingressClass or use -i flag to set a custom one.
+When using your own certificate please run this command to generate a YAML secret. Then use `-c` flag with startup script to use this certificate in demo enviroment and `-a` flag for custom host.  
 
-Use -n flag for custom namespace (default is mp-demo) and -s for custom nfs server address (default is nfs-service.mp-demo.svc.cluster.local).
-Use -s flag for custom nfs server address. Default is nfs-service.<YOUR NAMESPACE>.svc.cluster.local
-Use -c flag for custom yaml certificate for ingresses. Default certificate is packed with demo. PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT
-Use -a flag for custom host fo ingresses (default is demo.example.com) and -c for custom certfificate secret. Default is packed with demo. Please use the same name for the file and the kubernetes object. Please be aware thah default certificate does only work with default host.
-Use -i flag for custom ingressClass name. Default is default on your machine (one with annotation ingressclass.kubernetes.io/is-default-class: true). Make sure that you do have ONE default ingressClass or use this option to set a custom one.
+[source,bash]
+==== 
+kubectl create secret tls --dry-run=client -o yaml -n <NAMESPACE> <SECRET-NAME> --cert=tls.crt --key=tls.key
+====
 
-4. Wait for midPoint to start and then head to https://docs.evolveum.com/midpoint/demo/#walkthrough for walkthrogh of midPoint demo enviroment.  
+{empty}3. Running midpoint-live-demo-setup.sh
+
+This script applies to your demo environment. You can change the default certificate`, namespace, nfs address, ingressClass name or host for ingresses. You can do this by using these flags:
+
+|===
+|Flag |Description |Default value
+|-n 
+|Custom namespace 
+|mp-demo
+
+|-s 
+|Custom nfs server address
+|nfs-service.<YOUR NAMESPACE>.svc.cluster.local
+
+|-c 
+|Custom yaml certificate for ingresses. PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT
+|cert-mp-demo (created by startup script)
+
+|-a
+|Custom host for ingresses. Please be aware that the default certificate does only work with the default host
+|demo.example.com
+
+|-i
+|Custom ingressClass name. Make sure that you do have ONE default ingressClass or use this option to set a custom one.
+|Default on your machine (one with annotation ingressclass.kubernetes.io/is-default-class: true).
+|===
+
+{empty}4. Wait for midPoint to start and then head to https://docs.evolveum.com/midpoint/demo/#walkthrough for walkthrogh of midPoint demo enviroment.
+
