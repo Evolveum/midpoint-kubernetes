@@ -21,7 +21,7 @@ When you don't have an available kubernetes cluster you can head to https://demo
 You can skip this step if you want to use your own existing NFS server. To deploy a midPoint demo environment with a custom NFS server you can use the `-s` flag for a custom address.
 
 [source,bash]
-====
+----
 apt-get install nfs-common
 
 cat << EOF >>/etc/systemd/resolved.conf
@@ -31,7 +31,7 @@ Domains=~cluster.local
 EOF
 
 service systemd-resolved restart
-====
+----
 
 [NOTE]
 *nfs-common* is the name of the package on the Debian-based distribution (including Ubuntu) with the necessary NFS mount support.
@@ -54,7 +54,7 @@ A basic certificate is available as default but it is highly recommended to use 
 For a quick test solution you can generate your own certificate, though it is not recommended:
 
 [source,bash]
-====
+----
 openssl req -new -sha256 -newkey rsa:2048 -keyout tls.key -nodes -subj "/CN=test CA" | openssl x509 -req \
 -signkey tls.key -out tls.crt -days 3650 -sha256 -extfile <(cat <<EOF
 basicConstraints = CA:FALSE
@@ -67,7 +67,7 @@ EOF
 )
 
 openssl x509 -in tls.crt -text -noout
-====
+----
 
 [NOTE]
 It is better to make a trusted certificate with https://letsencrypt.org/
@@ -79,9 +79,9 @@ To access midPoint using your private domain name, you must set up the name-to-I
 When using your own certificate please run this command to generate a YAML secret. Then use `-c` flag with startup script to use this certificate in demo enviroment and `-a` flag for custom host.  
 
 [source,bash]
-==== 
+----
 kubectl create secret tls --dry-run=client -o yaml -n <NAMESPACE> <SECRET-NAME> --cert=tls.crt --key=tls.key
-====
+----
 
 {empty}3. Running midpoint-live-demo-setup.sh
 
