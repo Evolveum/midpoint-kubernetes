@@ -7,45 +7,14 @@ This project contains files related to the midPoint live demo. In the `kustomize
 This readme will provide you with a guide to successfully deploy the midPoint demo on your own kubernetes cluster. You can find more information about the midPoint demo (for example, a walkthrough or implementation details) here: https://docs.evolveum.com/midpoint/demo/.
 
 This document is composed of four steps:
-1. Actions on the host machine needed for the NFS to work. 
-2. Setting up a certificate for our environment. 
-3. Running the startup script.
-4. Following a walkthrough of the environment. 
+1. Setting up a certificate for our environment. 
+2. Running the startup script.
+3. Following a walkthrough of the environment. 
 
 [NOTE]
 When you don't have an available kubernetes cluster you can head to https://demo.evolveum.com/ where the midPoint demo is deployed and available to everyone.
 
-{empty}1. Setting up NFS on the host
-
-[NOTE]
-You can skip this step if you want to use your own existing NFS server. To deploy a midPoint demo environment with a custom NFS server you can use the `-s` flag for a custom address.
-
-[source,bash]
-----
-apt-get install nfs-common
-
-cat << EOF >>/etc/systemd/resolved.conf
-#[Resolve]
-DNS=10.96.0.10
-Domains=~cluster.local
-EOF
-
-service systemd-resolved restart
-----
-
-[NOTE]
-*nfs-common* is the name of the package on the Debian-based distribution (including Ubuntu) with the necessary NFS mount support.
-Once this package is available on the system the kubernetes can use native NFS in volume definition.
-
-[NOTE]
-To have a resolvable cluster's FQDN it is needed to let the node's system know where the DNS server is located.
-Without this information, the node is resolving using external DNS servers which have no information about the cluster's domain.
-10.96.0.10 is the IP address of the cluster DNS server. Yours may be different.
-
-[NOTE]
-If you have docker desktop kubernetes on Windows, please ignore these commands and enter the IP of `nfs-service` to `nfs-volume` in mp and tomcat statefulsets manually (replace nfs-service.mp-demo.svc.cluster.local).
-
-{empty}2. Creating a certificate
+{empty}1. Creating a certificate
 
 [NOTE]
 A basic certificate is available as default but it is highly recommended to use your own certificate. The default address is `demo.example.com`.
@@ -83,7 +52,7 @@ When using your own certificate please run this command to generate a YAML secre
 kubectl create secret tls --dry-run=client -o yaml -n <NAMESPACE> <SECRET-NAME> --cert=tls.crt --key=tls.key
 ----
 
-{empty}3. Running midpoint-live-demo-setup.sh
+{empty}2. Running midpoint-live-demo-setup.sh
 
 This script applies to your demo environment. You can change the default certificate`, namespace, nfs address, ingressClass name or host for ingresses. You can do this by using these flags:
 
@@ -92,10 +61,6 @@ This script applies to your demo environment. You can change the default certifi
 |-n 
 |Custom namespace 
 |mp-demo
-
-|-s 
-|Custom nfs server address
-|nfs-service.<YOUR NAMESPACE>.svc.cluster.local
 
 |-c 
 |Custom yaml certificate for ingresses. PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT
@@ -110,5 +75,5 @@ This script applies to your demo environment. You can change the default certifi
 |Default on your machine (one with annotation ingressclass.kubernetes.io/is-default-class: true).
 |===
 
-{empty}4. Wait for midPoint to start and then head to https://docs.evolveum.com/midpoint/demo/#walkthrough for walkthrogh of midPoint demo enviroment.
+{empty}3. Wait for midPoint to start and then head to https://docs.evolveum.com/midpoint/demo/#walkthrough for walkthrogh of midPoint demo enviroment.
 
