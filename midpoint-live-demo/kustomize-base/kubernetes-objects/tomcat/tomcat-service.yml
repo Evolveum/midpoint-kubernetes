@@ -6,9 +6,9 @@ spec:
   ports:
     - name: tomcat-port
       protocol: TCP
-      port: 8080
+      port: 8081
       targetPort: tomcat-port
   selector:
-    app: tomcat
+    app: mp
   type: ClusterIP
   sessionAffinity: None

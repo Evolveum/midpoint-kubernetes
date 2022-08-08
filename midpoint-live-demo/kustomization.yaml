@@ -48,9 +48,6 @@ replacements:
     
 resources:
  - kustomize-env-config/options-map.yaml
-# NFS base
- - kustomize-base/kubernetes-objects/nfs/nfs-service.yml
- - kustomize-base/kubernetes-objects/nfs/nfs-server.yml
 # LDAP base
  - kustomize-base/kubernetes-objects/ldap/ldap-admin-ingress.yml
  - kustomize-base/kubernetes-objects/ldap/ldap-service.yml
@@ -74,7 +71,6 @@ resources:
  - kustomize-base/kubernetes-objects/apache/apache-ingress.yml
  - kustomize-base/kubernetes-objects/apache/apache-service.yml
 # Tomcat kubernetes base
- - kustomize-base/kubernetes-objects/tomcat/tomcat.yml
  - kustomize-base/kubernetes-objects/tomcat/tomcat-hr-ingress.yml
  - kustomize-base/kubernetes-objects/tomcat/tomcat-service.yml
  - kustomize-base/kubernetes-objects/tomcat/tomcat-addressbook-ingress.yml
@@ -128,3 +124,6 @@ configMapGenerator:
 - name: apache-map
   files:
     - kustomize-base/renaissance-demo-config/apache/httpd.conf
+- name: tomcat-map
+  files:
+    - kustomize-base/renaissance-demo-config/tomcat/server.xml
