@@ -51,7 +51,7 @@ spec:
             defaultMode: 420
       initContainers:
         - name: mp-config-init
-          image: 'evolveum/midpoint:demo-alpine'
+          image: 'evolveum/midpoint:4.4.3-alpine'
           command:
             - /bin/bash
             - "-c"
@@ -115,7 +115,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mp
-          image: 'evolveum/midpoint:demo-alpine'
+          image: 'evolveum/midpoint:4.4.3-alpine'
           ports:
             - name: gui
               containerPort: 8080
