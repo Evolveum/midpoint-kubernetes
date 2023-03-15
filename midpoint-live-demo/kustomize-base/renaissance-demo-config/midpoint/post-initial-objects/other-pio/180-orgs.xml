@@ -13,7 +13,28 @@
     <identifier>0000</identifier>
     <requestable>false</requestable>
     <tenant>false</tenant>
-</org>	
+
+    <inducement>
+        <targetRef oid="00000000-0000-0000-0000-00000000000a" relation="org:default" type="c:RoleType"/>
+        <focusType>UserType</focusType>
+        <orderConstraint>
+            <orderMin>2</orderMin>
+            <orderMax>unbounded</orderMax>
+        </orderConstraint>
+
+        <condition>
+            <expression>
+                <script>
+                    <code>
+                   <![CDATA[
+                        return focusAssignment?.targetRef?.relation?.localPart == 'manager' && focusAssignment?.targetRef?.relation?.prefix?.isEmpty()
+                        ]]>
+                </code>
+                </script>
+            </expression>
+        </condition>
+    </inducement>
+    </org>
 	
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="9a60cdc6-f2ad-4414-964b-5fd1dfaec157" version="20">
     <name>Council of Patrons</name>
@@ -39,11 +60,6 @@
     <inducement id="3">
         <targetRef oid="00000000-0000-0000-0000-00000000000b" relation="org:default" type="c:RoleType">
             <!-- Reviewer -->
-        </targetRef>
-    </inducement>
-    <inducement id="4">
-        <targetRef oid="00000000-0000-0000-0000-00000000000c" relation="org:default" type="c:RoleType">
-            <!-- Delegator -->
         </targetRef>
     </inducement>
     <inducement id="5">

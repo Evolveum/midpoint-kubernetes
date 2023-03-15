@@ -1,14 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<objects xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-	xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-	xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
 	<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="ebd0bf7b-7e80-4175-ba5e-4fd5de2ecd62" version="162">
     <name>LDAP Server (OpenLDAP)</name>
     <description>LDAP resource using new LDAP Connector based on Apache Directory API. It contains configuration&#13;
         for connecting to an OpenLDAP instance running on the localhost.</description>
-    <operationalState>
-        <lastAvailabilityStatus>up</lastAvailabilityStatus>
-    </operationalState>
     <connectorRef type="ConnectorType">
         <filter>
             <q:and>
@@ -416,7 +409,7 @@
             <retrievalTimestamp>2020-03-26T15:11:41.625+01:00</retrievalTimestamp>
             <serialNumber>db1bd16c744690ed-45471637c732159a</serialNumber>
         </cachingMetadata>
-        <native xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:CapabilityCollectionType">
+        <native xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3">
             <cap:schema/>
             <cap:liveSync/>
             <cap:testConnection/>
@@ -561,5 +554,3 @@
         </objectSynchronization>
     </synchronization>
 </resource>
-
-</objects>
