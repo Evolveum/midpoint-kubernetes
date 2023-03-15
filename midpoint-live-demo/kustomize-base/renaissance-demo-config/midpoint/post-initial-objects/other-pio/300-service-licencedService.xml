@@ -1,0 +1,22 @@
+<service xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="6f5a5204-de07-4f5f-b674-aafb27b7c9a2" version="1">
+    <name>licenced-service</name>
+    <description>Demo of a service which requires license per user</description>
+    <activation>
+        <effectiveStatus>enabled</effectiveStatus>
+    </activation>
+    <displayName>Licenced service Demo</displayName>
+
+    <assignment>
+        <policyRule>
+            <name>Limit number of assigned licences</name>
+            <policyConstraints>
+                <maxAssignees>
+                    <multiplicity>5</multiplicity>
+                </maxAssignees>
+            </policyConstraints>
+            <policyActions>
+                <enforcement/>
+            </policyActions>
+        </policyRule>
+    </assignment>
+</service>
