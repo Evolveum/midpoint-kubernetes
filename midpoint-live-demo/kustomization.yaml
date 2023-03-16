@@ -96,6 +96,9 @@ configMapGenerator:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/001-system-configuration.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/999-LDAP-live-sync.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/151-addressbook.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/300-service-licencedService.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/301-collection-licencedServiceCollection.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/302-dashboard-licencesDashboard.xml
 - name: extension-map
   files:
     - kustomize-base/renaissance-demo-config/midpoint/extension-schema/extension-electra.xsd
