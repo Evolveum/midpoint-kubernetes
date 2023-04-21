@@ -63,6 +63,7 @@ ALTER TABLE public.people OWNER TO $POSTGRES_USER;
 --
 
 COPY people (first_name, last_name, tel_number, fax_number, office_id, floor, street_address, city, country, postal_code, validity, created, modified, username, password) FROM stdin;
+Luca	Bartolomeo de Pacioli	\N	\N	\N	\N	\N	\N	\N	\N	true	\N	\N	paciolo	\N
 \.
 
 

@@ -71,17 +71,30 @@
                         <c:path>$focus/nickName</c:path>
                     </target>
                 </inbound>
-                    <inbound>
-                        <strength>weak</strength>
-                        <expression>
-                            <script>
-                                <code>basic.norm(input)</code>
-                            </script>
-                        </expression>
-                        <target>
-                            <path>$user/name</path>
-                        </target>
-                    </inbound>
+                <inbound>
+                    <strength>weak</strength>
+                    <expression>
+                        <script>
+                            <code>basic.norm(input)</code>
+                        </script>
+                    </expression>
+                    <target>
+                        <path>$user/name</path>
+                    </target>
+                </inbound>
+                <inbound>
+                    <name>Corporate email address</name>
+                    <lifecycleState>proposed</lifecycleState>
+                    <strength>strong</strength>
+                    <expression>
+                        <script>
+                            <code>basic.norm(input) + '@leonardo-workshop.org'</code>
+                        </script>
+                    </expression>
+                    <target>
+                        <path>emailAddress</path>
+                    </target>
+                </inbound>
             </attribute>
             <attribute id="6">
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:emptype</c:ref>

@@ -206,6 +206,22 @@
                     </target>
                 </inbound>
             </attribute>
+            <attribute>
+                <ref>mail</ref>
+                <outbound>
+                    <name>Email address</name>
+                    <lifecycleState>proposed</lifecycleState>
+                    <strength>strong</strength>
+                    <source>
+                        <path>emailAddress</path>
+                    </source>
+                    <target>
+                        <set>
+                            <predefined>all</predefined>
+                        </set>
+                    </target>
+                </outbound>
+            </attribute>
             <attribute id="15">
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:employeeType</c:ref>
                 <limitations>

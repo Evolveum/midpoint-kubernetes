@@ -70,6 +70,26 @@
 				<default>true</default>
 				<objectClass>ri:AccountObjectClass</objectClass>
 
+				<correlation>
+					<correlators>
+						<items>
+							<item>
+								<ref>name</ref>
+							</item>
+						</items>
+					</correlators>
+				</correlation>
+
+				<synchronization>
+					<reaction>
+						<situation>unmatched</situation>
+						<lifecycleState>proposed</lifecycleState>
+						<actions>
+							<deleteResourceObject/>
+						</actions>
+					</reaction>
+				</synchronization>
+
 				<attribute>
 					<ref>icfs:uid</ref>
 					<displayName>Entry ID</displayName>
@@ -82,7 +102,7 @@
 						<minOccurs>0</minOccurs>
 					</limitations>
 					<outbound>
-						<strength>weak</strength>
+						<strength>strong</strength>
 						<source>
 							<path>$user/name</path>
 						</source>

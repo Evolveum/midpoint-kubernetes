@@ -56,6 +56,27 @@ sn: di Lodovico Buonarroti Simoni
 uid: michelangelo
 userpassword: {SSHA}UHv5XEvAm6jOmu5qCkc1MpJAw/DDaBBES10OJQ==
 
+dn: uid=francis,ou=people,dc=example,dc=com
+cn: King Francis I of France
+description: Managed by midPoint
+givenname: King Francis I
+mail: kingfrancis@freemail.fr
+objectclass: inetOrgPerson
+sn: of France
+uid: francis
+userpassword: {SSHA}w96oibGKRnMnD6H11rAwAIzu305fl60/
+
+dn: uid=raphael,ou=people,dc=example,dc=com
+cn: Raffaello Sanzio da Urbino
+description: Managed by midPoint
+employeenumber: 3
+givenname: Raffaello
+mail: raffaello@leonardo-workshop.org
+objectclass: inetOrgPerson
+sn: Sanzio da Urbino
+uid: raphael
+userpassword: {SSHA}oov+npik86/FAJ0uNTUbydGgEdgq1VFY
+
 dn: cn=employees,ou=groups,dc=example,dc=com
 cn: employees
 objectclass: groupOfNames

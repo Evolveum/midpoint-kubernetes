@@ -350,7 +350,7 @@
                         <stage id="4">
                             <name>Council of Patrons</name>
                             <approverRef relation="org:default" type="c:OrgType">
-                                <filter>
+                                <filter xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" >
                                     <q:equal>
                                         <q:path>name</q:path>
                                         <q:value>Council of Patrons</q:value>
@@ -455,6 +455,45 @@
     </inducement>
     <requestable>true</requestable>
 </role>
+
+    <role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="aeb8f296-5371-45f3-9a86-2f0da5711155">
+        <name>Philistine</name>
+        <description>A role for philistines (people who are hostile or indifferent to culture and the arts). A person can't be a philistine and patron at the same time.</description>
+        <assignment>
+            <policyRule>
+                <name>excluded-role</name>
+                <policyConstraints>
+                    <exclusion>
+                        <targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" type="RoleType"/>
+                    </exclusion>
+                </policyConstraints>
+                <policyActions>
+                    <enforcement/>
+                </policyActions>
+            </policyRule>
+        </assignment>
+
+        <authorization>
+            <name>remove-self</name>
+            <description>Allow user to remove himself from this role.
+                This is important for conflict solver in role request process when the user wants to request role which has a segregation of duties with this role.
+            </description>
+            <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#unassign</action>
+            <object id="22">
+                <special>self</special>
+            </object>
+            <target id="23">
+                <type>RoleType</type>
+                <filter>
+                    <q:equal>
+                        <q:path>name</q:path>
+                        <q:value>Philistine</q:value>
+                    </q:equal>
+                </filter>
+            </target>
+            <relation>org:default</relation>
+        </authorization>
+    </role>
 
 	<role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="3154fafb-9f9f-4c3b-93ae-7fffd43796bf" version="32">
     <name>LDAP Projects MetaRole</name>

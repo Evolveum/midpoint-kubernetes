@@ -1,0 +1,23 @@
+<task xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="52304cd0-dba6-43cd-97b2-26ecc0aa22cb">
+    <name>User Recomputation</name>
+    <assignment>
+        <targetRef oid="00000000-0000-0000-0000-000000000502" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
+    <ownerRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+    <executionState>suspended</executionState>
+    <activity>
+        <work>
+            <recomputation>
+                <objects>
+                    <type>c:UserType</type>
+                </objects>
+            </recomputation>
+        </work>
+        <execution>
+            <mode>full</mode>
+            <configurationToUse>
+                <predefined>production</predefined>
+            </configurationToUse>
+        </execution>
+    </activity>
+</task>

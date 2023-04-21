@@ -14,6 +14,7 @@
         <givenName>Donatello</givenName>
         <familyName>di Niccolo di Betto Bardi</familyName>
         <nickName>Donatello</nickName>
+        <emailAddress>donatello@leonardo-workshop.org</emailAddress>
         <employeeNumber>2</employeeNumber>
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
@@ -24,18 +25,17 @@
         </credentials>
     </user>
 
-    <user>
-        <name>Raphael</name>
-        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000110" type="OrgType">
-            <!-- F0110 -->
-        </parentOrgRef>
+    <user oid="db98c491-6725-4606-9afb-9463d45a1831">
+        <name>raphael</name>
         <assignment>
             <targetRef oid="c74a7d86-7798-11e2-964e-100000000110" type="OrgType">
                 <!-- F0110 -->
             </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
+        </assignment>
+        <assignment>
+            <targetRef oid="c74a7d86-7798-11e2-964e-200000000001" type="OrgType">
+                <!-- P0001 (Smile) -->
+            </targetRef>
         </assignment>
         <extension>
             <ext:artisticName>Raphael</ext:artisticName>
@@ -44,6 +44,7 @@
         <givenName>Raffaello</givenName>
         <familyName>Sanzio da Urbino</familyName>
         <nickName>Raphael</nickName>
+        <emailAddress>raffaello@leonardo-workshop.org</emailAddress>
         <employeeNumber>3</employeeNumber>
         <credentials>
             <password>
@@ -54,7 +55,8 @@
         </credentials>
     </user>
 
-    <user>
+
+    <user oid="4bd429c9-418b-45c0-8b1c-398e4f58961b">
         <name>borgia</name>
         <description>Cesare Borgia (13 September 1475 – 12 March 1507), Duke of Valentinois was an Italian condottiero,
             nobleman, politician, and cardinal with Aragonese origin whose fight for power was a major inspiration for
@@ -82,6 +84,7 @@
         <fullName>Cesare Borgia</fullName>
         <givenName>Cesare</givenName>
         <familyName>Borgia</familyName>
+        <emailAddress>cborgia@leonardo-workshop.org</emailAddress>
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
                 <value>
@@ -181,6 +184,7 @@
         <givenName>Leonardo</givenName>
         <familyName>da Vinci</familyName>
         <nickName>Leonardo</nickName>
+        <emailAddress>leonardo@leonardo-workshop.org</emailAddress>
         <employeeNumber>1</employeeNumber>
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
@@ -260,6 +264,7 @@
         <givenName>Michelangelo</givenName>
         <familyName>di Lodovico Buonarroti Simoni</familyName>
         <nickName>Michelangelo</nickName>
+        <emailAddress>Michelangelo@leonardo-workshop.org</emailAddress>
         <employeeNumber>4</employeeNumber>
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
@@ -293,6 +298,11 @@
                 <effectiveStatus>enabled</effectiveStatus>
             </activation>
         </assignment>
+        <assignment>
+            <targetRef oid="c74a7d86-7798-11e2-964e-200000000002" type="OrgType">
+                <!-- P0002 (Kaboom) -->
+            </targetRef>
+        </assignment>
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -303,6 +313,7 @@
         <fullName>King Francis I of France</fullName>
         <givenName>King Francis I</givenName>
         <familyName>of France</familyName>
+        <emailAddress>king@kingdom.fr</emailAddress>
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
                 <value>

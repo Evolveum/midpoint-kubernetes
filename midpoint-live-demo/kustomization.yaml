@@ -99,6 +99,9 @@ configMapGenerator:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/300-service-licencedService.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/301-collection-licencedServiceCollection.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/302-dashboard-licencesDashboard.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/201-task-User-Recomputation-Simulation-definition.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/202-task-User-Recomputation-definition.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/940-Task-Addressbook-accounts-import.xml
 - name: extension-map
   files:
     - kustomize-base/renaissance-demo-config/midpoint/extension-schema/extension-electra.xsd

@@ -1,0 +1,25 @@
+<task xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="bd2ca314-e018-4266-9373-073756a78933" version="24">
+    <name>Addressbook accounts import</name>
+    <assignment>
+        <targetRef oid="00000000-0000-0000-0000-000000000503" relation="org:default" type="c:ArchetypeType"/>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+        </activation>
+    </assignment>
+    <ownerRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+    <executionState>runnable</executionState>
+    <category>ImportingAccounts</category>
+    <objectRef oid="c1b8b075-8c45-4058-ba32-753b87ac2da0" relation="org:default" type="c:ResourceType"/>
+    <activity>
+        <work>
+            <import>
+                <resourceObjects>
+                    <resourceRef oid="c1b8b075-8c45-4058-ba32-753b87ac2da0" relation="org:default" type="c:ResourceType"/>
+                    <kind>account</kind>
+                    <intent>default</intent>
+                    <objectclass>ri:AccountObjectClass</objectclass>
+                </resourceObjects>
+            </import>
+        </work>
+    </activity>
+</task>
