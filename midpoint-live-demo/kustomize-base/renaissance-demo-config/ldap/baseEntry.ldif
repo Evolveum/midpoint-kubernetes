@@ -32,6 +32,7 @@ description: Managed by midPoint
 employeenumber: 1
 employeetype: FTE
 givenname: Leonardo
+mail: leonardo@leonardo-workshop.org
 objectclass: person
 objectclass: inetOrgPerson
 objectclass: organizationalPerson
@@ -48,6 +49,7 @@ description: Managed by midPoint
 employeenumber: 4
 employeetype: FTE
 givenname: Michelangelo
+mail: michelangelo@leonardo-workshop.org
 objectclass: person
 objectclass:inetOrgPerson
 objectclass: organizationalPerson
