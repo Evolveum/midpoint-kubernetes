@@ -114,7 +114,7 @@ configMapGenerator:
 - name: login-page-map
   files:
     - kustomize-base/renaissance-demo-config/midpoint/login-page/addLoginPage.sh
-    - kustomize-base/renaissance-demo-config/midpoint/login-page/PageLogin.html
+    - kustomize-base/renaissance-demo-config/midpoint/login-page/AbstractPageLogin.html
 - name: ldap-init-map
   files:
     - kustomize-base/renaissance-demo-config/ldap/sssvlv.ldif
