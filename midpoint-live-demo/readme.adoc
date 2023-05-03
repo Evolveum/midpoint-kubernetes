@@ -54,7 +54,7 @@ kubectl create secret tls --dry-run=client -o yaml -n <NAMESPACE> <SECRET-NAME> 
 
 {empty}2. Running midpoint-live-demo-setup.sh
 
-This script applies to your demo environment. You can change the default certificate`, namespace, nfs address, ingressClass name or host for ingresses. You can do this by using these flags:
+This script applies to your demo environment. You can change the default certificate`, namespace, ingressClass name or host for ingresses. You can do this by using these flags:
 
 |===
 |Flag |Description |Default value
