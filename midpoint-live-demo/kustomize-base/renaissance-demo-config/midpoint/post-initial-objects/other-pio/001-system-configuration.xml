@@ -823,7 +823,7 @@
             </objectCollectionView>
             <objectCollectionView>
                 <identifier>application-role</identifier>
-                <applicableForOperation>add</applicableForOperation>
+<!--                <applicableForOperation>add</applicableForOperation>-->
                 <type>RoleType</type>
                 <collection>
                     <collectionRef oid="00000000-0000-0000-0000-000000000328" relation="org:default" type="c:ArchetypeType"/>
@@ -831,7 +831,7 @@
             </objectCollectionView>
             <objectCollectionView>
                 <identifier>business-role</identifier>
-                <applicableForOperation>add</applicableForOperation>
+<!--                <applicableForOperation>add</applicableForOperation>-->
                 <type>RoleType</type>
                 <collection>
                     <collectionRef oid="00000000-0000-0000-0000-000000000321" relation="org:default" type="c:ArchetypeType"/>
@@ -1470,7 +1470,7 @@
         </accessRequest>
     </adminGuiConfiguration>
     <deploymentInformation>
-        <subscriptionIdentifier>051223732052</subscriptionIdentifier>
+        <subscriptionIdentifier>051221124529</subscriptionIdentifier>
     </deploymentInformation>
     <fullTextSearch>
         <indexed id="19">
@@ -1701,5 +1701,10 @@
             </class> -->
         </permissionProfile>
     </expressions>
+
+    <workflowConfiguration>
+        <useLegacyApproversSpecification>never</useLegacyApproversSpecification>
+        <useDefaultApprovalPolicyRules>never</useDefaultApprovalPolicyRules>
+    </workflowConfiguration>
 
 </systemConfiguration>

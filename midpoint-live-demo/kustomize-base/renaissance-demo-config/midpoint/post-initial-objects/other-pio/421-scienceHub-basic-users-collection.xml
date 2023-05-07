@@ -1,14 +1,14 @@
 <objectCollection xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
                   xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
                   oid="26789a8c-8e9c-4606-bd00-c4240a6caf68">
-    <name>Licensed service users</name>
+    <name>Science Hub Basic Users</name>
     <type>UserType</type>
 
     <filter>
         <q:ref>
             <q:path>roleMembershipRef</q:path>
             <q:value>
-                <oid>6f5a5204-de07-4f5f-b674-aafb27b7c9a2</oid>
+                <oid>12e37b40-c4cd-4b24-9a36-80e95462e474</oid>
             </q:value>
         </q:ref>
     </filter>

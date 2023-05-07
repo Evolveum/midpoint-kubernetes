@@ -1,0 +1,11 @@
+<role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="f6554ecb-8053-4e80-b70f-d70c02a35fdd">
+    <name>politician</name>
+    <description>Role for all politicians.</description>
+    <assignment>
+        <targetRef oid="00000000-0000-0000-0000-000000000321" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
+    <displayName>Politician</displayName>
+    <inducement>
+        <targetRef oid="b2b80614-1711-48b9-b57a-ecffbd41453f" relation="org:default" type="c:RoleType"/>
+    </inducement>
+</role>

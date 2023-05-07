@@ -100,13 +100,14 @@
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:emptype</c:ref>
                 <displayName>Employee type</displayName>
                 <inbound>
-                    <name>Archetype by name</name>
+                    <name>Main role by employee type</name>
+                    <strength>strong</strength>
                     <expression>
                         <assignmentTargetSearch>
-                            <targetType>ArchetypeType</targetType>
+                            <targetType>RoleType</targetType>
                             <filter>
                                 <q:equal>
-                                    <q:path>name</q:path>
+                                    <q:path>identifier</q:path>
                                     <expression>
                                         <script>
                                             <code>input</code>
@@ -128,7 +129,7 @@
             </attribute>
             <activation>
                 <administrativeStatus>
-                    <inbound id="14"/>
+                    <inbound/>
                 </administrativeStatus>
             </activation>
             <credentials>

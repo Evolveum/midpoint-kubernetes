@@ -1,0 +1,321 @@
+<task xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="9f15742c-31bf-4ae2-8484-7d162068011e" version="117">
+    <name>Add members to Org and Roles after during inicialization</name>
+    <assignment>
+        <targetRef oid="00000000-0000-0000-0000-000000000509" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
+    <ownerRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType"/>
+    <channel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</channel>
+    <executionState>runnable</executionState>
+    <schedule>
+        <misfireAction>executeImmediately</misfireAction>
+    </schedule>
+    <threadStopAction>restart</threadStopAction>
+    <activity>
+        <composition>
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>4bd429c9-418b-45c0-8b1c-398e4f58961b</q:value>
+                                        <!-- Borgia -->
+                                        <q:value>e3dc4009-cd13-40d6-bda9-d48c253d23ab</q:value>
+                                        <!-- Francis -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="9a60cdc6-f2ad-4414-964b-5fd1dfaec157" relation="org:default" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>4bd429c9-418b-45c0-8b1c-398e4f58961b</q:value>
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="f6554ecb-8053-4e80-b70f-d70c02a35fdd" relation="org:default" type="c:RoleType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>e3dc4009-cd13-40d6-bda9-d48c253d23ab</q:value>
+                                        <!-- Francis -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="C74A7D86-7798-11E2-964E-200000000002" relation="org:default" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
+                                        <!-- leonardo -->
+                                        <q:value>8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252</q:value>
+                                        <!-- michelangelo -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" relation="org:default" type="c:RoleType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
+                                        <!-- leonardo -->
+                                        <q:value>8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252</q:value>
+                                        <!-- michelangelo -->
+                                        <q:value>db98c491-6725-4606-9afb-9463d45a1831</q:value>
+                                        <!-- raphael -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="3bfd233b-ba15-4825-ac21-7d6e29455958" relation="org:default" type="c:RoleType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
+                                        <!-- leonardo -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="c74a7d86-7798-11e2-964e-100000000200" relation="org:default" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
+                                        <!-- leonardo -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="C74A7D86-7798-11E2-964E-200000000001" relation="org:default" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
+                                        <!-- leonardo -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:manager" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
+                                        <!-- leonardo -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="C74A7D86-7798-11E2-964E-100000000110" relation="org:manager" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252</q:value>
+                                        <!-- michelangelo -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="C74A7D86-7798-11E2-964E-100000000120" relation="org:default" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252</q:value>
+                                        <!-- michelangelo -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="C74A7D86-7798-11E2-964E-100000000210" relation="org:manager" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>db98c491-6725-4606-9afb-9463d45a1831</q:value>
+                                        <!-- raphael -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="C74A7D86-7798-11E2-964E-100000000110" relation="org:default" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+
+            <activity>
+                <work>
+                    <iterativeScripting>
+                        <objects>
+                            <type>c:UserType</type>
+                            <query>
+                                <q:filter>
+                                    <q:inOid>
+                                        <q:value>db98c491-6725-4606-9afb-9463d45a1831</q:value>
+                                        <!-- raphael -->
+                                    </q:inOid>
+                                </q:filter>
+                            </query>
+                        </objects>
+                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
+                            <s:assign>
+                                <s:targetRef oid="C74A7D86-7798-11E2-964E-200000000001" relation="org:default" type="c:OrgType" xsi:type="c:ObjectReferenceType"/>
+                            </s:assign>
+                        </scriptExecutionRequest>
+                    </iterativeScripting>
+                </work>
+            </activity>
+        </composition>
+    </activity>
+</task>

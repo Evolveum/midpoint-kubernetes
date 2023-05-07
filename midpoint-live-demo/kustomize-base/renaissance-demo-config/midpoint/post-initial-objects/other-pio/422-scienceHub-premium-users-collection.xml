@@ -1,0 +1,15 @@
+<objectCollection xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+                  xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+                  oid="32b5f395-2a83-49c3-b262-0d71afc84920">
+    <name>Science Hub Premium Users</name>
+    <type>UserType</type>
+
+    <filter>
+        <q:ref>
+            <q:path>roleMembershipRef</q:path>
+            <q:value>
+                <oid>88936596-1036-48c1-b7fb-bffd9b697cd8</oid>
+            </q:value>
+        </q:ref>
+    </filter>
+</objectCollection>

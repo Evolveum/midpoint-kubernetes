@@ -2,6 +2,7 @@
 <objects xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+         xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
          xmlns:ext="http://prism.evolveum.com/xml/ns/demo/extension-electra">
     <user oid="00ca9321-7298-45c6-9d22-f41ff71ea234">
         <name>donatello</name>
@@ -27,16 +28,28 @@
 
     <user oid="db98c491-6725-4606-9afb-9463d45a1831">
         <name>raphael</name>
-        <assignment>
-            <targetRef oid="c74a7d86-7798-11e2-964e-100000000110" type="OrgType">
-                <!-- F0110 -->
-            </targetRef>
-        </assignment>
-        <assignment>
-            <targetRef oid="c74a7d86-7798-11e2-964e-200000000001" type="OrgType">
-                <!-- P0001 (Smile) -->
-            </targetRef>
-        </assignment>
+<!--        <assignment>-->
+<!--            <targetRef oid="c74a7d86-7798-11e2-964e-100000000110" type="OrgType">-->
+<!--                &lt;!&ndash; F0110 &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--        </assignment>-->
+<!--        <assignment>-->
+<!--            <targetRef oid="c74a7d86-7798-11e2-964e-200000000001" type="OrgType">-->
+<!--                &lt;!&ndash; P0001 (Smile) &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--        </assignment>-->
+<!--        <assignment>-->
+<!--            <metadata>-->
+<!--                <requestTimestamp>2023-04-28T14:37:47.813Z</requestTimestamp>-->
+<!--                <requestorRef oid="6054d4f2-c245-453e-991f-024c0ea398f1" relation="org:default" type="c:UserType"/>-->
+<!--                <createTimestamp>2023-04-28T14:37:47.981Z</createTimestamp>-->
+<!--                <creatorRef oid="6054d4f2-c245-453e-991f-024c0ea398f1" relation="org:default" type="c:UserType"/>-->
+<!--                <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</createChannel>-->
+<!--            </metadata>-->
+<!--            <targetRef oid="3bfd233b-ba15-4825-ac21-7d6e29455958" relation="org:default" type="c:RoleType">-->
+<!--                &lt;!&ndash; artists &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--        </assignment>-->
         <extension>
             <ext:artisticName>Raphael</ext:artisticName>
         </extension>
@@ -62,16 +75,32 @@
             nobleman, politician, and cardinal with Aragonese origin whose fight for power was a major inspiration for
             The Prince by Machiavelli.
         </description>
-        <assignment>
-            <targetRef oid="9a60cdc6-f2ad-4414-964b-5fd1dfaec157" type="OrgType">
-                <!-- Council of Patrons -->
-            </targetRef>
-        </assignment>
-        <assignment id="6">
-            <targetRef oid="00000000-0000-0000-0000-000000000008" type="RoleType">
-                <!-- End user -->
-            </targetRef>
-        </assignment>
+<!--        <assignment>-->
+<!--            <targetRef oid="9a60cdc6-f2ad-4414-964b-5fd1dfaec157" type="OrgType">-->
+<!--                &lt;!&ndash; Council of Patrons &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--        </assignment>-->
+<!--        <assignment id="6">-->
+<!--            <targetRef oid="00000000-0000-0000-0000-000000000008" type="RoleType">-->
+<!--                &lt;!&ndash; End user &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--        </assignment>-->
+<!--        <assignment>-->
+<!--            <metadata>-->
+<!--                <requestTimestamp>2023-04-28T22:00:02.507Z</requestTimestamp>-->
+<!--                <requestorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType">-->
+<!--                    &lt;!&ndash; administrator &ndash;&gt;-->
+<!--                </requestorRef>-->
+<!--                <createTimestamp>2023-04-28T22:00:02.579Z</createTimestamp>-->
+<!--                <creatorRef oid="00000000-0000-0000-0000-000000000002" relation="org:default" type="c:UserType">-->
+<!--                    &lt;!&ndash; administrator &ndash;&gt;-->
+<!--                </creatorRef>-->
+<!--                <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</createChannel>-->
+<!--            </metadata>-->
+<!--            <targetRef oid="f6554ecb-8053-4e80-b70f-d70c02a35fdd" relation="org:default" type="c:RoleType">-->
+<!--                &lt;!&ndash; politician &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--        </assignment>-->
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -108,66 +137,82 @@
                                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="xsd:string">Leonardo
             </gen867:artisticName>
         </extension>
-        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:manager" type="OrgType">
-            <!-- F0000 -->
-        </parentOrgRef>
-        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000110" relation="org:manager" type="OrgType">
-            <!-- F0110 -->
-        </parentOrgRef>
-        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000200" type="OrgType">
-            <!-- F0200 -->
-        </parentOrgRef>
-        <parentOrgRef oid="c74a7d86-7798-11e2-964e-200000000001" type="OrgType">
-            <!-- P0001 -->
-        </parentOrgRef>
-        <assignment id="2">
-            <targetRef oid="abf3884a-7778-11e2-abb7-001e8c717e5b" type="RoleType">
-                <!-- Full Time Employee -->
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
-        <assignment id="3">
-            <targetRef oid="c74a7d86-7798-11e2-964e-100000000200" type="OrgType">
-                <!-- F0200 -->
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
-        <assignment id="4">
-            <targetRef oid="c74a7d86-7798-11e2-964e-200000000001" type="OrgType">
-                <!-- P0001 -->
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
-        <assignment id="5">
-            <targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" type="RoleType">
-                <!-- Patron -->
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
-        <assignment id="6">
-            <targetRef oid="c74a7d86-7798-11e2-964e-100000000110" relation="org:manager" type="OrgType">
-                <!-- F0110 -->
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
-        <assignment id="13">
-            <targetRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:manager" type="OrgType">
-                <!-- F0000 -->
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
+<!--        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:manager" type="OrgType">-->
+<!--            &lt;!&ndash; F0000 &ndash;&gt;-->
+<!--        </parentOrgRef>-->
+<!--        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000110" relation="org:manager" type="OrgType">-->
+<!--            &lt;!&ndash; F0110 &ndash;&gt;-->
+<!--        </parentOrgRef>-->
+<!--        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000200" type="OrgType">-->
+<!--            &lt;!&ndash; F0200 &ndash;&gt;-->
+<!--        </parentOrgRef>-->
+<!--        <parentOrgRef oid="c74a7d86-7798-11e2-964e-200000000001" type="OrgType">-->
+<!--            &lt;!&ndash; P0001 &ndash;&gt;-->
+<!--        </parentOrgRef>-->
+<!--        <assignment id="2">-->
+<!--            <targetRef oid="abf3884a-7778-11e2-abb7-001e8c717e5b" type="RoleType">-->
+<!--                &lt;!&ndash; Full Time Employee &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment id="3">-->
+<!--            <targetRef oid="c74a7d86-7798-11e2-964e-100000000200" type="OrgType">-->
+<!--                &lt;!&ndash; F0200 &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment id="4">-->
+<!--            <targetRef oid="c74a7d86-7798-11e2-964e-200000000001" type="OrgType">-->
+<!--                &lt;!&ndash; P0001 &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment id="5">-->
+<!--            <targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" type="RoleType">-->
+<!--                &lt;!&ndash; Patron &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment id="6">-->
+<!--            <targetRef oid="c74a7d86-7798-11e2-964e-100000000110" relation="org:manager" type="OrgType">-->
+<!--                &lt;!&ndash; F0110 &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment id="13">-->
+<!--            <targetRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:manager" type="OrgType">-->
+<!--                &lt;!&ndash; F0000 &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment>-->
+<!--            <metadata>-->
+<!--                <requestTimestamp>2023-04-28T22:27:59.696Z</requestTimestamp>-->
+<!--                <requestorRef oid="6054d4f2-c245-453e-991f-024c0ea398f1" relation="org:default" type="c:UserType">-->
+<!--                    &lt;!&ndash; leonardo &ndash;&gt;-->
+<!--                </requestorRef>-->
+<!--                <createTimestamp>2023-04-28T22:28:00.025Z</createTimestamp>-->
+<!--                <creatorRef oid="6054d4f2-c245-453e-991f-024c0ea398f1" relation="org:default" type="c:UserType">-->
+<!--                    &lt;!&ndash; leonardo &ndash;&gt;-->
+<!--                </creatorRef>-->
+<!--                <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</createChannel>-->
+<!--            </metadata>-->
+<!--            <targetRef oid="3bfd233b-ba15-4825-ac21-7d6e29455958" relation="org:default" type="c:RoleType">-->
+<!--                &lt;!&ndash; artist &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--        </assignment>-->
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -210,46 +255,58 @@
                 Michelangelo
             </gen867:artisticName>
         </extension>
-        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000120" type="OrgType">
-            <!-- F0120 -->
-        </parentOrgRef>
-        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000210" relation="org:manager" type="OrgType">
-            <!-- F0210 -->
-        </parentOrgRef>
-        <assignment id="2">
-            <targetRef oid="abf3884a-7778-11e2-abb7-001e8c717e5b" type="RoleType">
-                <!-- Full Time Employee -->
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
-        <assignment id="6">
-            <targetRef oid="c74a7d86-7798-11e2-964e-100000000120" type="OrgType">
-                <!-- F0120 -->
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
-        <assignment id="22">
-            <targetRef oid="c74a7d86-7798-11e2-964e-100000000210" relation="org:manager" type="OrgType">
-                <!-- F0210 -->
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
-        <assignment id="24">
-            <targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" type="RoleType">
-                <!-- Patron -->
-                <description>A role for art patrons. Designed to be assigned manually and approved in the workflow.
-                </description>
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
+<!--        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000120" type="OrgType">-->
+<!--            &lt;!&ndash; F0120 &ndash;&gt;-->
+<!--        </parentOrgRef>-->
+<!--        <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000210" relation="org:manager" type="OrgType">-->
+<!--            &lt;!&ndash; F0210 &ndash;&gt;-->
+<!--        </parentOrgRef>-->
+<!--        <assignment id="2">-->
+<!--            <targetRef oid="abf3884a-7778-11e2-abb7-001e8c717e5b" type="RoleType">-->
+<!--                &lt;!&ndash; Full Time Employee &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment id="6">-->
+<!--            <targetRef oid="c74a7d86-7798-11e2-964e-100000000120" type="OrgType">-->
+<!--                &lt;!&ndash; F0120 &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment id="22">-->
+<!--            <targetRef oid="c74a7d86-7798-11e2-964e-100000000210" relation="org:manager" type="OrgType">-->
+<!--                &lt;!&ndash; F0210 &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment id="24">-->
+<!--            <targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" type="RoleType">-->
+<!--                &lt;!&ndash; Patron &ndash;&gt;-->
+<!--                <description>A role for art patrons. Designed to be assigned manually and approved in the workflow.-->
+<!--                </description>-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment>-->
+<!--            <metadata>-->
+<!--                <requestTimestamp>2023-04-28T14:37:47.813Z</requestTimestamp>-->
+<!--                <requestorRef oid="6054d4f2-c245-453e-991f-024c0ea398f1" relation="org:default" type="c:UserType"/>-->
+<!--                <createTimestamp>2023-04-28T14:37:47.981Z</createTimestamp>-->
+<!--                <creatorRef oid="6054d4f2-c245-453e-991f-024c0ea398f1" relation="org:default" type="c:UserType"/>-->
+<!--                <createChannel>http://midpoint.evolveum.com/xml/ns/public/common/channels-3#user</createChannel>-->
+<!--            </metadata>-->
+<!--            <targetRef oid="3bfd233b-ba15-4825-ac21-7d6e29455958" relation="org:default" type="c:RoleType">-->
+<!--                &lt;!&ndash; artists &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--        </assignment>-->
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -287,22 +344,22 @@
         <description>Francis I (12 September 1494 – 31 March 1547) was the first King of France from the Angoulême
             branch of the House of Valois, reigning from 1515 until his death.
         </description>
-        <parentOrgRef oid="9a60cdc6-f2ad-4414-964b-5fd1dfaec157" type="OrgType">
-            <!-- Council of Patrons -->
-        </parentOrgRef>
-        <assignment id="2">
-            <targetRef oid="9a60cdc6-f2ad-4414-964b-5fd1dfaec157" type="OrgType">
-                <!-- Council of Patrons -->
-            </targetRef>
-            <activation>
-                <effectiveStatus>enabled</effectiveStatus>
-            </activation>
-        </assignment>
-        <assignment>
-            <targetRef oid="c74a7d86-7798-11e2-964e-200000000002" type="OrgType">
-                <!-- P0002 (Kaboom) -->
-            </targetRef>
-        </assignment>
+<!--        <parentOrgRef oid="9a60cdc6-f2ad-4414-964b-5fd1dfaec157" type="OrgType">-->
+<!--            &lt;!&ndash; Council of Patrons &ndash;&gt;-->
+<!--        </parentOrgRef>-->
+<!--        <assignment id="2">-->
+<!--            <targetRef oid="9a60cdc6-f2ad-4414-964b-5fd1dfaec157" type="OrgType">-->
+<!--                &lt;!&ndash; Council of Patrons &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--            <activation>-->
+<!--                <effectiveStatus>enabled</effectiveStatus>-->
+<!--            </activation>-->
+<!--        </assignment>-->
+<!--        <assignment>-->
+<!--            <targetRef oid="c74a7d86-7798-11e2-964e-200000000002" type="OrgType">-->
+<!--                &lt;!&ndash; P0002 (Kaboom) &ndash;&gt;-->
+<!--            </targetRef>-->
+<!--        </assignment>-->
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -322,5 +379,4 @@
             </password>
         </credentials>
     </user>
-
 </objects>

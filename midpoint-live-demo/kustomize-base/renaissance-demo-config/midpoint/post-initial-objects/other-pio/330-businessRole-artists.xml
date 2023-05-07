@@ -1,0 +1,14 @@
+<role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="3bfd233b-ba15-4825-ac21-7d6e29455958">
+    <name>artist</name>
+    <description>Role for all artists.</description>
+    <assignment>
+        <targetRef oid="00000000-0000-0000-0000-000000000321" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
+    <displayName>Artist</displayName>
+    <inducement>
+        <targetRef oid="2fb53bef-04c5-4de1-9469-64ac629b08b0" relation="org:default" type="c:RoleType"/>
+    </inducement>
+    <inducement>
+        <targetRef oid="e139b7fc-ba3b-4004-8a35-90336f083543" relation="org:default" type="c:RoleType"/>
+    </inducement>
+</role>

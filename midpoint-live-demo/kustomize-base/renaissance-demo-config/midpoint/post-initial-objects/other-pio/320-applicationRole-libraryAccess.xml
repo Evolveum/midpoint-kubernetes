@@ -1,0 +1,38 @@
+<role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="ac92187b-e75a-4669-8d4d-12ceeccce3e2">
+    <name>library:access</name>
+    <description>Access to engineering library</description>
+    <assignment>
+        <targetRef oid="00000000-0000-0000-0000-000000000328" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
+    <jpegPhoto>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</jpegPhoto>
+    <displayName>library:access</displayName>
+    <inducement>
+        <targetRef oid="a6b1ead5-0e17-489f-af2d-d3dfd0de9c1a" relation="org:default" type="c:ServiceType"/>
+    </inducement>
+    <inducement>
+        <description>Membership in library group in LDAP</description>
+        <construction>
+            <resourceRef oid="ebd0bf7b-7e80-4175-ba5e-4fd5de2ecd62" relation="org:default" type="c:ResourceType">
+                <!-- LDAP Server (OpenLDAP) -->
+            </resourceRef>
+            <kind>account</kind>
+            <association>
+                <ref>ri:ldapGroups</ref>
+                <outbound>
+                    <expression>
+                        <associationTargetSearch>
+                            <filter>
+                                <q:equal>
+                                    <q:path>attributes/ri:cn</q:path>
+                                    <q:value>library</q:value>
+                                </q:equal>
+                            </filter>
+                            <searchStrategy>onResourceIfNeeded</searchStrategy>
+                        </associationTargetSearch>
+                    </expression>
+                </outbound>
+            </association>
+        </construction>
+        <focusType>UserType</focusType>
+    </inducement>
+</role>
