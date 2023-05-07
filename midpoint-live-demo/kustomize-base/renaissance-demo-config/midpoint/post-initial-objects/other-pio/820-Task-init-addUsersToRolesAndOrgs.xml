@@ -81,30 +81,31 @@
                 </work>
             </activity>
 
-            <activity>
-                <work>
-                    <iterativeScripting>
-                        <objects>
-                            <type>c:UserType</type>
-                            <query>
-                                <q:filter>
-                                    <q:inOid>
-                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
-                                        <!-- leonardo -->
-                                        <q:value>8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252</q:value>
-                                        <!-- michelangelo -->
-                                    </q:inOid>
-                                </q:filter>
-                            </query>
-                        </objects>
-                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">
-                            <s:assign>
-                                <s:targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" relation="org:default" type="c:RoleType" xsi:type="c:ObjectReferenceType"/>
-                            </s:assign>
-                        </scriptExecutionRequest>
-                    </iterativeScripting>
-                </work>
-            </activity>
+<!-- TODO: this will trigger approval process it's solved by direct assignment in User object -->
+<!--            <activity>-->
+<!--                <work>-->
+<!--                    <iterativeScripting>-->
+<!--                        <objects>-->
+<!--                            <type>c:UserType</type>-->
+<!--                            <query>-->
+<!--                                <q:filter>-->
+<!--                                    <q:inOid>-->
+<!--                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>-->
+<!--                                        &lt;!&ndash; leonardo &ndash;&gt;-->
+<!--                                        <q:value>8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252</q:value>-->
+<!--                                        &lt;!&ndash; michelangelo &ndash;&gt;-->
+<!--                                    </q:inOid>-->
+<!--                                </q:filter>-->
+<!--                            </query>-->
+<!--                        </objects>-->
+<!--                        <scriptExecutionRequest xmlns:s="http://midpoint.evolveum.com/xml/ns/public/model/scripting-3">-->
+<!--                            <s:assign>-->
+<!--                                <s:targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" relation="org:default" type="c:RoleType" xsi:type="c:ObjectReferenceType"/>-->
+<!--                            </s:assign>-->
+<!--                        </scriptExecutionRequest>-->
+<!--                    </iterativeScripting>-->
+<!--                </work>-->
+<!--            </activity>-->
 
             <activity>
                 <work>

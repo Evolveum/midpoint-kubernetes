@@ -173,14 +173,14 @@
 <!--                <effectiveStatus>enabled</effectiveStatus>-->
 <!--            </activation>-->
 <!--        </assignment>-->
-<!--        <assignment id="5">-->
-<!--            <targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" type="RoleType">-->
-<!--                &lt;!&ndash; Patron &ndash;&gt;-->
-<!--            </targetRef>-->
-<!--            <activation>-->
-<!--                <effectiveStatus>enabled</effectiveStatus>-->
-<!--            </activation>-->
-<!--        </assignment>-->
+        <assignment id="5">
+            <targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" type="RoleType">
+                <!-- Patron -->
+            </targetRef>
+            <activation>
+                <effectiveStatus>enabled</effectiveStatus>
+            </activation>
+        </assignment>
 <!--        <assignment id="6">-->
 <!--            <targetRef oid="c74a7d86-7798-11e2-964e-100000000110" relation="org:manager" type="OrgType">-->
 <!--                &lt;!&ndash; F0110 &ndash;&gt;-->
@@ -285,16 +285,14 @@
 <!--                <effectiveStatus>enabled</effectiveStatus>-->
 <!--            </activation>-->
 <!--        </assignment>-->
-<!--        <assignment id="24">-->
-<!--            <targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" type="RoleType">-->
-<!--                &lt;!&ndash; Patron &ndash;&gt;-->
-<!--                <description>A role for art patrons. Designed to be assigned manually and approved in the workflow.-->
-<!--                </description>-->
-<!--            </targetRef>-->
-<!--            <activation>-->
-<!--                <effectiveStatus>enabled</effectiveStatus>-->
-<!--            </activation>-->
-<!--        </assignment>-->
+        <assignment id="24">
+            <targetRef oid="1ba23cd0-8fe4-11e2-86e1-3c970e467874" type="RoleType">
+                <!-- Patron -->
+            </targetRef>
+            <activation>
+                <effectiveStatus>enabled</effectiveStatus>
+            </activation>
+        </assignment>
 <!--        <assignment>-->
 <!--            <metadata>-->
 <!--                <requestTimestamp>2023-04-28T14:37:47.813Z</requestTimestamp>-->
