@@ -1,0 +1,127 @@
+<dashboard xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+           oid="b0fdc3d8-6dc9-419c-adac-53a2833a6869">
+    <name>account-marks-dashboard</name>
+    <display>
+        <label>Notable accounts</label>
+    </display>
+
+    <widget>
+        <identifier>orphaned-accounts</identifier>
+        <display>
+            <label>Orphaned accounts</label>
+            <color>#ff471a</color>
+            <icon>
+                <cssClass>fa fa-ghost</cssClass>
+            </icon>
+        </display>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="a219bf47-e081-4e9f-bc12-66f89f774879" type="ObjectCollectionType"/>
+            </collection>
+        </data>
+        <!-- TODO https://docs.evolveum.com/midpoint/reference/admin-gui/dashboards/configuration/ -->
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+            <!--            <dataField>-->
+            <!--                <fieldType>unit</fieldType>-->
+            <!--                <expression>-->
+            <!--                    <value>decommission later</value>-->
+            <!--                </expression>-->
+            <!--            </dataField>-->
+        </presentation>
+    </widget>
+
+    <widget>
+        <identifier>correlate-later-accounts</identifier>
+        <display>
+            <label>Reviewed orphaned accounts (correlate later)</label>
+            <color>#990099</color>
+            <icon>
+                <cssClass>fa fa-clock</cssClass>
+            </icon>
+        </display>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="88e8c09b-a8b2-4a4c-ae98-8043ceac2bb2" type="ObjectCollectionType"/>
+            </collection>
+        </data>
+        <!-- TODO https://docs.evolveum.com/midpoint/reference/admin-gui/dashboards/configuration/ -->
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+        </presentation>
+    </widget>
+
+
+    <widget>
+        <identifier>decommission-later-accounts</identifier>
+        <display>
+            <label>Accounts for decommissioning</label>
+            <color>#595959</color>
+            <icon>
+                <cssClass>fa fa-user-times</cssClass>
+            </icon>
+        </display>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="6b06c69b-2d5b-4cb6-808b-8cb6f8aa1433" type="ObjectCollectionType"/>
+            </collection>
+        </data>
+        <!-- TODO https://docs.evolveum.com/midpoint/reference/admin-gui/dashboards/configuration/ -->
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+        </presentation>
+    </widget>
+
+    <widget>
+        <identifier>do-not-touch-accounts</identifier>
+        <display>
+            <label>Protected accounts (do not touch)</label>
+            <color>#0000d0</color>
+            <icon>
+                <cssClass>fa fa-lock</cssClass>
+            </icon>
+        </display>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="ea799497-79de-49f9-8395-6b2dd2b9382d" type="ObjectCollectionType"/>
+            </collection>
+        </data>
+        <!-- TODO https://docs.evolveum.com/midpoint/reference/admin-gui/dashboards/configuration/ -->
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+        </presentation>
+    </widget>
+
+</dashboard>

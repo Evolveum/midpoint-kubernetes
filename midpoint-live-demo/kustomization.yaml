@@ -120,6 +120,11 @@ configMapGenerator:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/421-scienceHub-basic-users-collection.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/422-scienceHub-premium-users-collection.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/423-licences-dashboard.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/430-object-collection-correlate-later-shadows.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/431-object-collection-decommission-later-shadows.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/432-object-collection-do-not-touch-shadows.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/433-object-collection-unmatched-shadows.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/450-shadow-marks-dashboard.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/820-Task-init-addUsersToRolesAndOrgs.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/940-Task-Addressbook-accounts-import.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/950-HR-import.xml

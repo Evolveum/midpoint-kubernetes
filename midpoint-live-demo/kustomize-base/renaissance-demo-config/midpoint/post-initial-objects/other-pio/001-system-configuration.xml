@@ -1451,6 +1451,11 @@
             <identifier>licence-dashboard</identifier>
             <configurableDashboardRef oid="43fa762c-bd0c-4cc1-b4fc-2854720fd7cc" relation="org:default" type="c:DashboardType"/>
         </configurableUserDashboard>
+
+        <configurableUserDashboard>
+            <identifier>notable-accounts-dashboard</identifier>
+            <configurableDashboardRef oid="b0fdc3d8-6dc9-419c-adac-53a2833a6869" relation="org:default" type="c:DashboardType"/>
+        </configurableUserDashboard>
         <accessRequest>
             <roleCatalog>
                 <collection>

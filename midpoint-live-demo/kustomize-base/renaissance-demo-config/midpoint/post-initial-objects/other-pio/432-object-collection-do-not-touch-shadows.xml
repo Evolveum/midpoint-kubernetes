@@ -1,0 +1,26 @@
+<objectCollection xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+  xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+  oid="ea799497-79de-49f9-8395-6b2dd2b9382d">
+    <name>Do not touch accounts</name>
+    <type>ShadowType</type>
+    <!--
+        Raw is needed if we want to search without specifying resourceRef.
+        Otherwise we get Resource not defined in a search query
+    -->
+    <getOptions>
+        <option>
+            <options>
+                <raw>true</raw>
+                <resolveNames>true</resolveNames>
+            </options>
+        </option>
+    </getOptions>
+    <filter>
+        <q:text>
+            effectiveMarkRef matches (
+            oid="00000000-0000-0000-0000-000000000803"
+            type = "MarkType"
+            )
+        </q:text>
+    </filter>
+</objectCollection>
