@@ -80,7 +80,7 @@ configMapGenerator:
   files:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/users/800-user-administrator.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/users/801-users.xml
-- name: pio-map
+- name: pio-map-1
   files:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/001-system-configuration.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/151-addressbook.xml
@@ -110,6 +110,8 @@ configMapGenerator:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/320-applicationRole-scienceHubpremium.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/330-businessRole-artists.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/330-businessRole-politician.xml
+- name: pio-map-2
+  files:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/350-roles.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/370-orgs-objectTemplate.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/other-pio/371-DefaultUserTemplate.xml

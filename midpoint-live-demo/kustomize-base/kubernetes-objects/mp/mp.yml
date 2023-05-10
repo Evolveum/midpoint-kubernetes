@@ -32,7 +32,9 @@ spec:
                - configMap:
                    name: users-map
                - configMap:
-                   name: pio-map
+                   name: pio-map-1
+               - configMap:
+                   name: pio-map-2
         - name: login-page
           configMap:
             name: login-page-map
