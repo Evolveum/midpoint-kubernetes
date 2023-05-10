@@ -80,6 +80,9 @@ configMapGenerator:
   files:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/users/800-user-administrator.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/users/801-users.xml
+- name: roles-map
+  files:
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/roles/350-roles.xml
 - name: pio-map-1
   files:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/001-system-configuration.xml

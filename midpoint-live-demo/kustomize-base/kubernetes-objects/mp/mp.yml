@@ -35,6 +35,8 @@ spec:
                    name: pio-map-1
                - configMap:
                    name: pio-map-2
+               - configMap:
+                   name: roles-map
         - name: login-page
           configMap:
             name: login-page-map
