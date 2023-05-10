@@ -93,7 +93,7 @@
 						<actions>
 							<synchronize/>
 						</actions>
-					</reaction>>
+					</reaction>
 				</synchronization>
 
 				<attribute>
