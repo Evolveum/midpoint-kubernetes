@@ -115,7 +115,6 @@ configMapGenerator:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-scienceHubpremium.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/330-businessRole-artists.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/330-businessRole-politician.xml
-    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/350-roles.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/370-orgs-objectTemplate.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/371-DefaultUserTemplate.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/380-orgs.xml
