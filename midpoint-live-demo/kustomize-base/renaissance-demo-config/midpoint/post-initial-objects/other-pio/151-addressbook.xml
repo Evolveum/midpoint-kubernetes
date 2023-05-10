@@ -88,6 +88,12 @@
 							<deleteResourceObject/>
 						</actions>
 					</reaction>
+					<reaction>
+						<situation>linked</situation>
+						<actions>
+							<synchronize/>
+						</actions>
+					</reaction>>
 				</synchronization>
 
 				<attribute>
