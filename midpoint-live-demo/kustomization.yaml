@@ -90,6 +90,8 @@ configMapGenerator:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/152-openldap.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/153-hr.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/154-LDAP-import-dry-run.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/200-archetype-org-unit.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/201-archetype-project.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-application-role.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-application.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-business-role.xml

@@ -14,6 +14,10 @@
     <requestable>false</requestable>
     <tenant>false</tenant>
 
+    <assignment>
+        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
+
     <inducement>
         <targetRef oid="00000000-0000-0000-0000-00000000000a" relation="org:default" type="c:RoleType"/>
         <focusType>UserType</focusType>
@@ -42,6 +46,9 @@
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:default" type="c:OrgType">
         <!-- F0000 -->
     </parentOrgRef>
+    <assignment>
+        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
     <assignment id="1">
         <targetRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:default" type="c:OrgType">
             <!-- F0000 -->
@@ -76,6 +83,9 @@
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:default" type="c:OrgType">
         <!-- F0000 -->
     </parentOrgRef>
+    <assignment>
+        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
     <assignment id="1">
         <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" relation="org:default" type="c:RoleType">
             <!-- LDAP Orgs MetaRole -->
@@ -101,6 +111,9 @@
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000100" relation="org:default" type="c:OrgType">
         <!-- F0100 -->
     </parentOrgRef>
+    <assignment>
+        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
     <assignment id="1">
         <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" relation="org:default" type="c:RoleType">
             <!-- LDAP Orgs MetaRole -->
@@ -126,6 +139,9 @@
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000100" relation="org:default" type="c:OrgType">
         <!-- F0100 -->
     </parentOrgRef>
+    <assignment>
+        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
     <assignment id="1">
         <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" relation="org:default" type="c:RoleType">
             <!-- LDAP Orgs MetaRole -->
@@ -149,6 +165,9 @@
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:default" type="c:OrgType">
         <!-- F0000 -->
     </parentOrgRef>
+    <assignment>
+        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
     <assignment id="1">
         <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" relation="org:default" type="c:RoleType">
             <!-- LDAP Orgs MetaRole -->
@@ -176,6 +195,9 @@
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000200" relation="org:default" type="c:OrgType">
         <!-- F0200 -->
     </parentOrgRef>
+    <assignment>
+        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
     <assignment id="1">
         <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" relation="org:default" type="c:RoleType">
             <!-- LDAP Orgs MetaRole -->
@@ -197,6 +219,9 @@
     <description>Project organizational structure root</description>
     <subtype>project</subtype>
     <displayName>Projects</displayName>
+    <assignment>
+        <targetRef oid="63afe786-068e-4f98-ac00-f3b7046b2b90" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
 </org>
 
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-200000000001" version="62">
@@ -206,6 +231,9 @@
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-200000000000" relation="org:default" type="c:OrgType">
         <!-- P0000 -->
     </parentOrgRef>
+    <assignment>
+        <targetRef oid="63afe786-068e-4f98-ac00-f3b7046b2b90" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
     <assignment id="1">
         <targetRef oid="3154fafb-9f9f-4c3b-93ae-7fffd43796bf" relation="org:default" type="c:RoleType">
             <!-- LDAP Projects MetaRole -->
@@ -228,6 +256,9 @@
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-200000000000" relation="org:default" type="c:OrgType">
         <!-- P0000 -->
     </parentOrgRef>
+    <assignment>
+        <targetRef oid="63afe786-068e-4f98-ac00-f3b7046b2b90" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
     <assignment id="1">
         <targetRef oid="3154fafb-9f9f-4c3b-93ae-7fffd43796bf" relation="org:default" type="c:RoleType">
             <!-- LDAP Projects MetaRole -->

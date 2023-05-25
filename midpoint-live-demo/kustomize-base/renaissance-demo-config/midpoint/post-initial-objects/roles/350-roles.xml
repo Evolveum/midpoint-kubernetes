@@ -535,9 +535,13 @@
 </role>
 
 	<role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="8d62985c-7797-11e2-94a6-001e8c717e5b" version="23">
-    <name>Contractor</name>
+    <name>contractor</name>
+    <displayName>Contractor</displayName>
     <identifier>CONTRACTOR</identifier>
     <description>Role that gives contractors necessary access.</description>
+    <assignment>
+        <targetRef oid="00000000-0000-0000-0000-000000000321" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
     <inducement>
         <targetRef oid="9ad4aff8-3e5a-4427-8a62-7e3f057682d5" relation="org:default" type="c:RoleType"/>
     </inducement>
@@ -560,9 +564,13 @@
 </role>
 
 	<role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="abf3884a-7778-11e2-abb7-001e8c717e5b" version="41">
-    <name>Full Time Employee</name>
+    <name>full time employee</name>
+    <displayName>Full Time Employee</displayName>
     <identifier>FTE</identifier>
     <description>Basic role for full-time employee. It contains basic access rights that every employee should get automatically.</description>
+    <assignment>
+        <targetRef oid="00000000-0000-0000-0000-000000000321" relation="org:default" type="c:ArchetypeType"/>
+    </assignment>
     <inducement>
         <targetRef oid="9ad4aff8-3e5a-4427-8a62-7e3f057682d5" relation="org:default" type="c:RoleType"/>
     </inducement>
