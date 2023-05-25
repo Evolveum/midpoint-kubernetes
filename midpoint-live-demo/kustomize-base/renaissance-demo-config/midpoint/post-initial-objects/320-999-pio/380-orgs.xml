@@ -22,7 +22,7 @@
         <targetRef oid="00000000-0000-0000-0000-00000000000a" relation="org:default" type="c:RoleType"/>
         <focusType>UserType</focusType>
         <orderConstraint>
-            <orderMin>2</orderMin>
+            <orderMin>1</orderMin>
             <orderMax>unbounded</orderMax>
         </orderConstraint>
 
