@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright (c) 2023 Evolveum and contributors
+  ~
+  ~ This work is dual-licensed under the Apache License 2.0
+  ~ and European Union Public License. See LICENSE file for details.
+  -->
+
+<archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+           oid="694bb285-e787-4d3e-9231-1bfb4fd4e188">
+
+    <name>Organizational unit</name>
+    <assignment>
+        <assignmentRelation>
+            <holderType>OrgType</holderType>
+        </assignmentRelation>
+    </assignment>
+    <archetypePolicy>
+        <display>
+            <label>Org. unit</label>
+            <pluralLabel>Org. units</pluralLabel>
+            <icon>
+                <cssClass>fa fa-building</cssClass>
+                <color>#323030</color>
+            </icon>
+        </display>
+    </archetypePolicy>
+</archetype>

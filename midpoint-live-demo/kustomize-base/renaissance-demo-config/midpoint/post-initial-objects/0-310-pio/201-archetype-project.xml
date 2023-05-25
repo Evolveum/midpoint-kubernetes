@@ -1,0 +1,27 @@
+<!--
+  ~ Copyright (c) 2023 Evolveum and contributors
+  ~
+  ~ This work is dual-licensed under the Apache License 2.0
+  ~ and European Union Public License. See LICENSE file for details.
+  -->
+
+<archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+           oid="63afe786-068e-4f98-ac00-f3b7046b2b90">
+
+    <name>Project</name>
+    <assignment>
+        <assignmentRelation>
+            <holderType>OrgType</holderType>
+        </assignmentRelation>
+    </assignment>
+    <archetypePolicy>
+        <display>
+            <label>Project</label>
+            <pluralLabel>Projects</pluralLabel>
+            <icon>
+                <cssClass>fa fa-clipboard</cssClass>
+                <color>#0DBE66</color>
+            </icon>
+        </display>
+    </archetypePolicy>
+</archetype>
