@@ -12,6 +12,9 @@
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000328" relation="org:default" type="c:ArchetypeType"/>
         </assignment>
+        <inducement>
+            <targetRef oid="ba4af55b-de31-411f-80f0-ef8b4594b387" relation="org:default" type="c:ServiceType"/>
+        </inducement>
         <authorization id="1">
             <name>gui-self-service-access</name>
             <description>Allow access to all self-service operations in GUI.</description>
@@ -236,6 +239,9 @@
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000328" relation="org:default" type="c:ArchetypeType"/>
         </assignment>
+        <inducement>
+            <targetRef oid="ba4af55b-de31-411f-80f0-ef8b4594b387" relation="org:default" type="c:ServiceType"/>
+        </inducement>
         <authorization>
             <name>gui-approver-access</name>
             <description>
@@ -676,6 +682,9 @@
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000328" relation="org:default" type="c:ArchetypeType"/>
         </assignment>
+        <inducement>
+            <targetRef oid="ba4af55b-de31-411f-80f0-ef8b4594b387" relation="org:default" type="c:ServiceType"/>
+        </inducement>
         <authorization>
             <name>gui-delegator-access</name>
             <description>
@@ -761,6 +770,9 @@
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000328" relation="org:default" type="c:ArchetypeType"/>
         </assignment>
+        <inducement>
+            <targetRef oid="ba4af55b-de31-411f-80f0-ef8b4594b387" relation="org:default" type="c:ServiceType"/>
+        </inducement>
         <authorization>
             <name>gui-reviewer-access</name>
             <description>
@@ -854,6 +866,9 @@
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000328" relation="org:default" type="c:ArchetypeType"/>
         </assignment>
+        <inducement>
+            <targetRef oid="ba4af55b-de31-411f-80f0-ef8b4594b387" relation="org:default" type="c:ServiceType"/>
+        </inducement>
         <authorization>
             <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-3#all</action>
         </authorization>
