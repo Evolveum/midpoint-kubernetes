@@ -4,12 +4,31 @@
 
 This project contains files related to the midPoint live demo. In the `kustomize-base-directory` there are kubernetes objects and renaissance demo config files located. In `kustomize-env-config`, a certificate and variables for the demo environment are stored. These variables are configured by the setup script and then used by `kustomize` for replacing field values in kubernetes objects.
 
+== Requirements
+
+=== Operating system running the setup script
+The setup script is primarily developed for Linux systems, but it can also run on Windows with WSL.
+
+[NOTE]
+When using Windows with WSL please make sure that you have the correct kubectl configuration in the WSL environment. If not, please install kubectl in the WSL environment and copy your Windows kubectl configuration to the WSL environment. Alternatively, you can replace `kubectl` in the setup script with a path to kubectl.exe.
+
+=== K8s cluster
+This demo is primarily intended for usage with the original k8s cluster. But it should also work with MicroK8s and Minikube clusters.
+
+[NOTE]
+When using the MicroK8s cluster please make sure that the kubectl command points to the MicroK8s cluster or replace `kubectl` in the setup script with `microk8s kubectl`.
+
+[NOTE]
+When using the Minikube cluster please make sure that you have installed the ingress controller, if not here is a guide on how you can enable it https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/#enable-the-ingress-controller
+
+== Usage
+
 This readme will provide you with a guide to successfully deploy the midPoint demo on your own kubernetes cluster. You can find more information about the midPoint demo (for example, a walkthrough or implementation details) here: https://docs.evolveum.com/midpoint/demo/.
 
-This document is composed of four steps:
-1. Setting up a certificate for our environment. 
+This guide is composed of three steps:
+1. Setting up a certificate for our environment.
 2. Running the startup script.
-3. Following a walkthrough of the environment. 
+3. Following a walkthrough of the environment.
 
 [NOTE]
 When you don't have an available kubernetes cluster you can head to https://demo.evolveum.com/ where the midPoint demo is deployed and available to everyone.
@@ -17,7 +36,7 @@ When you don't have an available kubernetes cluster you can head to https://demo
 {empty}1. Creating a certificate
 
 [NOTE]
-A basic certificate is available as default but it is highly recommended to use your own certificate. The default address is `demo.example.com`.
+A basic certificate is available as default, but it is highly recommended to use your own certificate. The default address is `demo.example.com`.
 
 [NOTE]
 For a quick test solution you can generate your own certificate, though it is not recommended:
@@ -45,7 +64,7 @@ It is better to make a trusted certificate with https://letsencrypt.org/
 To access midPoint using your private domain name, you must set up the name-to-IP-address mapping in the DNS. Alternatively, you can edit your `/etc/hosts` file.
 
 [NOTE]
-When using your own certificate please run this command to generate a YAML secret. Then use `-c` flag with startup script to use this certificate in demo enviroment and `-a` flag for custom host.  
+When using your own certificate please run this command to generate a YAML secret. Then use `-c` flag with startup script to use this certificate in demo enviroment and `-a` flag for custom host.
 
 [source,bash]
 ----
@@ -58,11 +77,11 @@ This script applies to your demo environment. You can change the default certifi
 
 |===
 |Flag |Description |Default value
-|-n 
-|Custom namespace 
+|-n
+|Custom namespace
 |mp-demo
 
-|-c 
+|-c
 |Custom yaml certificate for ingresses. PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT
 |cert-mp-demo (created by startup script)
 
