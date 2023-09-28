@@ -5,21 +5,6 @@ replacements:
 - source:
     kind: ConfigMap
     name: config
-    fieldPath: data.nfs_server
-  targets:
-  - select:
-      kind: StatefulSet
-      name: mp
-    fieldPaths:
-    - spec.template.spec.volumes.[name=nfs-volume].nfs.server
-  - select:
-      kind: StatefulSet
-      name: tomcat
-    fieldPaths:
-    - spec.template.spec.volumes.[name=nfs-volume].nfs.server
-- source:
-    kind: ConfigMap
-    name: config
     fieldPath: data.ingress_host
   targets:
   - select:

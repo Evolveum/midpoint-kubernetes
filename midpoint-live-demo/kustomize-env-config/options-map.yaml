@@ -3,7 +3,6 @@ kind: ConfigMap
 metadata:
   name: config
 data:
-  nfs_server: nfs-service.demo-renaissance.svc.cluster.local
   ingress_host: demo.lab.evolveum.com
   ingress_cert: cert-lab-evolveum
   ingress_class_name: haproxy
