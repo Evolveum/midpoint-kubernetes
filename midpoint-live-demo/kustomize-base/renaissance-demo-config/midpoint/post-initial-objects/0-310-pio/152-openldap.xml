@@ -196,13 +196,13 @@
                 <outbound>
                     <strength>strong</strength>
                     <source>
-                        <c:path>$focus/employeeNumber</c:path>
+                        <c:path>$focus/personalNumber</c:path>
                     </source>
                 </outbound>
                 <inbound id="22">
                     <strength>weak</strength>
                     <target>
-                        <c:path>$focus/employeeNumber</c:path>
+                        <c:path>$focus/personalNumber</c:path>
                     </target>
                 </inbound>
             </attribute>

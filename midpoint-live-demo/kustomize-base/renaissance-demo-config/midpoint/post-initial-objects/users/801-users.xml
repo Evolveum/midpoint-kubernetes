@@ -16,7 +16,7 @@
         <familyName>di Niccolo di Betto Bardi</familyName>
         <nickName>Donatello</nickName>
         <emailAddress>donatello@leonardo-workshop.org</emailAddress>
-        <employeeNumber>2</employeeNumber>
+        <personalNumber>2</personalNumber>
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
                 <value>
@@ -58,7 +58,7 @@
         <familyName>Sanzio da Urbino</familyName>
         <nickName>Raphael</nickName>
         <emailAddress>raffaello@leonardo-workshop.org</emailAddress>
-        <employeeNumber>3</employeeNumber>
+        <personalNumber>3</personalNumber>
         <credentials>
             <password>
                 <value>
@@ -230,7 +230,7 @@
         <familyName>da Vinci</familyName>
         <nickName>Leonardo</nickName>
         <emailAddress>leonardo@leonardo-workshop.org</emailAddress>
-        <employeeNumber>1</employeeNumber>
+        <personalNumber>1</personalNumber>
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
                 <value>
@@ -320,7 +320,7 @@
         <familyName>di Lodovico Buonarroti Simoni</familyName>
         <nickName>Michelangelo</nickName>
         <emailAddress>Michelangelo@leonardo-workshop.org</emailAddress>
-        <employeeNumber>4</employeeNumber>
+        <personalNumber>4</personalNumber>
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
                 <value>

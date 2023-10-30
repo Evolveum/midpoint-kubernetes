@@ -18,7 +18,7 @@ spec:
           emptyDir: {}
       initContainers:
         - name: mp-db-init
-          image: 'evolveum/midpoint:4.7-alpine'
+          image: 'evolveum/midpoint:4.8-alpine'
           command:
             - /bin/bash
             - /opt/midpoint/bin/midpoint.sh
@@ -35,7 +35,7 @@ spec:
           imagePullPolicy: IfNotPresent
       containers:
         - name: mp-demo-db
-          image: 'postgres:13-alpine'
+          image: 'postgres:16-alpine'
           ports:
             - name: db
               containerPort: 5432

@@ -68,6 +68,11 @@ configMapGenerator:
 - name: roles-map
   files:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/roles/350-roles.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/roles/350-Approver.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/roles/350-Delegator.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/roles/350-Enduser.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/roles/350-Reviewer.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/roles/350-Superuser.xml
 - name: pio-map-1
   files:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/001-system-configuration.xml

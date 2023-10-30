@@ -20,7 +20,7 @@ spec:
             defaultMode: 420
       containers:
         - name: addressbook-db
-          image: 'postgres:13-alpine'
+          image: 'postgres:16-alpine'
           ports:
             - name: db
               containerPort: 5432

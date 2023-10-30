@@ -34,7 +34,7 @@
                 </limitations>
                 <inbound id="7">
                     <target>
-                        <c:path>$focus/employeeNumber</c:path>
+                        <c:path>$focus/personalNumber</c:path>
                     </target>
                 </inbound>
             </attribute>
@@ -191,7 +191,7 @@
             <enabled>true</enabled>
             <correlation>
                 <q:equal>
-                    <q:path>employeeNumber</q:path>
+                    <q:path>personalNumber</q:path>
                     <expression>
                         <path xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">$projection/attributes/ri:empnum</path>
                     </expression>
