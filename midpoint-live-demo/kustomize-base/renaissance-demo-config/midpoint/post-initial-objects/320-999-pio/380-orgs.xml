@@ -39,42 +39,29 @@
         </condition>
     </inducement>
     </org>
-	
-	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="9a60cdc6-f2ad-4414-964b-5fd1dfaec157" version="20">
-    <name>Council of Patrons</name>
-    <description>Members of the Councils approve every new member of the Patron role</description>
-    <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:default" type="c:OrgType">
-        <!-- F0000 -->
-    </parentOrgRef>
-    <assignment>
-        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
-    </assignment>
-    <assignment id="1">
-        <targetRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:default" type="c:OrgType">
-            <!-- F0000 -->
-        </targetRef>
-        <activation>
-            <effectiveStatus>enabled</effectiveStatus>
-        </activation>
-    </assignment>
-    <iteration>0</iteration>
-    <iterationToken/>
-    <inducement id="2">
-        <targetRef oid="00000000-0000-0000-0000-00000000000a" relation="org:default" type="c:RoleType">
+
+    <org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="9a60cdc6-f2ad-4414-964b-5fd1dfaec157">
+        <name>Council of Patrons</name>
+        <description>Members of the Councils approve every new member of the Patron role</description>
+        <assignment>
+            <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+        </assignment>
+        <assignment>
+            <targetRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:default" type="c:OrgType"/>
+        </assignment>
+        <inducement>
+            <targetRef oid="00000000-0000-0000-0000-00000000000a" relation="org:default" type="c:RoleType"/>
             <!-- Approver -->
-        </targetRef>
-    </inducement>
-    <inducement id="3">
-        <targetRef oid="00000000-0000-0000-0000-00000000000b" relation="org:default" type="c:RoleType">
+        </inducement>
+        <inducement>
+            <targetRef oid="00000000-0000-0000-0000-00000000000b" relation="org:default" type="c:RoleType"/>
             <!-- Reviewer -->
-        </targetRef>
-    </inducement>
-    <inducement id="5">
-        <targetRef oid="00000000-0000-0000-0000-000000000008" relation="org:default" type="c:RoleType">
+        </inducement>
+        <inducement>
+            <targetRef oid="00000000-0000-0000-0000-000000000008" relation="org:default" type="c:RoleType"/>
             <!-- End user -->
-        </targetRef>
-    </inducement>
-</org>
+        </inducement>
+    </org>
 
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-100000000100" version="55">
     <name>F0100</name>
