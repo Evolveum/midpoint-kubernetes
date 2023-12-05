@@ -6,6 +6,13 @@
          xmlns:ext="http://prism.evolveum.com/xml/ns/demo/extension-electra">
     <user oid="00ca9321-7298-45c6-9d22-f41ff71ea234">
         <name>donatello</name>
+
+        <assignment>
+            <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
+                <!-- Person -->
+            </targetRef>
+        </assignment>
+
         <extension>
             <ext:artisticName>Donatello</ext:artisticName>
         </extension>
@@ -50,6 +57,13 @@
 <!--                &lt;!&ndash; artists &ndash;&gt;-->
 <!--            </targetRef>-->
 <!--        </assignment>-->
+
+        <assignment>
+            <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
+                <!-- Person -->
+            </targetRef>
+        </assignment>
+
         <extension>
             <ext:artisticName>Raphael</ext:artisticName>
         </extension>
@@ -101,6 +115,13 @@
 <!--                &lt;!&ndash; politician &ndash;&gt;-->
 <!--            </targetRef>-->
 <!--        </assignment>-->
+
+        <assignment>
+            <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
+                <!-- Person -->
+            </targetRef>
+        </assignment>
+
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -180,6 +201,12 @@
             <activation>
                 <effectiveStatus>enabled</effectiveStatus>
             </activation>
+        </assignment>
+
+        <assignment>
+            <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
+                <!-- Person -->
+            </targetRef>
         </assignment>
 <!--        <assignment id="6">-->
 <!--            <targetRef oid="c74a7d86-7798-11e2-964e-100000000110" relation="org:manager" type="OrgType">-->
@@ -293,6 +320,13 @@
                 <effectiveStatus>enabled</effectiveStatus>
             </activation>
         </assignment>
+
+
+        <assignment>
+            <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
+                <!-- Person -->
+            </targetRef>
+        </assignment>
 <!--        <assignment>-->
 <!--            <metadata>-->
 <!--                <requestTimestamp>2023-04-28T14:37:47.813Z</requestTimestamp>-->
@@ -358,6 +392,12 @@
 <!--                &lt;!&ndash; P0002 (Kaboom) &ndash;&gt;-->
 <!--            </targetRef>-->
 <!--        </assignment>-->
+
+        <assignment>
+            <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
+                <!-- Person -->
+            </targetRef>
+        </assignment>
         <iteration>0</iteration>
         <iterationToken/>
         <activation>

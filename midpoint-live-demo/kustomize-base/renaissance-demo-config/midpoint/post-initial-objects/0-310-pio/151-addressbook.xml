@@ -70,9 +70,15 @@
 				<default>true</default>
 				<objectClass>ri:AccountObjectClass</objectClass>
 
+				<focus>
+					<type>UserType</type>
+				</focus>
+
 				<correlation>
 					<correlators>
 						<items>
+							<name>name correlator</name>
+							<description>Exact match on name property</description>
 							<item>
 								<ref>name</ref>
 							</item>

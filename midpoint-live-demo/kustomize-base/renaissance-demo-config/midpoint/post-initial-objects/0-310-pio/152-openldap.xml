@@ -47,6 +47,53 @@
             <displayName>Default Account</displayName>
             <default>true</default>
             <objectClass>ri:inetOrgPerson</objectClass>
+
+            <focus>
+                <type>UserType</type>
+                <archetypeRef oid="00000000-0000-0000-0000-000000000702" relation="org:default" type="c:ArchetypeType"/>
+            </focus>
+
+            <correlation>
+                <correlators>
+                    <items>
+                        <name>Unique ID correlator</name>
+                        <description>Exact match on name property</description>
+                        <item>
+                            <ref>name</ref>
+                        </item>
+                    </items>
+                </correlators>
+            </correlation>
+
+
+            <synchronization>
+                    <reaction>
+                        <situation>linked</situation>
+                        <actions>
+                            <synchronize/>
+                        </actions>
+                    </reaction>
+                    <reaction>
+                        <situation>deleted</situation>
+                        <actions>
+                            <synchronize/>
+                        </actions>
+                    </reaction>
+                    <reaction>
+                        <situation>unlinked</situation>
+                        <actions>
+                            <link/>
+                        </actions>
+                    </reaction>
+                    <reaction>
+                        <situation>unmatched</situation>
+                        <actions>
+                            <addFocus/>
+                        </actions>
+                    </reaction>
+            </synchronization>
+
+
             <attribute id="5">
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:dn</c:ref>
                 <displayName>Distinguished Name</displayName>
@@ -304,11 +351,50 @@
                 </password>
             </credentials>
         </objectType>
+
         <objectType id="2">
             <kind>generic</kind>
             <intent>ou</intent>
             <displayName>Organizational Unit</displayName>
             <objectClass>ri:organizationalUnit</objectClass>
+
+            <focus>
+                <type>OrgType</type>
+            </focus>
+
+            <correlation>
+                <correlators>
+                    <items>
+                        <name>Unique ID correlator</name>
+                        <description>Exact match on name property</description>
+                        <item>
+                            <ref>name</ref>
+                        </item>
+                    </items>
+                </correlators>
+            </correlation>
+
+            <synchronization>
+                <reaction>
+                    <situation>linked</situation>
+                    <actions>
+                        <synchronize/>
+                    </actions>
+                </reaction>
+                <reaction>
+                    <situation>deleted</situation>
+                    <actions>
+                        <synchronize/>
+                    </actions>
+                </reaction>
+                <reaction>
+                    <situation>unlinked</situation>
+                    <actions>
+                        <link/>
+                    </actions>
+                </reaction>
+            </synchronization>
+
             <attribute id="27">
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:dn</c:ref>
                 <matchingRule xmlns:mr="http://prism.evolveum.com/xml/ns/public/matching-rule-3">mr:stringIgnoreCase</matchingRule>
@@ -351,6 +437,12 @@
             <attribute id="28">
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:ou</c:ref>
                 <matchingRule xmlns:mr="http://prism.evolveum.com/xml/ns/public/matching-rule-3">mr:stringIgnoreCase</matchingRule>
+                <inbound>
+                    <use>correlation</use>
+                    <target>
+                        <path>name</path>
+                    </target>
+                </inbound>
             </attribute>
         </objectType>
         <objectType id="3">
@@ -365,6 +457,45 @@
             <intent>ldapProject</intent>
             <displayName>LDAP project groups</displayName>
             <objectClass>ri:groupOfNames</objectClass>
+
+            <focus>
+                <type>OrgType</type>
+            </focus>
+
+            <correlation>
+                <correlators>
+                    <items>
+                        <name>Unique ID correlator</name>
+                        <description>Exact match on name property</description>
+                        <item>
+                            <ref>name</ref>
+                        </item>
+                    </items>
+                </correlators>
+            </correlation>
+
+            <synchronization>
+                <reaction>
+                    <situation>linked</situation>
+                    <actions>
+                        <synchronize/>
+                    </actions>
+                </reaction>
+                <reaction>
+                    <situation>deleted</situation>
+                    <actions>
+                        <synchronize/>
+                    </actions>
+                </reaction>
+                <reaction>
+                    <situation>unlinked</situation>
+                    <actions>
+                        <link/>
+                    </actions>
+                </reaction>
+            </synchronization>
+
+
             <attribute id="29">
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:dn</c:ref>
                 <matchingRule xmlns:mr="http://prism.evolveum.com/xml/ns/public/matching-rule-3">mr:stringIgnoreCase</matchingRule>
@@ -395,6 +526,12 @@
                         <c:path>$focus/name</c:path>
                     </source>
                 </outbound>
+                <inbound>
+                    <use>correlation</use>
+                    <target>
+                        <path>name</path>
+                    </target>
+                </inbound>
             </attribute>
             <attribute id="31">
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:entryUUID</c:ref>
@@ -452,121 +589,4 @@
             </cap:read>
         </native>
     </capabilities>
-    <synchronization>
-        <objectSynchronization>
-            <name>sync account</name>
-            <objectClass>ri:inetOrgPerson</objectClass>
-            <kind>account</kind>
-            <intent>default</intent>
-            <enabled>true</enabled>
-            <correlation>
-                <q:equal>
-                    <q:path>name</q:path>
-                    <expression>
-                        <path xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">$projection/attributes/ri:uid</path>
-                    </expression>
-                </q:equal>
-                <q:description>
-                    Correlation expression is a search query.
-                    Following search queury will look for users that have "name"
-                    equal to the "uid" attribute of the account (projection). Simply speaking,
-                    it will look for match in usernames in the IDM and the resource.
-                    The correlation rule always looks for users, so it will not match
-                    any other object type.
-                </q:description>
-            </correlation>
-            <reaction>
-                <situation>linked</situation>
-                <synchronize>true</synchronize>
-            </reaction>
-            <reaction>
-                <situation>deleted</situation>
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#unlink</handlerUri>
-                </action>
-            </reaction>
-            <reaction>
-                <situation>unlinked</situation>
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
-                </action>
-            </reaction>
-            <reaction>
-                <situation>unmatched</situation>
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#addFocus</handlerUri>
-                </action>
-            </reaction>
-        </objectSynchronization>
-        <objectSynchronization>
-            <name>sync group</name>
-            <objectClass>ri:groupOfNames</objectClass>
-            <kind>entitlement</kind>
-            <intent>ldapProject</intent>
-            <focusType>c:OrgType</focusType>
-            <enabled>true</enabled>
-            <correlation>
-                <q:equal>
-                    <q:matching>polyStringNorm</q:matching>
-                    <q:path>name</q:path>
-                    <expression>
-                        <path xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">$projection/attributes/ri:cn</path>
-                    </expression>
-                </q:equal>
-            </correlation>
-            <reaction>
-                <situation>linked</situation>
-                <synchronize>true</synchronize>
-            </reaction>
-            <reaction>
-                <situation>deleted</situation>
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#unlink</handlerUri>
-                </action>
-            </reaction>
-            <reaction>
-                <situation>unlinked</situation>
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
-                </action>
-            </reaction>
-        </objectSynchronization>
-        <objectSynchronization>
-            <name>sync</name>
-            <objectClass>ri:organizationalUnit</objectClass>
-            <kind>generic</kind>
-            <intent>ou</intent>
-            <focusType>OrgType</focusType>
-            <enabled>true</enabled>
-            <correlation>
-                <q:equal>
-                    <q:path>name</q:path>
-                    <expression>
-                        <path xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">$projection/attributes/ri:ou</path>
-                    </expression>
-                </q:equal>
-            </correlation>
-            <reaction>
-                <situation>linked</situation>
-                <synchronize>true</synchronize>
-            </reaction>
-            <reaction>
-                <situation>deleted</situation>
-                <synchronize>true</synchronize>
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#unlink</handlerUri>
-                </action>
-            </reaction>
-            <reaction>
-                <situation>unlinked</situation>
-                <synchronize>true</synchronize>
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
-                </action>
-            </reaction>
-            <reaction>
-                <situation>unmatched</situation>
-            </reaction>
-        </objectSynchronization>
-    </synchronization>
 </resource>

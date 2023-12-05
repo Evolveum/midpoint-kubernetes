@@ -26,6 +26,51 @@
             <displayName>Default Account</displayName>
             <default>true</default>
             <objectClass>ri:AccountObjectClass</objectClass>
+
+            <focus>
+                <type>UserType</type>
+                <archetypeRef oid="00000000-0000-0000-0000-000000000702" relation="org:default" type="c:ArchetypeType"/>
+            </focus>
+
+
+            <synchronization>
+                <reaction>
+                    <situation>linked</situation>
+                    <actions>
+                        <synchronize/>
+                    </actions>
+                </reaction>
+                <reaction>
+                    <situation>deleted</situation>
+                    <actions>
+                        <deleteFocus/>
+                    </actions>
+                </reaction>
+                <reaction>
+                    <situation>unlinked</situation>
+                    <actions>
+                        <link/>
+                    </actions>
+                </reaction>
+                <reaction>
+                    <situation>unmatched</situation>
+                    <actions>
+                        <addFocus/>
+                    </actions>
+                </reaction>
+            </synchronization>
+
+            <correlation>
+                <correlators>
+                    <items>
+                        <name>Personal number correlator</name>
+                        <item>
+                            <ref>personalNumber</ref>
+                        </item>
+                    </items>
+                </correlators>
+            </correlation>
+
             <attribute id="2">
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:empnum</c:ref>
                 <displayName>Employee#</displayName>
@@ -34,8 +79,11 @@
                 </limitations>
                 <inbound id="7">
                     <target>
-                        <c:path>$focus/personalNumber</c:path>
+                        <path>personalNumber</path>
                     </target>
+                    <evaluationPhases>
+                        <include>beforeCorrelation</include>
+                    </evaluationPhases>
                 </inbound>
             </attribute>
             <attribute id="3">
@@ -186,48 +234,7 @@
             </cap:activation>
         </configured>
     </capabilities>
-    <synchronization>
-        <objectSynchronization>
-            <enabled>true</enabled>
-            <correlation>
-                <q:equal>
-                    <q:path>personalNumber</q:path>
-                    <expression>
-                        <path xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">$projection/attributes/ri:empnum</path>
-                    </expression>
-                </q:equal>
-                <q:description>
-	                    Correlation expression is a search query.
-	                    Following search query will look for users that have "name"
-	                    equal to the "name" attribute of the account (projection). Simply speaking,
-	                    it will look for match in usernames in the IDM and the resource.
-	                    The correlation rule always looks for users, so it will not match
-	                    any other object type.
-	                </q:description>
-            </correlation>
-            <reaction>
-                <situation>linked</situation>
-                <synchronize>true</synchronize>
-            </reaction>
-            <reaction>
-                <situation>deleted</situation>
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#deleteFocus</handlerUri>
-                </action>
-            </reaction>
-            <reaction>
-                <situation>unlinked</situation>
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#link</handlerUri>
-                </action>
-            </reaction>
-            <reaction>
-                <situation>unmatched</situation>
-                <action>
-                    <handlerUri>http://midpoint.evolveum.com/xml/ns/public/model/action-3#addFocus</handlerUri>
-                </action>
-            </reaction>
-        </objectSynchronization>
-    </synchronization>
+
 </resource>
+
 

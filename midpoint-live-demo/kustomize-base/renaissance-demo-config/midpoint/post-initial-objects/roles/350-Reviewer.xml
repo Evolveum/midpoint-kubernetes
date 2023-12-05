@@ -96,4 +96,15 @@
         <item>riskLevel</item>
         <item>serviceType</item>
     </authorization>
+
+    <authorization>
+        <name>certificationCampaigns-read</name>
+        <description>
+            Allow to read access certification campaign properties.
+        </description>
+        <action>http://midpoint.evolveum.com/xml/ns/public/security/authorization-model-3#read</action>
+        <object>
+            <type>AccessCertificationCampaignType</type>
+        </object>
+    </authorization>
 </role>
