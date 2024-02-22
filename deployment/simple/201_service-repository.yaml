@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: midpoint-repository
   namespace: midpoint-deployment
-  labels:
-    env: midpoint-deployment  
 spec:
   ports:
     - protocol: TCP

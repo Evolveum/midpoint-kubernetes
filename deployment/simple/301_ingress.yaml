@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: midpoint
+  namespace: midpoint-deployment
+  annotations:
+    ingress.kubernetes.io/affinity: cookie
+    ingress.kubernetes.io/session-cookie-name: "midpoint"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
+spec:
+  tls:
+    - hosts:
+        - midpoint.example.com
+  ingressClassName: nginx          
+  rules:
+    - host: midpoint.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: midpoint
+                port:
+                  number: 8080
+

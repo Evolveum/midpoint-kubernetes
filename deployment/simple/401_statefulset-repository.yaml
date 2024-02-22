@@ -3,8 +3,6 @@ kind: StatefulSet
 metadata:
   name: midpoint-repository
   namespace: midpoint-deployment
-  labels:
-    env: midpoint-deployment  
 spec:
   replicas: 1
   selector:
@@ -14,7 +12,6 @@ spec:
     metadata:
       labels:
         app: midpoint-repository
-        env: midpoint-deployment
     spec:
       containers:
         - name: repository
