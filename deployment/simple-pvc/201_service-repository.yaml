@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: midpoint-repository
+  namespace: midpoint-deployment
+spec:
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: midpoint-repository
+  type: ClusterIP
+  sessionAffinity: None
