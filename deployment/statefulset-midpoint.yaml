@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: midpoint
+  namespace: midpoint-deployment
+  labels:
+    env: midpoint-deployment  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: midpoint-node
+  template:
+    metadata:
+      labels:
+        app: midpoint-node
+        env: midpoint-deployment
+    spec:
+      volumes:
+        - name: midpoint-home
+          emptyDir: {}
+      initContainers:
+        - name: midpoint-init
+          image: 'evolveum/midpoint:4.8.1-alpine'
+          command: [ "/bin/bash", "-c" ]
+          args:
+            - cd /opt/midpoint ;
+              bin/midpoint.sh init-native ;
+              echo ' - - - - - - ' ;
+              bin/ninja.sh -B info >/dev/null 2>/tmp/ninja.log ;
+              grep -q "ERROR" /tmp/ninja.log && (
+              bin/ninja.sh -B run-sql --create --mode REPOSITORY  ;
+              bin/ninja.sh -B run-sql --create --mode AUDIT
+              ) ||
+              echo -e '\\n Repository init is not needed...' ;
+          env:
+            - name: MP_INIT_CFG
+              value: /opt/midpoint/var
+            - name: MP_SET_midpoint_repository_database
+              value: postgresql
+            - name: MP_SET_midpoint_repository_jdbcUsername
+              value: midpoint
+            - name: MP_SET_midpoint_repository_jdbcPassword
+              value: SuperSecretPassword007
+            - name: MP_SET_midpoint_repository_jdbcUrl
+              value: jdbc:postgresql://midpoint-repository:5432/midpoint
+            - name: MP_SET_midpoint_administrator_initialPassword
+              value: Test5ecr3t
+          volumeMounts:
+            - name: midpoint-home
+              mountPath: /opt/midpoint/var
+          imagePullPolicy: IfNotPresent
+      containers:
+        - name: midpoint
+          image: 'evolveum/midpoint:4.8.1-alpine'
+          ports:
+            - name: gui
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: MP_SET_midpoint_repository_database
+              value: postgresql
+            - name: MP_SET_midpoint_repository_jdbcUsername
+              value: midpoint
+            - name: MP_SET_midpoint_repository_jdbcPassword
+              value: SuperSecretPassword007
+            - name: MP_SET_midpoint_repository_jdbcUrl
+              value: jdbc:postgresql://midpoint-repository:5432/midpoint
+            - name: MP_UNSET_midpoint_repository_hibernateHbm2ddl
+              value: "1"
+            - name: MP_NO_ENV_COMPAT
+              value: "1"
+          volumeMounts:
+            - name: midpoint-home
+              mountPath: /opt/midpoint/var
+          imagePullPolicy: IfNotPresent
+  serviceName: midpoint

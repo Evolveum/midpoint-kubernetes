@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: midpoint-repository
+  namespace: midpoint-deployment
+  labels:
+    env: midpoint-deployment  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: midpoint-repository
+  template:
+    metadata:
+      labels:
+        app: midpoint-repository
+        env: midpoint-deployment
+    spec:
+      containers:
+        - name: repository
+          image: 'postgres:16-alpine'
+          ports:
+            - name: db
+              containerPort: 5432
+              protocol: TCP
+          env:
+            - name: POSTGRES_INITDB_ARGS
+              value: '--lc-collate=en_US.utf8 --lc-ctype=en_US.utf8'
+            - name: POSTGRES_USER
+              value: midpoint
+            - name: POSTGRES_PASSWORD
+              value: SuperSecretPassword007
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 10
+  serviceName: midpoint-repository
