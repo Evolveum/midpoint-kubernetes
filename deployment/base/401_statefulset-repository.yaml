@@ -26,28 +26,8 @@ spec:
             - name: POSTGRES_USER
               value: midpoint
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: midpoint-repository
-                  key: password              
-          volumeMounts:
-            - name: midpoint-data
-              mountPath: /var/lib/postgresql/data
-              subPath: data
+              value: SuperSecretPassword007
           imagePullPolicy: IfNotPresent
       restartPolicy: Always
       terminationGracePeriodSeconds: 10
   serviceName: midpoint-repository
-  volumeClaimTemplates:
-    - kind: PersistentVolumeClaim
-      apiVersion: v1
-      metadata:
-        name: midpoint-data
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 5Gi
-        volumeMode: Filesystem
-  

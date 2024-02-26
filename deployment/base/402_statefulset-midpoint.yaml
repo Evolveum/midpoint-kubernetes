@@ -13,6 +13,9 @@ spec:
       labels:
         app: midpoint-node
     spec:
+      volumes:
+        - name: midpoint-home
+          emptyDir: {}
       initContainers:
         - name: midpoint-init
           image: 'evolveum/midpoint:4.8.1-alpine'
@@ -35,10 +38,7 @@ spec:
             - name: MP_SET_midpoint_repository_jdbcUsername
               value: midpoint
             - name: MP_SET_midpoint_repository_jdbcPassword
-              valueFrom:
-                secretKeyRef:
-                  name: midpoint-repository
-                  key: password
+              value: SuperSecretPassword007
             - name: MP_SET_midpoint_repository_jdbcUrl
               value: jdbc:postgresql://midpoint-repository:5432/midpoint
           volumeMounts:
@@ -70,17 +70,5 @@ spec:
           volumeMounts:
             - name: midpoint-home
               mountPath: /opt/midpoint/var
-          imagePullPolicy: IfNotPresent          
+          imagePullPolicy: IfNotPresent
   serviceName: midpoint
-  volumeClaimTemplates:
-    - kind: PersistentVolumeClaim
-      apiVersion: v1
-      metadata:
-        name: midpoint-home
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 128Mi
-        volumeMode: Filesystem  
