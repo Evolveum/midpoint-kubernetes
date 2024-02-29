@@ -60,7 +60,10 @@ spec:
             - name: MP_SET_midpoint_repository_jdbcUsername
               value: midpoint
             - name: MP_SET_midpoint_repository_jdbcPassword
-              value: SuperSecretPassword007
+              valueFrom:
+                secretKeyRef:
+                  name: midpoint-repository
+                  key: password
             - name: MP_SET_midpoint_repository_jdbcUrl
               value: jdbc:postgresql://midpoint-repository:5432/midpoint
             - name: MP_UNSET_midpoint_repository_hibernateHbm2ddl
