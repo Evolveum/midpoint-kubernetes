@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: midpoint
+  namespace: midpoint-deployment
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 8Gi
+  storageClassName: csi-cephfs-sc
+  volumeMode: Filesystem

@@ -13,6 +13,13 @@ spec:
       labels:
         app: midpoint-node
     spec:
+      volumes:
+        - name: midpoint-home
+          persistentVolumeClaim:
+            claimName: midpoint 
+        - name: midpoint-pio
+          configMap:
+            name: post-initial-objects
       initContainers:
         - name: midpoint-init
           image: 'evolveum/midpoint:4.8.2-alpine'
@@ -54,7 +61,10 @@ spec:
               protocol: TCP
           env:
             - name: MP_SET_midpoint_administrator_initialPassword
-              value: Test5ecr3t
+              valueFrom:
+                secretKeyRef:
+                  name: midpoint-init-pass
+                  key: passwd
             - name: MP_SET_midpoint_repository_database
               value: postgresql
             - name: MP_SET_midpoint_repository_jdbcUsername
@@ -66,24 +76,23 @@ spec:
                   key: password
             - name: MP_SET_midpoint_repository_jdbcUrl
               value: jdbc:postgresql://midpoint-repository:5432/midpoint
-            - name: MP_UNSET_midpoint_repository_hibernateHbm2ddl
-              value: "1"
-            - name: MP_NO_ENV_COMPAT
-              value: "1"
+            - name: MP_SET_midpoint_taskManager_clustered
+              value: 'true'
+            - name: MP_SET_midpoint_nodeIdSource
+              value: hostname
+            - name: MP_ENTRY_POINT
+              value: /opt/external-ro
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           volumeMounts:
             - name: midpoint-home
               mountPath: /opt/midpoint/var
+            - name: midpoint-home
+              mountPath: /opt/midpoint/var/log
+              subPathExpr: logs/$(POD_NAME)
+            - name: midpoint-pio
+              mountPath: /opt/external-ro/post-initial-objects
           imagePullPolicy: IfNotPresent          
   serviceName: midpoint
-  volumeClaimTemplates:
-    - kind: PersistentVolumeClaim
-      apiVersion: v1
-      metadata:
-        name: midpoint-home
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 128Mi
-        volumeMode: Filesystem  

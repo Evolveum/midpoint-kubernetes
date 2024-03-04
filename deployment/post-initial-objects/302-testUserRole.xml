@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<user xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:t='http://prism.evolveum.com/xml/ns/public/types-3'>
+  <name>user</name>
+  <description>Login possible</description>
+  <assignment>
+    <targetRef oid="00000000-0000-0000-0000-000000000008" relation="org:default" type="RoleType" />
+  </assignment>
+  <assignment>
+    <targetRef oid="00000000-cafe-0001-0000-000000000001" relation="org:default" type="RoleType" />
+  </assignment>
+  <credentials>
+    <password>
+      <value>
+        <t:clearValue>Test5ecr3t</t:clearValue>
+      </value>
+    </password>
+  </credentials>
+</user>

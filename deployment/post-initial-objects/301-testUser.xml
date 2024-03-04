@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<user xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:t='http://prism.evolveum.com/xml/ns/public/types-3'>
+  <name>user.nologin</name>
+  <description>Without permission - cannot login </description>
+  <credentials>
+    <password>
+      <value>
+        <t:clearValue>Test5ecr3t</t:clearValue>
+      </value>
+    </password>
+  </credentials>
+</user>
