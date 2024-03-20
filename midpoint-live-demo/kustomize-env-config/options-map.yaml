@@ -3,6 +3,6 @@ kind: ConfigMap
 metadata:
   name: config
 data:
-  ingress_host: demo.lab.evolveum.com
+  ingress_host: demo.k8s.evolveum.com
   ingress_cert: cert-lab-evolveum
-  ingress_class_name: haproxy
+  ingress_class_name: nginx
