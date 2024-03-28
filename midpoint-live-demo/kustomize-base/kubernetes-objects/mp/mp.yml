@@ -55,7 +55,7 @@ spec:
             defaultMode: 420
       initContainers:
         - name: mp-config-init
-          image: 'evolveum/midpoint:4.8-alpine'
+          image: 'evolveum/midpoint:4.8.2-alpine'
           command:
             - /bin/bash
             - "-c"
@@ -119,12 +119,14 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mp
-          image: 'evolveum/midpoint:4.8-alpine'
+          image: 'evolveum/midpoint:4.8.2-alpine'
           ports:
             - name: gui
               containerPort: 8080
               protocol: TCP
           env:
+            - name: MP_SET_midpoint_administrator_initialPassword
+              value: IGA4ever
             - name: MP_ENTRY_POINT
               value: /opt/midpoint-dirs-docker-entrypoint
             - name: MP_SET_midpoint_keystore_keyStorePath

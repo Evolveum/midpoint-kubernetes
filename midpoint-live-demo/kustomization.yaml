@@ -63,7 +63,6 @@ resources:
 configMapGenerator:
 - name: users-map
   files:
-    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/users/800-user-administrator.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/users/801-users.xml
 - name: roles-map
   files:
@@ -122,6 +121,7 @@ configMapGenerator:
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/433-object-collection-unmatched-shadows.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/450-shadow-marks-dashboard.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/820-Task-init-addUsersToRolesAndOrgs.xml
+    - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/820-Task-recompute-administrator.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/940-Task-Addressbook-accounts-import.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/950-HR-import.xml
     - kustomize-base/renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/998-task-HR-livesync.xml
