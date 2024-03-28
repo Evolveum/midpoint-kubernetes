@@ -27,7 +27,7 @@
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
                 <value>
-                    <t:clearValue>5ecr3t</t:clearValue>
+                    <t:clearValue>IGA4ever</t:clearValue>
                 </value>
             </password>
         </credentials>
@@ -76,7 +76,7 @@
         <credentials>
             <password>
                 <value>
-                    <t:clearValue>5ecr3t</t:clearValue>
+                    <t:clearValue>IGA4ever</t:clearValue>
                 </value>
             </password>
         </credentials>
@@ -138,7 +138,7 @@
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
                 <value>
-                    <t:clearValue>5ecr3t</t:clearValue>
+                    <t:clearValue>IGA4ever</t:clearValue>
                 </value>
             </password>
         </credentials>
@@ -261,7 +261,7 @@
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
                 <value>
-                    <t:clearValue>5ecr3t</t:clearValue>
+                    <t:clearValue>IGA4ever</t:clearValue>
                 </value>
             </password>
         </credentials>
@@ -358,7 +358,7 @@
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
                 <value>
-                    <t:clearValue>5ecr3t</t:clearValue>
+                    <t:clearValue>IGA4ever</t:clearValue>
                 </value>
             </password>
         </credentials>
@@ -412,7 +412,7 @@
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
                 <value>
-                    <t:clearValue>5ecr3t</t:clearValue>
+                    <t:clearValue>IGA4ever</t:clearValue>
                 </value>
             </password>
         </credentials>

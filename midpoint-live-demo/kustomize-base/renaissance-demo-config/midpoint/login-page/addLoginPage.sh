@@ -3,15 +3,15 @@ cp /opt/midpoint/lib/* /mnt/lib/
 cd /mnt/lib
 unzip -q midpoint.jar -d midpoint2
 mkdir /mnt/gui/
-cp midpoint2/BOOT-INF/lib/admin-gui-4.8.jar /mnt/gui/
+cp midpoint2/BOOT-INF/lib/admin-gui-4.8.2.jar /mnt/gui/
 cd /mnt/gui/
-unzip -q admin-gui-4.8.jar -d gui2
+unzip -q admin-gui-4.8.2.jar -d gui2
 cp -f /mnt/page/AbstractPageLogin.html gui2/com/evolveum/midpoint/gui/impl/page/login/AbstractPageLogin.html
-rm -f admin-gui-4.8.jar
+rm -f admin-gui-4.8.2.jar
 apk add zip
 cd gui2
-zip -0 -r admin-gui-4.8.jar .
-cp -f admin-gui-4.8.jar /mnt/lib/midpoint2/BOOT-INF/lib/
+zip -0 -r admin-gui-4.8.2.jar .
+cp -f admin-gui-4.8.2.jar /mnt/lib/midpoint2/BOOT-INF/lib/
 cd /mnt/lib
 rm midpoint.jar
 cd midpoint2
