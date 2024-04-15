@@ -21,22 +21,22 @@ do
     esac
 done
 
-sed -i "s/ingress_host: .*/ingress_host: $HOST/g" kustomize-env-config/options-map.yaml
+sed -i "s/ingress_host: .*/ingress_host: $HOST/g" kustomize-base/kustomize-env-config/options-map.yaml
 
 if [ -z $INGRESSCLASS ]
 then
    INGRESSCLASS=$(kubectl get ingressClass -o=jsonpath='{.items[?(@.metadata.annotations.ingressclass\.kubernetes\.io/is-default-class=="true")].metadata.name}')
 fi
 
-sed -i "s/ingress_class_name: .*/ingress_class_name: $INGRESSCLASS/g" kustomize-env-config/options-map.yaml
+sed -i "s/ingress_class_name: .*/ingress_class_name: $INGRESSCLASS/g" kustomize-base/kustomize-env-config/options-map.yaml
 
 if [ $CERTADDRESS ]
 then
    kubectl apply -f $CERTADDRESS -n $NAMESPACE 2> /dev/null || true
    CERT=$(basename $CERTADDRESS)
 else
-   mkdir kustomize-env-config/certificate/ 2> /dev/null || true
-   cd kustomize-env-config/certificate/
+   mkdir kustomize-base/kustomize-env-config/certificate/ 2> /dev/null || true
+   cd kustomize-base/kustomize-env-config/certificate/
    openssl req -new -sha256 -newkey rsa:2048 -keyout tls.key -nodes -subj "/CN=test CA" | openssl x509 -req \
    -signkey tls.key -out tls.crt -days 3650 -sha256 -extfile <(cat <<EOF
 basicConstraints = CA:FALSE
@@ -52,7 +52,7 @@ EOF
    CERT="cert-mp-demo"
 fi
 
-sed -i "s/ingress_cert: .*/ingress_cert: $CERT/g" kustomize-env-config/options-map.yaml
+sed -i "s/ingress_cert: .*/ingress_cert: $CERT/g" kustomize-base/kustomize-env-config/options-map.yaml
 
 kubectl create namespace $NAMESPACE 2> /dev/null || true
 kubectl apply -k . -n $NAMESPACE

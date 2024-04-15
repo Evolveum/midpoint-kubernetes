@@ -1,0 +1,159 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+replacements:
+- source:
+    kind: ConfigMap
+    name: config
+    fieldPath: data.ingress_host
+  targets:
+  - select:
+      kind: Ingress
+    fieldPaths:
+    - spec.tls.0.hosts.0
+    - spec.rules.0.host
+- source:
+    kind: ConfigMap
+    name: config
+    fieldPath: data.ingress_cert
+  targets:
+  - select:
+      kind: Ingress
+    fieldPaths:
+    - spec.tls.0.secretName
+- source:
+    kind: ConfigMap
+    name: config
+    fieldPath: data.ingress_class_name
+  targets:
+  - select:
+      kind: Ingress
+    fieldPaths:
+    - spec.ingressClassName
+    
+resources:
+ - kustomize-env-config/options-map.yaml
+# LDAP base
+ - kubernetes-objects/ldap/ldap-admin-ingress.yml
+ - kubernetes-objects/ldap/ldap-service.yml
+ - kubernetes-objects/ldap/ldap.yml
+ - kubernetes-objects/ldap/ldap-admin-service.yml
+# MidPoint kubernetes base
+ - kubernetes-objects/mp/mp-ingress.yml
+ - kubernetes-objects/mp/mp-service.yml
+ - kubernetes-objects/mp/mp-db.yml
+ - kubernetes-objects/mp/mp-secret.yml
+ - kubernetes-objects/mp/mp.yml
+ - kubernetes-objects/mp/mp-db-service.yml
+# Addressbook kubernetes base
+ - kubernetes-objects/addressbook/addressbook-service.yml
+ - kubernetes-objects/addressbook/addressbook.yml
+# HR kubernetes base
+ - kubernetes-objects/hr/hr.yml
+ - kubernetes-objects/hr/hr-service.yml
+# Apache server kubernetes base
+ - kubernetes-objects/apache/apache.yml
+ - kubernetes-objects/apache/apache-ingress.yml
+ - kubernetes-objects/apache/apache-service.yml
+# Tomcat kubernetes base
+ - kubernetes-objects/tomcat/tomcat-hr-ingress.yml
+ - kubernetes-objects/tomcat/tomcat-service.yml
+ - kubernetes-objects/tomcat/tomcat-addressbook-ingress.yml
+
+configMapGenerator:
+- name: users-map
+  files:
+    - renaissance-demo-config/midpoint/post-initial-objects/users/801-users.xml
+- name: roles-map
+  files:
+    - renaissance-demo-config/midpoint/post-initial-objects/roles/350-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/roles/350-Approver.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/roles/350-Delegator.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/roles/350-Enduser.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/roles/350-Reviewer.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/roles/350-Superuser.xml
+- name: pio-map-1
+  files:
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/001-system-configuration.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/151-addressbook.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/152-openldap.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/153-hr.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/154-LDAP-import-dry-run.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/200-archetype-org-unit.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/201-archetype-project.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-application-role.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-application.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-business-role.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-object-template-application-role.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-object-template-application.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-object-template-business-role.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-addressbook.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-gallery.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-library.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-midPoint.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-royalLounge.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-scincehub.xml
+- name: pio-map-2
+  files:
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-addressBookContactRecordPatron.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-addressBookContactRecordPhilistine.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-addressBookContactRecord.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-galleryCurator.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-galleryVisitor.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-libraryAccess.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-royalLoungeAccess.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-scienceHubbasic.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-scienceHubpremium.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/330-businessRole-artists.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/330-businessRole-politician.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/370-orgs-objectTemplate.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/371-DefaultUserTemplate.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/380-orgs.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/400-Certify-campaign.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/401-task-User-Recomputation-Simulation-definition.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/402-task-User-Recomputation-definition.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/421-scienceHub-basic-users-collection.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/422-scienceHub-premium-users-collection.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/423-licences-dashboard.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/430-object-collection-correlate-later-shadows.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/431-object-collection-decommission-later-shadows.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/432-object-collection-do-not-touch-shadows.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/433-object-collection-unmatched-shadows.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/450-shadow-marks-dashboard.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/820-Task-init-addUsersToRolesAndOrgs.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/820-Task-recompute-administrator.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/940-Task-Addressbook-accounts-import.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/950-HR-import.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/998-task-HR-livesync.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/999-LDAP-live-sync.xml
+- name: extension-map
+  files:
+    - renaissance-demo-config/midpoint/extension-schema/extension-electra.xsd
+- name: hr-map
+  files:
+    - renaissance-demo-config/hr/midpoint-source.csv
+- name: hr-script-map
+  files:
+    - renaissance-demo-config/hr/hr.sh
+- name: login-page-map
+  files:
+    - renaissance-demo-config/midpoint/login-page/addLoginPage.sh
+    - renaissance-demo-config/midpoint/login-page/AbstractPageLogin.html
+- name: ldap-init-map
+  files:
+    - renaissance-demo-config/ldap/sssvlv.ldif
+    - renaissance-demo-config/ldap/baseEntry.ldif
+    - renaissance-demo-config/ldap/ppolicy.ldif
+    - renaissance-demo-config/ldap/acl.ldif
+- name: ldap-dynschema-map
+  files:
+    - renaissance-demo-config/ldap/dyngroup.schema
+- name: addressbook-script-map
+  files:
+    - renaissance-demo-config/addressbook/addressbook.sh
+- name: apache-map
+  files:
+    - renaissance-demo-config/apache/httpd.conf
+- name: tomcat-map
+  files:
+    - renaissance-demo-config/tomcat/server.xml

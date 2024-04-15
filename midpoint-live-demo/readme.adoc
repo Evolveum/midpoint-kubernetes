@@ -2,7 +2,7 @@
 :toc:
 :toclevels: 4
 
-This project contains files related to the midPoint live demo. In the `kustomize-base-directory` there are kubernetes objects and renaissance demo config files located. In `kustomize-env-config`, a certificate and variables for the demo environment are stored. These variables are configured by the setup script and then used by `kustomize` for replacing field values in kubernetes objects.
+This project contains files related to the midPoint live demo. In the `kustomize-base` directory are kubernetes objects and renaissance demo config files located. Inside of it you can find `kustomize-env-config` directory where a certificate and variables for the demo environment are stored. These variables are configured by the setup script and then used by `kustomize` for replacing field values in kubernetes objects.
 
 == Requirements
 
