@@ -59,6 +59,8 @@ resources:
  - kustomize-base/kubernetes-objects/tomcat/tomcat-hr-ingress.yml
  - kustomize-base/kubernetes-objects/tomcat/tomcat-service.yml
  - kustomize-base/kubernetes-objects/tomcat/tomcat-addressbook-ingress.yml
+# Network policy
+ - kustomize-base/kubernetes-objects/infra/network-policy.yml
 
 configMapGenerator:
 - name: users-map
