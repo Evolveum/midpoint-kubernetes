@@ -57,7 +57,7 @@ EOF
    CERT="cert-mp-demo"
 fi
 
-sed -i "s/ingress_cert: .*/ingress_cert: $CERT/g" kustomize-env-config/options-map.yaml
+sed -i "s/ingress_cert: .*/ingress_cert: $CERT/g" kustomize-base/kustomize-env-config/options-map.yaml
 
 kubectl create namespace $NAMESPACE 2> /dev/null || true
 kubectl apply -k ./kustomize-base -n $NAMESPACE
