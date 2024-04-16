@@ -85,6 +85,10 @@ This script applies to your demo environment. You can change the default certifi
 |Custom yaml certificate for ingresses. PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT
 |cert-mp-demo (created by startup script)
 
+|-d
+|Custom cluster domain. We use it when we are accessing service from inside of the cluster. For example, when we want to access the hr database we use `jdbc:postgresql://hr-db-service.${POD_NS}.svc.${CLUSTER_DOMAIN}:5432`
+|cluster.local
+
 |-a
 |Custom host for ingresses. Please be aware that the default certificate does only work with the default host
 |demo.example.com
