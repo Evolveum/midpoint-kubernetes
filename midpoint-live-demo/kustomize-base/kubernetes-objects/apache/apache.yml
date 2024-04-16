@@ -59,7 +59,7 @@ spec:
             - name: CLUSTER_DOMAIN
               valueFrom:
               configMapKeyRef:
-                name: options-map
+                name: config
                 key: cluster-domain
           volumeMounts:
             - name: var
