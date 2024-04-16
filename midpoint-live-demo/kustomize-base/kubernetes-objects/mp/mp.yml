@@ -110,7 +110,7 @@ spec:
               valueFrom:
               configMapKeyRef:
                 name: config
-                key: cluster-domain
+                key: cluster_domain
           resources: {}
           volumeMounts:
             - name: shared-data-tomcat
@@ -149,7 +149,7 @@ spec:
               valueFrom:
               configMapKeyRef:
                 name: config
-                key: cluster-domain
+                key: cluster_domain
             - name: MP_SET_midpoint_repository_jdbcUsername
               value: midpoint
             - name: MP_SET_midpoint_repository_jdbcPassword_FILE

@@ -60,7 +60,7 @@ spec:
               valueFrom:
               configMapKeyRef:
                 name: config
-                key: cluster-domain
+                key: cluster_domain
           volumeMounts:
             - name: var
               mountPath: /var/
