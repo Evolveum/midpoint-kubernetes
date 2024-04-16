@@ -2,7 +2,7 @@
 :toc:
 :toclevels: 4
 
-This project contains files related to the midPoint live demo. In the `kustomize-base-directory` there are kubernetes objects and renaissance demo config files located. In `kustomize-env-config`, a certificate and variables for the demo environment are stored. These variables are configured by the setup script and then used by `kustomize` for replacing field values in kubernetes objects.
+This project contains files related to the midPoint live demo. In the `kustomize-base` directory are kubernetes objects and renaissance demo config files located. Inside of it you can find `kustomize-env-config` directory where a certificate and variables for the demo environment are stored. These variables are configured by the setup script and then used by `kustomize` for replacing field values in kubernetes objects.
 
 == Requirements
 
@@ -84,6 +84,10 @@ This script applies to your demo environment. You can change the default certifi
 |-c
 |Custom yaml certificate for ingresses. PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT
 |cert-mp-demo (created by startup script)
+
+|-d
+|Custom cluster domain. We use it when we are accessing service from inside of the cluster. For example, when we want to access the hr database we use `jdbc:postgresql://hr-db-service.${POD_NS}.svc.${CLUSTER_DOMAIN}:5432`
+|cluster.local
 
 |-a
 |Custom host for ingresses. Please be aware that the default certificate does only work with the default host

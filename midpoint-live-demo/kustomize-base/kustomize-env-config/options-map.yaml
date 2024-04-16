@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+data:
+  ingress_host: demo.k8s.evolveum.com
+  ingress_cert: cert-lab-evolveum
+  ingress_class_name: nginx
+  cluster_domain: k8s.evolveum.com
