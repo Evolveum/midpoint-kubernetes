@@ -56,8 +56,12 @@ EOF
    cd ../..
    CERT="cert-mp-demo"
 fi
+   kubectl create secret tls -n $NAMESPACE cert-mp-demo --cert=tls.crt --key=tls.key 2> /dev/null || true
+   cd ../../..
+   CERT="cert-mp-demo"
+fi
 
-sed -i "s/ingress_cert: .*/ingress_cert: $CERT/g" kustomize-base/kustomize-env-config/options-map.yaml
+sed -i "s/ingress_cert: .*/ingress_cert: $CERT/g" kustomize-env-config/options-map.yaml
 
 kubectl create namespace $NAMESPACE 2> /dev/null || true
-kubectl apply -k . -n $NAMESPACE
+kubectl apply -k ./kustomize-base -n $NAMESPACE
