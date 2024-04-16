@@ -2,12 +2,14 @@
 
 NAMESPACE=mp-demo
 HOST=demo.example.com
+CLUSTER_DOMAIN=cluster.local
 
-while getopts n:c:a:i:h flag
+while getopts n:c:d:a:i:h flag
 do
     case "${flag}" in
         n) NAMESPACE=${OPTARG};;
         c) CERTADDRESS=${OPTARG};;
+        d) CLUSTER_DOMAIN=${OPTARG};;
         a) HOST=${OPTARG};;
         i) INGRESSCLASS=${OPTARG};;
         h | *)
@@ -15,6 +17,7 @@ do
           echo "$0 [-s value] [-n value]"
           echo "-n 	 custom namespace in which demo would be deployed. Default namespace is mp-demo"
           echo "-c 	 custom yaml certificate for ingresses. Default certificate is packed with demo. PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT"
+          echo "-d 	 custom cluster domain. Default is cluster.local"
           echo "-a 	 custom host for ingresses. Default host is demo.example.com. Please be aware that default certificate does work only with default host"
           echo "-i    custom ingressClass name. Default is default on your machine (one with annotation ingressclass.kubernetes.io/is-default-class: true). Make sure that you do have ONE default ingressClass or use this option to set a custom one."
           ;; 
@@ -22,6 +25,8 @@ do
 done
 
 sed -i "s/ingress_host: .*/ingress_host: $HOST/g" kustomize-base/kustomize-env-config/options-map.yaml
+
+sed -i "s/cluster-domain: .*/cluster-domain: $CLUSTER_DOMAIN/g" kustomize-base/kustomize-env-config/options-map.yaml
 
 if [ -z $INGRESSCLASS ]
 then

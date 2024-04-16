@@ -56,6 +56,11 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: metadata.namespace
+            - name: CLUSTER_DOMAIN
+              valueFrom:
+              configMapKeyRef:
+                name: options-map
+                key: cluster-domain
           volumeMounts:
             - name: var
               mountPath: /var/
