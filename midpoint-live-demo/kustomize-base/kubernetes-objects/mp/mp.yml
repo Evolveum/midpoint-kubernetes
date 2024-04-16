@@ -150,7 +150,7 @@ spec:
                 configMapKeyRef:
                   name: config
                   key: cluster_domain
-              - name: MP_SET_midpoint_repository_jdbcUsername
+            - name: MP_SET_midpoint_repository_jdbcUsername
               value: midpoint
             - name: MP_SET_midpoint_repository_jdbcPassword_FILE
               value: /opt/midpoint/config-secrets/password
