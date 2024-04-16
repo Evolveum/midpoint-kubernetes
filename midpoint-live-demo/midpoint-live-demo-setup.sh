@@ -53,10 +53,6 @@ extendedKeyUsage = serverAuth
 EOF
 )
    kubectl create secret tls -n $NAMESPACE cert-mp-demo --cert=tls.crt --key=tls.key 2> /dev/null || true
-   cd ../..
-   CERT="cert-mp-demo"
-fi
-   kubectl create secret tls -n $NAMESPACE cert-mp-demo --cert=tls.crt --key=tls.key 2> /dev/null || true
    cd ../../..
    CERT="cert-mp-demo"
 fi
