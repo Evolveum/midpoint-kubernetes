@@ -58,9 +58,9 @@ spec:
                   fieldPath: metadata.namespace
             - name: CLUSTER_DOMAIN
               valueFrom:
-              configMapKeyRef:
-                name: config
-                key: cluster_domain
+                configMapKeyRef:
+                  name: config
+                  key: cluster_domain
           volumeMounts:
             - name: var
               mountPath: /var/

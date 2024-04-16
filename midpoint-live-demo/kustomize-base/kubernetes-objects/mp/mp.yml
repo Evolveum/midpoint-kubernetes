@@ -108,9 +108,9 @@ spec:
                   fieldPath: metadata.namespace
             - name: CLUSTER_DOMAIN
               valueFrom:
-              configMapKeyRef:
-                name: config
-                key: cluster_domain
+                configMapKeyRef:
+                  name: config
+                  key: cluster_domain
           resources: {}
           volumeMounts:
             - name: shared-data-tomcat
@@ -147,10 +147,10 @@ spec:
                   fieldPath: metadata.namespace
             - name: CLUSTER_DOMAIN
               valueFrom:
-              configMapKeyRef:
-                name: config
-                key: cluster_domain
-            - name: MP_SET_midpoint_repository_jdbcUsername
+                configMapKeyRef:
+                  name: config
+                  key: cluster_domain
+              - name: MP_SET_midpoint_repository_jdbcUsername
               value: midpoint
             - name: MP_SET_midpoint_repository_jdbcPassword_FILE
               value: /opt/midpoint/config-secrets/password
