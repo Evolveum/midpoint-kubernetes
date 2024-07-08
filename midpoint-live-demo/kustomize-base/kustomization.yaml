@@ -92,14 +92,14 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/305-policy-category-1.xml
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/305-policy-category-2.xml
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/305-policy-nda.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-addressbook.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-gallery.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-library.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-midPoint.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-royalLounge.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-scincehub.xml
 - name: pio-map-2
   files:
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/310-application-addressbook.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/310-application-gallery.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/310-application-library.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/310-application-midPoint.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/310-application-royalLounge.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/310-application-scincehub.xml
     - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-addressBookContactRecordPatron.xml
     - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-addressBookContactRecordPhilistine.xml
     - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/320-applicationRole-addressBookContactRecord.xml
