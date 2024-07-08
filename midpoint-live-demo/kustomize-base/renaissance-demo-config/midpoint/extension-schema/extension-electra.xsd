@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!--
-  ~ Copyright (c) 2010-2013 Evolveum
+  ~ Copyright (c) 2010-2024 Evolveum
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -52,8 +52,50 @@
             		</xsd:appinfo>
             	</xsd:annotation>
             </xsd:element>
+            <xsd:element name="accessCategory" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+              <xsd:annotation>
+                <xsd:documentation>
+                  Access categories of a user, computed from classifications.
+                </xsd:documentation>
+                <xsd:appinfo>
+                  <a:displayName>Access category</a:displayName>
+                </xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="privilegedAccess" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+              <xsd:annotation>
+                <xsd:documentation>
+                  Set to true of user has privileged access.
+                </xsd:documentation>
+                <xsd:appinfo>
+                  <a:displayName>Privileged access</a:displayName>
+                </xsd:appinfo>
+              </xsd:annotation>
+            </xsd:element>
         </xsd:sequence>
     </xsd:complexType>
 
-</xsd:schema>
+
+
+    <xsd:complexType name="ServiceExtensionType">
+      <xsd:annotation>
+        <xsd:appinfo>
+          <a:extension ref="c:ServiceType"/>
+        </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:sequence>
+        <xsd:element name="accessCategory" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+          <xsd:annotation>
+            <xsd:documentation>
+              Access categories of a user, computed from classifications.
+            </xsd:documentation>
+            <xsd:appinfo>
+              <a:displayName>Access category</a:displayName>
+            </xsd:appinfo>
+          </xsd:annotation>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+
+  </xsd:schema>
 

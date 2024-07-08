@@ -38,7 +38,7 @@
                 </panel>
                 <panel>
                     <identifier>assignments</identifier>
-                    <visibility>hidden</visibility>
+                    <visibility>visible</visibility>
                 </panel>
                 <panel>
                     <identifier>password</identifier>

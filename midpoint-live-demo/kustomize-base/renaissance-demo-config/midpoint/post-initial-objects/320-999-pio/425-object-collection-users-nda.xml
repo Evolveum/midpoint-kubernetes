@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2010-2024 Evolveum and contributors
+  ~
+  ~ This work is dual-licensed under the Apache License 2.0
+  ~ and European Union Public License. See LICENSE file for details.
+  -->
+
+<objectCollection xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+                  xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+                  xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+                  oid="cfa62232-3721-4719-835d-5f9d45bbe7ef">
+    <name>NDA Users</name>
+    <type>UserType</type>
+    <filter>
+        <q:text>roleMembershipRef matches ( oid = "09360ff0-d506-4751-b13f-4e01422693ac" )</q:text>
+    </filter>
+    <domain>
+    </domain>
+</objectCollection>

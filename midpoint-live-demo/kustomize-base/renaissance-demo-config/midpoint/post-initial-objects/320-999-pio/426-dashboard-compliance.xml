@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2010-2024 Evolveum and contributors
+  ~
+  ~ This work is dual-licensed under the Apache License 2.0
+  ~ and European Union Public License. See LICENSE file for details.
+  -->
+
+<dashboard xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+           xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+           xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+           oid="118b5d33-93b8-4ef1-8c15-9bb9984ffa8b">
+    <name>compliance-dashboard</name>
+    <display>
+        <label>
+            <orig>Compliance dashboard</orig>
+            <translation>
+                <key>ComplianceDashboard.title</key>
+            </translation>
+        </label>
+    </display>
+    <widget>
+        <identifier>cat1-users</identifier>
+        <description>Users with access to Category I (Public Access) systems.</description>
+        <display>
+            <label>
+                <orig>Category I (Public Access) users</orig>
+            </label>
+            <color>#00a65a</color>
+            <icon>
+                <cssClass>fa fa-dice-one</cssClass>
+            </icon>
+        </display>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="8974e899-cbde-4a1f-8af1-0265450879f8" type="ObjectCollectionType"/>
+            </collection>
+        </data>
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+            <dataField>
+                <fieldType>unit</fieldType>
+                <expression>
+                    <value>cat.I users</value>
+                </expression>
+            </dataField>
+        </presentation>
+    </widget>
+    <widget>
+        <identifier>cat2-users</identifier>
+        <description>Users with access to Category II (Internal Access) systems.</description>
+        <display>
+            <label>
+                <orig>Category II (Internal Access) users</orig>
+            </label>
+            <color>#ffc107</color>
+            <icon>
+                <cssClass>fa fa-dice-two</cssClass>
+            </icon>
+        </display>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="1f2456e1-7793-4beb-a4ac-961814366628" type="ObjectCollectionType"/>
+            </collection>
+        </data>
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+            <dataField>
+                <fieldType>unit</fieldType>
+                <expression>
+                    <value>cat.II users</value>
+                </expression>
+            </dataField>
+        </presentation>
+    </widget>
+
+    <widget>
+        <identifier>nda-users</identifier>
+        <description>Users having NDA signed.</description>
+        <display>
+            <label>
+                <orig>Users having NDA signed</orig>
+            </label>
+            <color>#17a2b8</color>
+            <icon>
+                <cssClass>fa fa-award</cssClass>
+            </icon>
+        </display>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="cfa62232-3721-4719-835d-5f9d45bbe7ef" type="ObjectCollectionType"/>
+            </collection>
+        </data>
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+            <dataField>
+                <fieldType>unit</fieldType>
+                <expression>
+                    <value>NDA users</value>
+                </expression>
+            </dataField>
+        </presentation>
+    </widget>
+</dashboard>

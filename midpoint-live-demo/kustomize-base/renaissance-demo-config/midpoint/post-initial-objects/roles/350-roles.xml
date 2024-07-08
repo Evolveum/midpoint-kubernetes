@@ -292,6 +292,10 @@
             </attribute>
         </construction>
     </inducement>
+    <inducement>
+        <description>Employees have non-disclosure clause in their contracts, therefore NDA clearance is assumed.</description>
+        <targetRef oid="09360ff0-d506-4751-b13f-4e01422693ac" type="RoleType"/>
+    </inducement>
 </role>
 
     <role xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="ad1dd621-2bcf-432b-8d16-e9b0af401c8b">

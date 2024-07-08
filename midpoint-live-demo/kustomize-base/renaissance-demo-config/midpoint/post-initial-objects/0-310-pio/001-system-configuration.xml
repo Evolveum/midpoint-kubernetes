@@ -1518,6 +1518,12 @@
             <identifier>notable-accounts-dashboard</identifier>
             <configurableDashboardRef oid="b0fdc3d8-6dc9-419c-adac-53a2833a6869" relation="org:default" type="c:DashboardType"/>
         </configurableUserDashboard>
+
+        <configurableUserDashboard>
+            <identifier>compliace-dashboard</identifier>
+            <configurableDashboardRef oid="118b5d33-93b8-4ef1-8c15-9bb9984ffa8b" relation="org:default" type="c:DashboardType"/>
+        </configurableUserDashboard>
+
         <accessRequest>
             <roleCatalog>
                 <collection id="215">

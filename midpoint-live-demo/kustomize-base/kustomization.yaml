@@ -84,9 +84,14 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-application-role.xml
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-application.xml
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-business-role.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-classification.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-archetype-clearance.xml
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-object-template-application-role.xml
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-object-template-application.xml
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/300-object-template-business-role.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/305-policy-category-1.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/305-policy-category-2.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/305-policy-nda.xml
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-addressbook.xml
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-gallery.xml
     - renaissance-demo-config/midpoint/post-initial-objects/0-310-pio/310-application-library.xml
@@ -115,6 +120,10 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/421-scienceHub-basic-users-collection.xml
     - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/422-scienceHub-premium-users-collection.xml
     - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/423-licences-dashboard.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/425-object-collection-users-cat1.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/425-object-collection-users-cat2.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/425-object-collection-users-nda.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/426-dashboard-compliance.xml
     - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/430-object-collection-correlate-later-shadows.xml
     - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/431-object-collection-decommission-later-shadows.xml
     - renaissance-demo-config/midpoint/post-initial-objects/320-999-pio/432-object-collection-do-not-touch-shadows.xml
