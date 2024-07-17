@@ -144,7 +144,6 @@ configMapGenerator:
 - name: login-page-map
   files:
     - renaissance-demo-config/midpoint/login-page/addLoginPage.sh
-    - renaissance-demo-config/midpoint/login-page/AbstractPageLogin.html
 - name: ldap-init-map
   files:
     - renaissance-demo-config/ldap/sssvlv.ldif
