@@ -12,7 +12,7 @@ patches:
   target:
     group: networking.k8s.io
     version: v1
-    kind: ingress
+    kind: Ingress
     name: mp-ingress
 - patch: |-
     - op: replace
@@ -21,7 +21,7 @@ patches:
   target:
     group: networking.k8s.io
     version: v1
-    kind: ingress
+    kind: Ingress
     name: mp-ingress
 - patch: |-
     - op: replace
