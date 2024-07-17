@@ -12,6 +12,7 @@ apk add zip
 cd gui2
 zip -0 -r admin-gui-4.8.3.jar .
 cp -f admin-gui-4.8.3.jar /mnt/lib/midpoint2/BOOT-INF/lib/
+echo "Login Page update - default demo login information" >/mnt/lib/midpoint2/overlay-info.txt
 cd /mnt/lib
 rm midpoint.jar
 cd midpoint2
