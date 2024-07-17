@@ -13,7 +13,6 @@ patches:
     group: networking.k8s.io
     version: v1
     kind: Ingress
-    name: mp-ingress
 - patch: |-
     - op: replace
       path: /spec/rules/0/host
@@ -22,7 +21,6 @@ patches:
     group: networking.k8s.io
     version: v1
     kind: Ingress
-    name: mp-ingress
 - patch: |-
     - op: replace
       path: /spec/template/spec/initContainers/0/image
