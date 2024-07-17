@@ -48,36 +48,50 @@ spec:
       initContainers:
         - name: mp-config-init
           image: 'evolveum/midpoint:4.8.3-alpine'
-          command:
-            - /bin/bash
-            - "-c"
-            - |
-              /mnt/page/addLoginPage.sh
-              /opt/midpoint/bin/midpoint.sh init-native
+          command: [ "/bin/bash", "-c" ]
+          args:
+            - /mnt/page/addLoginPage.sh ;
+              cd /opt/midpoint ;
+              bin/midpoint.sh init-native ;
+              bin/ninja.sh -B info >/dev/null 2>/tmp/ninja.log ;
+              grep -q "ERROR" /tmp/ninja.log && (
+              bin/ninja.sh -B run-sql --create --mode REPOSITORY  ;
+              bin/ninja.sh -B run-sql --create --mode AUDIT
+              ) ||
+              echo -e '\\n Repository init is not needed...' ;
           env:
             - name: MP_INIT_CFG
-              value: /opt/mp-home
+              value: /opt/midpoint/var
+            - name: MP_SET_midpoint_repository_database
+              value: postgresql
+            - name: MP_SET_midpoint_repository_jdbcUsername
+              value: midpoint
+            - name: MP_SET_midpoint_repository_jdbcPassword_FILE
+              value: /opt/midpoint/config-secrets/password
+            - name: MP_SET_midpoint_repository_jdbcUrl
+              value: jdbc:postgresql://mp-db-service:5432/midpoint
           resources: {}
           volumeMounts:
             - name: mp-home
-              mountPath: /opt/mp-home
+              mountPath: /opt/midpoint/var
             - name: login-page
               mountPath: /mnt/page
             - name: mp-lib
               mountPath: /mnt/lib
+            - name: mp-secret
+              mountPath: /opt/midpoint/config-secrets
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: init
-          image: 'alpine:3'
+          image: 'evolveum/midpoint:4.8.3-alpine'
           command:
             - /bin/sh
             - '-c'
             - >-
-              cd /mnt/ && wget
-              https://download.evolveum.com/dummy-hr-and-addressbook-for-live-demo/addressbook.war
-              && wget
-              https://download.evolveum.com/dummy-hr-and-addressbook-for-live-demo/hr.war
+              curl -o /mnt/addressbook.war https://download.evolveum.com/dummy-hr-and-addressbook-for-live-demo/addressbook.war
+              &&
+              curl -o /mnt/hr.war https://download.evolveum.com/dummy-hr-and-addressbook-for-live-demo/hr.war
           resources: {}
           volumeMounts:
             - name: shared-data-tomcat
