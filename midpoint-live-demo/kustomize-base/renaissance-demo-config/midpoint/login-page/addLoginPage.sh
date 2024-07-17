@@ -24,7 +24,7 @@ cat <<EOF >> gui2/com/evolveum/midpoint/gui/impl/page/login/AbstractPageLogin.ht
                     <!-- begin changes -->
                     <div class="form-group" style="font-size: 0.85rem; margin-bottom: 0.3rem;">
                         <div class="col-md-4 col-lg-12 text-center">
-                            <a href="https://docs.evolveum.com/midpoint/demo/" target="_blank">Live demo documentation
+                            <a href="https://docs.evolveum.com/midpoint/demo/" target="_blank">Live demo documentation</a>
                         </div>
                     </div>
                     <div class="form-group">
