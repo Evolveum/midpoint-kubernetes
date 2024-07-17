@@ -27,16 +27,8 @@ spec:
             secretName: mp-secret
             defaultMode: 420
         - name: pio
-          projected:
-            sources:
-               - configMap:
-                   name: users-map
-               - configMap:
-                   name: pio-map-1
-               - configMap:
-                   name: pio-map-2
-               - configMap:
-                   name: roles-map
+          configMap:
+            name: pio-map
         - name: login-page
           configMap:
             name: login-page-map
