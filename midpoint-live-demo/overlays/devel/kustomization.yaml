@@ -30,7 +30,6 @@ patches:
     version: v1
     kind: StatefulSet
     name: mp
-    labelSelector: "app=mp"
 - patch: |-
     - op: replace
       path: /spec/template/spec/initContainers/1/image
@@ -40,7 +39,6 @@ patches:
     version: v1
     kind: StatefulSet
     name: mp
-    labelSelector: "app=mp"
 - patch: |-
     - op: replace
       path: /spec/template/spec/containers/1/image
@@ -50,7 +48,6 @@ patches:
     version: v1
     kind: StatefulSet
     name: mp
-    labelSelector: "app=mp"
 
 resources:
   - network-policy.yml
