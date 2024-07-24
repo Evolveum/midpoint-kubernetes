@@ -36,8 +36,8 @@ patches:
     kind: StatefulSet
     name: mp
 - patch: |-
-    - op: replace
-      path: /metadata/labels/config-version
+    - op: add
+      path: /metadata/labels/config-revision
       value: "2024-07-24-00"
   target:
     group: apps
