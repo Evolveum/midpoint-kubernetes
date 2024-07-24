@@ -37,7 +37,7 @@ patches:
     name: mp
 - patch: |-
     - op: add
-      path: /metadata/labels/config-revision
+      path: /metadata/labels/config~1revision
       value: "2024-07-24-00"
   target:
     group: apps
