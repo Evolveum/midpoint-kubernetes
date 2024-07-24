@@ -20,6 +20,14 @@ patches:
     kind: Ingress
 - patch: |-
     - op: replace
+      path: /metadata/annotations/argocd.argoproj.io~1sync-options
+      value: "Force=true,Replace=true"
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+- patch: |-
+    - op: replace
       path: /spec/template/spec/initContainers/0/imagePullPolicy
       value: Always
   target:
@@ -29,8 +37,8 @@ patches:
     name: mp
 - patch: |-
     - op: replace
-      path: /metadata/annotations/argocd.argoproj.io~1sync-options
-      value: "Force=true,Replace=true"
+      path: /metadata/labels/config-version
+      value: 1
   target:
     group: apps
     version: v1
