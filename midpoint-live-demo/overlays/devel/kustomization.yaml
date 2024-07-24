@@ -20,6 +20,23 @@ patches:
     kind: Ingress
 - patch: |-
     - op: replace
+      path: /spec/template/spec/initContainers/0/imagePullPolicy
+      value: always
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+    name: mp
+- patch: |-
+    - op: replace
+      path: /metadata/annotations/argocd.argoproj.io/sync-options
+      value: Force=true,Replace=true
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+- patch: |-
+    - op: replace
       path: /spec/template/spec/initContainers/0/image
       value: evolveum/midpoint:4.8-support-alpine
   target:
