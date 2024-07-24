@@ -30,7 +30,7 @@ patches:
 - patch: |-
     - op: add
       path: /metadata/annotations/argocd.argoproj.io\/sync-options
-      value: Force=true,Replace=true
+      value: "Force=true,Replace=true"
   target:
     group: apps
     version: v1
