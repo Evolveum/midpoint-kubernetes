@@ -38,7 +38,7 @@ patches:
 - patch: |-
     - op: replace
       path: /metadata/labels/config-version
-      value: 1
+      value: "2024-07-24-00"
   target:
     group: apps
     version: v1
