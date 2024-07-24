@@ -28,7 +28,7 @@ patches:
     kind: StatefulSet
     name: mp
 - patch: |-
-    - op: replace
+    - op: add
       path: /metadata/annotations/argocd.argoproj.io/sync-options
       value: Force=true,Replace=true
   target:
