@@ -48,7 +48,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/template/spec/initContainers/0/image
-      value: evolveum/midpoint:4.8-support-alpine
+      value: evolveum/midpoint:4.8.3-alpine
   target:
     group: apps
     version: v1
@@ -57,7 +57,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/template/spec/initContainers/1/image
-      value: evolveum/midpoint:4.8-support-alpine
+      value: evolveum/midpoint:4.8.3-alpine
   target:
     group: apps
     version: v1
@@ -66,7 +66,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/template/spec/containers/1/image
-      value: evolveum/midpoint:4.8-support-alpine
+      value: evolveum/midpoint:4.8.3-alpine
   target:
     group: apps
     version: v1
