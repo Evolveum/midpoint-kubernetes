@@ -39,7 +39,7 @@ patches:
 - patch: |-
     - op: add
       path: /spec/template/metadata/labels/config~1revision
-      value: "2024-10-02-02"
+      value: "2024-10-02-03"
   target:
     group: apps
     version: v1
@@ -48,7 +48,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/template/spec/initContainers/0/image
-      value: evolveum/midpoint:4.8.4-alpine
+      value: registry.lab.evolveum.com/midpoint:4.9-rc2-alpine
   target:
     group: apps
     version: v1
@@ -57,7 +57,16 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/template/spec/initContainers/1/image
-      value: evolveum/midpoint:4.8.4-alpine
+      value: registry.lab.evolveum.com/midpoint:4.9-rc2-alpine
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+    name: mp
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/initContainers/2/image
+      value: registry.lab.evolveum.com/midpoint:4.9-rc2-alpine
   target:
     group: apps
     version: v1
@@ -66,7 +75,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/template/spec/containers/1/image
-      value: evolveum/midpoint:4.8.4-alpine
+      value: registry.lab.evolveum.com/midpoint:4.9-rc2-alpine
   target:
     group: apps
     version: v1
