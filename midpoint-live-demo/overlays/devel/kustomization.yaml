@@ -21,7 +21,7 @@ patches:
 - patch: |-
     - op: replace
       path: /metadata/annotations/argocd.argoproj.io~1sync-options
-      value: "Force=true,Replace=true,Prune=true"
+      value: "Force=true,Replace=true"
   target:
     group: apps
     version: v1
@@ -30,7 +30,7 @@ patches:
 - patch: |-
     - op: add
       path: /spec/template/metadata/labels/config~1revision
-      value: "2024-10-02-08"
+      value: "2024-10-02-09"
   target:
     group: apps
     version: v1
@@ -64,18 +64,16 @@ patches:
     kind: StatefulSet
     name: mp
 - patch: |-
-    - op: replace
-      path: /spec/template/spec/initContainers/2/image
-      value: registry.lab.evolveum.com/midpoint:4.9-rc3-alpine
+    - op: remove
+      path: /spec/template/spec/initContainers/2
   target:
     group: apps
     version: v1
     kind: StatefulSet
     name: mp
 - patch: |-
-    - op: replace
-      path: /spec/template/spec/initContainers/2/args
-      value: [ "ls -la /opt/midpoint/lib" ]
+    - op: remove
+      path: /spec/template/spec/containers/1/volumeMounts/6
   target:
     group: apps
     version: v1
