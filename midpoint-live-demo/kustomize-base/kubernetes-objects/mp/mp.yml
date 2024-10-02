@@ -94,7 +94,7 @@ spec:
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
-        - name: loginPageUpd
+        - name: login-page-upd
           image: 'evolveum/midpoint:4.8.4-alpine'
           command: [ "/bin/bash", "-c" ]
           args:
