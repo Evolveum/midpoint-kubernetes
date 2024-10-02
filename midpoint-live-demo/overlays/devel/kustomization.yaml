@@ -64,9 +64,8 @@ patches:
     kind: StatefulSet
     name: mp
 - patch: |-
-    - op: replace
-      path: /spec/template/spec/initContainers/2/image
-      value: registry.lab.evolveum.com/midpoint:4.9-rc2-alpine
+    - op: remove
+      path: /spec/template/spec/initContainers/2
   target:
     group: apps
     version: v1
