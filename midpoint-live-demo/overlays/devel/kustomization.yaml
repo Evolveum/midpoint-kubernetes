@@ -30,7 +30,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/template/spec/initContainers/0/imagePullPolicy
-      value: IfNotPresent
+      value: Always
   target:
     group: apps
     version: v1
