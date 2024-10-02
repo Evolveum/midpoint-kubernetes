@@ -13,26 +13,6 @@ spec:
       labels:
         app: mp-db
     spec:
-      volumes:
-        - name: init-db
-          emptyDir: {}
-      initContainers:
-        - name: mp-db-init
-          image: 'evolveum/midpoint:4.8.4-alpine'
-          command:
-            - /bin/bash
-            - /opt/midpoint/bin/midpoint.sh
-            - init-native
-          env:
-            - name: MP_INIT_DB_CONCAT
-              value: /opt/db-init/010-init.sql
-          resources: {}
-          volumeMounts:
-            - name: init-db
-              mountPath: /opt/db-init
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          imagePullPolicy: IfNotPresent
       containers:
         - name: mp-demo-db
           image: 'postgres:16-alpine'
@@ -51,9 +31,6 @@ spec:
                   name: mp-secret
                   key: password
           resources: {}
-          volumeMounts:
-            - name: init-db
-              mountPath: /docker-entrypoint-initdb.d/
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
