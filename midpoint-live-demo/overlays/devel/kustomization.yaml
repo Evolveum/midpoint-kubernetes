@@ -48,7 +48,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/template/spec/initContainers/0/image
-      value: evolveum/midpoint:4.8-support-alpine
+      value: registry.lab.evolveum.com/midpoint:4.9-rc3-alpine
   target:
     group: apps
     version: v1
@@ -57,16 +57,15 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/template/spec/initContainers/1/image
-      value: evolveum/midpoint:4.8-support-alpine
+      value: registry.lab.evolveum.com/midpoint:4.9-rc3-alpine
   target:
     group: apps
     version: v1
     kind: StatefulSet
     name: mp
 - patch: |-
-    - op: replace
-      path: /spec/template/spec/initContainers/2/image
-      value: evolveum/midpoint:4.8-support-alpine
+    - op: remove
+      path: /spec/template/spec/initContainers/2
   target:
     group: apps
     version: v1
@@ -84,7 +83,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/template/spec/containers/1/image
-      value: evolveum/midpoint:4.8-support-alpine
+      value: registry.lab.evolveum.com/midpoint:4.9-rc3-alpine
   target:
     group: apps
     version: v1
