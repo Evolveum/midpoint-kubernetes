@@ -1,28 +1,97 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-bases:
-- ../../kustomize-base
-
-replacements:
-- source:
-    kind: ConfigMap
-    name: config
-    fieldPath: data.ingress_host
-  targets:
-  - select:
-      kind: Ingress
-    fieldPaths:
-    - spec.tls.0.hosts.0
-    - spec.rules.0.host
+patches:
+- patch: |-
+    - op: replace
+      path: /spec/tls/0/hosts/0
+      value: demo-test.k8s.evolveum.com
+  target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+- patch: |-
+    - op: replace
+      path: /spec/rules/0/host
+      value: demo-test.k8s.evolveum.com
+  target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+- patch: |-
+    - op: replace
+      path: /metadata/annotations/argocd.argoproj.io~1sync-options
+      value: "Force=true,Replace=true"
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+    name: mp*
+- patch: |-
+    - op: add
+      path: /spec/template/metadata/labels/config~1revision
+      value: "2024-10-02-03"
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+    name: mp*
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/initContainers/0/imagePullPolicy
+      value: IfNotPresent
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+    name: mp
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/initContainers/0/image
+      value: evolveum/midpoint:4.8.4-alpine
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+    name: mp
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/initContainers/1/image
+      value: evolveum/midpoint:4.8.4-alpine
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+    name: mp
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/initContainers/2/image
+      value: evolveum/midpoint:4.8.4-alpine
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+    name: mp
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/0/image
+      value: tomcat:10-jdk11-corretto
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+    name: mp
+- patch: |-
+    - op: replace
+      path: /spec/template/spec/containers/1/image
+      value: evolveum/midpoint:4.8.4-alpine
+  target:
+    group: apps
+    version: v1
+    kind: StatefulSet
+    name: mp
 
 resources:
+  - ../../kustomize-base
   - network-policy.yml
 
-configMapGenerator:
-- name: config
-  behavior: merge
-  literals:
-  - ingress_host=demo-test.k8s.evolveum.com
-  options:
-    disableNameSuffixHash: true
