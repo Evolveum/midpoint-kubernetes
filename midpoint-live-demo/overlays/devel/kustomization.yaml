@@ -65,7 +65,7 @@ patches:
     name: mp
 - patch: |-
     - op: remove
-      path: /spec/template/spec/initContainers/1
+      path: /spec/template/spec/initContainers/2
   target:
     group: apps
     version: v1
