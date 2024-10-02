@@ -49,7 +49,7 @@ patches:
     - op: replace
       path: /spec/template/spec/initContainers/0/image
       value: registry.lab.evolveum.com/midpoint:4.9-rc2.alpine
-    target:
+  target:
     group: apps
     version: v1
     kind: StatefulSet
