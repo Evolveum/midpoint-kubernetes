@@ -26,16 +26,16 @@ patches:
     group: apps
     version: v1
     kind: StatefulSet
-    name: mp*
+    name: mp.*
 - patch: |-
     - op: add
       path: /spec/template/metadata/labels/config~1revision
-      value: "2024-10-02-03"
+      value: "2024-10-02-04"
   target:
     group: apps
     version: v1
     kind: StatefulSet
-    name: mp*
+    name: mp.*
 - patch: |-
     - op: replace
       path: /spec/template/spec/initContainers/0/imagePullPolicy
