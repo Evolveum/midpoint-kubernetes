@@ -141,9 +141,6 @@ configMapGenerator:
 - name: hr-script-map
   files:
     - renaissance-demo-config/hr/hr.sh
-- name: login-page-map
-  files:
-    - renaissance-demo-config/midpoint/login-page/addLoginPage.sh
 - name: ldap-init-map
   files:
     - renaissance-demo-config/ldap/sssvlv.ldif

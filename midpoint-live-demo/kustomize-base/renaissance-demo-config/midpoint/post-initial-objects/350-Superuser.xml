@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2010-2020 Evolveum and contributors
+  ~ Copyright (c) 2010-2024 Evolveum and contributors
   ~
   ~ This work is dual-licensed under the Apache License 2.0
   ~ and European Union Public License. See LICENSE file for details.
@@ -15,6 +15,11 @@
     <assignment id="1">
         <identifier>archetype</identifier>
         <targetRef oid="00000000-0000-0000-0000-000000000328" type="ArchetypeType"/> <!-- System role -->
+    </assignment>
+    <assignment id="3">
+        <identifier>privileged-access</identifier>
+        <documentation>Superuser role provides privileged access - by definition.</documentation>
+        <targetRef oid="00000000-0000-0000-0000-000000000332" type="PolicyType"/>
     </assignment>
     <inducement>
         <targetRef oid="ba4af55b-de31-411f-80f0-ef8b4594b387" relation="default" type="ServiceType"/>

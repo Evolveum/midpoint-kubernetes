@@ -20,8 +20,6 @@ spec:
           emptyDir: {}
         - name: mp-home
           emptyDir: {}
-        - name: mp-lib
-          emptyDir: {}
         - name: mp-secret
           secret:
             secretName: mp-secret
@@ -29,10 +27,6 @@ spec:
         - name: pio
           configMap:
             name: pio-map
-        - name: login-page
-          configMap:
-            name: login-page-map
-            defaultMode: 0777
         - name: import
           configMap:
             name: hr-map
@@ -47,7 +41,7 @@ spec:
             defaultMode: 420
       initContainers:
         - name: mp-config-init
-          image: 'evolveum/midpoint:4.8.4-alpine'
+          image: 'evolveum/midpoint:4.9-alpine'
           command: [ "/bin/bash", "-c" ]
           args:
             - cd /opt/midpoint ;
@@ -79,7 +73,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: init
-          image: 'evolveum/midpoint:4.8.4-alpine'
+          image: 'evolveum/midpoint:4.9-alpine'
           command:
             - /bin/sh
             - '-c'
@@ -94,18 +88,6 @@ spec:
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
-        - name: login-page-upd
-          image: 'evolveum/midpoint:4.8.4-alpine'
-          command: [ "/bin/bash", "-c" ]
-          args:
-            - /mnt/page/addLoginPage.sh ;
-          volumeMounts:
-            - name: mp-home
-              mountPath: /opt/midpoint/var
-            - name: login-page
-              mountPath: /mnt/page
-            - name: mp-lib
-              mountPath: /mnt/lib
       containers:
         - name: tomcat
           image: 'tomcat:10-jdk11-corretto'
@@ -137,7 +119,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mp
-          image: 'evolveum/midpoint:4.8.4-alpine'
+          image: 'evolveum/midpoint:4.9-alpine'
           ports:
             - name: gui
               containerPort: 8080
@@ -204,8 +186,6 @@ spec:
               mountPath: /opt/midpoint/var/import/
             - name: mp-home
               mountPath: /opt/midpoint/var
-            - name: mp-lib
-              mountPath: /opt/midpoint/lib
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
