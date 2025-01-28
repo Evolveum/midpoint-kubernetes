@@ -63,6 +63,7 @@ resources:
 configMapGenerator:
 - name: pio-map
   files:
+    - renaissance-demo-config/midpoint/post-initial-objects/015-security-policy.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-roles.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-Approver.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-Delegator.xml
