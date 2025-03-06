@@ -114,6 +114,7 @@
 						<minOccurs>0</minOccurs>
 					</limitations>
 					<outbound>
+						<name>name</name>
 						<strength>strong</strength>
 						<source>
 							<path>$user/name</path>
@@ -125,6 +126,7 @@
 					<ref>ri:first_name</ref>
 					<displayName>First Name</displayName>
 					<outbound>
+						<name>givenName</name>
 						<source>
 							<path>$user/givenName</path>
 						</source>
@@ -138,6 +140,7 @@
 						<minOccurs>0</minOccurs>
 					</limitations>
 					<outbound>
+						<name>familyName</name>
 						<source>
 							<path>$user/familyName</path>
 						</source>
@@ -148,6 +151,7 @@
 					<ref>ri:tel_number</ref>
 					<displayName>Telephone Number</displayName>
 					<outbound>
+						<name>telephoneNumber</name>
 						<source>
 							<path>$user/telephoneNumber</path>
 						</source>
@@ -157,6 +161,7 @@
 					<ref>ri:city</ref>
 					<displayName>City</displayName>
 					<outbound>
+						<name>locality</name>
 						<source>
 							<path>$user/locality</path>
 						</source>

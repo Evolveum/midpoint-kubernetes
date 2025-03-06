@@ -78,6 +78,7 @@
                     <minOccurs>0</minOccurs>
                 </limitations>
                 <inbound id="7">
+                    <name>personalNumber</name>
                     <target>
                         <path>personalNumber</path>
                     </target>
@@ -91,6 +92,7 @@
                 <displayName>First Name</displayName>
                 <description>Definition of Firstname attribute handling.</description>
                 <inbound id="8">
+                    <name>givenName</name>
                     <target>
                         <c:path>$focus/givenName</c:path>
                     </target>
@@ -100,6 +102,7 @@
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:lastname</c:ref>
                 <displayName>Last name</displayName>
                 <inbound id="9">
+                    <name>familyName</name>
                     <target>
                         <c:path>$focus/familyName</c:path>
                     </target>
@@ -109,17 +112,20 @@
                 <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:artname</c:ref>
                 <displayName>Artistic name</displayName>
                 <inbound id="10">
+                    <name>artisticName</name>
                     <target>
                         <c:path xmlns:ext="http://prism.evolveum.com/xml/ns/demo/extension-electra">$focus/extension/ext:artisticName</c:path>
                     </target>
                 </inbound>
                 <inbound id="11">
+                    <name>nickName</name>
                     <strength>weak</strength>
                     <target>
                         <c:path>$focus/nickName</c:path>
                     </target>
                 </inbound>
                 <inbound>
+                    <name>name</name>
                     <strength>weak</strength>
                     <expression>
                         <script>
