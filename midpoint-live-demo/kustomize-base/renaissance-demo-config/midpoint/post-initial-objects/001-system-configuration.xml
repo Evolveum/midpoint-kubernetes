@@ -139,6 +139,11 @@
         </closedTasks>
     </cleanupPolicy>
     <internals>
+        <shadowCaching>
+            <defaultPolicy>
+                <cachingStrategy>passive</cachingStrategy>
+            </defaultPolicy>
+        </shadowCaching>
         <tracing>
             <profile id="12">
                 <name>performance</name>
@@ -1182,6 +1187,11 @@
                             <c:path>dependent</c:path>
                         </item>
                     </container>
+                    <container id="1">
+                        <identifier>execution-constraints</identifier>
+                        <path>executionConstraints</path>
+                        <expanded>true</expanded>
+                    </container>
                 </panel>
                 <panel id="86">
                     <identifier>operational-attributes-panel</identifier>
@@ -1550,7 +1560,7 @@
                         </item>
                     </container>
                     <container id="266">
-                        <identifier>associationReaction</identifier>
+                        <identifier>associationReactionMain</identifier>
                         <visibility>hidden</visibility>
                         <path>schemaHandling/associationType/subject/association/synchronization/reaction</path>
                     </container>
@@ -1569,7 +1579,7 @@
                         </item>
                     </container>
                     <container id="258">
-                        <identifier>associationReaction</identifier>
+                        <identifier>associationReactionOptional</identifier>
                         <visibility>hidden</visibility>
                         <path>schemaHandling/associationType/subject/association/synchronization/reaction</path>
                     </container>
@@ -1616,6 +1626,14 @@
                         </item>
                         <item id="173">
                             <path>schemaHandling/objectType/attribute/matchingRule</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="270">
+                            <path>schemaHandling/objectType/attribute/volatility/incoming/operation</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="271">
+                            <path>schemaHandling/objectType/attribute/volatility/outgoing/operation</path>
                             <visibility>visible</visibility>
                         </item>
                     </container>
@@ -1860,7 +1878,28 @@
                 </collection>
             </roleCatalog>
         </accessRequest>
+
     </adminGuiConfiguration>
+
+    <!--<roleAnalysis>-->
+    <!--    <attributeStatistics>-->
+    <!--        <type>UserType</type>-->
+    <!--        <path>title</path>-->
+    <!--        <path>locality</path>-->
+    <!--        <path>archetypeRef</path>-->
+    <!--        <path>extension/manager</path>-->
+    <!--        <assignment>-->
+    <!--            <targetType></targetType>-->
+    <!--            <rootOrgRef oid="my-root-department-oid" /> &lt;!&ndash; or archetypeRef &ndash;&gt;-->
+    <!--            <archetypeRef oid="department-archetype-oid" /> &lt;!&ndash; or rootOrgRef &ndash;&gt;-->
+    <!--        </assignment>-->
+    <!--        <organization>-->
+    <!--            <rootOrgRef oid="my-root-department-oid" /> &lt;!&ndash; or archetypeRef &ndash;&gt;-->
+    <!--            <archetypeRef oid="department-archetype-oid" /> &lt;!&ndash; or rootOrgRef &ndash;&gt;-->
+    <!--        </organization>-->
+    <!--    </attributeStatistics>-->
+
+    <!--</roleAnalysis>-->
     <deploymentInformation>
         <subscriptionIdentifier>051225971086</subscriptionIdentifier>
     </deploymentInformation>
