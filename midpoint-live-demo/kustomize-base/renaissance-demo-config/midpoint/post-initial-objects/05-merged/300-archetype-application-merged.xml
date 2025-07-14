@@ -1,0 +1,291 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+  ~ Copyright (c) 2023 Evolveum and contributors
+  ~
+  ~ This work is dual-licensed under the Apache License 2.0
+  ~ and European Union Public License. See LICENSE file for details.
+  -->
+<archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" oid="00000000-0000-0000-0000-000000000329">
+  <name>Application</name>
+  <description>Applications are basic building blocks for defining access.
+        Application is an administrative object describing information system/application
+        as a business target that the access relates to.
+    </description>
+  <assignment>
+    <assignmentRelation>
+      <holderType>ServiceType</holderType>
+    </assignmentRelation>
+  </assignment>
+  <archetypePolicy>
+    <display>
+      <label>
+        <orig>Application</orig>
+        <translation>
+          <key>Application.label</key>
+        </translation>
+      </label>
+      <pluralLabel>
+        <orig>Applications</orig>
+        <translation>
+          <key>Applications.title</key>
+        </translation>
+      </pluralLabel>
+      <icon>
+        <cssClass>fa fa-cloud</cssClass>
+        <color>#5b80a5</color>
+      </icon>
+    </display>
+    <objectTemplateRef oid="48aa8ec1-b2d0-4e64-b6b5-74cb3a9cf813"/>
+    <adminGuiConfiguration>
+      <objectDetails>
+        <type>ServiceType</type>
+        <!-- hidden panels -->
+        <panel>
+          <identifier>basic</identifier>
+          <visibility>hidden</visibility>
+          <default>false</default>
+        </panel>
+        <panel>
+          <identifier>assignments</identifier>
+          <visibility>visible</visibility>
+        </panel>
+        <panel>
+          <identifier>password</identifier>
+          <visibility>hidden</visibility>
+        </panel>
+        <panel>
+          <identifier>serviceGovernance</identifier>
+          <visibility>hidden</visibility>
+        </panel>
+        <!--Visible panels configuration -->
+        <panel>
+          <identifier>basic-application</identifier>
+          <display>
+            <label>Application.panel.basic</label>
+          </display>
+          <displayOrder>10</displayOrder>
+          <container>
+            <identifier>properties</identifier>
+            <display>
+              <label>Properties</label>
+            </display>
+            <item>
+              <path>name</path>
+            </item>
+            <item>
+              <path>displayName</path>
+            </item>
+            <item>
+              <path>description</path>
+            </item>
+            <item>
+              <path>url</path>
+            </item>
+            <item>
+              <path>riskLevel</path>
+            </item>
+            <item>
+              <path>requestable</path>
+            </item>
+            <item>
+              <path>jpegPhoto</path>
+            </item>
+            <!-- NOTE: if you miss any ServiceType attribute from default schema in this archetype, you can display it here.
+                         Do not forget to include its definition also in application object template.
+                         -->
+          </container>
+          <panelType>formPanel</panelType>
+          <default>true</default>
+        </panel>
+        <panel>
+          <identifier>projections</identifier>
+          <display>
+            <label>Application.panel.projections</label>
+            <icon>
+              <cssClass>fa fa-database</cssClass>
+            </icon>
+          </display>
+          <displayOrder>20</displayOrder>
+          <panelType>projections</panelType>
+        </panel>
+        <panel>
+          <identifier>activation</identifier>
+          <displayOrder>30</displayOrder>
+          <applicableForOperation>modify</applicableForOperation>
+        </panel>
+        <panel>
+          <identifier>inducements</identifier>
+          <displayOrder>40</displayOrder>
+        </panel>
+        <panel>
+          <identifier>serviceMembers</identifier>
+          <displayOrder>50</displayOrder>
+          <applicableForOperation>modify</applicableForOperation>
+          <listView>
+            <searchBoxConfiguration>
+              <objectTypeConfiguration>
+                <visibility>hidden</visibility>
+                <defaultValue>UserType</defaultValue>
+                <supportedTypes>UserType</supportedTypes>
+              </objectTypeConfiguration>
+              <indirectConfiguration>
+                <indirect>true</indirect>
+              </indirectConfiguration>
+            </searchBoxConfiguration>
+          </listView>
+        </panel>
+        <panel>
+          <identifier>governance</identifier>
+          <display>
+            <label>GovernanceCardsPanel.label</label>
+            <icon>
+              <cssClass>fa fa-users</cssClass>
+            </icon>
+          </display>
+          <displayOrder>60</displayOrder>
+          <applicableForOperation>modify</applicableForOperation>
+          <panelType>governanceCards</panelType>
+        </panel>
+        <panel>
+          <identifier>inducedBy</identifier>
+          <display>
+            <icon>
+              <cssClass>fa fa-list</cssClass>
+            </icon>
+          </display>
+          <displayOrder>70</displayOrder>
+          <applicableForOperation>modify</applicableForOperation>
+        </panel>
+        <panel>
+          <identifier>applicablePolicies</identifier>
+          <displayOrder>80</displayOrder>
+          <applicableForOperation>modify</applicableForOperation>
+        </panel>
+        <panel>
+          <identifier>history</identifier>
+          <displayOrder>90</displayOrder>
+          <applicableForOperation>modify</applicableForOperation>
+        </panel>
+        <panel>
+          <identifier>focusCases</identifier>
+          <displayOrder>100</displayOrder>
+          <applicableForOperation>modify</applicableForOperation>
+        </panel>
+        <panel>
+          <identifier>focusTriggers</identifier>
+          <displayOrder>110</displayOrder>
+          <applicableForOperation>modify</applicableForOperation>
+        </panel>
+        <panel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" id="15">
+          <identifier>classifications</identifier>
+          <display>
+            <label>
+              <orig>Classifications</orig>
+              <translation>
+                <key>classifications.panel.label</key>
+              </translation>
+            </label>
+            <tooltip>Information classifications (labels)</tooltip>
+            <icon>
+              <cssClass>fa fa-tags</cssClass>
+            </icon>
+          </display>
+          <displayOrder>92</displayOrder>
+          <panelType>policyAssignments</panelType>
+          <listView>
+            <identifier>classifications-view</identifier>
+            <type>c:AssignmentType</type>
+            <dataProvider xsi:type="c:RepositoryAssignmentDataProviderType"/>
+            <collection>
+              <filter>
+                <q:text>targetRef/@/archetypeRef matches ( oid = "00000000-0000-0000-0000-000000000330" )</q:text>
+              </filter>
+              <!--                            <collectionRef oid="00000000-0000-0000-0000-000000000330" type="c:ArchetypeType">
+                                                        </collectionRef> -->
+            </collection>
+          </listView>
+        </panel>
+        <panel id="11">
+          <identifier>resourceEntitlementsTopLevel</identifier>
+          <panelType>constructionInducements</panelType>
+          <display>
+            <label>
+              <orig>Construction inducements</orig>
+              <translation>
+                <key>Application.panel.constructionInducements</key>
+              </translation>
+            </label>
+          </display>
+          <displayOrder>115</displayOrder>
+        </panel>
+        <panel id="13">
+          <identifier>applicationRoles</identifier>
+          <panelType>inducedBy</panelType>
+          <display>
+            <label>
+              <orig>Application roles</orig>
+              <translation>
+                <key>Application.panel.inducedBy</key>
+              </translation>
+            </label>
+          </display>
+          <listView>
+            <identifier>applicationRoles</identifier>
+            <type>c:RoleType</type>
+            <collection>
+              <collectionRef oid="00000000-0000-0000-0001-000000000016" type="c:ObjectCollectionType"/>
+            </collection>
+            <searchBoxConfiguration>
+              <objectTypeConfiguration>
+                <visibility>hidden</visibility>
+                <defaultValue>RoleType</defaultValue>
+                <supportedTypes>RoleType</supportedTypes>
+              </objectTypeConfiguration>
+            </searchBoxConfiguration>
+          </listView>
+          <displayOrder>117</displayOrder>
+        </panel>
+      </objectDetails>
+    </adminGuiConfiguration>
+  </archetypePolicy>
+  <inducement>
+    <identifier>application-owner-record</identifier>
+    <documentation>(ISO27001/5.9,ISO27001/5.36)</documentation>
+    <policyRule>
+      <name>require-application-owner</name>
+      <policyConstraints>
+        <minAssignees>
+          <name>application-owner</name>
+          <multiplicity>1</multiplicity>
+          <relation>org:owner</relation>
+        </minAssignees>
+      </policyConstraints>
+      <markRef oid="5508aca4-2aef-47a6-ad50-892389823c91"/>
+      <policyActions>
+        <record>
+          <description>Record the mark for use in dashboards and reports.</description>
+        </record>
+      </policyActions>
+      <evaluationTarget>object</evaluationTarget>
+    </policyRule>
+  </inducement>
+  <inducement>
+    <identifier>application-classified</identifier>
+    <documentation>(ISO27001/5.12,ISO27001/5.13,ISO27001/5.36)</documentation>
+    <policyRule>
+      <name>require-application-classification</name>
+      <policyConstraints>
+        <hasNoAssignment>
+          <name>application-classification</name>
+          <targetArchetypeRef oid="00000000-0000-0000-0000-000000000330"/>
+        </hasNoAssignment>
+      </policyConstraints>
+      <markRef oid="2bb936a6-91b4-4439-82ac-1b3e89c2a26a"/>
+      <policyActions>
+        <record>
+          <description>Record the mark for use in dashboards and reports.</description>
+        </record>
+      </policyActions>
+    </policyRule>
+  </inducement>
+</archetype>
