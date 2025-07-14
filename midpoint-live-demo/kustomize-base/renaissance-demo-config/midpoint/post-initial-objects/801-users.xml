@@ -446,27 +446,14 @@
         </credentials>
     </user>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<user oid="74ddc2f7-5c2b-4f80-ab15-cb757d21ae86"
 		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema"
-		  xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+          xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+          xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+          xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3">
 		<name>sandro</name>
 		<extension>
 			<exmpl:jobCode>B002</exmpl:jobCode>
@@ -476,10 +463,10 @@
 			<identifier>archetype</identifier>
 			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
 		</assignment>
-		<assignment id="2">
+<!--		<assignment id="2">
 			<identifier>archetype-employee</identifier>
 			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
-		</assignment>
+		</assignment>-->
 		<assignment id="3">
 			<targetRef oid="7a1feb50-471f-11ea-8aab-1b2627541f15" type="OrgType"/>
 		</assignment>
@@ -537,7 +524,7 @@
 		<fullName>Sandro Botticelli</fullName>
 		<givenName>Sandro</givenName>
 		<familyName>Botticelli</familyName>
-		<personalNumber>001</personalNumber>
+		<personalNumber>61</personalNumber>
 		<credentials>
 			<password>
 				<value>
@@ -547,13 +534,14 @@
 		</credentials>
 	</user>
 
-
-
-
 	<user oid="a9363449-4269-4f64-b133-218e6fe7329d"
 		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema"
-		  xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+          xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+          xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+          xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3">
 		<name>luca</name>
 		<extension>
 			<exmpl:jobCode>O232</exmpl:jobCode>
@@ -563,10 +551,10 @@
 			<identifier>archetype</identifier>
 			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
 		</assignment>
-		<assignment id="2">
+<!--		<assignment id="2">
 			<identifier>archetype-employee</identifier>
 			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
-		</assignment>
+		</assignment>-->
 		<assignment id="3">
 			<targetRef oid="d809c8c2-4728-11ea-8fba-ebdb0607d4c2" type="OrgType"/>
 		</assignment>
@@ -600,16 +588,17 @@
 		<fullName>Luca Signorelli</fullName>
 		<givenName>Luca</givenName>
 		<familyName>Signorelli</familyName>
-		<personalNumber>007</personalNumber>
+		<personalNumber>7</personalNumber>
 	</user>
 
-
-
-	
 	<user oid="631009e9-f48e-4b04-80d6-d05ed6583370"
 		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema"
-		  xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+          xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+          xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+          xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3">
 		<name>giotto</name>
 		<extension>
 			<exmpl:jobCode>S106</exmpl:jobCode>
@@ -619,10 +608,10 @@
 			<identifier>archetype</identifier>
 			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
 		</assignment>
-		<assignment id="2">
+<!--		<assignment id="2">
 			<identifier>archetype-employee</identifier>
 			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
-		</assignment>
+		</assignment>-->
 		<assignment id="3">
 			<targetRef oid="a0c7d92c-4722-11ea-bc8d-d79a6cefb1bf" type="OrgType"/>
 		</assignment>
@@ -671,7 +660,7 @@
 		<fullName>Giotto di Bondone</fullName>
 		<givenName>Giotto</givenName>
 		<familyName>di Bondone</familyName>
-		<personalNumber>005</personalNumber>
+		<personalNumber>5</personalNumber>
 		<credentials>
 			<password>
 				<value>
@@ -680,12 +669,15 @@
 			</password>
 		</credentials>
 	</user>	
-	
-	
+
 	<user oid="2c34a48f-d8ea-4ee0-aaa6-56f54bb4b2ed"
 		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema"
-		  xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+          xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+          xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+          xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3">
 		<name>domenico</name>
 		<extension>
 			<exmpl:jobCode>O231</exmpl:jobCode>
@@ -694,10 +686,10 @@
 			<identifier>archetype</identifier>
 			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
 		</assignment>
-		<assignment id="2">
+<!--		<assignment id="2">
 			<identifier>archetype-employee</identifier>
 			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
-		</assignment>
+		</assignment>-->
 		<assignment id="3">
 			<targetRef oid="d809c8c2-4728-11ea-8fba-ebdb0607d4c2" type="OrgType"/>
 		</assignment>
@@ -734,7 +726,6 @@
 		<fullName>Domenico Ghirlandaio</fullName>
 		<givenName>Domenico</givenName>
 		<familyName>Ghirlandaio</familyName>
-		<personalNumber>016</personalNumber>
+		<personalNumber>16</personalNumber>
 	</user>
-	
 </objects>
