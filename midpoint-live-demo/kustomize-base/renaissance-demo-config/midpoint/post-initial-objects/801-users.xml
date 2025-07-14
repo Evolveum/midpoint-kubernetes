@@ -499,7 +499,6 @@
 			<targetRef oid="aaa6cde4-0471-11e9-9b50-c743da469067" type="RoleType" relation="org:owner"/>
 		</assignment>
 		<assignment>
-			<documentation>Reviewer role, to be able to do classification certifications (apps).</documentation>
 			<targetRef oid="00000000-0000-0000-0000-00000000000b" type="RoleType"/>
 		</assignment>
 		<assignment>
@@ -518,8 +517,6 @@
 			<targetRef oid="7cdcc670-2b0e-43eb-a67e-0be0e9809b89" relation="org:owner" type="RoleType"/>
 		</assignment>
 		<assignment>
-			<documentation>We need explicit Approver role assignment here, as owner relation does not grant that (y
-	et).</documentation>
 			<targetRef oid="00000000-0000-0000-0000-00000000000a" type="RoleType"/>
 		</assignment>
 		<fullName>Sandro Botticelli</fullName>
