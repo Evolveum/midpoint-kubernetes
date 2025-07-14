@@ -423,7 +423,7 @@
           xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
           xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
           xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
-          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="e3dc4009-cd13-40d6-bda9-jiritheteste"
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="b1be86eb-8465-4f85-a875-396457c866f5"
           version="25">
         <name>Jiri</name>
         <description>Something interesting
