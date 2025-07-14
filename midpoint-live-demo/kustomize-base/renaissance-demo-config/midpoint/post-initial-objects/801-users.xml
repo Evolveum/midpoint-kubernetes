@@ -12,17 +12,19 @@
                 <!-- Person -->
             </targetRef>
         </assignment>
-
+		<assignment>
+			<targetRef oid="48d4ef98-20e3-46ab-cd78-548d38364a6b" type="RoleType"/>
+		</assignment>
         <extension>
-            <ext:artisticName>DunkinDonatello</ext:artisticName>
+            <ext:artisticName>Donatello</ext:artisticName>
         </extension>
         <jpegPhoto>/9j/4AAQSkZJRgABAQEAYABgAAD/4gKwSUNDX1BST0ZJTEUAAQEAAAKgbGNtcwQwAABtbnRyUkdCIFhZWiAH5gAGABwADwAQABRhY3NwQVBQTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA9tYAAQAAAADTLWxjbXMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1kZXNjAAABIAAAAEBjcHJ0AAABYAAAADZ3dHB0AAABmAAAABRjaGFkAAABrAAAACxyWFlaAAAB2AAAABRiWFlaAAAB7AAAABRnWFlaAAACAAAAABRyVFJDAAACFAAAACBnVFJDAAACFAAAACBiVFJDAAACFAAAACBjaHJtAAACNAAAACRkbW5kAAACWAAAACRkbWRkAAACfAAAACRtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACQAAAAcAEcASQBNAFAAIABiAHUAaQBsAHQALQBpAG4AIABzAFIARwBCbWx1YwAAAAAAAAABAAAADGVuVVMAAAAaAAAAHABQAHUAYgBsAGkAYwAgAEQAbwBtAGEAaQBuAABYWVogAAAAAAAA9tYAAQAAAADTLXNmMzIAAAAAAAEMQgAABd7///MlAAAHkwAA/ZD///uh///9ogAAA9wAAMBuWFlaIAAAAAAAAG+gAAA49QAAA5BYWVogAAAAAAAAJJ8AAA+EAAC2xFhZWiAAAAAAAABilwAAt4cAABjZcGFyYQAAAAAAAwAAAAJmZgAA8qcAAA1ZAAAT0AAACltjaHJtAAAAAAADAAAAAKPXAABUfAAATM0AAJmaAAAmZwAAD1xtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAEcASQBNAFBtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEL/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCACoAIkDAREAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAgQBAwUABv/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAARBJLyAS0YDCKy4rLQSSS0wDgiwAMvKCgYFx4aOOJJGjzZIQRA8UBlhQIlA+aZwRw0ebCCOJJNAE4qMspLTeBCJGzzpJJAAQ6WhFQuZ5UaJpBHDZ50kIguHikIIExispHzXCIHDzhxIAYY8GLmWGUFJqGmEAPHnDggjNNgvFSsQIKQz0BeQcOHnSDi8zTTAGzKKyoqGT0RxBI0eeBGgDMPTkBkGOJgDxrAknDh5wggrCLRgkMUKQDdJOCAHDzZJxSWFhwBIwUmeboyccQMnnggSSseHjLLxczi02i8444vPPhBAgDxYNGWZpxIyaxYScEYYYJaOFAIBngkhBHDY+XiQmSOjZeQZo2ZQBeCWBlQmGVjo6MkhACo0KCw4UgjQgWlQibQZJcWFYoOigoPiwsMBDRWNCxBAwEAKjBWZZrC4kMDZeCMCBSNlxBSVhgmaaJUIlpoDBIJkhD5aCUFhYQZY4CIkGiOHAH//EACcQAAICAQIGAgMBAQAAAAAAAAECAAMREjEEEyEiMkEQMyNCQyAU/9oACAEBAAEFAvczOsz8LuvWftnLhwz+v5mGND9mn5PWewZu/LIjNiBkmhY6nNNwdU+v9DHh8/nrkbKGaZWoaHeChVmjSTzIXZZnrRxBz/M7WbN5QYM9RYjlYqdw6TWWgUxq3KsozonD9L/5mP4t5fBnv2hOdRytbwI4nKEamvNlGZgIS8puzPZ8G/z6pQGF1Sf9CiC+t5tHHMFleltZhAnB1hmG58D4z0Z7c4j3lJWjOF4aHh6mj8OiILbQWuaFQZseCMXdTkD6vncen88vXKL2d24xs67xLGyczYkdKECBd64v1T9WMJjgLDGrBq4NcV119OIULYU0wjHxQnNceQ3qi/XDMSoAve4z+qaXpOnlVDALJlyHZ+s5Z08Gv5Pa71+Q+r5bObT009lDkU3cSwFHEarLvN+sCwOVUKFP7DdN1+qbAxvIjJJBFBCI7XMKbAWI0tVX22thfNuHLMg8xvXvX9fxvCPnhlPLwlg5YdxXpDt2HEDYXh+qf0917p4/J397jhnOq4fkVAiniACTAuIekq4k1hHV3G6/YP8AGRjqZXR0KcoENlr3shBzOudBxo6qCrLc6GqxXYefNnqV0wIII3UWgNYaUzbX+WtIVHLZMLiOvbyuh0iLxDq3MEqr1FQMf4TrxA3uWVDu0jFm5gA0s3OtCa63q5lfbG7R+3tZtOsqGX2l0r6H257yQHsOnhq10ivbGlcS3xWJ0UQwSjfV3WnCtibsx6vgM31gd4jbS5tK1nNPvoIdjgJw64pTGbuoPXh/X7W9pQl3/qF6TW04junD9zCORDLfqxilcCW+AH4h2pV5X78K35s5YfHNn//EABQRAQAAAAAAAAAAAAAAAAAAAID/2gAIAQMBAT8BPX//xAAUEQEAAAAAAAAAAAAAAAAAAACA/9oACAECAQE/AT1//8QAMBAAAgECBAUDAwMFAQAAAAAAAAECESEQMVGBEiJBYXEDMpEgUqFCYnKCscHR4fD/2gAIAQEABj8CQvJ4Nx0GbkR+TYhR1I4rBeMb6na+DGkrlvye702c64fB7m+7Kv1F26EU3zLMjhDDbBf+6lh7lO5Ysr/5KvhMuJnLGETln+B192pVWl2IwarcZDDbD5we5XuW1LXkysmLhi97HtjXsUcU15qUba8j4ZJ0I1JEDc2xeC1H/cp6Sdesirz7svOvhF+N+ZGfD2PfXyc3wXHB15smeDc2xZLcvqjieWhdpHtk1rTDllQo3Ez/AAUarqVXwcWhI3Hh1oOo9xLNspTr0YpRUfLdTnlxdj2rY5W4+C02c6s/kfDdYSRMQ/o+Rz+CmlhKDyXtpmSjNJNaDjCF62OaXC+5dKuqF11wrUjTqeoLwPDsNFbdSEdFVkhzdedfB6kti3QrGyfQu8eCtERJi/iPDv8A8wcm6JPUlJPpRYLShZUWGVy+CaHLtQW5M/pH9DFFbrD7r2QkoUfWo6qmFEW6HDSsjhjlwi3Jmw/P0b4M4kqyPdC44+plQfDsLuSisOZ1sRJmxvh84f6xbWXQuh8C7CebzOGu+FIoj/EjuTKftN8WSxUP0kYrNncoskWujXfClKohRkzYWGzGjbC5xZdGKcvgdMdC5Q0oOt9Sq+0RmfI7VKu+NGen6ayzMiWmZHUZTX8F+m2F6JFq17ITd6a4c3wP8fTNvpbB06IiutClOuWpBUtpoT/U0LQSj7V1OA4lmz2zOLS4+6uZ5fR6mPpvWx3O5Icu1KkV1pVldRrtg/BXU8vFHqP9wlsV1RFWaRXYyvkSW56dfuSK63EbYxKLosW9CrzZ5wr36kfFNxKmVhrQ9KPRK4/GORcivtVWPSpfGMe2DHF+SPyVJLqX+0UtVj7ZfB//xAAmEAACAgEDAwQDAQAAAAAAAAABEQAhMUFR8GFxkRCBscGh0fHh/9oACAEBAAE/IcNKx8zowUD7gQ0Pcdue/wAREx0ywcKhyuK+YL1ZdYxMMKGxbCYMjUDAUHJoxeAzQp+FT8p+5Ue59SahAF5/EPu0eYQYkosgkMe3O0BbkLFe3W5uaVY5ztA70Ea6QiHLqdCIFoWkdICgUsdXSAODBo/UKJiO9K3kQB16zC6x2PaWE4HuZjPoomm+phEOgNrpy4C0LJYEfjn+QQMVANFp7aR4MyEf99+bAsCEskawbaAOiKhYkbBmutRDFANrH7mQ+OTQAOh2gcQBmaXGoAaHURU9p8GEm6n1AZCcQa0AXAyhwT9OZz+CaQilvFc4oJ7Vc+4AEcyXpfFAAQkhjqCSH7hBYBA06ls+JarJoAhA2AGciEFNkqfRMPbN4ydvRjybMDIZvHOKHKqtc5+gOtS9ec6QpQBVJAG+DgcKzUWx1lQlsgwFGb1PqJfzInp6W/dwOrEbF0owpJPwH66whUgXc4po7ILCNR6vTKIyjftHv4ocpbHwHMx4Fqb805gaK8uzn3ALUaz2AJqgLRdSpkxd0I8OxggAodftEdcIEZhAOEDujBvEd5pOkCgg7fQgdY89uf2YsQv4lXgKxZiILCrJr/YRcCvp7QPeDghPMoup2RYxFdEOCQ3SzFu5uX8woJ1gIqGQtQ9JZHhIoxp2S/I/z0fcRczc36HBOqJ/HOOGmqz789ox0SLMLT2mDMggUwTAJsJXKEZ8rUPdtAPlw0FeWAsv2hUtNAChKRrghZMWppzYJjARtA9exevor+T5lO59+hyf5Vj+QBQnjfT+wKyaOL6GI9mQqA6IEQiSeGTz4hCyTRtvuIMM488QgQz3bbQl2SEICATttB6wjUWs20GZX3APQZBH5XoLHHH+9YSavOX7OBjdMPbnb3TYaQA3WjmHXshYPaGDCKcCnGPeCEw9kPydW+3HLiBobjgFaknEKNOPNUBQuscPaYI/N9ETp7Po/wBcyQGnbzCYGHg+0CTge5+oEO33HO8J0G9zDPhJQxDFiE6PJhslj4jMUXqIdeTvEAYKGrhuBBAwR+Qfj0V+TPo+hk46fyeSPbnOkIBFeVaV+ocFA2ke5i3d4JGYRbB6Aw5JBqNA9ri3CdCtYhuUbODYccc7QGEVjWIoAbg6wgQZ7wn7k+VMB3CBjzcZ2hwadQAWGgJBL51gEtHXhzgio81/mn1KJxkF+P8AYNrrL5mCzuwjCNJAOEXNmvtLxACT+32ITFF/ceIunrCmiAeaVHoTAJ8TI82Yg8H/AJOqwz88/sQoremcmIhAFrEokUdxhjCjvmGxqlmGIgKmdeKNKpbDM1CgQyPYEQQIbBnEMDszxzM01IdfqODoQ+HtAzkT/CmoST4gFhBIBtiC17FdOsMFsUZfQQ1Qqrdd+awCm2kNNvuDqUzALFQgSUARECCnYllA0MK4yAtrL+fEJTgaA56fEOS9m04e0aNBaOznPnIxHp4gxlpjSBICj0m4QAtBGxhyQCLrbfw4Qxc1WniMxIV6iOGo7KMGrAQOBQ6FQFZAwwPw6wKTgCHGk2yqzz3iZqGeymUXfBDcnYyPidEeRMDLWQy8xfAo+EOj8DeabdBNIw0phtYOdXNbfPeM0Pg2iiCjZnrGEhQBVoxsSnQvfFwCnc8RwjwfUOUiQQKPbEAAewNBOA/5BqCzx65lCEBuGeSgEBfNzCAFqHrLhqU/cwAX3uAytrMIENTdl/Jk1WA7wCMZI994yBXzwxRZHYGYzFL1X9loqA6hdoAu6TAQbTcC07AIgrNdIVG4ASGG6FwSWsMlCbwo91EIOpiht4hQsD/f7gQIs1nrvDVAQEz00jHaEDfX6l9sIMABnWM3X0V+q+IQIHoPEAQmu6UPAEX5Q9MAx9QliC6+IwlqvvAedAQfbE1+yeHWMlXB/Y2YT0N5kRfXzeA7qvh9wMAPQJQvRRehZBXVredDeUil3ZAdzxQAbJiHkcMzUsfL/wAgLAEL7wQMZNxO2DKDwics9g/iIXCyPzALRB1SocNXvAIzBD5jqEPJiR//2gAMAwEAAgADAAAAEAABIIIBJBBBIAIJBJBJBAJAIAAAAAIIIBBJJABIAAIJBJIJBJAIAJABIBBIJJJJJJJBIBJBAAJJAIBIAAAAJABIIJIJJJABIJAAIJABAJIAJIIJIJIIAAJABAIIJIAJAAAAJBIIAAIBAJAJJJBIBBBIAABIAJJBBAAABJIBAJABIJBJBIIIIJJIJABBBAP/xAAUEQEAAAAAAAAAAAAAAAAAAACA/9oACAEDAQE/ED1//8QAFBEBAAAAAAAAAAAAAAAAAAAAgP/aAAgBAgEBPxA9f//EACYQAQACAgIBBAIDAQEAAAAAAAERIQAxQVFhcYGRobHwwdHh8RD/2gAIAQEAAT8QEVUKTpvuOCqgrUYCMzKkRDU9r5UWNq4CYsp0sQiTpi50KmCAyBApLZmANEjbom9zYSqEAXE7Tx5vg1VwoaRZL0O+9lz5iDuA+witTMVHBvy4QYpytQbk+/3QIL9gwiYQpPhhyARAAKb/ANzTmz6DGR9GI5ucOjaix7Zqyrn4RjUTj3LMBO8PI94xcI5RLPQ1olkgusJIysRHoitTIQRuOVUYmITYUivDkVlnwqFaSN+dKFWhacMiTSBRHSuYmjqWzuEUdxKNLXmA4aVjtwFQmVQeCBLWa3EEkGUa7gCg0soztefGMCJbCJ2TLATVX64aARJJAhoUHPrRg+LTCJIgB2Ve4l98kwxECo0ORrWpwEh1G+z/AJhLahjPtl97/c5cv0rGHKP/ACCkKooLsIlzNyQ1MaMROQYtxiCY9OTv1ccqGkHlkhKO1g8byZUwJ8MqBCvlHUGBmIUgkSqsrvhT4mXC7cAkLNBx1Q0ckY+SK3BLqknrq7LyQriqKHYb/Pnln4aQEk7mvZPvgjLvIZL7v1uPreWRJGNNSJN+lRcDjOkTRTJRsiTdyZJ36iy5nxLPg5d5E3h/iZGL2fJkhDi/GAgxY79snw4AACxJUNmhWrmHc3RkGH2OCSa3QVQarVh5iAgIkkpvdnJl24RbCO7w+ACIIqZQlEBCxwhkGRvcDtJCq3kFx7ygsRVcB6HWmBBiFVg2hXvEc64jAs1LQDUz5da9MoqXOUHzBd1uMSKthrzz34nIaHlfs2sRXD4rEKGSRQu98EfnOXTOLan/AHFFY1Y9jNZnt845TAKPswxIkGs/+EjwSSNgN3fEFPoxNiIn1RRd8TDtKbDJVALGm2gL78BycuNXMxnFGhOUknYcxrAqwkwUbT5ijUFsLihgAnFwbIu133Fq2+qkXFncT0MMe2QkIdJPH/Ay8Z3EH2QfJiVQxmAvyrLxlMoiohPEaL2s6xYk1rYM/AR7qG85MkQgNLOzMy9/TEnT2CsikT1Hc2u6SR7nLFErTqd5deqPr/wIBtAtzp53fXNsQsmcFGNhRWPC/pIjUgEJvku6eUXcW40QKAKCh3RotEzEcYGhUam9D/Ci6YgABHlTKH9HnK9qyhD6Jnk1NuMJeCCR7MOLEQYiFJHc4QQRITvqMV/mOFnkMGJLBq6HS61iqELAJrM93Tf83poEqfU+mQlRIdTCX817emAoTSTpicZUonv3rFjQAIx1YZLk5SQOgNYjWpiWZeVJypW48QnzMdTNdmMntQyQVOxQIiECngZIYgIfkAyttmdq9whUJMoCWv4deLwgfy88YiknXfTeWENhJe2plKU9GMpVIG2NNkL652pdBo2ouyd4rGkoqaJjY0vwVRk7aVOAiJ60lUcPMIxiGwY1enmuPjBuNgRScnzHuZIrO4VMkziTfIf1kVJmhPcuRXNkHyxkmSbDUSHeuY0dRswyVBUzCt+Ybl6E62ySGyQbeYu0pZOtIBgrcZHTC2AXEtIzqRmb/IBssbW+5fd8ZqrAIyN06dl5I1JBBu7dcffWAViLK6INsS+2umm4yqWo8C/PpRj5A6ESTV+t7znKScHVSafPYcGCUCvfVmE8zIughSjVz7j7vW2KLKenjDF1NfWM0iQE4vju/bJescMtlHZICNfT3iJCQFOkgYEnUK3G/OS0ESQWW6CErIs9inS84oiaAEwIzHhbyInAPHEQvT7nAMjzgUrE8OdkVzhxcA6c7T0ZwfKhEiZUyGRL53j+woCE1elkzsiaSbab7Tnb5yITYLriY7j/ALirhJSwd846KYjlJCNedfeA6Q/s9sm1xu+8geE/nJzMTN+3Ie8CwV747UMqUDxp2yALFdItxZ6C8sjU6eNjYkURLEgE39AcNbTBQiSjDzS/5tTn7CnluZNDzL9kqI6j5BrLkxgQE01wgeziTZl3TfnJ9IbUb2fu9YaiJIece1w8R6hOITBcLnr9jzSIRTaIjA33t0cNZS5clZlK96Psy4oJP5yzfOJRPA/LiCLv+cnGCEJHRE7o3uGqikLwSlB0LLA03p2pTcbMlZxFEtkiSYCyfZUIEAqAgY1Fq1w164SgElKBoT0uUoJqNYLynmRh1uB8VDjPTUoQ0DremeMES4S1G0nTZ6x4yNMVA9w9/wBmepQGilzOoiO/zlnAnEph19KkP6bxa41WkuO+feTI2JActtvMzM+ZxFtlQZMnMGogo37f5kpZcj7ZL+uFiSdExGDqr+VnMQ4Vd5CJVENWQC6nrWGKPAbSQTvQt1xxYnMeKEdtjxuRp8oLGLkmkDEj5mWXR1gO4JTZECeuZ98F/qeKzpZif9xtalSgevZPxUYEnFJEeb5ZSZ3bG0MorCpAwwbbKD1+SIktI0VDDXVX7eqA5UjcBBL6Yaz1m5EW8tR7YBy4T9ZboH8MCyPK9HjElCJUfLP3GMhEFlWYA5pNHLG5N5Dc3AwcL+W5nZOk0A6VyzrggSIDx0ZrMDURdrsR4bMxhEJRikGNld/P82zCT9q8o4sAtwRm4jaP3845CKQoin0pTzBWKjUqLTMEfl+PXEmUyBx4d2f446clRdSv8R/OQzqaSop+57uJiJcVnodNin8YWhS9rwuwZP4cStwn04oqyy/D/OX38sNSDMZJmAfVuODW9KMYyKMhIUFb4VJqn3IVTnIRJSlWeItjd7AUiUSCdoEuJYqN9Ki6DKkCRgsii0BI1T0pFxoq1nrrXM4anFQHwPiBfbATGySL3/H1jZhYHZoD0ef5dJlV/wADweJi9YAZtNoA5mL1qX8cpwyCkgEVEJHnRHhrCeQCXIWer2+vjBDSuciTJ7Tj5tn4yRI0H8ZBHkMnoyPn5yERCdFhp52eWN+3YhDfg8dXGvwT4TJYRs8EDQHtA0Y0oCzAWVRmjemZj5SFKmcT4OVfP1Lj5pgGm2BmCCPve3xJeQSMHSl8w4khdGZEfBuzVeMrNEWHo0vZBk5EBm11G3uD96yPDBdiSB+1kAQkxqoqHpBPrATtD0ysNJ3E9fhV7kgFJqRQw4iFHFdYKNWYWksc2PLPrhP6KthgXX86xsKwwR8M/X/3LsQgFDUfL2E4ZAIBQmkBawej3vcwySEhLymnZDz20RGECmmBQgdPxkWYIKP7yWXMtg+MYRiGGjw7A9nIcHkySZ8LvCPAVAljMXr08TxkchCtGzNBTe78RGIYI2r5wMpZeSoSc4k020IY1BDsxj6smRPnhrXM7xbkpRUeYhii1PEu5YSmygstPocVHoVFpY+UDAUyCpFV3DpCMPWJYxCNT6I0341iJ6BcRBqAssg8O6YIMCmmaUBCwPi7p91vMlOw7emJCBCRKadke7GUWPvbiiDShXQd+pzkChMEruCf13l4AnZ4VfsPxjKBDJdJ3D1PVk2YgQjABjSXoNHlrI2WZY7XT9/UZMJVGSP+AP1kwSEMKuEJTxp9MIIAVhgTczu9zzjGpYBIaWibWROiPLg1S1AjtmOoNd+4biaiUGw8MfGfqOCMQTggEflgA2wKihmH8H17jO5sJkqPZuciIRmYWz59B+TFFXQTHjLrYkceT3pyuOJ4Mf8AeCIvCvQBeGR3D+91GFOSyF0UserJ0UZTIjHm7/AfORCSFr33TwRHnEYqjIsgiO7t3QYb5qmwpBUcXSawzQoFQURXnBvbc64jXpkYAJx3GtfP1n6p/vJQhLixI+2QbFT6Y4+ftxZpFLFYYPap98GJCAUajQ/veBRs767/ALxZPAEPcFfInxhAwkaOmfq8ETB4jr8OE+Ee9h/J4wgFB7o/UfdvRiAA5B5WLfBh8QIgAUkr2+zCEk0EhIDcSv8ApjlJApxGz6j+cf0ZSsC/5+xgI0RPc1NGSJytHKRkHjAGSMvWn1aYw6UmeBrP7645GToUTEBHt9ZE8g4F4NYPC3Tl0/Th7qGzUl/knt4wEyBFSwwJ8oD744IrK1mC/wCOIgUSuVj97wyWESKeSPsHh9wt9mxbhpfMYLvoD2EqvV8dGBeGRmQqRHy+pjYTPGEkgmoPyqvfwlBhF0REV75ESpNlLDWIIhpZfRH+c8PGjED4kOO6YjxkJIppdiA+19sjS4Q/FD9D2cCAVNnjT+cYprMC7dfRMRGT8NVo12PuyHdB0QAj8YoK0c9zDkgKCInlLD6y4iQEAeZnns9tRk4tI/aRcc3iCiXfErroo9W8AUEIfGn5S9ujlBXgvkLBKb4JHX85DrBdyygkdaa3ccZVaO57Ka6rCpBwz1x95/0mf//Z</jpegPhoto>
         <telephoneNumber>+421915265355</telephoneNumber>
-        <fullName>DunkinDonatello di Niccolo di Betto Bardi</fullName>
-        <givenName>DunkinDonatello</givenName>
+        <fullName>Donatello di Niccolo di Betto Bardi</fullName>
+        <givenName>Donatello</givenName>
         <familyName>di Niccolo di Betto Bardi</familyName>
-        <nickName>DunkinDonatello</nickName>
-        <emailAddress>dunkindonatello@leonardo-workshop.org</emailAddress>
+        <nickName>Donatello</nickName>
+        <emailAddress>donatello@leonardo-workshop.org</emailAddress>
         <personalNumber>2</personalNumber>
         <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
             <password>
@@ -57,7 +59,10 @@
 <!--                &lt;!&ndash; artists &ndash;&gt;-->
 <!--            </targetRef>-->
 <!--        </assignment>-->
-
+		<policyStatement>
+			<markRef oid="00000000-0000-0000-0000-000000000830"/>
+			<type>apply</type>
+		</policyStatement>
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
                 <!-- Person -->
@@ -121,7 +126,9 @@
                 <!-- Person -->
             </targetRef>
         </assignment>
-
+	    <assignment>
+			<targetRef oid="4d12c1ac-440c-11ea-80af-2b314d06ba95" type="OrgType"/>
+		</assignment>
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -202,7 +209,12 @@
                 <effectiveStatus>enabled</effectiveStatus>
             </activation>
         </assignment>
-
+		<assignment>
+			<targetRef oid="1c42e1c4-1c9e-491e-b9c0-97f10c189346" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="8887e0b0-4726-11ea-96b0-5f5ced221e42" type="OrgType"/>
+		</assignment>		
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
                 <!-- Person -->
@@ -320,8 +332,15 @@
                 <effectiveStatus>enabled</effectiveStatus>
             </activation>
         </assignment>
-
-
+		<assignment id="3">
+			<targetRef oid="b26a39c6-4728-11ea-b17c-cbf8b228962c" type="OrgType"/>
+		</assignment>
+		<assignment id="5">
+			<targetRef oid="1c42e1c4-1c9e-491e-b9c0-97f10c189346" type="OrgType"/>
+		</assignment>
+		<assignment id="6">
+			<targetRef oid="293fe73e-472a-11ea-b04f-274374b2c5e2" type="OrgType"/>
+		</assignment>
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
                 <!-- Person -->
@@ -398,6 +417,15 @@
                 <!-- Person -->
             </targetRef>
         </assignment>
+		<assignment>
+			<targetRef oid="76b824f9-b7fd-4a20-a2fa-52940959e3d1" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="1c42e1c4-1c9e-491e-b9c0-97f10c189346" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="1993199d-457b-4406-b9b5-e453d6d0cd0f" type="OrgType"/>
+		</assignment>
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -417,29 +445,296 @@
             </password>
         </credentials>
     </user>
-    <user xmlns:exmpl="http://example.com/xml/ns/midpoint/schema" oid="b1be86eb-8465-4f85-a875-396457c866f5">
-        <name>Jiri</name>
-        <description>Something interesting
-        </description>
-        <assignment>
-            <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
-                <!-- Person -->
-            </targetRef>
-        </assignment>
-        <activation>
-            <effectiveStatus>enabled</effectiveStatus>
-            <enableTimestamp>2018-06-23T17:27:01.956+02:00</enableTimestamp>
-        </activation>
-        <fullName>Jiri the tester</fullName>
-        <givenName>Jiri</givenName>
-        <familyName>The Testere</familyName>
-        <emailAddress>jirithetester@example.com</emailAddress>
-        <credentials xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
-            <password>
-                <value>
-                    <t:clearValue>IGA4ever</t:clearValue>
-                </value>
-            </password>
-        </credentials>
-    </user>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<user oid="74ddc2f7-5c2b-4f80-ab15-cb757d21ae86"
+		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema"
+		  xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+		<name>sandro</name>
+		<extension>
+			<exmpl:jobCode>B002</exmpl:jobCode>
+		</extension>
+		<title>CSO</title>
+		<assignment id="1">
+			<identifier>archetype</identifier>
+			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
+		</assignment>
+		<assignment id="2">
+			<identifier>archetype-employee</identifier>
+			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+		</assignment>
+		<assignment id="3">
+			<targetRef oid="7a1feb50-471f-11ea-8aab-1b2627541f15" type="OrgType"/>
+		</assignment>
+		<assignment id="4">
+			<targetRef oid="7a1feb50-471f-11ea-8aab-1b2627541f15" type="OrgType" relation="org:manager"/>
+		</assignment>
+		<assignment id="5">
+			<targetRef oid="28e5ed87-0dad-4f1c-942f-9662cec0f7fb" type="OrgType"/>
+		</assignment>
+		<assignment id="6">
+			<targetRef oid="d630eb6e-eee6-4cbe-84e4-23ed247132bf" type="ServiceType" relation="org:owner"/>
+		</assignment>
+		<assignment id="7">
+			<targetRef oid="b26a39c6-4728-11ea-b17c-cbf8b228962c" type="OrgType"/>
+		</assignment>
+	    <assignment id="8">
+			<targetRef oid="832f409a-4726-11ea-b0be-8b8eab99c1ed" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="44449c67-82af-427f-b11c-520427b922ac" type="RoleType"/>
+		</assignment
+		<assignment>
+			<targetRef oid="a1572de4-b9b9-11e9-af3e-5f68b3207f97" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b5828699-34ac-41c9-97ef-3ee3d17ef3ce" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="aaa6cde4-0471-11e9-9b50-c743da469067" type="RoleType" relation="org:owner"/>
+		</assignment>
+		<assignment>
+			<documentation>Reviewer role, to be able to do classification certifications (apps).</documentation>
+			<targetRef oid="00000000-0000-0000-0000-00000000000b" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="a1572de4-b9b9-11e9-af3e-5f68b3207f97" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b9d2b604-b9b9-11e9-bbc4-17d8e85623b4" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="cc4fb6a4-232a-49cc-89b4-5561feec0d39" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b00ecf65-f0a8-45b9-97e8-4299070b7c39" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="7cdcc670-2b0e-43eb-a67e-0be0e9809b89" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<documentation>We need explicit Approver role assignment here, as owner relation does not grant that (y
+	et).</documentation>
+			<targetRef oid="00000000-0000-0000-0000-00000000000a" type="RoleType"/>
+		</assignment>
+		<fullName>Sandro Botticelli</fullName>
+		<givenName>Sandro</givenName>
+		<familyName>Botticelli</familyName>
+		<personalNumber>001</personalNumber>
+		<credentials>
+			<password>
+				<value>
+					<clearValue>qwe123</clearValue>
+				</value>
+			</password>
+		</credentials>
+	</user>
+
+
+
+
+	<user oid="a9363449-4269-4f64-b133-218e6fe7329d"
+		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema"
+		  xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+		<name>luca</name>
+		<extension>
+			<exmpl:jobCode>O232</exmpl:jobCode>
+		</extension>
+		<title>System Administrator</title>
+		<assignment id="1">
+			<identifier>archetype</identifier>
+			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
+		</assignment>
+		<assignment id="2">
+			<identifier>archetype-employee</identifier>
+			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+		</assignment>
+		<assignment id="3">
+			<targetRef oid="d809c8c2-4728-11ea-8fba-ebdb0607d4c2" type="OrgType"/>
+		</assignment>
+		<assignment id="4">
+			<targetRef oid="1c42e1c4-1c9e-491e-b9c0-97f10c189346" type="OrgType"/>
+		</assignment>
+		<assignment id="5">
+			<targetRef oid="b26a39c6-4728-11ea-b17c-cbf8b228962c" type="OrgType"/>
+		</assignment>	
+		<assignment id="6">
+			<targetRef oid="5a4b54ec-4727-11ea-a323-4fcdff560934" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="fc4b9c01-3d61-4ecf-9057-ede0e9563ac0" relation="org:owner" type="RoleType"/>
+		</assignment>		
+		<assignment>
+			<targetRef oid="20c4912a-ec10-4231-b9e2-54431864de66" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="eb107649-0e2a-4c4a-b58e-1d4b5729a1c2" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="d5eb6a0c-c0ae-421d-8d36-2df8051566ee" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="0ae6456e-6bf7-44c9-ae3b-1c56a53ecac5" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="740c9935-3cce-40ff-84f9-ceede086f835" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<fullName>Luca Signorelli</fullName>
+		<givenName>Luca</givenName>
+		<familyName>Signorelli</familyName>
+		<personalNumber>007</personalNumber>
+	</user>
+
+
+
+	
+	<user oid="631009e9-f48e-4b04-80d6-d05ed6583370"
+		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema"
+		  xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+		<name>giotto</name>
+		<extension>
+			<exmpl:jobCode>S106</exmpl:jobCode>
+		</extension>
+		<title>Marketing Director</title>
+		<assignment id="1">
+			<identifier>archetype</identifier>
+			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
+		</assignment>
+		<assignment id="2">
+			<identifier>archetype-employee</identifier>
+			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+		</assignment>
+		<assignment id="3">
+			<targetRef oid="a0c7d92c-4722-11ea-bc8d-d79a6cefb1bf" type="OrgType"/>
+		</assignment>
+		<assignment id="4">
+			<targetRef oid="a0c7d92c-4722-11ea-bc8d-d79a6cefb1bf" type="OrgType" relation="org:manager"/>
+		</assignment>
+		<assignment id="5">
+			<targetRef oid="28e5ed87-0dad-4f1c-942f-9662cec0f7fb" type="OrgType"/>
+		</assignment>
+		<assignment id="6">
+			<targetRef oid="45bb3cea-fde9-4590-812a-e86b37492bcd" type="ServiceType" relation="org:owner"/>
+		</assignment>
+		<assignment id="7">
+			<targetRef oid="0878ec00-4728-11ea-a745-0b989d121cb9" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="3c0554af-b5d8-4bc7-9dc4-2720c325f24c" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b5828699-34ac-41c9-97ef-3ee3d17ef3ce" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="00000000-0000-0000-0000-00000000000b" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="aaa6cde4-0471-11e9-9b50-c743da469067" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="704d4a90-fc24-11ea-ae44-bbd7d89473b3" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b5828699-34ac-41c9-97ef-3ee3d17ef3ce" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="4acc567f-fe4f-4897-a997-97c1b81bacbb" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b00ecf65-f0a8-45b9-97e8-4299070b7c39" relation="org:approver" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="9c1b8464-edfd-11ea-87b8-db467c5ae301" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="22dc2bd4-edfe-11ea-a904-5be54dda2e46" type="OrgType"/>
+		</assignment>
+		<fullName>Giotto di Bondone</fullName>
+		<givenName>Giotto</givenName>
+		<familyName>di Bondone</familyName>
+		<personalNumber>005</personalNumber>
+		<credentials>
+			<password>
+				<value>
+					<clearValue>qwe123</clearValue>
+				</value>
+			</password>
+		</credentials>
+	</user>	
+	
+	
+	<user oid="2c34a48f-d8ea-4ee0-aaa6-56f54bb4b2ed"
+		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema"
+		  xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3">
+		<name>domenico</name>
+		<extension>
+			<exmpl:jobCode>O231</exmpl:jobCode>
+		</extension>
+		<assignment id="1">
+			<identifier>archetype</identifier>
+			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
+		</assignment>
+		<assignment id="2">
+			<identifier>archetype-employee</identifier>
+			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+		</assignment>
+		<assignment id="3">
+			<targetRef oid="d809c8c2-4728-11ea-8fba-ebdb0607d4c2" type="OrgType"/>
+		</assignment>
+		<assignment id="4">
+			<targetRef oid="d809c8c2-4728-11ea-8fba-ebdb0607d4c2" type="OrgType" relation="org:manager"/>
+		</assignment>
+		<assignment id="5">
+			<targetRef oid="28e5ed87-0dad-4f1c-942f-9662cec0f7fb" type="OrgType"/>
+		</assignment>
+		<assignment id="6">
+			<targetRef oid="183cdca7-91da-424c-9ef6-8b481f6aa57f" type="ServiceType" relation="org:owner"/>
+		</assignment>
+		<assignment id="7">
+			<targetRef oid="cce83f54-4729-11ea-bd77-af4213206590" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="48d4ef98-20e3-46ab-cd78-548d38364a6b" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="20c4912a-ec10-4231-b9e2-54431864de66" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="70e53ac1-28b2-40d0-8642-27f3176ada03" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="6fe78119-f42e-4961-ba29-e515687b57f5" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="aab1d0c7-634e-4872-9d3c-fa487a20c41b" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="1954d496-f6ad-11ea-a96a-8bfa569f5fff" type="OrgType"/>
+		</assignment>
+		<fullName>Domenico Ghirlandaio</fullName>
+		<givenName>Domenico</givenName>
+		<familyName>Ghirlandaio</familyName>
+		<personalNumber>016</personalNumber>
+	</user>
+	
 </objects>
