@@ -453,7 +453,8 @@
           xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
           xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
           xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
-          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3">
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema">
 		<name>sandro</name>
 		<extension>
 			<exmpl:jobCode>B002</exmpl:jobCode>
@@ -541,7 +542,8 @@
           xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
           xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
           xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
-          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3">
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema">
 		<name>luca</name>
 		<extension>
 			<exmpl:jobCode>O232</exmpl:jobCode>
@@ -598,7 +600,8 @@
           xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
           xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
           xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
-          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3">
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema">
 		<name>giotto</name>
 		<extension>
 			<exmpl:jobCode>S106</exmpl:jobCode>
@@ -677,7 +680,8 @@
           xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
           xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
           xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
-          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3">
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema">
 		<name>domenico</name>
 		<extension>
 			<exmpl:jobCode>O231</exmpl:jobCode>
