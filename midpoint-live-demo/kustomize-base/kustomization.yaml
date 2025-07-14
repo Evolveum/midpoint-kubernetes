@@ -115,7 +115,7 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/01-initial/ap-approval-by-line-manager.xml
     - renaissance-demo-config/midpoint/post-initial-objects/01-initial/ap-approval-by-owner.xml
     - renaissance-demo-config/midpoint/post-initial-objects/01-initial/ap-approval-by-security.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/init-system-config.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/01-initial/init-system-config.xml
     - renaissance-demo-config/midpoint/post-initial-objects/01-initial/review-of-application-classifications.xml
     - renaissance-demo-config/midpoint/post-initial-objects/01-initial/role-maintainer-owned.xml
 
