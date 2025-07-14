@@ -523,13 +523,6 @@
 		<givenName>Sandro</givenName>
 		<familyName>Botticelli</familyName>
 		<personalNumber>61</personalNumber>
-		<credentials>
-			<password>
-				<value>
-					<clearValue>qwe123</clearValue>
-				</value>
-			</password>
-		</credentials>
 	</user>
 
 	<user oid="a9363449-4269-4f64-b133-218e6fe7329d"
@@ -590,7 +583,7 @@
 		<personalNumber>7</personalNumber>
 	</user>
 
-	<user oid="631009e9-f48e-4b04-80d6-d05ed6583370"
+	<user oid="a4706587-306c-463a-945b-3e1a73137b74"
 		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
           xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
           xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
@@ -661,13 +654,6 @@
 		<givenName>Giotto</givenName>
 		<familyName>di Bondone</familyName>
 		<personalNumber>5</personalNumber>
-		<credentials>
-			<password>
-				<value>
-					<clearValue>qwe123</clearValue>
-				</value>
-			</password>
-		</credentials>
 	</user>	
 
 	<user oid="2c34a48f-d8ea-4ee0-aaa6-56f54bb4b2ed"
