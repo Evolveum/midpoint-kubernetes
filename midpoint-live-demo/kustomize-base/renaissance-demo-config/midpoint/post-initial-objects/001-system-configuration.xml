@@ -1858,7 +1858,9 @@
 
         <configurableUserDashboard>
             <identifier>compliace-dashboard</identifier>
-            <configurableDashboardRef oid="118b5d33-93b8-4ef1-8c15-9bb9984ffa8b" relation="org:default" type="c:DashboardType"/>
+            <configurableDashboardRef oid="f941f3fc-dcef-4415-9e79-ae56b185a501" relation="org:default" type="c:DashboardType"/>   
+       <!--Depricated due to compliance merge-->  
+       <!--<configurableDashboardRef oid="118b5d33-93b8-4ef1-8c15-9bb9984ffa8b" relation="org:default" type="c:DashboardType"/>-->
         </configurableUserDashboard>
 
         <accessRequest>
