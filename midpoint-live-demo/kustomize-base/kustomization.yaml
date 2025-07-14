@@ -215,7 +215,7 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/360-classification-tlp-clear.xml
     - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/360-classification-tlp-green.xml
     - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/360-classification-tlp-red.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/app-collaboration-platform.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/app-collaboration-platform.xml #Duplicate
     - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/app-crm.xml
     - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/app-website.xml
 
