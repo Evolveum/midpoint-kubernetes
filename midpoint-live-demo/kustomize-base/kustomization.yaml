@@ -313,6 +313,7 @@ configMapGenerator:
 
 
     options:
+      disableNameSuffixHash: false
       annotations:
         argocd.argoproj.io/sync-options: Replace=true
 
