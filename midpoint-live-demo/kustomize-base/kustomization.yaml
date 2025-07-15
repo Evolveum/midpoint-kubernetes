@@ -2,67 +2,247 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 replacements:
-- source:
-    kind: ConfigMap
-    name: config
-    fieldPath: data.ingress_host
-  targets:
-  - select:
-      kind: Ingress
-    fieldPaths:
-    - spec.tls.0.hosts.0
-    - spec.rules.0.host
-- source:
-    kind: ConfigMap
-    name: config
-    fieldPath: data.ingress_cert
-  targets:
-  - select:
-      kind: Ingress
-    fieldPaths:
-    - spec.tls.0.secretName
-- source:
-    kind: ConfigMap
-    name: config
-    fieldPath: data.ingress_class_name
-  targets:
-  - select:
-      kind: Ingress
-    fieldPaths:
-    - spec.ingressClassName
-    
+  - source:
+      kind: ConfigMap
+      name: config
+      fieldPath: data.ingress_host
+    targets:
+      - select:
+          kind: Ingress
+        fieldPaths:
+          - spec.tls.0.hosts.0
+          - spec.rules.0.host
+  - source:
+      kind: ConfigMap
+      name: config
+      fieldPath: data.ingress_cert
+    targets:
+      - select:
+          kind: Ingress
+        fieldPaths:
+          - spec.tls.0.secretName
+  - source:
+      kind: ConfigMap
+      name: config
+      fieldPath: data.ingress_class_name
+    targets:
+      - select:
+          kind: Ingress
+        fieldPaths:
+          - spec.ingressClassName
+
 resources:
- - kustomize-env-config/options-map.yaml
-# LDAP base
- - kubernetes-objects/ldap/ldap-admin-ingress.yml
- - kubernetes-objects/ldap/ldap-service.yml
- - kubernetes-objects/ldap/ldap.yml
- - kubernetes-objects/ldap/ldap-admin-service.yml
-# MidPoint kubernetes base
- - kubernetes-objects/mp/mp-ingress.yml
- - kubernetes-objects/mp/mp-service.yml
- - kubernetes-objects/mp/mp-db.yml
- - kubernetes-objects/mp/mp-secret.yml
- - kubernetes-objects/mp/mp.yml
- - kubernetes-objects/mp/mp-db-service.yml
-# Addressbook kubernetes base
- - kubernetes-objects/addressbook/addressbook-service.yml
- - kubernetes-objects/addressbook/addressbook.yml
-# HR kubernetes base
- - kubernetes-objects/hr/hr.yml
- - kubernetes-objects/hr/hr-service.yml
-# Apache server kubernetes base
- - kubernetes-objects/apache/apache.yml
- - kubernetes-objects/apache/apache-ingress.yml
- - kubernetes-objects/apache/apache-service.yml
-# Tomcat kubernetes base
- - kubernetes-objects/tomcat/tomcat-hr-ingress.yml
- - kubernetes-objects/tomcat/tomcat-service.yml
- - kubernetes-objects/tomcat/tomcat-addressbook-ingress.yml
+  - kustomize-env-config/options-map.yaml
+
+  # LDAP base
+  - kubernetes-objects/ldap/ldap-admin-ingress.yml
+  - kubernetes-objects/ldap/ldap-service.yml
+  - kubernetes-objects/ldap/ldap.yml
+  - kubernetes-objects/ldap/ldap-admin-service.yml
+
+  # MidPoint kubernetes base
+  - kubernetes-objects/mp/mp-ingress.yml
+  - kubernetes-objects/mp/mp-service.yml
+  - kubernetes-objects/mp/mp-db.yml
+  - kubernetes-objects/mp/mp-secret.yml
+  - kubernetes-objects/mp/mp.yml
+  - kubernetes-objects/mp/mp-db-service.yml
+
+  # Addressbook kubernetes base
+  - kubernetes-objects/addressbook/addressbook-service.yml
+  - kubernetes-objects/addressbook/addressbook.yml
+
+  # HR kubernetes base
+  - kubernetes-objects/hr/hr.yml
+  - kubernetes-objects/hr/hr-service.yml
+
+  # Apache server kubernetes base
+  - kubernetes-objects/apache/apache.yml
+  - kubernetes-objects/apache/apache-ingress.yml
+  - kubernetes-objects/apache/apache-service.yml
+
+  # Tomcat kubernetes base
+  - kubernetes-objects/tomcat/tomcat-hr-ingress.yml
+  - kubernetes-objects/tomcat/tomcat-service.yml
+  - kubernetes-objects/tomcat/tomcat-addressbook-ingress.yml
 
 configMapGenerator:
-- name: pio-map
-  files:
+  - name: pio-map
+    files:
+ # 01-initial
+    #- renaissance-demo-config/midpoint/post-initial-objects/01-initial/029-archetype-application.xml     #Merged
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/062-archetype-classification.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/063-archetype-clearance.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/01-initial/150-archetype-employee.xml     #Duplicate
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/150-location.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/01-initial/150-organizational-unit.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/01-initial/150-organization.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/150-project.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/150-team.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/250-neglected.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/250-no-classification.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/250-orphaned.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/250-privileged-access.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/250-understaffed-security.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/253-object-collection-application-active.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/01-initial/300-classification-information-security-responsibility.xml     #Duplicate
+    #- renaissance-demo-config/midpoint/post-initial-objects/01-initial/300-classification-privileged-access.xml     #Duplicate
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-applications-without-classification.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-information-security-responsibilities-all.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-information-security-responsibilities-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-orphaned-applications.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-orphaned-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-privileged-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-privileged-users.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-roles-active.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-roles-all.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-understaffed-security-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/350-users-active.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/353-users-with-sod-violations.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/357-suspicious-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/358-suspicious-applications.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/358-suspicious-users.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/390-ad-hoc-classifications.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/390-approval-policies.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/390-projects.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/390-teams.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/390-world.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/811-exclusion-violation.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/830-suspicious.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/01-initial/899-dashboard-compliance.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/910-task-recompute-all-users.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/ap-approval-by-application-owner.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/ap-approval-by-line-manager.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/ap-approval-by-owner.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/ap-approval-by-security.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/01-initial/init-system-config.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/review-of-application-classifications.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/01-initial/role-maintainer-owned.xml
+
+# 02-sample-book
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/001-aanderso.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/002-bbrown.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/003-carol.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/004-davies.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/005-eevans.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/006-ffox.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/007-ggreen.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/008-hharris.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/009-iirvine.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/010-jjones.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/011-kknowles.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/012-llewis.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/013-mmorgan.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/014-nnewman.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/015-oowen.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/016-phillips.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/017-qquinn.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/018-rrussell.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/019-ssimpson.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/020-tturner.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/021-uunderhi.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/022-violet.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/023-wwalker.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/024-xxanadu.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/025-yyoung.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/026-zzimmerm.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/150-archetype-employee.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/app-collaboration-platform.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/app-crm.xml     #Duplicate
+    #- renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/app-website.xml     #Duplicate
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/business-analyst.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/call-center-agent.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/call-center-manager.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/collaboration-admin.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/collaboration-limted-user.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/collaboration-ordinary-user.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/collaboration-power-user.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/crm-customer-database-admin.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/crm-customer-database-read.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/crm-customer-database-write.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/data-protection-officer.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F10000-example.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F11000-sales-marketing.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F11100-direct-sales.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F11200-indirect-sales.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F11300-marketing.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F11310-brand-awareness.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F11320-creative.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F12000-operations.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F12100-legal.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F12200-backoffice.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F12300-it.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F12310-sysadmin.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F12320-software.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F12330-architecture.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F19000-controlling.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F19100-audit.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F19200-security.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F19210-physical-security.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/F19220-information-security.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/financial-auditor.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/influencer.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/information-security-auditor.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/information-security-manager.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/information-security-specialist.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/invoice-clerk.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/invoice-supervisor.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/LBE-berlin.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/LEU-eu.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/LLO-london.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/LNY-new-york.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/LPA-paris.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/marketing-manager.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/marketing-specialist.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/PBD2020-big-deal.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/PLS-loudspeaker.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/PWL2-wonderland2.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/sales-agent.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/sales-assistant.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/sales-manager.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/schema-example.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/software-developer.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/software-development-mentor.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/system-administrator.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/tech-support-specialist.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/website-admin.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/website-editor.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/02-sample-book/website-logs.xml
+
+# 03-experiment-tlp
+    - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/360-classification-tlp-amber-strict.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/360-classification-tlp-amber.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/360-classification-tlp-clear.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/360-classification-tlp-green.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/360-classification-tlp-red.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/app-collaboration-platform.xml #Duplicate
+    - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/app-crm.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/03-experiment-tlp/app-website.xml
+
+# 04-demo
+    #- renaissance-demo-config/midpoint/post-initial-objects/04-demo/022-archetype-business-role.xml      #Merged
+    #- renaissance-demo-config/midpoint/post-initial-objects/04-demo/028-archetype-application-role.xml   #Merged
+    #- renaissance-demo-config/midpoint/post-initial-objects/04-demo/029-archetype-application.xml        #Merged
+    #- renaissance-demo-config/midpoint/post-initial-objects/04-demo/105-audrey.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/04-demo/106-manfred.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/04-demo/107-ddevelis.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/04-demo/300-classification-privileged-access.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/04-demo/app-portfolio-management.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/04-demo/app-project-management.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/04-demo/init-system-config-demo.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/04-demo/portfolio-management-admin.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/04-demo/portfolio-management-user.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/04-demo/random-role.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/04-demo/susie.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/04-demo/task-recompute-all-policies.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/04-demo/task-recompute-all-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/04-demo/task-recompute-all-services.xml
+# 05-merged
+    - renaissance-demo-config/midpoint/post-initial-objects/05-merged/300-archetype-application-merged.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/05-merged/300-archetype-application-role-merged.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/05-merged/300-archetype-business-role-merged.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/05-merged/801-users-enriched.xml
+# Original    
     - renaissance-demo-config/midpoint/post-initial-objects/015-security-policy.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-roles.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-Approver.xml
@@ -77,9 +257,9 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/154-LDAP-import-dry-run.xml
     - renaissance-demo-config/midpoint/post-initial-objects/200-archetype-org-unit.xml
     - renaissance-demo-config/midpoint/post-initial-objects/201-archetype-project.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/300-archetype-application-role.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/300-archetype-application.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/300-archetype-business-role.xml
+    #- renaissance-demo-config/midpoint/post-initial-objects/300-archetype-application-role.xml   #Merged
+    #- renaissance-demo-config/midpoint/post-initial-objects/300-archetype-application.xml       #Merged
+    #- renaissance-demo-config/midpoint/post-initial-objects/300-archetype-business-role.xml      #Merged
     - renaissance-demo-config/midpoint/post-initial-objects/300-archetype-classification.xml
     - renaissance-demo-config/midpoint/post-initial-objects/300-archetype-clearance.xml
     - renaissance-demo-config/midpoint/post-initial-objects/300-object-template-application-role.xml
@@ -117,7 +297,7 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/425-object-collection-users-cat1.xml
     - renaissance-demo-config/midpoint/post-initial-objects/425-object-collection-users-cat2.xml
     - renaissance-demo-config/midpoint/post-initial-objects/425-object-collection-users-nda.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/426-dashboard-compliance.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/426-dashboard-compliance.xml    #Disabled after alignment with Slavek
     - renaissance-demo-config/midpoint/post-initial-objects/430-object-collection-correlate-later-shadows.xml
     - renaissance-demo-config/midpoint/post-initial-objects/431-object-collection-decommission-later-shadows.xml
     - renaissance-demo-config/midpoint/post-initial-objects/432-object-collection-do-not-touch-shadows.xml
@@ -130,33 +310,44 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/950-HR-import.xml
     - renaissance-demo-config/midpoint/post-initial-objects/998-task-HR-livesync.xml
     - renaissance-demo-config/midpoint/post-initial-objects/999-LDAP-live-sync.xml
-  options:
-    annotations:
-      argocd.argoproj.io/sync-options: Replace=true
-- name: extension-map
-  files:
-    - renaissance-demo-config/midpoint/extension-schema/extension-electra.xsd
-- name: hr-map
-  files:
-    - renaissance-demo-config/hr/midpoint-source.csv
-- name: hr-script-map
-  files:
-    - renaissance-demo-config/hr/hr.sh
-- name: ldap-init-map
-  files:
-    - renaissance-demo-config/ldap/sssvlv.ldif
-    - renaissance-demo-config/ldap/baseEntry.ldif
-    - renaissance-demo-config/ldap/ppolicy.ldif
-    - renaissance-demo-config/ldap/acl.ldif
-- name: ldap-dynschema-map
-  files:
-    - renaissance-demo-config/ldap/dyngroup.schema
-- name: addressbook-script-map
-  files:
-    - renaissance-demo-config/addressbook/addressbook.sh
-- name: apache-map
-  files:
-    - renaissance-demo-config/apache/httpd.conf
-- name: tomcat-map
-  files:
-    - renaissance-demo-config/tomcat/server.xml
+
+
+    options:
+      disableNameSuffixHash: false
+      annotations:
+        argocd.argoproj.io/sync-options: Replace=true
+
+  - name: extension-map
+    files:
+      - renaissance-demo-config/midpoint/extension-schema/extension-electra.xsd
+
+  - name: hr-map
+    files:
+      - renaissance-demo-config/hr/midpoint-source.csv
+
+  - name: hr-script-map
+    files:
+      - renaissance-demo-config/hr/hr.sh
+
+  - name: ldap-init-map
+    files:
+      - renaissance-demo-config/ldap/sssvlv.ldif
+      - renaissance-demo-config/ldap/baseEntry.ldif
+      - renaissance-demo-config/ldap/ppolicy.ldif
+      - renaissance-demo-config/ldap/acl.ldif
+
+  - name: ldap-dynschema-map
+    files:
+      - renaissance-demo-config/ldap/dyngroup.schema
+
+  - name: addressbook-script-map
+    files:
+      - renaissance-demo-config/addressbook/addressbook.sh
+
+  - name: apache-map
+    files:
+      - renaissance-demo-config/apache/httpd.conf
+
+  - name: tomcat-map
+    files:
+      - renaissance-demo-config/tomcat/server.xml

@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: config
 data:
-  ingress_host: demo.k8s.evolveum.com
+  ingress_host: demo.example.com
   ingress_cert: cert-lab-evolveum
-  ingress_class_name: nginx
-  cluster_domain: k8s.evolveum.com
+  ingress_class_name: traefik
+  cluster_domain: cluster.local

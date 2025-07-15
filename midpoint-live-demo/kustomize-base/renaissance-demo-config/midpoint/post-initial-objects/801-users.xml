@@ -12,7 +12,9 @@
                 <!-- Person -->
             </targetRef>
         </assignment>
-
+		<assignment>
+			<targetRef oid="48d4ef98-20e3-46ab-cd78-548d38364a6b" type="RoleType"/>
+		</assignment>
         <extension>
             <ext:artisticName>Donatello</ext:artisticName>
         </extension>
@@ -57,7 +59,10 @@
 <!--                &lt;!&ndash; artists &ndash;&gt;-->
 <!--            </targetRef>-->
 <!--        </assignment>-->
-
+		<policyStatement>
+			<markRef oid="00000000-0000-0000-0000-000000000830"/>
+			<type>apply</type>
+		</policyStatement>
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
                 <!-- Person -->
@@ -121,7 +126,9 @@
                 <!-- Person -->
             </targetRef>
         </assignment>
-
+	    <assignment>
+			<targetRef oid="4d12c1ac-440c-11ea-80af-2b314d06ba95" type="OrgType"/>
+		</assignment>
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -202,7 +209,12 @@
                 <effectiveStatus>enabled</effectiveStatus>
             </activation>
         </assignment>
-
+		<assignment>
+			<targetRef oid="1c42e1c4-1c9e-491e-b9c0-97f10c189346" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="8887e0b0-4726-11ea-96b0-5f5ced221e42" type="OrgType"/>
+		</assignment>		
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
                 <!-- Person -->
@@ -320,8 +332,15 @@
                 <effectiveStatus>enabled</effectiveStatus>
             </activation>
         </assignment>
-
-
+		<assignment id="3">
+			<targetRef oid="b26a39c6-4728-11ea-b17c-cbf8b228962c" type="OrgType"/>
+		</assignment>
+		<assignment id="5">
+			<targetRef oid="1c42e1c4-1c9e-491e-b9c0-97f10c189346" type="OrgType"/>
+		</assignment>
+		<assignment id="6">
+			<targetRef oid="293fe73e-472a-11ea-b04f-274374b2c5e2" type="OrgType"/>
+		</assignment>
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
                 <!-- Person -->
@@ -398,6 +417,15 @@
                 <!-- Person -->
             </targetRef>
         </assignment>
+		<assignment>
+			<targetRef oid="76b824f9-b7fd-4a20-a2fa-52940959e3d1" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="1c42e1c4-1c9e-491e-b9c0-97f10c189346" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="1993199d-457b-4406-b9b5-e453d6d0cd0f" type="OrgType"/>
+		</assignment>
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -417,4 +445,274 @@
             </password>
         </credentials>
     </user>
+
+	<user oid="74ddc2f7-5c2b-4f80-ab15-cb757d21ae86"
+		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+          xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+          xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+          xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema">
+		<name>sandro</name>
+		<extension>
+			<exmpl:jobCode>B002</exmpl:jobCode>
+		</extension>
+		<title>CSO</title>
+		<assignment id="1">
+			<identifier>archetype</identifier>
+			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
+		</assignment>
+<!--		<assignment id="2">
+			<identifier>archetype-employee</identifier>
+			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+		</assignment>-->
+		<assignment id="3">
+			<targetRef oid="7a1feb50-471f-11ea-8aab-1b2627541f15" type="OrgType"/>
+		</assignment>
+		<assignment id="4">
+			<targetRef oid="7a1feb50-471f-11ea-8aab-1b2627541f15" type="OrgType" relation="org:manager"/>
+		</assignment>
+		<assignment id="5">
+			<targetRef oid="28e5ed87-0dad-4f1c-942f-9662cec0f7fb" type="OrgType"/>
+		</assignment>
+		<assignment id="6">
+			<targetRef oid="d630eb6e-eee6-4cbe-84e4-23ed247132bf" type="ServiceType" relation="org:owner"/>
+		</assignment>
+		<assignment id="7">
+			<targetRef oid="b26a39c6-4728-11ea-b17c-cbf8b228962c" type="OrgType"/>
+		</assignment>
+	    <assignment id="8">
+			<targetRef oid="832f409a-4726-11ea-b0be-8b8eab99c1ed" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="44449c67-82af-427f-b11c-520427b922ac" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="a1572de4-b9b9-11e9-af3e-5f68b3207f97" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b5828699-34ac-41c9-97ef-3ee3d17ef3ce" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="aaa6cde4-0471-11e9-9b50-c743da469067" type="RoleType" relation="org:owner"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="00000000-0000-0000-0000-00000000000b" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="a1572de4-b9b9-11e9-af3e-5f68b3207f97" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b9d2b604-b9b9-11e9-bbc4-17d8e85623b4" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="cc4fb6a4-232a-49cc-89b4-5561feec0d39" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b00ecf65-f0a8-45b9-97e8-4299070b7c39" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="7cdcc670-2b0e-43eb-a67e-0be0e9809b89" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="00000000-0000-0000-0000-00000000000a" type="RoleType"/>
+		</assignment>
+		<fullName>Sandro Botticelli</fullName>
+		<givenName>Sandro</givenName>
+		<familyName>Botticelli</familyName>
+		<personalNumber>61</personalNumber>
+	</user>
+
+	<user oid="a9363449-4269-4f64-b133-218e6fe7329d"
+		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+          xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+          xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+          xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema">
+		<name>luca</name>
+		<extension>
+			<exmpl:jobCode>O232</exmpl:jobCode>
+		</extension>
+		<title>System Administrator</title>
+		<assignment id="1">
+			<identifier>archetype</identifier>
+			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
+		</assignment>
+<!--		<assignment id="2">
+			<identifier>archetype-employee</identifier>
+			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+		</assignment>-->
+		<assignment id="3">
+			<targetRef oid="d809c8c2-4728-11ea-8fba-ebdb0607d4c2" type="OrgType"/>
+		</assignment>
+		<assignment id="4">
+			<targetRef oid="1c42e1c4-1c9e-491e-b9c0-97f10c189346" type="OrgType"/>
+		</assignment>
+		<assignment id="5">
+			<targetRef oid="b26a39c6-4728-11ea-b17c-cbf8b228962c" type="OrgType"/>
+		</assignment>	
+		<assignment id="6">
+			<targetRef oid="5a4b54ec-4727-11ea-a323-4fcdff560934" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="fc4b9c01-3d61-4ecf-9057-ede0e9563ac0" relation="org:owner" type="RoleType"/>
+		</assignment>		
+		<assignment>
+			<targetRef oid="20c4912a-ec10-4231-b9e2-54431864de66" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="eb107649-0e2a-4c4a-b58e-1d4b5729a1c2" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="d5eb6a0c-c0ae-421d-8d36-2df8051566ee" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="0ae6456e-6bf7-44c9-ae3b-1c56a53ecac5" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="740c9935-3cce-40ff-84f9-ceede086f835" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<fullName>Luca Signorelli</fullName>
+		<givenName>Luca</givenName>
+		<familyName>Signorelli</familyName>
+		<personalNumber>7</personalNumber>
+	</user>
+
+	<user oid="a4706587-306c-463a-945b-3e1a73137b74"
+		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+          xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+          xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+          xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema">
+		<name>giotto</name>
+		<extension>
+			<exmpl:jobCode>S106</exmpl:jobCode>
+		</extension>
+		<title>Marketing Director</title>
+		<assignment id="1">
+			<identifier>archetype</identifier>
+			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
+		</assignment>
+<!--		<assignment id="2">
+			<identifier>archetype-employee</identifier>
+			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+		</assignment>-->
+		<assignment id="3">
+			<targetRef oid="a0c7d92c-4722-11ea-bc8d-d79a6cefb1bf" type="OrgType"/>
+		</assignment>
+		<assignment id="4">
+			<targetRef oid="a0c7d92c-4722-11ea-bc8d-d79a6cefb1bf" type="OrgType" relation="org:manager"/>
+		</assignment>
+		<assignment id="5">
+			<targetRef oid="28e5ed87-0dad-4f1c-942f-9662cec0f7fb" type="OrgType"/>
+		</assignment>
+		<assignment id="6">
+			<targetRef oid="45bb3cea-fde9-4590-812a-e86b37492bcd" type="ServiceType" relation="org:owner"/>
+		</assignment>
+		<assignment id="7">
+			<targetRef oid="0878ec00-4728-11ea-a745-0b989d121cb9" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="3c0554af-b5d8-4bc7-9dc4-2720c325f24c" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b5828699-34ac-41c9-97ef-3ee3d17ef3ce" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="00000000-0000-0000-0000-00000000000b" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="aaa6cde4-0471-11e9-9b50-c743da469067" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="704d4a90-fc24-11ea-ae44-bbd7d89473b3" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b5828699-34ac-41c9-97ef-3ee3d17ef3ce" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="4acc567f-fe4f-4897-a997-97c1b81bacbb" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="b00ecf65-f0a8-45b9-97e8-4299070b7c39" relation="org:approver" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="9c1b8464-edfd-11ea-87b8-db467c5ae301" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="22dc2bd4-edfe-11ea-a904-5be54dda2e46" type="OrgType"/>
+		</assignment>
+		<fullName>Giotto di Bondone</fullName>
+		<givenName>Giotto</givenName>
+		<familyName>di Bondone</familyName>
+		<personalNumber>5</personalNumber>
+	</user>	
+
+	<user oid="2c34a48f-d8ea-4ee0-aaa6-56f54bb4b2ed"
+		  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+          xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+          xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+          xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+          xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+          xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+		  xmlns:exmpl="http://example.com/xml/ns/midpoint/schema">
+		<name>domenico</name>
+		<extension>
+			<exmpl:jobCode>O231</exmpl:jobCode>
+		</extension>
+		<assignment id="1">
+			<identifier>archetype</identifier>
+			<targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType"/>
+		</assignment>
+<!--		<assignment id="2">
+			<identifier>archetype-employee</identifier>
+			<targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+		</assignment>-->
+		<assignment id="3">
+			<targetRef oid="d809c8c2-4728-11ea-8fba-ebdb0607d4c2" type="OrgType"/>
+		</assignment>
+		<assignment id="4">
+			<targetRef oid="d809c8c2-4728-11ea-8fba-ebdb0607d4c2" type="OrgType" relation="org:manager"/>
+		</assignment>
+		<assignment id="5">
+			<targetRef oid="28e5ed87-0dad-4f1c-942f-9662cec0f7fb" type="OrgType"/>
+		</assignment>
+		<assignment id="6">
+			<targetRef oid="183cdca7-91da-424c-9ef6-8b481f6aa57f" type="ServiceType" relation="org:owner"/>
+		</assignment>
+		<assignment id="7">
+			<targetRef oid="cce83f54-4729-11ea-bd77-af4213206590" type="OrgType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="48d4ef98-20e3-46ab-cd78-548d38364a6b" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="20c4912a-ec10-4231-b9e2-54431864de66" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="70e53ac1-28b2-40d0-8642-27f3176ada03" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="6fe78119-f42e-4961-ba29-e515687b57f5" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="aab1d0c7-634e-4872-9d3c-fa487a20c41b" relation="org:owner" type="RoleType"/>
+		</assignment>
+		<assignment>
+			<targetRef oid="1954d496-f6ad-11ea-a96a-8bfa569f5fff" type="OrgType"/>
+		</assignment>
+		<fullName>Domenico Ghirlandaio</fullName>
+		<givenName>Domenico</givenName>
+		<familyName>Ghirlandaio</familyName>
+		<personalNumber>16</personalNumber>
+	</user>
 </objects>
