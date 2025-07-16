@@ -143,6 +143,7 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/350-orphaned-roles.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-privileged-roles.xml
     - renaissance-demo-config/midpoint/post-initial-objects/250-privileged-access.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/357-suspicious-roles.xml
   options:
     annotations:
       argocd.argoproj.io/sync-options: Replace=true

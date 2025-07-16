@@ -346,6 +346,61 @@
         </presentation>
     </widget>
 
+    <widget id="230">
+        <identifier>suspicious-roles</identifier>
+        <description>Roles marked as "suspicious".</description>
+        <documentation>(ISO27001/5.27,ISO27001/5.28,ISO27001/5.29,ISO27001/6.8)</documentation>
+        <display>
+            <label>
+                <orig>Suspicious roles</orig>
+                <translation>
+                    <key>SuspiciousRoles.label</key>
+                </translation>
+            </label>
+            <icon>
+                <cssClass>fa fa-handcuffs</cssClass>
+            </icon>
+            <color>var(--success)</color>
+        </display>
+        <displayOrder>230</displayOrder>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="00000000-0000-0000-0001-000000000357" type="c:ObjectCollectionType"/>
+            </collection>
+        </data>
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+            <variation>
+                <condition>
+                    <script>
+                        <code>proportional.value &gt; 0 &amp;&amp; proportional.value &lt; 3</code>
+                    </script>
+                </condition>
+                <display>
+                    <color>var(--orange)</color>
+                </display>
+            </variation>
+            <variation>
+                <condition>
+                    <script>
+                        <code>proportional.value &gt;= 3</code>
+                    </script>
+                </condition>
+                <display>
+                    <color>var(--danger)</color>
+                </display>
+            </variation>
+        </presentation>
+    </widget>
+
     <widget id="300">
         <identifier>active-users</identifier>
         <description>Active users</description>
