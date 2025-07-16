@@ -19,22 +19,27 @@
             </translation>
         </label>
     </display>
-    <widget>
-        <identifier>cat1-users</identifier>
-        <description>Users with access to Category I (Public Access) systems.</description>
+        <widget id="100">
+        <identifier>active-applications</identifier>
+        <description>Active applications</description>
+        <documentation>(ISO27001/5.1,ISO27001/5.16,ISO27001/5.36)</documentation>
         <display>
             <label>
-                <orig>Category I (Public Access) users</orig>
+                <orig>Active applications</orig>
+                <translation>
+                    <key>ActiveApplications.label</key>
+                </translation>
             </label>
-            <color>#00a65a</color>
             <icon>
-                <cssClass>fa fa-dice-one</cssClass>
+                <cssClass>fa fa-cloud</cssClass>
             </icon>
+            <color>var(--lightblue)</color>
         </display>
+        <displayOrder>100</displayOrder>
         <data>
             <sourceType>objectCollection</sourceType>
             <collection>
-                <collectionRef oid="8974e899-cbde-4a1f-8af1-0265450879f8" type="ObjectCollectionType"/>
+                <collectionRef oid="00ca9321-7298-45c6-9d22-f41ff71ea234" type="c:ObjectCollectionType"/>
             </collection>
         </data>
         <presentation>
@@ -44,83 +49,6 @@
                     <proportional>
                         <style>value-only</style>
                     </proportional>
-                </expression>
-            </dataField>
-            <dataField>
-                <fieldType>unit</fieldType>
-                <expression>
-                    <value>cat.I users</value>
-                </expression>
-            </dataField>
-        </presentation>
-    </widget>
-    <widget>
-        <identifier>cat2-users</identifier>
-        <description>Users with access to Category II (Internal Access) systems.</description>
-        <display>
-            <label>
-                <orig>Category II (Internal Access) users</orig>
-            </label>
-            <color>#ffc107</color>
-            <icon>
-                <cssClass>fa fa-dice-two</cssClass>
-            </icon>
-        </display>
-        <data>
-            <sourceType>objectCollection</sourceType>
-            <collection>
-                <collectionRef oid="1f2456e1-7793-4beb-a4ac-961814366628" type="ObjectCollectionType"/>
-            </collection>
-        </data>
-        <presentation>
-            <dataField>
-                <fieldType>value</fieldType>
-                <expression>
-                    <proportional>
-                        <style>value-only</style>
-                    </proportional>
-                </expression>
-            </dataField>
-            <dataField>
-                <fieldType>unit</fieldType>
-                <expression>
-                    <value>cat.II users</value>
-                </expression>
-            </dataField>
-        </presentation>
-    </widget>
-
-    <widget>
-        <identifier>nda-users</identifier>
-        <description>Users having NDA signed.</description>
-        <display>
-            <label>
-                <orig>Users having NDA signed</orig>
-            </label>
-            <color>#17a2b8</color>
-            <icon>
-                <cssClass>fa fa-award</cssClass>
-            </icon>
-        </display>
-        <data>
-            <sourceType>objectCollection</sourceType>
-            <collection>
-                <collectionRef oid="cfa62232-3721-4719-835d-5f9d45bbe7ef" type="ObjectCollectionType"/>
-            </collection>
-        </data>
-        <presentation>
-            <dataField>
-                <fieldType>value</fieldType>
-                <expression>
-                    <proportional>
-                        <style>value-only</style>
-                    </proportional>
-                </expression>
-            </dataField>
-            <dataField>
-                <fieldType>unit</fieldType>
-                <expression>
-                    <value>NDA users</value>
                 </expression>
             </dataField>
         </presentation>
