@@ -1,7 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2010-2024 Evolveum and contributors
+  ~
+  ~ This work is dual-licensed under the Apache License 2.0
+  ~ and European Union Public License. See LICENSE file for details.
+  -->
+
 <dashboard xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
         xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
         xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
-        oid="118b5d33-93b8-4ef1-8c15-9bb9984ffa8b">
+        oid="f941f3fc-dcef-4415-9e79-ae56b185a501">
     <name>compliance-dashboard</name>
     <documentation>(ISO27001/5.36)</documentation>
     <display>
@@ -12,6 +20,8 @@
             </translation>
         </label>
     </display>
+
+
     <widget id="100">
         <identifier>active-applications</identifier>
         <description>Active applications</description>
@@ -46,6 +56,7 @@
             </dataField>
         </presentation>
     </widget>
+
     <widget id="110">
         <identifier>orphaned-applications</identifier>
         <description>Orphaned applications: applications without owner</description>
@@ -100,6 +111,7 @@
             </variation>
         </presentation>
     </widget>
+
     <widget id="120">
         <identifier>applications-without-classification</identifier>
         <description>Applications without classifications</description>
@@ -162,6 +174,7 @@
             </variation>
         </presentation>
     </widget>
+
     <widget id="130">
         <identifier>suspicious-applications</identifier>
         <description>Applications marked as "suspicious".</description>
@@ -216,6 +229,8 @@
             </variation>
         </presentation>
     </widget>
+
+
     <widget id="200">
         <identifier>active-roles</identifier>
         <description>Active roles</description>
@@ -250,6 +265,7 @@
             </dataField>
         </presentation>
     </widget>
+
     <widget id="210">
         <identifier>orphaned-roles</identifier>
         <description>Orphaned roles: roles without owner</description>
@@ -304,6 +320,7 @@
             </variation>
         </presentation>
     </widget>
+
     <widget id="220">
         <identifier>privileged-roles</identifier>
         <description>Roles with (direct) privileged access.</description>
@@ -338,6 +355,7 @@
             </dataField>
         </presentation>
     </widget>
+
     <widget id="230">
         <identifier>suspicious-roles</identifier>
         <description>Roles marked as "suspicious".</description>
@@ -392,6 +410,8 @@
             </variation>
         </presentation>
     </widget>
+
+
     <widget id="300">
         <identifier>active-users</identifier>
         <description>Active users</description>
@@ -426,7 +446,9 @@
             </dataField>
         </presentation>
     </widget>
-   <widget id="310">
+
+
+    <widget id="310">
         <identifier>users-with-sod-violations</identifier>
         <description>Users with SoD violations.</description>
         <documentation>(ISO27001/5.3,ISO27001/5.36)</documentation>
@@ -460,6 +482,7 @@
             </dataField>
         </presentation>
     </widget>
+
     <widget id="320">
         <identifier>privileged-users</identifier>
         <description>Users with privileged access.</description>
@@ -494,6 +517,7 @@
             </dataField>
         </presentation>
     </widget>
+
     <widget id="330">
         <identifier>suspicious-users</identifier>
         <description>Users marked as "suspicious".</description>
@@ -529,7 +553,11 @@
             <variation>
                 <condition>
                     <script>
-                        <code>proportional.value &gt; 0 &amp;&amp; proportional.value &lt; 3</code>
+                        <code>
+               			proportional.value != null &amp;&amp;
+                		!isNaN(proportional.value) &amp;&amp;
+        			Math.floor(proportional.value) &gt;= 1 &amp;&amp;
+                		Math.floor(proportional.value) &lt; 3
                     </script>
                 </condition>
                 <display>
@@ -539,7 +567,11 @@
             <variation>
                 <condition>
                     <script>
-                        <code>proportional.value &gt;= 3</code>
+                        <code>
+                		proportional.value != null &amp;&amp;
+                		!isNaN(proportional.value) &amp;&amp;
+                		Math.floor(proportional.value) &gt;= 3
+			</code>
                     </script>
                 </condition>
                 <display>
@@ -548,6 +580,36 @@
             </variation>
         </presentation>
     </widget>
+
+<widget id="331">
+    <identifier>suspicious-users-debug</identifier>
+    <description>Debug: show raw proportional value</description>
+    <display>
+        <label>
+            <orig>Suspicious (debug)</orig>
+        </label>
+        <icon>
+            <cssClass>fa fa-bug</cssClass>
+        </icon>
+    </display>
+    <data>
+        <sourceType>objectCollection</sourceType>
+        <collection>
+            <collectionRef oid="00000000-0000-0000-0001-000000000358" type="c:ObjectCollectionType"/>
+        </collection>
+    </data>
+    <presentation>
+        <dataField>
+            <fieldType>value</fieldType>
+            <expression>
+                <proportional>
+                    <style>value-only</style>
+                </proportional>
+            </expression>
+        </dataField>
+    </presentation>
+</widget>
+
     <widget id="900">
         <identifier>information-security-roles</identifier>
         <description>All roles that are classified as information security responsibilities.</description>
@@ -582,6 +644,8 @@
             </dataField>
         </presentation>
     </widget>
+
+
     <widget id="910">
         <identifier>understaffed-security-roles</identifier>
         <description>Security roles that are not properly staffed.</description>
@@ -628,4 +692,7 @@
 
         </presentation>
     </widget>
+
+
+
 </dashboard>

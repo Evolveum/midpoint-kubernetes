@@ -27,7 +27,7 @@ objectClass: organizationalUnit
 ou: people
 
 dn: uid=leonardo,ou=people,dc=example,dc=com
-cn: Leonardo da Vinci
+cn: Leonardo da Vinci diKaprio
 description: Managed by midPoint
 employeenumber: 1
 employeetype: FTE
@@ -38,7 +38,7 @@ objectclass: inetOrgPerson
 objectclass: organizationalPerson
 objectclass: top
 ou: Department of Machines
-sn: da Vinci
+sn: da Vinci diKaprio
 telephonenumber: +39 6 8687797
 uid: leonardo
 userpassword: {SSHA}qI88nuG6ZJLGQGPro57LMwmQpI21A910wHU6Ng==
