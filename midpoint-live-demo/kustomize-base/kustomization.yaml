@@ -146,6 +146,13 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/357-suspicious-roles.xml
     - renaissance-demo-config/midpoint/post-initial-objects/353-users-with-sod-violations.xml
     - renaissance-demo-config/midpoint/post-initial-objects/811-exclusion-violation.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-privileged-users.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/358-suspicious-users.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-information-security-responsibilities-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/300-classification-information-security-responsibility.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/390-ad-hoc-classifications.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/813-underassigned.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/250-understaffed-security.xml
   options:
     annotations:
       argocd.argoproj.io/sync-options: Replace=true
