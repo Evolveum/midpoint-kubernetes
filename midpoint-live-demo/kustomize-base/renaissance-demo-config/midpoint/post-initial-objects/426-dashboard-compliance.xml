@@ -435,4 +435,40 @@
             </dataField>
         </presentation>
     </widget>
+
+   <widget id="310">
+        <identifier>users-with-sod-violations</identifier>
+        <description>Users with SoD violations.</description>
+        <documentation>(ISO27001/5.3,ISO27001/5.36)</documentation>
+        <display>
+            <label>
+                <orig>Users with SoD violations</orig>
+                <translation>
+                    <key>ComplianceDashboard.usersWithSodViolations</key>
+                </translation>
+            </label>
+            <color>var(--success)</color>
+            <icon>
+                <cssClass>fa fa-people-arrows</cssClass>
+            </icon>
+        </display>
+        <displayOrder>310</displayOrder>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="00000000-0000-0000-0001-000000000353" type="c:ObjectCollectionType"/>
+            </collection>
+        </data>
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+        </presentation>
+    </widget>
+
 </dashboard>

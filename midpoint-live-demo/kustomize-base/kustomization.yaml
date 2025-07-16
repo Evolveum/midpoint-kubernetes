@@ -144,6 +144,8 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/350-privileged-roles.xml
     - renaissance-demo-config/midpoint/post-initial-objects/250-privileged-access.xml
     - renaissance-demo-config/midpoint/post-initial-objects/357-suspicious-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/353-users-with-sod-violations.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/811-exclusion-violation.xml
   options:
     annotations:
       argocd.argoproj.io/sync-options: Replace=true
