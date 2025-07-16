@@ -1,16 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ Copyright (c) 2010-2024 Evolveum and contributors
-  ~
-  ~ This work is dual-licensed under the Apache License 2.0
-  ~ and European Union Public License. See LICENSE file for details.
-  -->
-
 <dashboard xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-           xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-           xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
-           oid="118b5d33-93b8-4ef1-8c15-9bb9984ffa8b">
+        xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+        xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+        oid="f941f3fc-dcef-4415-9e79-ae56b185a501">
     <name>compliance-dashboard</name>
+    <documentation>(ISO27001/5.36)</documentation>
     <display>
         <label>
             <orig>Compliance dashboard</orig>
@@ -19,33 +12,31 @@
             </translation>
         </label>
     </display>
-        <widget id="100">
-        <identifier>active-applications</identifier>
-        <description>Active applications</description>
-        <documentation>(ISO27001/5.1,ISO27001/5.16,ISO27001/5.36)</documentation>
+
+
+    <widget id="300">
+        <identifier>active-users</identifier>
+        <description>Active users</description>
+        <documentation>TODO</documentation>
         <display>
             <label>
-                <orig>Active applications</orig>
+                <orig>Active users</orig>
                 <translation>
-                    <key>ActiveApplications.label</key>
+                    <key>ActiveUsers.label</key>
                 </translation>
             </label>
             <icon>
-                <cssClass>fa fa-cloud</cssClass>
+                <cssClass>fa fa-user</cssClass>
             </icon>
             <color>var(--lightblue)</color>
         </display>
-        <displayOrder>100</displayOrder>
+        <displayOrder>300</displayOrder>
         <data>
-            <sourceType>objectQuery</sourceType>
-		<type>c:UserType</type>
-        	<filter>
-            		<q:equal>
-			<q:path>activation/effectiveStatus</q:path>
-			<q:value>enabled</q:value>
-			</q:equal>
-        	</filter>
-    	</data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="0de46df0-f2d9-437b-84ba-8e8d291ef0e1" type="c:ObjectCollectionType"/>
+            </collection>
+        </data>
         <presentation>
             <dataField>
                 <fieldType>value</fieldType>

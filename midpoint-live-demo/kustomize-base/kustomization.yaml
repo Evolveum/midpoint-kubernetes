@@ -130,6 +130,7 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/950-HR-import.xml
     - renaissance-demo-config/midpoint/post-initial-objects/998-task-HR-livesync.xml
     - renaissance-demo-config/midpoint/post-initial-objects/999-LDAP-live-sync.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-users-active.xml
   options:
     annotations:
       argocd.argoproj.io/sync-options: Replace=true
