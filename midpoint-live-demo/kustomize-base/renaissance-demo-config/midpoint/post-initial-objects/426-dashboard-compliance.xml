@@ -37,11 +37,12 @@
         </display>
         <displayOrder>100</displayOrder>
         <data>
-            <sourceType>objectCollection</sourceType>
-            <collection>
-                <collectionRef oid="00ca9321-7298-45c6-9d22-f41ff71ea234" type="c:ObjectCollectionType"/>
-            </collection>
-        </data>
+            <sourceType>objectQuery</sourceType>
+		<type>c:UserType</type>
+        	<filter>
+            	<q:text>activation/effectiveStatus = "enabled"</q:text>
+        	</filter>
+    	</data>
         <presentation>
             <dataField>
                 <fieldType>value</fieldType>
