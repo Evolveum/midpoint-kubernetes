@@ -256,6 +256,61 @@
         </presentation>
     </widget>
 
+    <widget id="210">
+        <identifier>orphaned-roles</identifier>
+        <description>Orphaned roles: roles without owner</description>
+        <documentation>(ISO27001/5.1,ISO27001/5.16,ISO27001/5.36)</documentation>
+        <display>
+            <label>
+                <orig>Orphaned roles</orig>
+                <translation>
+                    <key>OrphanedRoles.label</key>
+                </translation>
+            </label>
+            <icon>
+                <cssClass>fa fa-user-xmark</cssClass>
+            </icon>
+            <color>var(--success)</color>
+        </display>
+        <displayOrder>210</displayOrder>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="6d9d98f5-9182-4d2d-89e8-32ab23704199" type="c:ObjectCollectionType"/>
+            </collection>
+        </data>
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+            <variation>
+                <condition>
+                    <script>
+                        <code>proportional.value &gt; 0 &amp;&amp; proportional.value &lt; 3</code>
+                    </script>
+                </condition>
+                <display>
+                    <color>var(--orange)</color>
+                </display>
+            </variation>
+            <variation>
+                <condition>
+                    <script>
+                        <code>proportional.value &gt;= 3</code>
+                    </script>
+                </condition>
+                <display>
+                    <color>var(--danger)</color>
+                </display>
+            </variation>
+        </presentation>
+    </widget>
+
     <widget id="300">
         <identifier>active-users</identifier>
         <description>Active users</description>
