@@ -40,7 +40,10 @@
             <sourceType>objectQuery</sourceType>
 		<type>c:UserType</type>
         	<filter>
-            	<q:text>activation/effectiveStatus = "enabled"</q:text>
+            		<q:equal>
+			<q:path>activation/effectiveStatus</q:path>
+			<q:value>enabled</q:value>
+			</q:equal>
         	</filter>
     	</data>
         <presentation>
