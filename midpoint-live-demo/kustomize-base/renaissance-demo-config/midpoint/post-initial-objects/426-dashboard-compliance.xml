@@ -14,7 +14,7 @@
     </display>
 
 
-    <widget id="300">
+    <widget id="100">
         <identifier>active-users</identifier>
         <description>Active users</description>
         <documentation>TODO</documentation>
@@ -30,7 +30,7 @@
             </icon>
             <color>var(--lightblue)</color>
         </display>
-        <displayOrder>300</displayOrder>
+        <displayOrder>100</displayOrder>
         <data>
             <sourceType>objectCollection</sourceType>
             <collection>
