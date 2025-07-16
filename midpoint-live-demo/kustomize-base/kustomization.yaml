@@ -153,6 +153,7 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/390-ad-hoc-classifications.xml
     - renaissance-demo-config/midpoint/post-initial-objects/813-underassigned.xml
     - renaissance-demo-config/midpoint/post-initial-objects/250-understaffed-security.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-understaffed-security-roles.xml
   options:
     annotations:
       argocd.argoproj.io/sync-options: Replace=true
