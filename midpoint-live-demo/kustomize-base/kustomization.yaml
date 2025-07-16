@@ -135,6 +135,7 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/250-no-classification.xml
     - renaissance-demo-config/midpoint/post-initial-objects/253-object-collection-application-active.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-orphaned-applications.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-applications-without-classification.xml
   options:
     annotations:
       argocd.argoproj.io/sync-options: Replace=true
