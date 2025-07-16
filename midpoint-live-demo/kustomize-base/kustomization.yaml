@@ -131,6 +131,9 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/998-task-HR-livesync.xml
     - renaissance-demo-config/midpoint/post-initial-objects/999-LDAP-live-sync.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-users-active.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/250-ophaned.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/250-no-classification.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/253-object-collection-application-active.xml
   options:
     annotations:
       argocd.argoproj.io/sync-options: Replace=true

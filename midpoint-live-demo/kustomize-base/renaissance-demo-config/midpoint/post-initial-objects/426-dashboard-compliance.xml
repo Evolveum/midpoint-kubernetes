@@ -13,8 +13,42 @@
         </label>
     </display>
 
-
     <widget id="100">
+        <identifier>active-applications</identifier>
+        <description>Active applications</description>
+        <documentation>(ISO27001/5.1,ISO27001/5.16,ISO27001/5.36)</documentation>
+        <display>
+            <label>
+                <orig>Active applications</orig>
+                <translation>
+                    <key>ActiveApplications.label</key>
+                </translation>
+            </label>
+            <icon>
+                <cssClass>fa fa-cloud</cssClass>
+            </icon>
+            <color>var(--lightblue)</color>
+        </display>
+        <displayOrder>100</displayOrder>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="c4a07805-67c5-4b25-961e-e47b75a0b5a5" type="c:ObjectCollectionType"/>
+            </collection>
+        </data>
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+        </presentation>
+    </widget>
+
+    <widget id="300">
         <identifier>active-users</identifier>
         <description>Active users</description>
         <documentation>TODO</documentation>
@@ -30,7 +64,7 @@
             </icon>
             <color>var(--lightblue)</color>
         </display>
-        <displayOrder>100</displayOrder>
+        <displayOrder>300</displayOrder>
         <data>
             <sourceType>objectCollection</sourceType>
             <collection>
