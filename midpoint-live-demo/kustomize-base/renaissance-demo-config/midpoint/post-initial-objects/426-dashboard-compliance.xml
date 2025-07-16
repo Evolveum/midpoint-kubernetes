@@ -311,6 +311,41 @@
         </presentation>
     </widget>
 
+    <widget id="220">
+        <identifier>privileged-roles</identifier>
+        <description>Roles with (direct) privileged access.</description>
+        <documentation>(ISO27001/5.15,ISO27001/5.18,ISO27001/8.2,ISO27001/8.9)</documentation>
+        <display>
+            <label>
+                <orig>Privileged roles</orig>
+                <translation>
+                    <key>PrivilegedRoles.label</key>
+                </translation>
+            </label>
+            <icon>
+                <cssClass>fa fa-circle-radiation</cssClass>
+            </icon>
+            <color>var(--lightblue)</color>
+        </display>
+        <displayOrder>220</displayOrder>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="00000000-0000-0000-0001-000000000354" type="c:ObjectCollectionType"/>
+            </collection>
+        </data>
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+        </presentation>
+    </widget>
+
     <widget id="300">
         <identifier>active-users</identifier>
         <description>Active users</description>
