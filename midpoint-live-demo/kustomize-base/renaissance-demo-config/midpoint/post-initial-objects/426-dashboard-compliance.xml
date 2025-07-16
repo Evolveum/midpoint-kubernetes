@@ -221,6 +221,41 @@
         </presentation>
     </widget>
 
+    <widget id="200">
+        <identifier>active-roles</identifier>
+        <description>Active roles</description>
+        <documentation>(ISO27001/5.1,ISO27001/5.16,ISO27001/5.36)</documentation>
+        <display>
+            <label>
+                <orig>Active roles</orig>
+                <translation>
+                    <key>ActiveRoles.label</key>
+                </translation>
+            </label>
+            <icon>
+                <cssClass>fe fe-role</cssClass>
+            </icon>
+            <color>var(--lightblue)</color>
+        </display>
+        <displayOrder>200</displayOrder>
+        <data>
+            <sourceType>objectCollection</sourceType>
+            <collection>
+                <collectionRef oid="8494d5a9-5ce9-4795-813b-0e424b9e4d42" type="c:ObjectCollectionType"/>
+            </collection>
+        </data>
+        <presentation>
+            <dataField>
+                <fieldType>value</fieldType>
+                <expression>
+                    <proportional>
+                        <style>value-only</style>
+                    </proportional>
+                </expression>
+            </dataField>
+        </presentation>
+    </widget>
+
     <widget id="300">
         <identifier>active-users</identifier>
         <description>Active users</description>
