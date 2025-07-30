@@ -114,9 +114,6 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/421-scienceHub-basic-users-collection.xml
     - renaissance-demo-config/midpoint/post-initial-objects/422-scienceHub-premium-users-collection.xml
     - renaissance-demo-config/midpoint/post-initial-objects/423-licences-dashboard.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/425-object-collection-users-cat1.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/425-object-collection-users-cat2.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/425-object-collection-users-nda.xml
     - renaissance-demo-config/midpoint/post-initial-objects/426-dashboard-compliance.xml
     - renaissance-demo-config/midpoint/post-initial-objects/430-object-collection-correlate-later-shadows.xml
     - renaissance-demo-config/midpoint/post-initial-objects/431-object-collection-decommission-later-shadows.xml
@@ -130,6 +127,31 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/950-HR-import.xml
     - renaissance-demo-config/midpoint/post-initial-objects/998-task-HR-livesync.xml
     - renaissance-demo-config/midpoint/post-initial-objects/999-LDAP-live-sync.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-users-active.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/250-mark-orphaned.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/250-mark-no-classification.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/253-object-collection-application-active.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-orphaned-applications.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-applications-without-classification.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/358-object-collection-suspicious-applications.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/830-mark-suspicious.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-roles-active.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-roles-all.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-orphaned-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-privileged-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/250-mark-privileged-access.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/357-object-collection-suspicious-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/353-object-collection-users-with-sod-violations.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/811-mark-exclusion-violation.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-privileged-users.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/358-object-collection-suspicious-users.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-information-security-responsibilities-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/390-org-ad-hoc-classifications.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/300-classification-information-security-responsibility.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/813-mark-underassigned.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/250-mark-understaffed-security.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-understaffed-security-roles.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/150-archetype-employee.xml
   options:
     annotations:
       argocd.argoproj.io/sync-options: Replace=true
