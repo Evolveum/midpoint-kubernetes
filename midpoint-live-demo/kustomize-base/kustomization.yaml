@@ -146,7 +146,7 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-privileged-users.xml
     - renaissance-demo-config/midpoint/post-initial-objects/358-object-collection-suspicious-users.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-object-collection-information-security-responsibilities-roles.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/390-ad-hoc-classifications.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/390-org-ad-hoc-classifications.xml
     - renaissance-demo-config/midpoint/post-initial-objects/300-classification-information-security-responsibility.xml
     - renaissance-demo-config/midpoint/post-initial-objects/813-mark-underassigned.xml
     - renaissance-demo-config/midpoint/post-initial-objects/250-mark-understaffed-security.xml
