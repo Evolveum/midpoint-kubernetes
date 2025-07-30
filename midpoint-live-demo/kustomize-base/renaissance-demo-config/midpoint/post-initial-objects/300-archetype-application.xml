@@ -261,6 +261,7 @@
             <evaluationTarget>object</evaluationTarget>
         </policyRule>
     </inducement>
+<!--
     <inducement>
         <identifier>application-classified</identifier>
         <documentation>(ISO27001/5.12,ISO27001/5.13,ISO27001/5.36)</documentation>
@@ -280,4 +281,5 @@
             </policyActions>
         </policyRule>
     </inducement>
+-->
 </archetype>
