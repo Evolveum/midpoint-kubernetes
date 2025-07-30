@@ -63,7 +63,10 @@
                 <!-- Person -->
             </targetRef>
         </assignment>
-
+        <assignment>
+            <identifier>archetype-artist</identifier>
+            <targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+        </assignment>
         <extension>
             <ext:artisticName>Raphael</ext:artisticName>
         </extension>
@@ -121,7 +124,10 @@
                 <!-- Person -->
             </targetRef>
         </assignment>
-
+    <assignment>
+        <identifier>archetype-artist</identifier>
+        <targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+    </assignment>
         <iteration>0</iteration>
         <iterationToken/>
         <activation>
@@ -202,7 +208,10 @@
                 <effectiveStatus>enabled</effectiveStatus>
             </activation>
         </assignment>
-
+    <assignment>
+        <identifier>archetype-artist</identifier>
+        <targetRef oid="7135e68c-ee53-11e8-8025-170b77da3fd6" type="ArchetypeType"/>
+    </assignment>
         <assignment>
             <targetRef oid="00000000-0000-0000-0000-000000000702" type="ArchetypeType">
                 <!-- Person -->
