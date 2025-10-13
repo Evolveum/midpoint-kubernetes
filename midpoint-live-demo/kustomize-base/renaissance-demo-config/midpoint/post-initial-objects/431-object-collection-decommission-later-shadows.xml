@@ -17,10 +17,10 @@
     </getOptions>
     <filter>
         <q:text>
-            effectiveMarkRef matches (
-            oid="00000000-0000-0000-0000-000000000801"
-            type = "MarkType"
-            )
+          effectiveMarkRef matches (
+            oid = "00000000-0000-0000-0000-000000000801"
+            and targetType = MarkType
+          )
         </q:text>
     </filter>
 </objectCollection>

@@ -18,8 +18,8 @@
     <filter>
         <q:text>
             effectiveMarkRef matches (
-            oid="00000000-0000-0000-0000-000000000803"
-            type = "MarkType"
+              oid = "00000000-0000-0000-0000-000000000803"
+              and targetType = MarkType
             )
         </q:text>
     </filter>
