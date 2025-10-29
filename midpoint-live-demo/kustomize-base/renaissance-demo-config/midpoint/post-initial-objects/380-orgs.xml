@@ -31,7 +31,7 @@
                 <script>
                     <code>
                    <![CDATA[
-                        return focusAssignment?.targetRef?.relation?.localPart == 'manager' && focusAssignment?.targetRef?.relation?.prefix?.isEmpty()
+                        return focusAssignment?.targetRef?.relation?.localPart == 'manager' && focusAssignment?.targetRef?.relation?.prefix == 'org'
                         ]]>
                 </code>
                 </script>
