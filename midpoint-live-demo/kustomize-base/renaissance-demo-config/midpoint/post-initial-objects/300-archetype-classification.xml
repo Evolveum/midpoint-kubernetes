@@ -4,35 +4,41 @@
   ~ This work is dual-licensed under the Apache License 2.0
   ~ and European Union Public License. See LICENSE file for details.
   -->
-<archetype oid="00000000-0000-0000-0000-000000000330"
-        xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
+<archetype 
+xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+oid="00000000-0000-0000-0000-000000000330">
     <name>Classification</name>
+    <description>Archetype for information classifications (labels, levels, compartments).</description>
+    <documentation>(ISO27001/A.5.12,ISO27001/A.5.13)</documentation>
+    <assignment>
+        <identifier>holderType</identifier>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+        </activation>
+        <assignmentRelation>
+            <holderType>PolicyType</holderType>
+        </assignmentRelation>
+    </assignment>
     <archetypePolicy>
         <display>
-            <label>Classification</label>
-            <pluralLabel>Classifications</pluralLabel>
+            <label>
+                <t:orig>Classification</t:orig>
+                <t:norm>classification</t:norm>
+                <t:translation>
+                    <t:key>classification.label</t:key>
+                </t:translation>
+            </label>
+            <pluralLabel>
+                <t:orig>Classifications</t:orig>
+                <t:norm>classifications</t:norm>
+                <t:translation>
+                    <t:key>classifications.pluralLabel</t:key>
+                </t:translation>
+            </pluralLabel>
             <icon>
                 <cssClass>fa fa-tags</cssClass>
                 <color>green</color>
             </icon>
         </display>
     </archetypePolicy>
-    <assignment id="1">
-        <identifier>holderType</identifier>
-        <assignmentRelation id="2">
-            <holderType>AbstractRoleType</holderType>
-        </assignmentRelation>
-    </assignment>
-    <inducement id="3">
-        <orderConstraint>
-            <order>2</order>
-        </orderConstraint>
-        <focusType>ServiceType</focusType>
-    </inducement>
-    <inducement id="4">
-        <orderConstraint>
-            <order>3</order>
-        </orderConstraint>
-        <focusType>UserType</focusType>
-    </inducement>
 </archetype>

@@ -4,31 +4,41 @@
   ~ This work is dual-licensed under the Apache License 2.0
   ~ and European Union Public License. See LICENSE file for details.
   -->
-<archetype oid="00000000-0000-0000-0000-000000000331"
-        xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
+<archetype 
+xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+oid="00000000-0000-0000-0000-000000000331">
     <name>Clearance</name>
+    <description>Archetype for clearances (screenings, trainings, legal agreements/clauses).</description>
+    <documentation>(ISO27001/A.5.12,ISO27001/A.5.13)</documentation>
+    <assignment>
+        <identifier>holderType</identifier>
+        <activation>
+            <effectiveStatus>enabled</effectiveStatus>
+        </activation>
+        <assignmentRelation>
+            <holderType>PolicyType</holderType>
+        </assignmentRelation>
+    </assignment>
     <archetypePolicy>
         <display>
-            <label>Clearance</label>
-            <pluralLabel>Clearances</pluralLabel>
+            <label>
+                <t:orig>Clearance</t:orig>
+                <t:norm>clearance</t:norm>
+                <t:translation>
+                    <t:key>clearance.label</t:key>
+                </t:translation>
+            </label>
+            <pluralLabel>
+                <t:orig>Clearances</t:orig>
+                <t:norm>clearances</t:norm>
+                <t:translation>
+                    <t:key>clearance.pluralLabel</t:key>
+                </t:translation>
+            </pluralLabel>
             <icon>
                 <cssClass>fa fa-award</cssClass>
                 <color>green</color>
             </icon>
         </display>
     </archetypePolicy>
-    <assignment id="1">
-        <identifier>holderType</identifier>
-        <assignmentRelation id="2">
-            <holderType>UserType</holderType>
-            <holderType>OrgType</holderType>
-            <holderType>ServiceType</holderType>
-        </assignmentRelation>
-    </assignment>
-    <inducement id="3">
-        <orderConstraint>
-            <order>2</order>
-        </orderConstraint>
-        <focusType>UserType</focusType>
-    </inducement>
 </archetype>

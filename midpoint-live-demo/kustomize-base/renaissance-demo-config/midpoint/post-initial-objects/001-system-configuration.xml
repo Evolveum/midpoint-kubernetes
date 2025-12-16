@@ -2,9 +2,9 @@
 <!--
   ~ Copyright (C) 2010-2021 Evolveum and contributors
   ~
-  ~ This work is dual-licensed under the Apache License 2.0
-  ~ and European Union Public License. See LICENSE file for details.
+  ~ Licensed under the EUPL-1.2 or later.
   -->
+
 <systemConfiguration oid="00000000-0000-0000-0000-000000000001" version="0"
         xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
         xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
@@ -14,15 +14,15 @@
 
     <name>SystemConfiguration</name>
     <indestructible>true</indestructible>
-    <globalAccountSynchronizationSettings>
-        <assignmentPolicyEnforcement>full</assignmentPolicyEnforcement>
-    </globalAccountSynchronizationSettings>
+    <!--         <globalAccountSynchronizationSettings> -->
+    <!--         <assignmentPolicyEnforcement>relative</assignmentPolicyEnforcement> -->
+    <!--         </globalAccountSynchronizationSettings> -->
     <globalSecurityPolicyRef oid="00000000-0000-0000-0000-000000000120"/>
     <logging>
         <classLogger id="1">
             <!-- disabled because INFO log during of creating new authentication filter chain -->
             <level>OFF</level>
-            <package>org.springframework.security.web.DefaultSecurityFilterChain</package>
+            <package>org.springframework.security.web.DefaultSecurityFilterChain</package>  
         </classLogger>
         <classLogger id="2">
             <!-- disabled because of MID-744, helper insert messages on ERROR
@@ -30,20 +30,20 @@
             <level>OFF</level>
             <package>org.hibernate.engine.jdbc.spi.SqlExceptionHelper</package>
         </classLogger>
-        <!-- Disabled because we treat locking-related exceptions in the repository.
-             Otherwise the log is filled-in with (innocent but ugly-looking) messages like
+        <!-- Disabled because we treat locking-related exceptions in the repository.        
+             Otherwise the log is filled-in with (innocent but ugly-looking) messages like  
              "ERROR (o.h.engine.jdbc.batch.internal.BatchingBatch): HHH000315: Exception executing batch [Deadlock detected.
              The current transaction was rolled back." -->
         <classLogger id="3">
             <level>OFF</level>
-            <package>org.hibernate.engine.jdbc.batch.internal.BatchingBatch</package>
+            <package>org.hibernate.engine.jdbc.batch.internal.BatchingBatch</package>       
         </classLogger>
-        <!-- Disabled because of the same reason; this time concerning messages like
+        <!-- Disabled because of the same reason; this time concerning messages like        
              "INFO (org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl):
              HHH000010: On release of batch it still contained JDBC statements" -->
         <classLogger id="4">
             <level>WARN</level>
-            <package>org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl</package>
+            <package>org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl</package>   
         </classLogger>
         <!-- Disabled because of MID-4636 -->
         <classLogger id="5">
@@ -57,7 +57,7 @@
             <package>org.apache.wicket.resource.PropertiesFactory</package>
         </classLogger>
         <classLogger id="7">
-            <!-- disabled because we don't need to see every log message for every key
+            <!-- disabled because we don't need to see every log message for every key      
             when resource bundle doesn't exist for specific locale (unnecessary log pollution) -->
             <level>ERROR</level>
             <package>org.springframework.context.support.ResourceBundleMessageSource</package>
@@ -65,7 +65,7 @@
         <classLogger id="8">
             <!-- Standard useful logger -->
             <level>INFO</level>
-            <package>com.evolveum.midpoint.model.impl.lens.projector.Projector</package>
+            <package>com.evolveum.midpoint.model.impl.lens.projector.Projector</package>    
         </classLogger>
         <classLogger id="9">
             <!-- Standard useful logger -->
@@ -75,10 +75,10 @@
 
         <appender id="10" xsi:type="c:FileAppenderConfigurationType"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-            <pattern>%date [%X{subsystem}] [%thread] %level \(%logger\): %msg%n</pattern>
+            <pattern>%date [%X{subsystem}] [%thread] %level \(%logger\): %msg%n</pattern>   
             <name>MIDPOINT_LOG</name>
             <fileName>${midpoint.home}/log/midpoint.log</fileName>
-            <filePattern>${midpoint.home}/log/midpoint-%d{yyyy-MM-dd}.%i.log</filePattern>
+            <filePattern>${midpoint.home}/log/midpoint-%d{yyyy-MM-dd}.%i.log</filePattern>  
             <maxHistory>10</maxHistory>
             <maxFileSize>100MB</maxFileSize>
             <append>true</append>
@@ -101,35 +101,6 @@
             <details>false</details>
         </auditing>
     </logging>
-    <defaultObjectPolicyConfiguration id="13">
-        <objectTemplateRef oid="3ffe38cb-f43f-4ae6-98ed-2bc9aaf171ce" relation="org:default" type="c:ObjectTemplateType">
-            <!-- Default Project and Org Template -->
-        </objectTemplateRef>
-        <type>c:OrgType</type>
-    </defaultObjectPolicyConfiguration>
-    <defaultObjectPolicyConfiguration id="14">
-        <objectTemplateRef oid="84769304-7776-11e2-b582-001e8c717e5b" relation="org:default" type="c:ObjectTemplateType">
-            <!-- Default User Template -->
-        </objectTemplateRef>
-        <type>c:UserType</type>
-    </defaultObjectPolicyConfiguration>
-    <notificationConfiguration>
-        <mail>
-            <debug>false</debug>
-        </mail>
-    </notificationConfiguration>
-    <profilingConfiguration>
-        <enabled>false</enabled>
-        <requestFilter>false</requestFilter>
-        <performanceStatistics>false</performanceStatistics>
-        <model>false</model>
-        <repository>false</repository>
-        <provisioning>false</provisioning>
-        <ucf>false</ucf>
-        <synchronizationService>false</synchronizationService>
-        <taskManager>false</taskManager>
-        <workflow>false</workflow>
-    </profilingConfiguration>
     <cleanupPolicy>
         <auditRecords>
             <maxAge>P3M</maxAge>
@@ -206,6 +177,9 @@
         <repository>
             <autoCreatePartitionsOnAdd>true</autoCreatePartitionsOnAdd>
         </repository>
+        <operationExecutionRecording>
+            <skipWhenSuccess>true</skipWhenSuccess>
+        </operationExecutionRecording>
     </internals>
     <adminGuiConfiguration>
         <homePage id="21">
@@ -237,6 +211,12 @@
                                 <key>PageSelfDashboard.button.viewAll</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>Redirects to the all assignments panel on the user's profile page.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.myAccesses.viewAll.help</key> 
+                            </translation>
+                        </help>
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -255,6 +235,12 @@
                                 <key>PageRequestAccess.title</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>Redirects to the Request access wizard.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.requestAccess.wizard.help</key>
+                            </translation>
+                        </help>
                         <icon>
                             <cssClass>fas fa-plus-circle</cssClass>
                         </icon>
@@ -290,6 +276,12 @@
                                 <key>PageSelfDashboard.button.viewAll</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>Redirects to the approval cases table with a requestor set to the logged in user.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.myRequests.viewAll.help</key> 
+                            </translation>
+                        </help>
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -326,6 +318,12 @@
                                 <key>PageSelfDashboard.button.viewAll</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>Redirects to work items table where assignee is set to the logged in user.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.myWorkItems.viewAll.help</key>
+                            </translation>
+                        </help>
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -361,6 +359,12 @@
                                 <key>PageSelfDashboard.button.viewAll</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>Redirects to the Projections panel on the user's profile page.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.myAccounts.viewAll.help</key> 
+                            </translation>
+                        </help>
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -495,12 +499,23 @@
                         </icon>
                     </display>
                     <target>
-                        <targetUrl>/admin/certification/myActiveCampaigns</targetUrl>
+                        <targetUrl>/admin/certification/myActiveCampaigns</targetUrl>       
                     </target>
                 </action>
             </widget>
         </homePage>
         <objectCollectionViews>
+            <defaultSettings>
+                <paging>
+                    <maxSize>20</maxSize>
+                </paging>
+                <pagingOptions>
+                    <availablePageSize>10</availablePageSize>
+                    <availablePageSize>20</availablePageSize>
+                    <availablePageSize>50</availablePageSize>
+                    <availablePageSize>100</availablePageSize>
+                </pagingOptions>
+            </defaultSettings>
             <objectCollectionView id="40">
                 <identifier>my-cases</identifier>
                 <display>
@@ -782,7 +797,7 @@
                 </collection>
             </objectCollectionView>
             <objectCollectionView id="60">
-                <identifier>shadows-delete-long-time-not-updated-task-view</identifier>
+                <identifier>shadows-delete-long-time-not-updated-task-view</identifier>     
                 <refreshInterval>30</refreshInterval>
                 <applicableForOperation>add</applicableForOperation>
                 <type>TaskType</type>
@@ -1008,7 +1023,7 @@
                                 <label>
                                     <orig>Users with account</orig>
                                     <translation>
-                                        <key>searchItem.usersWithAccount.label</key>
+                                        <key>searchItem.usersWithAccount.label</key>        
                                     </translation>
                                 </label>
                             </display>
@@ -1019,7 +1034,7 @@
                             </parameter>
                         </searchItem>
                         <searchItem id="82">
-                            <description>Allow searching for users not having account on specific resource. Intent is not considered. The search item is not displayed by default
+                            <description>Allow searching for users not having account on specific resource. Intent is not considered. The search item is not displayed by default       
                                 (visibleByDefault=false).
                             </description>
                             <visibleByDefault>true</visibleByDefault>
@@ -1035,7 +1050,7 @@
                                 <label>
                                     <orig>Users without account</orig>
                                     <translation>
-                                        <key>searchItem.usersWithoutAccount.label</key>
+                                        <key>searchItem.usersWithoutAccount.label</key>     
                                     </translation>
                                 </label>
                             </display>
@@ -1131,7 +1146,7 @@
                 </collection>
             </objectCollectionView>
             <objectCollectionView id="259">
-                <identifier>certification-campaign-open-next-stage-tasks-view</identifier>
+                <identifier>certification-campaign-open-next-stage-tasks-view</identifier>  
                 <applicableForOperation>add</applicableForOperation>
                 <refreshInterval>30</refreshInterval>
                 <type>TaskType</type>
@@ -1140,7 +1155,7 @@
                 </collection>
             </objectCollectionView>
             <objectCollectionView id="260">
-                <identifier>certification-campaign-remediation-tasks-view</identifier>
+                <identifier>certification-campaign-remediation-tasks-view</identifier>      
                 <applicableForOperation>add</applicableForOperation>
                 <refreshInterval>30</refreshInterval>
                 <type>TaskType</type>
@@ -1150,6 +1165,17 @@
             </objectCollectionView>
         </objectCollectionViews>
         <objectDetails>
+            <defaultSettings>
+                <paging>
+                    <maxSize>20</maxSize>
+                </paging>
+                <pagingOptions>
+                    <availablePageSize>10</availablePageSize>
+                    <availablePageSize>20</availablePageSize>
+                    <availablePageSize>50</availablePageSize>
+                    <availablePageSize>100</availablePageSize>
+                </pagingOptions>
+            </defaultSettings>
             <objectDetailsPage id="83">
                 <type>c:TaskType</type>
                 <panel id="85">
@@ -1211,7 +1237,7 @@
                             <label>
                                 <orig>Operational attributes (state)</orig>
                                 <translation>
-                                    <key>operationalAttributes.state.container.label</key>
+                                    <key>operationalAttributes.state.container.label</key>  
                                 </translation>
                             </label>
                         </display>
@@ -1349,7 +1375,7 @@
                     <listView>
                         <identifier>clearances-view</identifier>
                         <type>c:AssignmentType</type>
-                        <dataProvider xsi:type="c:RepositoryAssignmentDataProviderType"/>
+                        <dataProvider xsi:type="c:RepositoryAssignmentDataProviderType"/>   
                         <collection>
                             <filter>
                                 <q:text>targetRef/@/archetypeRef matches ( oid = "00000000-0000-0000-0000-000000000331" )</q:text>
@@ -1392,7 +1418,7 @@
                             <visibility>visible</visibility>
                         </item>
                         <item id="136">
-                            <path>schemaHandling/objectType/securityPolicyRef</path>
+                            <path>schemaHandling/objectType/securityPolicyRef</path>        
                             <visibility>visible</visibility>
                         </item>
                         <item id="137">
@@ -1416,10 +1442,10 @@
                     <container id="138">
                         <identifier>delineation</identifier>
                         <display>
-                            <label>PageResource.wizard.step.objectType.delineation</label>
+                            <label>PageResource.wizard.step.objectType.delineation</label>  
                         </display>
                         <item id="140">
-                            <path>schemaHandling/objectType/delineation/objectClass</path>
+                            <path>schemaHandling/objectType/delineation/objectClass</path>  
                             <visibility>visible</visibility>
                         </item>
                         <item id="141">
@@ -1431,7 +1457,7 @@
                             <visibility>visible</visibility>
                         </item>
                         <item id="143">
-                            <path>schemaHandling/objectType/delineation/filter</path>
+                            <path>schemaHandling/objectType/delineation/filter</path>       
                             <visibility>visible</visibility>
                         </item>
                         <item id="144">
@@ -1451,7 +1477,7 @@
                     <container id="145">
                         <identifier>limitationsMapping</identifier>
                         <display>
-                            <label>PageResource.wizard.step.attributes.limitation</label>
+                            <label>PageResource.wizard.step.attributes.limitation</label>   
                         </display>
                         <item id="147">
                             <path>schemaHandling/objectType/attribute/limitations/access/read</path>
@@ -1466,7 +1492,7 @@
                             <visibility>visible</visibility>
                         </item>
                         <item id="150">
-                            <path>schemaHandling/objectType/attribute/limitations/minOccurs</path>
+      <path>schemaHandling/objectType/attribute/limitations/minOccurs</path>
                             <visibility>visible</visibility>
                         </item>
                         <item id="151">
@@ -1481,7 +1507,7 @@
                     <container id="146">
                         <identifier>limitations</identifier>
                         <visibility>hidden</visibility>
-                        <path>schemaHandling/objectType/attribute/limitations</path>
+                        <path>schemaHandling/objectType/attribute/limitations</path>        
                     </container>
                     <panelType>rw-attribute-limitations</panelType>
                 </panel>
@@ -1508,7 +1534,7 @@
                     <container id="154">
                         <identifier>reaction</identifier>
                         <visibility>hidden</visibility>
-                        <path>schemaHandling/objectType/synchronization/reaction</path>
+                        <path>schemaHandling/objectType/synchronization/reaction</path>     
                     </container>
                     <panelType>rw-synchronization-reaction-main</panelType>
                 </panel>
@@ -1535,12 +1561,12 @@
                     <container id="159">
                         <identifier>reaction</identifier>
                         <visibility>hidden</visibility>
-                        <path>schemaHandling/objectType/synchronization/reaction</path>
+                        <path>schemaHandling/objectType/synchronization/reaction</path>     
                     </container>
                     <panelType>rw-synchronization-reaction-optional</panelType>
                 </panel>
                 <panel id="261">
-                    <identifier>rw-association-synchronization-reaction-main</identifier>
+                    <identifier>rw-association-synchronization-reaction-main</identifier>   
                     <container id="262">
                         <identifier>associationReactionMainSetting</identifier>
                         <display>
@@ -1597,7 +1623,7 @@
                             <visibility>visible</visibility>
                         </item>
                         <item id="166">
-                            <path>schemaHandling/objectType/attribute/displayName</path>
+                            <path>schemaHandling/objectType/attribute/displayName</path>    
                             <visibility>visible</visibility>
                         </item>
                         <item id="167">
@@ -1605,11 +1631,11 @@
                             <visibility>visible</visibility>
                         </item>
                         <item id="168">
-                            <path>schemaHandling/objectType/attribute/description</path>
+                            <path>schemaHandling/objectType/attribute/description</path>    
                             <visibility>visible</visibility>
                         </item>
                         <item id="169">
-                            <path>schemaHandling/objectType/attribute/tolerant</path>
+                            <path>schemaHandling/objectType/attribute/tolerant</path>       
                             <visibility>visible</visibility>
                         </item>
                         <item id="170">
@@ -1621,11 +1647,11 @@
                             <visibility>visible</visibility>
                         </item>
                         <item id="172">
-                            <path>schemaHandling/objectType/attribute/fetchStrategy</path>
+                            <path>schemaHandling/objectType/attribute/fetchStrategy</path>  
                             <visibility>visible</visibility>
                         </item>
                         <item id="173">
-                            <path>schemaHandling/objectType/attribute/matchingRule</path>
+                            <path>schemaHandling/objectType/attribute/matchingRule</path>   
                             <visibility>visible</visibility>
                         </item>
                         <item id="270">
@@ -1656,11 +1682,11 @@
                             <visibility>visible</visibility>
                         </item>
                         <item id="177">
-                            <path>schemaHandling/objectType/association/displayName</path>
+                            <path>schemaHandling/objectType/association/displayName</path>  
                             <visibility>visible</visibility>
                         </item>
                         <item id="178">
-                            <path>schemaHandling/objectType/association/description</path>
+                            <path>schemaHandling/objectType/association/description</path>  
                             <visibility>visible</visibility>
                         </item>
                         <item id="179">
@@ -1672,11 +1698,11 @@
                             <visibility>visible</visibility>
                         </item>
                         <item id="181">
-                            <path>schemaHandling/objectType/association/intent</path>
+                            <path>schemaHandling/objectType/association/intent</path>       
                             <visibility>visible</visibility>
                         </item>
                         <item id="182">
-                            <path>schemaHandling/objectType/association/direction</path>
+                            <path>schemaHandling/objectType/association/direction</path>    
                             <visibility>visible</visibility>
                         </item>
                         <item id="183">
@@ -1700,7 +1726,7 @@
                             <visibility>visible</visibility>
                         </item>
                         <item id="253">
-                            <path>schemaHandling/objectType/association/tolerant</path>
+                            <path>schemaHandling/objectType/association/tolerant</path>     
                             <visibility>visible</visibility>
                         </item>
                     </container>
@@ -1841,24 +1867,9 @@
             <identifier>admin-dashboard</identifier>
             <configurableDashboardRef oid="00000000-0000-0000-0001-000000000001" relation="org:default" type="c:DashboardType"/>
         </configurableUserDashboard>
-        <configurableUserDashboard id="267">
+        <configurableUserDashboard id="272">
             <identifier>compliance-dashboard</identifier>
-            <configurableDashboardRef oid="00000000-0000-0000-0001-000000001001" relation="org:default" type="c:DashboardType"/>
-        </configurableUserDashboard>
-
-        <configurableUserDashboard>
-            <identifier>licence-dashboard</identifier>
-            <configurableDashboardRef oid="43fa762c-bd0c-4cc1-b4fc-2854720fd7cc" relation="org:default" type="c:DashboardType"/>
-        </configurableUserDashboard>
-
-        <configurableUserDashboard>
-            <identifier>notable-accounts-dashboard</identifier>
-            <configurableDashboardRef oid="b0fdc3d8-6dc9-419c-adac-53a2833a6869" relation="org:default" type="c:DashboardType"/>
-        </configurableUserDashboard>
-
-        <configurableUserDashboard>
-            <identifier>compliace-dashboard</identifier>
-            <configurableDashboardRef oid="118b5d33-93b8-4ef1-8c15-9bb9984ffa8b" relation="org:default" type="c:DashboardType"/>
+            <configurableDashboardRef oid="f941f3fc-dcef-4415-9e79-ae56b185a501" type="c:DashboardType"/>
         </configurableUserDashboard>
 
         <accessRequest>
@@ -1900,26 +1911,6 @@
     <!--    </attributeStatistics>-->
 
     <!--</roleAnalysis>-->
-    <deploymentInformation>
-        <subscriptionIdentifier>051225971086</subscriptionIdentifier>
-    </deploymentInformation>
-    <fullTextSearch>
-        <indexed id="19">
-            <c:item>name</c:item>
-            <c:item>description</c:item>
-        </indexed>
-        <indexed id="20">
-            <objectType>UserType</objectType>
-            <c:item>fullName</c:item>
-            <c:item>employeeNumber</c:item>
-        </indexed>
-        <indexed id="21">
-            <objectType>AbstractRoleType</objectType>
-            <c:item>displayName</c:item>
-            <c:item>identifier</c:item>
-        </indexed>
-    </fullTextSearch>
-<!--</systemConfiguration>-->
 
     <expressions>
         <expressionProfile id="218">
@@ -1949,23 +1940,58 @@
                 <type>const</type>
                 <decision>allow</decision>
             </evaluator>
-            <evaluator id="223">
-                <type>script</type>
-                <decision>deny</decision> <!-- default decision of those script languages that are not explicitly enumerated. -->
-                <script id="224">
-                    <language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
-                    <decision>allow</decision>
-                    <typeChecking>true</typeChecking>
-                    <permissionProfile>script-safe</permissionProfile>
-                </script>
+            <evaluator id="273">
+                <type>filter</type>
+                <decision>allow</decision>
             </evaluator>
+            <evaluator id="274">
+                <type>function</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator id="278">
+                <type>generate</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator id="279">
+                <type>proportional</type>
+                <decision>allow</decision>
+            </evaluator>
+            <bulkActionsProfile>prohibitive</bulkActionsProfile>
+            <privilegeElevation>deny</privilegeElevation>
         </expressionProfile>
+        <expressionProfile id="275">
+            <identifier>permissive</identifier>
+            <description>Unlimited access to all expressions</description>
+            <decision>allow</decision>
+            <privilegeElevation>allow</privilegeElevation>
+        </expressionProfile>
+        <expressionProfile id="276">
+            <identifier>prohibitive</identifier>
+            <description>No access to any expressions</description>
+            <decision>deny</decision>
+            <bulkActionsProfile>prohibitive</bulkActionsProfile>
+            <privilegeElevation>deny</privilegeElevation>
+        </expressionProfile>
+        <bulkActionsProfile id="277">
+            <identifier>prohibitive</identifier>
+            <decision>deny</decision>
+        </bulkActionsProfile>
         <permissionProfile id="225">
-            <identifier>script-safe</identifier>
+            <identifier>script-limited</identifier>
+            <description>
+                "Limited" script permission profile. It is supposed to contain operations that are mostly "safe",
+                i.e. operations that have very little risk to harm the system, circumvent midPoint security
+                and so on.
+                However, this profile may incomplete, and it is likely it is not completely secure.
+                The very nature of script permission checks (a.k.a. sandbox) does not guarantee complete safety.
+                This profile is meant as a means to limit (mostly unintentional) harm done by the scripts,
+                it is not meant as a strict security measure.
+                It is provided here "AS IS", without any guarantees. Use at your own risk.  
+            </description>
             <decision>deny</decision> <!-- Default decision for those classes that are not explicitly enumerated. -->
             <package id="226">
                 <name>com.evolveum.midpoint.xml.ns._public.common.common_3</name>
-                <description>MidPoint common schema - generated bean classes</description>
+                <description>MidPoint common schema - generated bean classes</description>  
                 <decision>allow</decision>
             </package>
             <package id="227">
@@ -2047,7 +2073,7 @@
             </class>
             <class id="240">
                 <name>java.lang.System</name>
-                <description>Just a few methods of System are safe enough.</description>
+                <description>Just a few methods of System are safe enough.</description>    
                 <decision>deny</decision>
                 <method id="252">
                     <name>currentTimeMillis</name>
@@ -2133,9 +2159,5 @@
         </permissionProfile>
     </expressions>
 
-    <workflowConfiguration>
-        <useLegacyApproversSpecification>never</useLegacyApproversSpecification>
-        <useDefaultApprovalPolicyRules>never</useDefaultApprovalPolicyRules>
-    </workflowConfiguration>
-
 </systemConfiguration>
+root@353e3c121d8a:/opt/midpoint/doc/config/initial-objects/system-configuration#
