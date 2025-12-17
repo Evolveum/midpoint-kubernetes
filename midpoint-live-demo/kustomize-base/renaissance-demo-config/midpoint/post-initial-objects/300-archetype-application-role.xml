@@ -14,17 +14,28 @@
         of user access with business description of the access.
     </description>
     <assignment>
+        <identifier>holderType</identifier>
         <assignmentRelation>
             <holderType>RoleType</holderType>
         </assignmentRelation>
     </assignment>
     <archetypePolicy>
         <display>
-            <label>Application role</label>
-            <pluralLabel>Application roles</pluralLabel>
+            <label>
+                <orig>Application role</orig>
+                <translation>
+                    <key>applicationRole.label</key>
+                </translation>
+            </label>
+            <pluralLabel>
+                <orig>Application roles</orig>
+                <translation>
+                    <key>applicationRole.pluralLabel</key>
+                </translation>
+            </pluralLabel>
             <icon>
                 <cssClass>fe fe-role</cssClass>
-                <color>#5b80a5</color>
+                <color>blue</color>
             </icon>
         </display>
 
