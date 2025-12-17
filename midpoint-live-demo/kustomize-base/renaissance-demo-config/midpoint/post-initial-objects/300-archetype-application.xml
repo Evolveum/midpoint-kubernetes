@@ -8,22 +8,35 @@
             oid="00000000-0000-0000-0000-000000000329">
 
     <name>Application</name>
-    <description>Applications are basic building blocks for defining access.
-        Application is an administrative object describing information system/application
+    <description>
+        Applications are basic building blocks for defining access.
+        These objects contain business information.
+        Application is an administrative object describing application
         as a business target that the access relates to.
     </description>
     <assignment>
+        <identifier>holderType</identifier>
         <assignmentRelation>
             <holderType>ServiceType</holderType>
         </assignmentRelation>
     </assignment>
     <archetypePolicy>
         <display>
-            <label>Application</label>
-            <pluralLabel>Applications</pluralLabel>
+            <label>
+                <orig>Application</orig>
+                <translation>
+                    <key>Application.label</key>
+                </translation>
+            </label>
+            <pluralLabel>
+                <orig>Applications</orig>
+                <translation>
+                    <key>Applications.title</key>
+                </translation>
+            </pluralLabel>
             <icon>
                 <cssClass>fa fa-cloud</cssClass>
-                <color>#5b80a5</color>
+                <color>blue</color>
             </icon>
         </display>
         <objectTemplateRef oid="48aa8ec1-b2d0-4e64-b6b5-74cb3a9cf813"/>
@@ -38,7 +51,7 @@
                 </panel>
                 <panel>
                     <identifier>assignments</identifier>
-                    <visibility>visible</visibility>
+                    <visibility>hidden</visibility>
                 </panel>
                 <panel>
                     <identifier>password</identifier>
@@ -91,14 +104,19 @@
                 </panel>
                 <panel>
                     <identifier>projections</identifier>
+                    <panelType>projections</panelType>
                     <display>
-                        <label>Application.panel.projections</label>
+                        <label>
+                            <orig>Inventory records</orig>
+                            <translation>
+                                <key>Application.panel.projections</key>
+                            </translation>
+                        </label>
                         <icon>
                             <cssClass>fa fa-database</cssClass>
                         </icon>
                     </display>
                     <displayOrder>20</displayOrder>
-                    <panelType>projections</panelType>
                 </panel>
                 <panel>
                     <identifier>activation</identifier>
@@ -129,7 +147,12 @@
                 <panel>
                     <identifier>governance</identifier>
                     <display>
-                        <label>GovernanceCardsPanel.label</label>
+                        <label>
+                            <orig>Governance</orig>
+                            <translation>
+                                <key>GovernanceCardsPanel.label</key>
+                            </translation>
+                        </label>
                         <icon>
                             <cssClass>fa fa-users</cssClass>
                         </icon>
@@ -139,7 +162,80 @@
                     <panelType>governanceCards</panelType>
                 </panel>
                 <panel>
+                    <identifier>classifications</identifier>
+                    <display>
+                        <label>
+                            <orig>Classifications</orig>
+                            <translation>
+                                <key>classifications.panel.label</key>
+                            </translation>
+                        </label>
+                        <tooltip>Information classifications (labels)</tooltip>
+                        <icon>
+                            <cssClass>fa fa-tags</cssClass>
+                        </icon>
+                    </display>
+                    <displayOrder>92</displayOrder>
+                    <panelType>policyAssignments</panelType>
+                    <listView>
+                        <identifier>classifications-view</identifier>
+                        <type>c:AssignmentType</type>
+                        <dataProvider xsi:type="c:RepositoryAssignmentDataProviderType"/>
+                        <collection>
+                            <filter>
+                                <q:text>targetRef/@/archetypeRef matches ( oid = "00000000-0000-0000-0000-000000000330" )</q:text>
+                            </filter>
+                        </collection>
+                    </listView>
+                </panel>
+                <panel>
+                    <identifier>inducements</identifier>
+                    <visibility>hidden</visibility>
+																		   
+                </panel>
+                <panel>
+                    <identifier>resourceEntitlementsTopLevel</identifier>
+                    <panelType>constructionInducements</panelType>
+                    <display>
+                        <label>
+                            <orig>Construction inducements</orig>
+                            <translation>
+                                <key>Application.panel.constructionInducements</key>
+                            </translation>
+                        </label>
+                    </display>
+                    <displayOrder>115</displayOrder>
+                </panel>
+                <panel>
+                    <identifier>applicationRoles</identifier>
+                    <panelType>inducedBy</panelType>
+                    <display>
+                        <label>
+                            <orig>Application roles</orig>
+                            <translation>
+                                <key>Application.panel.inducedBy</key>
+                            </translation>
+                        </label>
+                    </display>
+                    <listView>
+                        <identifier>applicationRoles</identifier>
+                        <type>c:RoleType</type>
+                        <collection>
+                            <collectionRef oid="00000000-0000-0000-0001-000000000016" type="c:ObjectCollectionType"/>
+                        </collection>
+                        <searchBoxConfiguration>
+                            <objectTypeConfiguration>
+                                <visibility>hidden</visibility>
+                                <defaultValue>RoleType</defaultValue>
+                                <supportedTypes>RoleType</supportedTypes>
+                            </objectTypeConfiguration>
+                        </searchBoxConfiguration>
+                    </listView>
+                    <displayOrder>117</displayOrder>
+                </panel>
+                <panel>
                     <identifier>inducedBy</identifier>
+					<panelType>inducedBy</panelType>
                     <display>
                         <icon>
                             <cssClass>fa fa-list</cssClass>
@@ -152,6 +248,7 @@
                     <identifier>applicablePolicies</identifier>
                     <displayOrder>80</displayOrder>
                     <applicableForOperation>modify</applicableForOperation>
+					<visibility>hidden</visibility>
                 </panel>
                 <panel>
                     <identifier>history</identifier>

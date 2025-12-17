@@ -14,9 +14,9 @@
 
     <name>SystemConfiguration</name>
     <indestructible>true</indestructible>
-    <globalAccountSynchronizationSettings>
-        <assignmentPolicyEnforcement>full</assignmentPolicyEnforcement>
-    </globalAccountSynchronizationSettings>
+    <!--         <globalAccountSynchronizationSettings> -->
+    <!--         <assignmentPolicyEnforcement>relative</assignmentPolicyEnforcement> -->
+    <!--         </globalAccountSynchronizationSettings> -->
     <globalSecurityPolicyRef oid="00000000-0000-0000-0000-000000000120"/>
     <logging>
         <classLogger id="1">
@@ -206,6 +206,9 @@
         <repository>
             <autoCreatePartitionsOnAdd>true</autoCreatePartitionsOnAdd>
         </repository>
+        <operationExecutionRecording>
+            <skipWhenSuccess>true</skipWhenSuccess>
+        </operationExecutionRecording>									 								  
     </internals>
     <adminGuiConfiguration>
         <homePage id="21">
@@ -237,6 +240,12 @@
                                 <key>PageSelfDashboard.button.viewAll</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>Redirects to the all assignments panel on the user's profile page.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.myAccesses.viewAll.help</key>
+                            </translation>
+                        </help>					   
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -255,6 +264,12 @@
                                 <key>PageRequestAccess.title</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>Redirects to the Request access wizard.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.requestAccess.wizard.help</key>
+                            </translation>
+                        </help>  
                         <icon>
                             <cssClass>fas fa-plus-circle</cssClass>
                         </icon>
@@ -290,6 +305,12 @@
                                 <key>PageSelfDashboard.button.viewAll</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>Redirects to the approval cases table with a requestor set to the logged in user.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.myRequests.viewAll.help</key>
+                            </translation>
+                        </help>  
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -326,6 +347,12 @@
                                 <key>PageSelfDashboard.button.viewAll</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>Redirects to work items table where assignee is set to the logged in user.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.myWorkItems.viewAll.help</key>
+                            </translation>
+                        </help>   
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -361,6 +388,12 @@
                                 <key>PageSelfDashboard.button.viewAll</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>Redirects to the Projections panel on the user's profile page.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.myAccounts.viewAll.help</key>
+                            </translation>
+                        </help>   
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -501,6 +534,17 @@
             </widget>
         </homePage>
         <objectCollectionViews>
+            <defaultSettings>
+                <paging>
+                    <maxSize>20</maxSize>
+                </paging>
+                <pagingOptions>
+                    <availablePageSize>10</availablePageSize>
+                    <availablePageSize>20</availablePageSize>
+                    <availablePageSize>50</availablePageSize>
+                    <availablePageSize>100</availablePageSize>
+                </pagingOptions>
+            </defaultSettings>			  
             <objectCollectionView id="40">
                 <identifier>my-cases</identifier>
                 <display>
@@ -1150,6 +1194,17 @@
             </objectCollectionView>
         </objectCollectionViews>
         <objectDetails>
+            <defaultSettings>
+                <paging>
+                    <maxSize>20</maxSize>
+                </paging>
+                <pagingOptions>
+                    <availablePageSize>10</availablePageSize>
+                    <availablePageSize>20</availablePageSize>
+                    <availablePageSize>50</availablePageSize>
+                    <availablePageSize>100</availablePageSize>
+                </pagingOptions>
+            </defaultSettings>				  
             <objectDetailsPage id="83">
                 <type>c:TaskType</type>
                 <panel id="85">
@@ -1841,10 +1896,6 @@
             <identifier>admin-dashboard</identifier>
             <configurableDashboardRef oid="00000000-0000-0000-0001-000000000001" relation="org:default" type="c:DashboardType"/>
         </configurableUserDashboard>
-        <configurableUserDashboard id="267">
-            <identifier>compliance-dashboard</identifier>
-            <configurableDashboardRef oid="00000000-0000-0000-0001-000000001001" relation="org:default" type="c:DashboardType"/>
-        </configurableUserDashboard>
 
         <configurableUserDashboard>
             <identifier>licence-dashboard</identifier>
@@ -1858,7 +1909,7 @@
 
         <configurableUserDashboard>
             <identifier>compliace-dashboard</identifier>
-            <configurableDashboardRef oid="118b5d33-93b8-4ef1-8c15-9bb9984ffa8b" relation="org:default" type="c:DashboardType"/>
+            <configurableDashboardRef oid="f941f3fc-dcef-4415-9e79-ae56b185a501" relation="org:default" type="c:DashboardType"/>
         </configurableUserDashboard>
 
         <accessRequest>
@@ -1959,9 +2010,50 @@
                     <permissionProfile>script-safe</permissionProfile>
                 </script>
             </evaluator>
+            <evaluator id="274">
+                <type>function</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator id="278">
+                <type>generate</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator id="279">
+                <type>proportional</type>
+                <decision>allow</decision>
+            </evaluator>
+            <bulkActionsProfile>prohibitive</bulkActionsProfile>
+            <privilegeElevation>deny</privilegeElevation>
         </expressionProfile>
+        <expressionProfile id="275">
+            <identifier>permissive</identifier>
+            <description>Unlimited access to all expressions</description>
+            <decision>allow</decision>
+            <privilegeElevation>allow</privilegeElevation>									  
+        </expressionProfile>
+        <expressionProfile id="276">
+            <identifier>prohibitive</identifier>
+            <description>No access to any expressions</description>
+            <decision>deny</decision>
+            <bulkActionsProfile>prohibitive</bulkActionsProfile>
+            <privilegeElevation>deny</privilegeElevation>
+        </expressionProfile>
+        <bulkActionsProfile id="277">
+            <identifier>prohibitive</identifier>
+            <decision>deny</decision>
+        </bulkActionsProfile>			 
         <permissionProfile id="225">
             <identifier>script-safe</identifier>
+            <description>
+                "Limited" script permission profile. It is supposed to contain operations that are mostly "safe",
+                i.e. operations that have very little risk to harm the system, circumvent midPoint security
+                and so on.
+                However, this profile may incomplete, and it is likely it is not completely secure.
+                The very nature of script permission checks (a.k.a. sandbox) does not guarantee complete safety.
+                This profile is meant as a means to limit (mostly unintentional) harm done by the scripts,
+                it is not meant as a strict security measure.
+                It is provided here "AS IS", without any guarantees. Use at your own risk.
+            </description>		  
             <decision>deny</decision> <!-- Default decision for those classes that are not explicitly enumerated. -->
             <package id="226">
                 <name>com.evolveum.midpoint.xml.ns._public.common.common_3</name>

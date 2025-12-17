@@ -6,22 +6,54 @@
   -->
 
 <archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-           oid="694bb285-e787-4d3e-9231-1bfb4fd4e188">
+           xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+           oid="6a12b965-a1c2-47c9-87bd-19e84c71d814">
 
     <name>Organizational unit</name>
+    <description>Archetype for organizational unit (departments, divisions, sections), usually forming functional organizational structure.</description>
+    <documentation>(ISO27001/A.5.15,ISO27001/A.5.16)</documentation>
     <assignment>
+        <identifier>holderType</identifier>
+        <description>This archetype can be applied to orgs (OrgType).</description>
         <assignmentRelation>
             <holderType>OrgType</holderType>
         </assignmentRelation>
     </assignment>
     <archetypePolicy>
         <display>
-            <label>Org. unit</label>
-            <pluralLabel>Org. units</pluralLabel>
+            <label>
+                <orig>Organizational unit</orig>
+                <translation>
+                    <key>organizationalUnit.label</key>
+                </translation>
+            </label>
+            <pluralLabel>
+                <orig>Organizational units</orig>
+                <translation>
+                    <key>organizationalUnit.pluralLabel</key>
+                </translation>
+            </pluralLabel>
             <icon>
-                <cssClass>fa fa-building</cssClass>
-                <color>#323030</color>
+                <cssClass>fa fa-sitemap</cssClass>
+                <color>#ffc107</color>
             </icon>
         </display>
+        <assignmentHolderRelationApproach>closed</assignmentHolderRelationApproach>
     </archetypePolicy>
+    <inducement>
+        <identifier>membership</identifier>
+        <description>Organizational units are hierarchical, have members and manager.</description>
+        <assignmentRelation>
+            <description>User can be direct member of organizational unit, as well as manager.</description>
+            <holderType>UserType</holderType>
+            <relation>org:default</relation>
+            <relation>org:manager</relation>
+        </assignmentRelation>
+        <assignmentRelation>
+            <description>Organizational units that are part of this organization. Organizational units are hierarchical, there can be organizational units within organizational units.</description>
+            <holderType>OrgType</holderType>
+            <holderArchetypeRef oid="6a12b965-a1c2-47c9-87bd-19e84c71d814"/>
+            <relation>org:default</relation>
+        </assignmentRelation>
+    </inducement>			 
 </archetype>
