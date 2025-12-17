@@ -7,25 +7,38 @@
 <archetype oid="00000000-0000-0000-0000-000000000331"
         xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
     <name>Clearance</name>
+    <description>Archetype for clearances (screenings, trainings, legal agreements/clauses).</description>
+    <documentation>(ISO27001/A.5.12,ISO27001/A.5.13)</documentation>															
     <archetypePolicy>
         <display>
-            <label>Clearance</label>
-            <pluralLabel>Clearances</pluralLabel>
+            <label>
+                <orig>Clearance</orig>
+                <translation>
+                    <key>clearance.label</key>
+                </translation>
+            </label>
+            <pluralLabel>
+                <orig>Clearances</orig>
+                <translation>
+                    <key>clearance.pluralLabel</key>
+                </translation>
+            </pluralLabel>
             <icon>
                 <cssClass>fa fa-award</cssClass>
                 <color>green</color>
             </icon>
         </display>
     </archetypePolicy>
-    <assignment id="1">
+    <assignment>
         <identifier>holderType</identifier>
-        <assignmentRelation id="2">
+        <assignmentRelation>
             <holderType>UserType</holderType>
             <holderType>OrgType</holderType>
             <holderType>ServiceType</holderType>
+			<holderType>PolicyType</holderType>
         </assignmentRelation>
     </assignment>
-    <inducement id="3">
+    <inducement>
         <orderConstraint>
             <order>2</order>
         </orderConstraint>

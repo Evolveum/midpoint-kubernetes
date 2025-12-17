@@ -6,22 +6,48 @@
   -->
 
 <archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-           oid="63afe786-068e-4f98-ac00-f3b7046b2b90">
+           xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+           oid="89a34123-1db7-4fc1-a053-6c42b82ef2ab">
 
     <name>Project</name>
+    <description>Archetype for projects.</description>
+    <documentation>(ISO27001/A.5.8,ISO27001/A.5.15,ISO27001/A.5.16)</documentation>	
     <assignment>
+        <identifier>holderType</identifier>
+        <description>This archetype can be applied to orgs (OrgType).</description>
         <assignmentRelation>
             <holderType>OrgType</holderType>
         </assignmentRelation>
     </assignment>
     <archetypePolicy>
         <display>
-            <label>Project</label>
-            <pluralLabel>Projects</pluralLabel>
+            <label>
+                <orig>Project</orig>
+                <translation>
+                    <key>project.label</key>
+                </translation>
+            </label>
+            <pluralLabel>
+                <orig>Projects</orig>
+                <translation>
+                    <key>project.pluralLabel</key>
+                </translation>
+            </pluralLabel>
             <icon>
-                <cssClass>fa fa-clipboard</cssClass>
-                <color>#0DBE66</color>
+                <cssClass>fa fa-chart-gantt</cssClass>
+                <color>#ffc107</color>
             </icon>
         </display>
     </archetypePolicy>
+    <inducement>
+        <identifier>membership</identifier>
+        <description>Projects are flat (no sub-teams), have members and manager. May have owner (sponsor).</description>
+        <assignmentRelation>
+            <description>User can be direct member of project, as well as manager and owner.</description>
+            <holderType>UserType</holderType>
+            <relation>org:default</relation>
+            <relation>org:manager</relation>
+            <relation>org:owner</relation>
+        </assignmentRelation>
+    </inducement>	 
 </archetype>

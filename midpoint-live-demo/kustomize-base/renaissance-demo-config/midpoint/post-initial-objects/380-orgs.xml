@@ -15,7 +15,7 @@
     <tenant>false</tenant>
 
     <assignment>
-        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+        <targetRef oid="6a12b965-a1c2-47c9-87bd-19e84c71d814" relation="org:default" type="c:ArchetypeType"/>
     </assignment>
 
     <inducement>
@@ -44,7 +44,7 @@
         <name>Council of Patrons</name>
         <description>Members of the Councils approve every new member of the Patron role</description>
         <assignment>
-            <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+            <targetRef oid="6a12b965-a1c2-47c9-87bd-19e84c71d814" relation="org:default" type="c:ArchetypeType"/>
         </assignment>
         <assignment>
             <targetRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:default" type="c:OrgType"/>
@@ -71,7 +71,7 @@
         <!-- F0000 -->
     </parentOrgRef>
     <assignment>
-        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+        <targetRef oid="6a12b965-a1c2-47c9-87bd-19e84c71d814" relation="org:default" type="c:ArchetypeType"/>
     </assignment>
     <assignment id="1">
         <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" relation="org:default" type="c:RoleType">
@@ -99,7 +99,7 @@
         <!-- F0100 -->
     </parentOrgRef>
     <assignment>
-        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+        <targetRef oid="6a12b965-a1c2-47c9-87bd-19e84c71d814" relation="org:default" type="c:ArchetypeType"/>
     </assignment>
     <assignment id="1">
         <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" relation="org:default" type="c:RoleType">
@@ -127,7 +127,7 @@
         <!-- F0100 -->
     </parentOrgRef>
     <assignment>
-        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+        <targetRef oid="6a12b965-a1c2-47c9-87bd-19e84c71d814" relation="org:default" type="c:ArchetypeType"/>
     </assignment>
     <assignment id="1">
         <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" relation="org:default" type="c:RoleType">
@@ -153,7 +153,7 @@
         <!-- F0000 -->
     </parentOrgRef>
     <assignment>
-        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+        <targetRef oid="6a12b965-a1c2-47c9-87bd-19e84c71d814" relation="org:default" type="c:ArchetypeType"/>
     </assignment>
     <assignment id="1">
         <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" relation="org:default" type="c:RoleType">
@@ -183,7 +183,7 @@
         <!-- F0200 -->
     </parentOrgRef>
     <assignment>
-        <targetRef oid="694bb285-e787-4d3e-9231-1bfb4fd4e188" relation="org:default" type="c:ArchetypeType"/>
+        <targetRef oid="6a12b965-a1c2-47c9-87bd-19e84c71d814" relation="org:default" type="c:ArchetypeType"/>
     </assignment>
     <assignment id="1">
         <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" relation="org:default" type="c:RoleType">
@@ -207,7 +207,7 @@
     <subtype>project</subtype>
     <displayName>Projects</displayName>
     <assignment>
-        <targetRef oid="63afe786-068e-4f98-ac00-f3b7046b2b90" relation="org:default" type="c:ArchetypeType"/>
+        <targetRef oid="89a34123-1db7-4fc1-a053-6c42b82ef2ab" relation="org:default" type="c:ArchetypeType"/>
     </assignment>
 </org>
 
@@ -219,7 +219,7 @@
         <!-- P0000 -->
     </parentOrgRef>
     <assignment>
-        <targetRef oid="63afe786-068e-4f98-ac00-f3b7046b2b90" relation="org:default" type="c:ArchetypeType"/>
+        <targetRef oid="89a34123-1db7-4fc1-a053-6c42b82ef2ab" relation="org:default" type="c:ArchetypeType"/>
     </assignment>
     <assignment id="1">
         <targetRef oid="3154fafb-9f9f-4c3b-93ae-7fffd43796bf" relation="org:default" type="c:RoleType">
@@ -244,7 +244,7 @@
         <!-- P0000 -->
     </parentOrgRef>
     <assignment>
-        <targetRef oid="63afe786-068e-4f98-ac00-f3b7046b2b90" relation="org:default" type="c:ArchetypeType"/>
+        <targetRef oid="89a34123-1db7-4fc1-a053-6c42b82ef2ab" relation="org:default" type="c:ArchetypeType"/>
     </assignment>
     <assignment id="1">
         <targetRef oid="3154fafb-9f9f-4c3b-93ae-7fffd43796bf" relation="org:default" type="c:RoleType">
