@@ -25,10 +25,7 @@
                             <name>Council of Patrons</name>
                             <approverRef relation="org:default" type="c:OrgType">
                                 <filter xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" >
-                                    <q:equal>
-                                        <q:path>name</q:path>
-                                        <q:value>Council of Patrons</q:value>
-                                    </q:equal>
+                                    <q:text>name = "Council of Patrons"</q:text>
                                 </filter>
                                 <resolutionTime>run</resolutionTime>
                             </approverRef>
@@ -151,12 +148,9 @@
             </object>
             <target id="23">
                 <type>RoleType</type>
-                <filter>
-                    <q:equal>
-                        <q:path>name</q:path>
-                        <q:value>Philistine</q:value>
-                    </q:equal>
-                </filter>
+	            <filter>
+	                <q:text>name = "Philistine"</q:text>
+	            </filter>
             </target>
             <relation>org:default</relation>
         </authorization>
@@ -258,19 +252,12 @@
 	        <ref>ri:ldapGroups</ref>
 	        <outbound>
 	            <expression>
-	                <associationTargetSearch>
-	                    <filter>
-	                        <q:equal>
-	                            <q:path>
-					declare namespace icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3";
-					declare namespace ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3";
-					attributes/ri:cn
-	                            </q:path>
-	                            <q:value>employees</q:value>
-	                        </q:equal>
-	                    </filter>
-	                    <searchStrategy>onResourceIfNeeded</searchStrategy>
-	                </associationTargetSearch>
+					<associationTargetSearch>
+					    <filter>
+					        <q:text>attributes/ri:cn = "employees"</q:text>
+					    </filter>
+					    <searchStrategy>onResourceIfNeeded</searchStrategy>
+					</associationTargetSearch>
 	            </expression>
 	        </outbound>
 	    </association>
