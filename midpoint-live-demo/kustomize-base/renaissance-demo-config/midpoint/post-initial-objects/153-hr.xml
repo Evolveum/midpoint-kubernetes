@@ -1,246 +1,246 @@
-<resource xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="8844dcca-775d-11e2-a0ac-001e8c717e5b" version="101">
+<resource 
+  xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" 
+  xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" 
+  xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" 
+  xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" 
+  xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" 
+  xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" 
+  xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  oid="8844dcca-775d-11e2-a0ac-001e8c717e5b">
     <name>HR Feed</name>
-    <connectorRef type="ConnectorType">
-        <filter>
-            <q:equal>
-                <q:path>c:connectorType</q:path>
-                <q:value>com.evolveum.polygon.connector.csv.CsvConnector</q:value>
-            </q:equal>
-        </filter>
+	<connectorRef>
+		<filter>
+			<q:text>connectorType = "com.evolveum.polygon.connector.csv.CsvConnector"</q:text>
+		</filter>
+	</connectorRef>
+	<!-- in case of error (bug #9537) replace with
+	<connectorRef oid="4c8a0285-0d49-4b43-b08a-aac5f2db673f" relation="org:default" type="c:ConnectorType">
     </connectorRef>
-    <connectorConfiguration xmlns:icfc="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:ConnectorConfigurationType">
-        <icfc:configurationProperties xmlns:gen593="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-csv/com.evolveum.polygon.connector.csv.CsvConnector" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="icfc:ConfigurationPropertiesType">
-            <gen593:multivalueDelimiter>;</gen593:multivalueDelimiter>
-            <gen593:fieldDelimiter>,</gen593:fieldDelimiter>
-            <gen593:quote>"</gen593:quote>
-            <gen593:filePath>/opt/midpoint/var/import/midpoint-source.csv</gen593:filePath>
-            <gen593:quoteMode>ALL</gen593:quoteMode>
-            <gen593:encoding>utf-8</gen593:encoding>
-            <gen593:nameAttribute>empnum</gen593:nameAttribute>
-            <gen593:uniqueAttribute>empnum</gen593:uniqueAttribute>
+    -->
+    <connectorConfiguration xmlns:icfc="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/connector-schema-3">
+        <icfc:configurationProperties xmlns:cfg="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/bundle/com.evolveum.polygon.connector-csv/com.evolveum.polygon.connector.csv.CsvConnector">
+            <cfg:multivalueDelimiter>;</cfg:multivalueDelimiter>
+            <cfg:fieldDelimiter>,</cfg:fieldDelimiter>
+            <cfg:quote>"</cfg:quote>
+            <cfg:filePath>/opt/midpoint/var/import/midpoint-source.csv</cfg:filePath>
+            <cfg:quoteMode>ALL</cfg:quoteMode>
+            <cfg:encoding>utf-8</cfg:encoding>
+            <cfg:nameAttribute>empnum</cfg:nameAttribute>
+            <cfg:uniqueAttribute>empnum</cfg:uniqueAttribute>
         </icfc:configurationProperties>
     </connectorConfiguration>
-    <schemaHandling>
-        <objectType id="1">
-            <intent>default</intent>
-            <displayName>Default Account</displayName>
-            <default>true</default>
-            <objectClass>ri:AccountObjectClass</objectClass>
-
-            <focus>
-                <type>UserType</type>
-                <archetypeRef oid="00000000-0000-0000-0000-000000000702" relation="org:default" type="c:ArchetypeType"/>
-            </focus>
-
-
-            <synchronization>
-                <reaction>
-                    <situation>linked</situation>
-                    <actions>
-                        <synchronize/>
-                    </actions>
-                </reaction>
-                <reaction>
-                    <situation>deleted</situation>
-                    <actions>
-                        <deleteFocus/>
-                    </actions>
-                </reaction>
-                <reaction>
-                    <situation>unlinked</situation>
-                    <actions>
-                        <link/>
-                    </actions>
-                </reaction>
-                <reaction>
-                    <situation>unmatched</situation>
-                    <actions>
-                        <addFocus/>
-                    </actions>
-                </reaction>
-            </synchronization>
-
-            <correlation>
-                <correlators>
-                    <items>
-                        <name>Personal number correlator</name>
-                        <item>
-                            <ref>personalNumber</ref>
-                        </item>
-                    </items>
-                </correlators>
-            </correlation>
-
-            <attribute id="2">
-                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:empnum</c:ref>
-                <displayName>Employee#</displayName>
-                <limitations>
-                    <minOccurs>0</minOccurs>
-                </limitations>
-                <inbound id="7">
-                    <name>personalNumber</name>
-                    <target>
-                        <path>personalNumber</path>
-                    </target>
-                    <evaluationPhases>
-                        <include>beforeCorrelation</include>
-                    </evaluationPhases>
-                </inbound>
-            </attribute>
-            <attribute id="3">
-                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:firstname</c:ref>
-                <displayName>First Name</displayName>
-                <description>Definition of Firstname attribute handling.</description>
-                <inbound id="8">
-                    <name>givenName</name>
-                    <target>
-                        <c:path>$focus/givenName</c:path>
-                    </target>
-                </inbound>
-            </attribute>
-            <attribute id="4">
-                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:lastname</c:ref>
-                <displayName>Last name</displayName>
-                <inbound id="9">
-                    <name>familyName</name>
-                    <target>
-                        <c:path>$focus/familyName</c:path>
-                    </target>
-                </inbound>
-            </attribute>
-            <attribute id="5">
-                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:artname</c:ref>
-                <displayName>Artistic name</displayName>
-                <inbound id="10">
-                    <name>artisticName</name>
-                    <target>
-                        <c:path xmlns:ext="http://prism.evolveum.com/xml/ns/demo/extension-electra">$focus/extension/ext:artisticName</c:path>
-                    </target>
-                </inbound>
-                <inbound id="11">
-                    <name>nickName</name>
-                    <strength>weak</strength>
-                    <target>
-                        <c:path>$focus/nickName</c:path>
-                    </target>
-                </inbound>
-                <inbound>
-                    <name>name</name>
-                    <strength>weak</strength>
-                    <expression>
-                        <script>
-                            <code>basic.norm(input)</code>
-                        </script>
-                    </expression>
-                    <target>
-                        <path>$user/name</path>
-                    </target>
-                </inbound>
-                <inbound>
-                    <name>Corporate email address</name>
-                    <lifecycleState>proposed</lifecycleState>
-                    <strength>strong</strength>
-                    <expression>
-                        <script>
-                            <code>basic.norm(input) + '@leonardo-workshop.org'</code>
-                        </script>
-                    </expression>
-                    <target>
-                        <path>emailAddress</path>
-                    </target>
-                </inbound>
-            </attribute>
-            <attribute id="6">
-                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:emptype</c:ref>
-                <displayName>Employee type</displayName>
-                <inbound>
-                    <name>Main role by employee type</name>
-                    <strength>strong</strength>
-                    <expression>
-                        <assignmentTargetSearch>
-                            <targetType>RoleType</targetType>
-                            <filter>
-                                <q:equal>
-                                    <q:path>identifier</q:path>
-                                    <expression>
-                                        <script>
-                                            <code>input</code>
-                                        </script>
-                                    </expression>
-                                </q:equal>
-                            </filter>
-                        </assignmentTargetSearch>
-                    </expression>
-                    <target>
-                            <path>assignment</path>
-                    </target>
-                    <condition>
-                        <script>
-                            <code>input != null</code>
-                        </script>
-                    </condition>
-                </inbound>
-            </attribute>
-            <activation>
-                <administrativeStatus>
-                    <inbound/>
-                </administrativeStatus>
-            </activation>
-            <credentials>
-                <password xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:ResourcePasswordDefinitionType">
-                    <inbound>
-                        <strength>weak</strength>
-                        <expression>
-                            <generate xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="c:GenerateExpressionEvaluatorType"/>
-                        </expression>
-                    </inbound>
-                </password>
-            </credentials>
-            <projection>
-                <assignmentPolicyEnforcement>none</assignmentPolicyEnforcement>
-            </projection>
-        </objectType>
-    </schemaHandling>
-    <capabilities>
-        <cachingMetadata>
-            <retrievalTimestamp>2020-03-27T11:29:20.069+01:00</retrievalTimestamp>
-            <serialNumber>866530a5fd88e47b-8999644dbb6a3682</serialNumber>
-        </cachingMetadata>
-        <native xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
-            <cap:schema/>
-            <cap:liveSync/>
-            <cap:testConnection/>
-            <cap:create/>
-            <cap:update>
-                <cap:addRemoveAttributeValues>true</cap:addRemoveAttributeValues>
-            </cap:update>
-            <cap:delete/>
-            <cap:script>
-                <cap:host>
-                    <cap:type>resource</cap:type>
-                </cap:host>
-                <cap:host>
-                    <cap:type>connector</cap:type>
-                </cap:host>
-            </cap:script>
-            <cap:read>
-                <cap:returnDefaultAttributesOption>false</cap:returnDefaultAttributesOption>
-            </cap:read>
-        </native>
-        <configured xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
-            <cap:activation>
-                <cap:status>
-                    <cap:attribute>ri:emptype</cap:attribute>
-                    <cap:enableValue>FTE</cap:enableValue>
-                    <cap:enableValue>PTE</cap:enableValue>
-                    <cap:enableValue>CONTRACTOR</cap:enableValue>
-                    <cap:disableValue>RETIRED</cap:disableValue>
-                    <cap:ignoreAttribute>false</cap:ignoreAttribute>
-                </cap:status>
-            </cap:activation>
-        </configured>
-    </capabilities>
-
+   <schemaHandling>
+          <objectType>
+              <kind>account</kind>
+              <intent>default</intent>
+              <displayName>Default Account</displayName>
+              <default>true</default>
+              <delineation>
+                  <objectClass>ri:AccountObjectClass</objectClass>
+              </delineation>
+              <focus>
+                  <type>UserType</type>
+                  <archetypeRef oid="00000000-0000-0000-0000-000000000702" relation="org:default" type="c:ArchetypeType">
+                  </archetypeRef>
+              </focus>
+              <synchronization>
+                  <reaction>
+                      <name>linked-synchronize</name>
+                      <situation>linked</situation>
+                      <actions>
+                          <synchronize/>
+                      </actions>
+                  </reaction>
+                  <reaction>
+                      <name>deleted-deleteFocus</name>
+                      <situation>deleted</situation>
+                      <actions>
+                          <deleteFocus/>
+                      </actions>
+                  </reaction>
+                  <reaction>
+                      <name>unlinked-link</name>
+                      <situation>unlinked</situation>
+                      <actions>
+                          <link/>
+                      </actions>
+                  </reaction>
+                  <reaction>
+                      <name>unmatched-addFocus</name>
+                      <situation>unmatched</situation>
+                      <actions>
+                          <addFocus/>
+                      </actions>
+                  </reaction>
+              </synchronization>
+              <correlation>
+                  <correlators>
+                      <items>
+                          <name>Personal number correlator</name>
+                          <enabled>true</enabled>
+                          <item>
+                              <ref>personalNumber</ref>
+                          </item>
+                      </items>
+                  </correlators>
+              </correlation>
+			  <attribute>
+                  <ref>ri:empnum</ref>
+                  <displayName>Employee#</displayName>
+                  <limitations>
+                      <minOccurs>0</minOccurs>
+                  </limitations>
+                  <inbound>
+                      <name>personalNumber</name>
+                      <target>
+                          <path>personalNumber</path>
+                      </target>
+                      <evaluationPhases>
+                          <include>beforeCorrelation</include>
+                      </evaluationPhases>
+                  </inbound>
+              </attribute>
+              <attribute>
+                  <ref>ri:firstname</ref>
+                  <displayName>First Name</displayName>
+                  <description>Definition of Firstname attribute handling.</description>
+                  <inbound>
+                      <name>givenName</name>
+                      <target>
+                          <path>$focus/givenName</path>
+                      </target>
+                  </inbound>
+              </attribute>
+              <attribute>
+                  <ref>ri:lastname</ref>
+                  <displayName>Last name</displayName>
+                  <inbound>
+                      <name>familyName</name>
+                      <target>
+                          <path>$focus/familyName</path>
+                      </target>
+                  </inbound>
+              </attribute>
+              <attribute>
+                  <ref>ri:artname</ref>
+                  <displayName>Artistic name</displayName>
+                  <inbound>
+                      <name>artisticName</name>
+                      <target>
+                          <path xmlns:ext="http://prism.evolveum.com/xml/ns/demo/extension-electra">$focus/extension/ext:artisticName</path>
+                      </target>
+                  </inbound>
+                  <inbound>
+                      <name>nickName</name>
+                      <strength>weak</strength>
+                      <target>
+                          <path>$focus/nickName</path>
+                      </target>
+                  </inbound>
+                  <inbound>
+                      <name>name</name>
+                      <strength>weak</strength>
+                      <expression>
+                          <script>
+                              <code>basic.norm(input)</code>
+                          </script>
+                      </expression>
+                      <target>
+                          <path>$user/name</path>
+                      </target>
+                  </inbound>
+                  <inbound>
+                      <name>Corporate email address</name>
+                      <lifecycleState>proposed</lifecycleState>
+                      <strength>strong</strength>
+                      <expression>
+                          <script>
+                              <code>basic.norm(input) + '@leonardo-workshop.org'</code>
+                          </script>
+                      </expression>
+                      <target>
+                          <path>emailAddress</path>
+                      </target>
+                  </inbound>
+              </attribute>
+              <attribute>
+                  <ref>ri:emptype</ref>
+                  <displayName>Employee type</displayName>
+                  <inbound>
+                      <name>Main role by employee type</name>
+                      <strength>strong</strength>
+                      <expression>
+                          <assignmentTargetSearch>
+                              <targetType>RoleType</targetType>
+                              <filter>
+                                  <q:text>identifier = $input</q:text>
+                              </filter>
+                          </assignmentTargetSearch>
+                      </expression>
+                      <target>
+                          <path>assignment</path>
+                      </target>
+                      <condition>
+                          <script>
+                              <code>input != null</code>
+                          </script>
+                      </condition>
+                  </inbound>
+              </attribute>
+              <activation>
+                  <administrativeStatus>
+                      <inbound/>
+                  </administrativeStatus>
+              </activation>
+              <credentials>
+                  <password>
+                      <inbound>
+                          <strength>weak</strength>
+                          <expression>
+                              <generate/>
+                          </expression>
+                      </inbound>
+                  </password>
+              </credentials>
+              <projection>
+                  <assignmentPolicyEnforcement>none</assignmentPolicyEnforcement>
+              </projection>
+          </objectType>
+      </schemaHandling>
+      <capabilities>
+          <native xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3">
+              <cap:schema/>
+              <cap:liveSync/>
+              <cap:create/>
+              <cap:read>
+                  <cap:returnDefaultAttributesOption>false</cap:returnDefaultAttributesOption>
+              </cap:read>
+              <cap:update>
+                  <cap:addRemoveAttributeValues>true</cap:addRemoveAttributeValues>
+              </cap:update>
+              <cap:delete/>
+              <cap:testConnection/>
+              <cap:script>
+                  <cap:host>
+                      <cap:type>resource</cap:type>
+                  </cap:host>
+                  <cap:host>
+                      <cap:type>connector</cap:type>
+                  </cap:host>
+              </cap:script>
+          </native>
+          <configured xmlns:cap="http://midpoint.evolveum.com/xml/ns/public/resource/capabilities-3">
+              <cap:activation>
+                  <cap:status>
+                      <cap:attribute>ri:emptype</cap:attribute>
+                      <cap:enableValue>FTE</cap:enableValue>
+                      <cap:enableValue>PTE</cap:enableValue>
+                      <cap:enableValue>CONTRACTOR</cap:enableValue>
+                      <cap:disableValue>RETIRED</cap:disableValue>
+                      <cap:ignoreAttribute>false</cap:ignoreAttribute>
+                  </cap:status>
+              </cap:activation>
+          </configured>
+      </capabilities>
 </resource>
-
-

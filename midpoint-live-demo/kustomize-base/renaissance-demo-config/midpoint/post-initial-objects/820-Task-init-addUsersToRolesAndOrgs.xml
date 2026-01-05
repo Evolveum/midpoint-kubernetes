@@ -18,13 +18,13 @@
                         <objects>
                             <type>c:UserType</type>
                             <query>
-                                <q:filter>
-                                    <q:inOid>
-                                        <q:value>4bd429c9-418b-45c0-8b1c-398e4f58961b</q:value>
-                                        <!-- Borgia -->
-                                        <q:value>e3dc4009-cd13-40d6-bda9-d48c253d23ab</q:value>
-                                        <!-- Francis -->
-                                    </q:inOid>
+                                <q:filter> 
+                                    <q:text>
+                                      . inOid (
+                                               "4bd429c9-418b-45c0-8b1c-398e4f58961b",
+                                               "e3dc4009-cd13-40d6-bda9-d48c253d23ab"
+                                               )
+                                    </q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -43,9 +43,7 @@
                             <type>c:UserType</type>
                             <query>
                                 <q:filter>
-                                    <q:inOid>
-                                        <q:value>4bd429c9-418b-45c0-8b1c-398e4f58961b</q:value>
-                                    </q:inOid>
+                                    <q:text>. inOid ("4bd429c9-418b-45c0-8b1c-398e4f58961b")</q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -65,10 +63,7 @@
                             <type>c:UserType</type>
                             <query>
                                 <q:filter>
-                                    <q:inOid>
-                                        <q:value>e3dc4009-cd13-40d6-bda9-d48c253d23ab</q:value>
-                                        <!-- Francis -->
-                                    </q:inOid>
+                                    <q:text>. inOid ("e3dc4009-cd13-40d6-bda9-d48c253d23ab")</q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -113,15 +108,14 @@
                         <objects>
                             <type>c:UserType</type>
                             <query>
-                                <q:filter>
-                                    <q:inOid>
-                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
-                                        <!-- leonardo -->
-                                        <q:value>8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252</q:value>
-                                        <!-- michelangelo -->
-                                        <q:value>db98c491-6725-4606-9afb-9463d45a1831</q:value>
-                                        <!-- raphael -->
-                                    </q:inOid>
+                                <q:filter> 
+                                    <q:text>
+                                      . inOid (
+                                               "6054d4f2-c245-453e-991f-024c0ea398f1",
+                                               "8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252",
+                                               "db98c491-6725-4606-9afb-9463d45a1831"
+                                               )
+                                    </q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -141,10 +135,7 @@
                             <type>c:UserType</type>
                             <query>
                                 <q:filter>
-                                    <q:inOid>
-                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
-                                        <!-- leonardo -->
-                                    </q:inOid>
+                                    <q:text>. inOid ("6054d4f2-c245-453e-991f-024c0ea398f1")</q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -164,10 +155,7 @@
                             <type>c:UserType</type>
                             <query>
                                 <q:filter>
-                                    <q:inOid>
-                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
-                                        <!-- leonardo -->
-                                    </q:inOid>
+                                    <q:text>. inOid ("6054d4f2-c245-453e-991f-024c0ea398f1")</q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -187,10 +175,7 @@
                             <type>c:UserType</type>
                             <query>
                                 <q:filter>
-                                    <q:inOid>
-                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
-                                        <!-- leonardo -->
-                                    </q:inOid>
+                                    <q:text>. inOid ("6054d4f2-c245-453e-991f-024c0ea398f1")</q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -210,10 +195,7 @@
                             <type>c:UserType</type>
                             <query>
                                 <q:filter>
-                                    <q:inOid>
-                                        <q:value>6054d4f2-c245-453e-991f-024c0ea398f1</q:value>
-                                        <!-- leonardo -->
-                                    </q:inOid>
+                                    <q:text>. inOid ("6054d4f2-c245-453e-991f-024c0ea398f1")</q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -233,10 +215,7 @@
                             <type>c:UserType</type>
                             <query>
                                 <q:filter>
-                                    <q:inOid>
-                                        <q:value>8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252</q:value>
-                                        <!-- michelangelo -->
-                                    </q:inOid>
+                                    <q:text>. inOid ("8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252")</q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -256,10 +235,7 @@
                             <type>c:UserType</type>
                             <query>
                                 <q:filter>
-                                    <q:inOid>
-                                        <q:value>8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252</q:value>
-                                        <!-- michelangelo -->
-                                    </q:inOid>
+                                    <q:text>. inOid ("8d2fee1a-781f-4ea1-b2fb-76cd3e2e2252")</q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -279,10 +255,7 @@
                             <type>c:UserType</type>
                             <query>
                                 <q:filter>
-                                    <q:inOid>
-                                        <q:value>db98c491-6725-4606-9afb-9463d45a1831</q:value>
-                                        <!-- raphael -->
-                                    </q:inOid>
+                                    <q:text>. inOid ("db98c491-6725-4606-9afb-9463d45a1831")</q:text>
                                 </q:filter>
                             </query>
                         </objects>
@@ -302,10 +275,7 @@
                             <type>c:UserType</type>
                             <query>
                                 <q:filter>
-                                    <q:inOid>
-                                        <q:value>db98c491-6725-4606-9afb-9463d45a1831</q:value>
-                                        <!-- raphael -->
-                                    </q:inOid>
+                                    <q:text>. inOid ("db98c491-6725-4606-9afb-9463d45a1831")</q:text>
                                 </q:filter>
                             </query>
                         </objects>

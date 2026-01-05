@@ -3,13 +3,7 @@
                   oid="26789a8c-8e9c-4606-bd00-c4240a6caf68">
     <name>Science Hub Basic Users</name>
     <type>UserType</type>
-
     <filter>
-        <q:ref>
-            <q:path>roleMembershipRef</q:path>
-            <q:value>
-                <oid>25c43cbb-fb59-4ff5-9b3b-20a1e1ff5d0e</oid>
-            </q:value>
-        </q:ref>
+        <q:text>roleMembershipRef matches (oid = '25c43cbb-fb59-4ff5-9b3b-20a1e1ff5d0e')</q:text>
     </filter>
 </objectCollection>
