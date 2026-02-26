@@ -2,9 +2,9 @@
 <!--
   ~ Copyright (C) 2010-2021 Evolveum and contributors
   ~
-  ~ This work is dual-licensed under the Apache License 2.0
-  ~ and European Union Public License. See LICENSE file for details.
+  ~ Licensed under the EUPL-1.2 or later.
   -->
+
 <systemConfiguration oid="00000000-0000-0000-0000-000000000001" version="0"
         xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
         xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
@@ -14,9 +14,9 @@
 
     <name>SystemConfiguration</name>
     <indestructible>true</indestructible>
-    <!--         <globalAccountSynchronizationSettings> -->
-    <!--         <assignmentPolicyEnforcement>relative</assignmentPolicyEnforcement> -->
-    <!--         </globalAccountSynchronizationSettings> -->
+        <globalAccountSynchronizationSettings>
+        <assignmentPolicyEnforcement>relative</assignmentPolicyEnforcement>
+        </globalAccountSynchronizationSettings>
     <globalSecurityPolicyRef oid="00000000-0000-0000-0000-000000000120"/>
     <logging>
         <classLogger id="1">
@@ -208,7 +208,7 @@
         </repository>
         <operationExecutionRecording>
             <skipWhenSuccess>true</skipWhenSuccess>
-        </operationExecutionRecording>									 								  
+        </operationExecutionRecording>
     </internals>
     <adminGuiConfiguration>
         <homePage id="21">
@@ -241,11 +241,11 @@
                             </translation>
                         </label>
                         <help>
-                            <orig>Redirects to the all assignments panel on the user's profile page.</orig>
+                            <orig>View all accesses.</orig>
                             <translation>
                                 <key>PageSelfDashboard.widget.myAccesses.viewAll.help</key>
                             </translation>
-                        </help>					   
+                        </help>
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -265,11 +265,11 @@
                             </translation>
                         </label>
                         <help>
-                            <orig>Redirects to the Request access wizard.</orig>
+                            <orig>Initiate access request.</orig>
                             <translation>
                                 <key>PageSelfDashboard.widget.requestAccess.wizard.help</key>
                             </translation>
-                        </help>  
+                        </help>
                         <icon>
                             <cssClass>fas fa-plus-circle</cssClass>
                         </icon>
@@ -306,11 +306,11 @@
                             </translation>
                         </label>
                         <help>
-                            <orig>Redirects to the approval cases table with a requestor set to the logged in user.</orig>
+                            <orig>View all requests.</orig>
                             <translation>
                                 <key>PageSelfDashboard.widget.myRequests.viewAll.help</key>
                             </translation>
-                        </help>  
+                        </help>
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -348,11 +348,11 @@
                             </translation>
                         </label>
                         <help>
-                            <orig>Redirects to work items table where assignee is set to the logged in user.</orig>
+                            <orig>View all work items.</orig>
                             <translation>
                                 <key>PageSelfDashboard.widget.myWorkItems.viewAll.help</key>
                             </translation>
-                        </help>   
+                        </help>
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -389,11 +389,11 @@
                             </translation>
                         </label>
                         <help>
-                            <orig>Redirects to the Projections panel on the user's profile page.</orig>
+                            <orig>View all accounts.</orig>
                             <translation>
                                 <key>PageSelfDashboard.widget.myAccounts.viewAll.help</key>
                             </translation>
-                        </help>   
+                        </help>
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -523,6 +523,12 @@
                                 <key>PageSelfDashboard.button.viewAll</key>
                             </translation>
                         </label>
+                        <help>
+                            <orig>View all certification items.</orig>
+                            <translation>
+                                <key>PageSelfDashboard.widget.myCertificationItems.viewAll.help</key>
+                            </translation>
+                        </help>
                         <icon>
                             <cssClass>fa fa-search</cssClass>
                         </icon>
@@ -544,7 +550,7 @@
                     <availablePageSize>50</availablePageSize>
                     <availablePageSize>100</availablePageSize>
                 </pagingOptions>
-            </defaultSettings>			  
+            </defaultSettings>
             <objectCollectionView id="40">
                 <identifier>my-cases</identifier>
                 <display>
@@ -1204,7 +1210,7 @@
                     <availablePageSize>50</availablePageSize>
                     <availablePageSize>100</availablePageSize>
                 </pagingOptions>
-            </defaultSettings>				  
+            </defaultSettings>
             <objectDetailsPage id="83">
                 <type>c:TaskType</type>
                 <panel id="85">
@@ -1896,6 +1902,10 @@
             <identifier>admin-dashboard</identifier>
             <configurableDashboardRef oid="00000000-0000-0000-0001-000000000001" relation="org:default" type="c:DashboardType"/>
         </configurableUserDashboard>
+        <configurableUserDashboard id="272">
+            <identifier>compliance-dashboard</identifier>
+            <configurableDashboardRef oid="f941f3fc-dcef-4415-9e79-ae56b185a501" type="c:DashboardType"/>
+        </configurableUserDashboard>
 
         <configurableUserDashboard>
             <identifier>licence-dashboard</identifier>
@@ -1908,8 +1918,8 @@
         </configurableUserDashboard>
 
         <configurableUserDashboard>
-            <identifier>compliace-dashboard</identifier>
-            <configurableDashboardRef oid="f941f3fc-dcef-4415-9e79-ae56b185a501" relation="org:default" type="c:DashboardType"/>
+            <identifier>access-level-dashboard</identifier>
+            <configurableDashboardRef oid="118b5d33-93b8-4ef1-8c15-9bb9984ffa8b" relation="org:default" type="c:DashboardType"/>
         </configurableUserDashboard>
 
         <accessRequest>
@@ -2000,15 +2010,9 @@
                 <type>const</type>
                 <decision>allow</decision>
             </evaluator>
-            <evaluator id="223">
-                <type>script</type>
-                <decision>deny</decision> <!-- default decision of those script languages that are not explicitly enumerated. -->
-                <script id="224">
-                    <language>http://midpoint.evolveum.com/xml/ns/public/expression/language#Groovy</language>
-                    <decision>allow</decision>
-                    <typeChecking>true</typeChecking>
-                    <permissionProfile>script-safe</permissionProfile>
-                </script>
+            <evaluator id="273">
+                <type>filter</type>
+                <decision>allow</decision>
             </evaluator>
             <evaluator id="274">
                 <type>function</type>
@@ -2029,7 +2033,7 @@
             <identifier>permissive</identifier>
             <description>Unlimited access to all expressions</description>
             <decision>allow</decision>
-            <privilegeElevation>allow</privilegeElevation>									  
+            <privilegeElevation>allow</privilegeElevation>
         </expressionProfile>
         <expressionProfile id="276">
             <identifier>prohibitive</identifier>
@@ -2041,9 +2045,9 @@
         <bulkActionsProfile id="277">
             <identifier>prohibitive</identifier>
             <decision>deny</decision>
-        </bulkActionsProfile>			 
+        </bulkActionsProfile>
         <permissionProfile id="225">
-            <identifier>script-safe</identifier>
+            <identifier>script-limited</identifier>
             <description>
                 "Limited" script permission profile. It is supposed to contain operations that are mostly "safe",
                 i.e. operations that have very little risk to harm the system, circumvent midPoint security
@@ -2053,7 +2057,7 @@
                 This profile is meant as a means to limit (mostly unintentional) harm done by the scripts,
                 it is not meant as a strict security measure.
                 It is provided here "AS IS", without any guarantees. Use at your own risk.
-            </description>		  
+            </description>
             <decision>deny</decision> <!-- Default decision for those classes that are not explicitly enumerated. -->
             <package id="226">
                 <name>com.evolveum.midpoint.xml.ns._public.common.common_3</name>
