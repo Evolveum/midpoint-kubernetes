@@ -13,6 +13,7 @@
     <identifier>0000</identifier>
     <requestable>false</requestable>
     <tenant>false</tenant>
+    <displayOrder>100</displayOrder>
 
     <assignment>
         <targetRef oid="6a12b965-a1c2-47c9-87bd-19e84c71d814" relation="org:default" type="c:ArchetypeType"/>
@@ -201,11 +202,23 @@
     <tenant>false</tenant>
 </org>
 
-	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-200000000000" version="31">
+	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="90cc2089-6f00-4fd9-9394-10debdd019eb" version="31">
     <name>P0000</name>
-    <description>Project organizational structure root</description>
+    <description>Root object of all projects.</description>
+    <documentation>(ISO27001/A.5.8,ISO27001/A.5.15,ISO27001/A.5.16)</documentation>
     <subtype>project</subtype>
     <displayName>Projects</displayName>
+    <indestructible>true</indestructible>
+    <displayOrder>150</displayOrder>
+    <assignment id="1">
+        <identifier>assignment-relation-projects</identifier>
+        <assignmentRelation id="2">
+            <description>We want projects here, nothing else.</description>
+            <holderType>OrgType</holderType>
+            <holderArchetypeRef oid="89a34123-1db7-4fc1-a053-6c42b82ef2ab"/>
+            <relation>org:default</relation>
+        </assignmentRelation>
+    </assignment>
     <assignment>
         <targetRef oid="89a34123-1db7-4fc1-a053-6c42b82ef2ab" relation="org:default" type="c:ArchetypeType"/>
     </assignment>
@@ -215,7 +228,7 @@
     <name>P0001</name>
     <description>Create the most appealing visual representation of a smile</description>
     <subtype>project</subtype>
-    <parentOrgRef oid="c74a7d86-7798-11e2-964e-200000000000" relation="org:default" type="c:OrgType">
+    <parentOrgRef oid="90cc2089-6f00-4fd9-9394-10debdd019eb" relation="org:default" type="c:OrgType">
         <!-- P0000 -->
     </parentOrgRef>
     <assignment>
@@ -227,7 +240,7 @@
         </targetRef>
     </assignment>
     <assignment id="2">
-        <targetRef oid="c74a7d86-7798-11e2-964e-200000000000" relation="org:default" type="c:OrgType">
+        <targetRef oid="90cc2089-6f00-4fd9-9394-10debdd019eb" relation="org:default" type="c:OrgType">
             <!-- P0000 -->
         </targetRef>
     </assignment>
@@ -240,7 +253,7 @@
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-200000000002" version="60">
     <name>P0002</name>
     <subtype>project</subtype>
-    <parentOrgRef oid="c74a7d86-7798-11e2-964e-200000000000" relation="org:default" type="c:OrgType">
+    <parentOrgRef oid="90cc2089-6f00-4fd9-9394-10debdd019eb" relation="org:default" type="c:OrgType">
         <!-- P0000 -->
     </parentOrgRef>
     <assignment>
@@ -252,7 +265,7 @@
         </targetRef>
     </assignment>
     <assignment id="2">
-        <targetRef oid="c74a7d86-7798-11e2-964e-200000000000" relation="org:default" type="c:OrgType">
+        <targetRef oid="90cc2089-6f00-4fd9-9394-10debdd019eb" relation="org:default" type="c:OrgType">
             <!-- P0000 -->
         </targetRef>
     </assignment>
