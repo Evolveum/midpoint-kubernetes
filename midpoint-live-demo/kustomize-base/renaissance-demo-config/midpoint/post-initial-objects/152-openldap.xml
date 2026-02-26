@@ -578,6 +578,23 @@
                 <association>
                     <ref>ri:ldapGroups</ref>
                     <sourceAttributeRef>ri:ldapGroups</sourceAttributeRef>
+					<outbound>
+                        <name>Account-Outbound</name>
+                        <expression>
+                            <associationConstruction xsi:type="c:AssociationConstructionExpressionEvaluatorType">
+                                <objectRef>
+                                    <ref>ri:ldapGroups</ref>
+                                    <mapping>
+                                        <name>associationFromLink</name>
+                                        <strength>strong</strength>
+                                        <expression>
+                                            <associationFromLink/>
+                                        </expression>
+                                    </mapping>
+                                </objectRef>
+                            </associationConstruction>
+                        </expression>
+                    </outbound>
                 </association>
             </subject>
             <object>
