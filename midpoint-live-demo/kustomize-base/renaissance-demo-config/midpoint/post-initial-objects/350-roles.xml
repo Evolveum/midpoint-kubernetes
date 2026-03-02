@@ -175,19 +175,6 @@
             </resourceRef>
             <kind>account</kind>
             <intent>default</intent>
-            <association id="3">
-                <c:ref xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3">ri:ldapGroups</c:ref>
-                <outbound>
-                    <expression>
-                        <associationFromLink xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:AssociationFromLinkExpressionEvaluatorType">
-                            <projectionDiscriminator xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="c:ShadowDiscriminatorType">
-                                <kind>entitlement</kind>
-                                <intent>ldapProject</intent>
-                            </projectionDiscriminator>
-                        </associationFromLink>
-                    </expression>
-                </outbound>
-            </association>
         </construction>
         <focusType>UserType</focusType>
         <order>2</order>
