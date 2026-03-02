@@ -2,18 +2,26 @@
 :toc:
 :toclevels: 4
 
-This project contains files related to the midPoint live demo. In the `kustomize-base` directory are kubernetes objects and renaissance demo config files located. Inside of it you can find `kustomize-env-config` directory where a certificate and variables for the demo environment are stored. These variables are configured by the setup script and then used by `kustomize` for replacing field values in kubernetes objects.
+This project contains files related to the midPoint live demo.
+In the `kustomize-base` directory are kubernetes objects and renaissance demo config files located.
+Inside of it you can find `kustomize-env-config` directory where a certificate and variables for the demo environment are stored.
+These variables are configured by the setup script and then used by `kustomize` for replacing field values in kubernetes objects.
 
 == Requirements
 
 === Operating system running the setup script
+
 The setup script is primarily developed for Linux systems, but it can also run on Windows with WSL.
 
 [NOTE]
-When using Windows with WSL please make sure that you have the correct kubectl configuration in the WSL environment. If not, please install kubectl in the WSL environment and copy your Windows kubectl configuration to the WSL environment. Alternatively, you can replace `kubectl` in the setup script with a path to kubectl.exe.
+When using Windows with WSL please make sure that you have the correct kubectl configuration in the WSL environment.
+If not, please install kubectl in the WSL environment and copy your Windows kubectl configuration to the WSL environment.
+Alternatively, you can replace `kubectl` in the setup script with a path to kubectl.exe.
 
 === K8s cluster
-This demo is primarily intended for usage with the original k8s cluster. But it should also work with MicroK8s and Minikube clusters.
+
+This demo is primarily intended for usage with the original k8s cluster.
+But it should also work with MicroK8s and Minikube clusters.
 
 [NOTE]
 When using the MicroK8s cluster please make sure that the kubectl command points to the MicroK8s cluster or replace `kubectl` in the setup script with `microk8s kubectl`.
@@ -23,7 +31,8 @@ When using the Minikube cluster please make sure that you have installed the ing
 
 == Usage
 
-This readme will provide you with a guide to successfully deploy the midPoint demo on your own kubernetes cluster. You can find more information about the midPoint demo (for example, a walkthrough or implementation details) here: https://docs.evolveum.com/midpoint/demo/.
+This readme will provide you with a guide to successfully deploy the midPoint demo on your own kubernetes cluster.
+You can find more information about the midPoint demo (for example, a walkthrough or implementation details) here: https://docs.evolveum.com/midpoint/demo/.
 
 This guide is composed of three steps:
 1. Setting up a certificate for our environment.
@@ -36,7 +45,8 @@ When you don't have an available kubernetes cluster you can head to https://demo
 {empty}1. Creating a certificate
 
 [NOTE]
-A basic certificate is available as default, but it is highly recommended to use your own certificate. The default address is `demo.example.com`.
+A basic certificate is available as default, but it is highly recommended to use your own certificate.
+The default address is `demo.example.com`.
 
 [NOTE]
 For a quick test solution you can generate your own certificate, though it is not recommended:
@@ -61,10 +71,12 @@ openssl x509 -in tls.crt -text -noout
 It is better to make a trusted certificate with https://letsencrypt.org/
 
 [NOTE]
-To access midPoint using your private domain name, you must set up the name-to-IP-address mapping in the DNS. Alternatively, you can edit your `/etc/hosts` file.
+To access midPoint using your private domain name, you must set up the name-to-IP-address mapping in the DNS.
+Alternatively, you can edit your `/etc/hosts` file.
 
 [NOTE]
-When using your own certificate please run this command to generate a YAML secret. Then use `-c` flag with startup script to use this certificate in demo enviroment and `-a` flag for custom host.
+When using your own certificate please run this command to generate a YAML secret.
+Then use `-c` flag with startup script to use this certificate in demo enviroment and `-a` flag for custom host.
 
 [source,bash]
 ----
@@ -73,7 +85,9 @@ kubectl create secret tls --dry-run=client -o yaml -n <NAMESPACE> <SECRET-NAME> 
 
 {empty}2. Running midpoint-live-demo-setup.sh
 
-This script applies to your demo environment. You can change the default certificate`, namespace, ingressClass name or host for ingresses. You can do this by using these flags:
+This script applies to your demo environment.
+You can change the default certificate`, namespace, ingressClass name or host for ingresses.
+You can do this by using these flags:
 
 |===
 |Flag |Description |Default value
@@ -82,21 +96,25 @@ This script applies to your demo environment. You can change the default certifi
 |mp-demo
 
 |-c
-|Custom yaml certificate for ingresses. PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT
+|Custom yaml certificate for ingresses.
+PLEASE USE THE SAME NAME FOR THE FILE AND THE KUBERNETES OBJECT
 |cert-mp-demo (created by startup script)
 
 |-d
-|Custom cluster domain. We use it when we are accessing service from inside of the cluster. For example, when we want to access the hr database we use `jdbc:postgresql://hr-db-service.${POD_NS}.svc.${CLUSTER_DOMAIN}:5432`
+|Custom cluster domain.
+We use it when we are accessing service from inside the cluster.
+For example, when we want to access the hr database we use `jdbc:postgresql://hr-db-service.${POD_NS}.svc.${CLUSTER_DOMAIN}:5432`
 |cluster.local
 
 |-a
-|Custom host for ingresses. Please be aware that the default certificate does only work with the default host
+|Custom host for ingresses.
+Please be aware that the default certificate does only work with the default host
 |demo.example.com
 
 |-i
-|Custom ingressClass name. Make sure that you do have ONE default ingressClass or use this option to set a custom one.
+|Custom ingressClass name.
+Make sure that you do have ONE default ingressClass or use this option to set a custom one.
 |Default on your machine (one with annotation ingressclass.kubernetes.io/is-default-class: true).
 |===
 
-{empty}3. Wait for midPoint to start and then head to https://docs.evolveum.com/midpoint/demo/#walkthrough for walkthrogh of midPoint demo enviroment.
-
+{empty}3. Wait for midPoint to start and then head to https://docs.evolveum.com/midpoint/demo/#walkthrough for walkthrough of midPoint demo environment.
