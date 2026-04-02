@@ -17,13 +17,11 @@ spec:
     - toCIDRSet:
         - cidr: 0.0.0.0/0
           except:
-            - 10.100.1.0/24
-            - 10.100.0.0/24
-            - 10.100.2.0/24
+            - 10.200.130.0/24
   endpointSelector: {}
   ingress:
     - fromEndpoints:
         - {}
     - fromEndpoints:
         - matchLabels:
-            io.kubernetes.pod.namespace: ingress-nginx
+            io.kubernetes.pod.namespace: kube-system
