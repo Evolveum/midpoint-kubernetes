@@ -14,16 +14,22 @@ spec:
               protocol: UDP
     - toEndpoints:
         - {}
+    - toCIDR:
+        - 10.200.130.1/32
+      toPorts:
+        - ports:
+            - port: '3128'
+              protocol: TCP
     - toCIDRSet:
         - cidr: 0.0.0.0/0
           except:
-            - 10.100.1.0/24
-            - 10.100.0.0/24
-            - 10.100.2.0/24
+            - 10.42.0.0/16
+            - 10.43.0.0/16
+            - 10.200.130.0/24
   endpointSelector: {}
   ingress:
     - fromEndpoints:
         - {}
     - fromEndpoints:
         - matchLabels:
-            io.kubernetes.pod.namespace: ingress-nginx
+            io.kubernetes.pod.namespace: kube-system
