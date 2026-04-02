@@ -6,4 +6,4 @@ data:
   ingress_host: demo.evolveum.com
   ingress_cert: cert-evolveum
   ingress_class_name: nginx
-  cluster_domain: evolveum.com
+  cluster_domain: cluster.local
