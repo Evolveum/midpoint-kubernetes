@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: demo-restarter
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: demo-restarter
+rules:
+  - apiGroups: ["apps"]
+    resources: ["statefulsets"]
+    verbs: ["get", "list", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: demo-restarter
+subjects:
+  - kind: ServiceAccount
+    name: demo-restarter
+roleRef:
+  kind: Role
+  name: demo-restarter
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: demo-restart
+spec:
+  schedule: "0 2 * * *"
+  timeZone: "Europe/Bratislava"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      backoffLimit: 2
+      template:
+        metadata:
+          labels:
+            app: demo-restarter
+        spec:
+          serviceAccountName: demo-restarter
+          restartPolicy: OnFailure
+          containers:
+            - name: kubectl
+              image: registry.k8s.io/kubectl:v1.32.0
+              command:
+                - kubectl
+                - rollout
+                - restart
+                - statefulset

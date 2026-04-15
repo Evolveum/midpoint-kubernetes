@@ -33,3 +33,15 @@ spec:
     - fromEndpoints:
         - matchLabels:
             io.kubernetes.pod.namespace: kube-system
+---
+apiVersion: cilium.io/v2
+kind: CiliumNetworkPolicy
+metadata:
+  name: demo-restarter
+spec:
+  endpointSelector:
+    matchLabels:
+      app: demo-restarter
+  egress:
+    - toEntities:
+        - kube-apiserver

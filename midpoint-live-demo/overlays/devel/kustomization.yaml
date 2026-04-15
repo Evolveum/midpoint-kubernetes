@@ -5,7 +5,7 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/tls/0/hosts/0
-      value: demo-test.k8s.evolveum.com
+      value: demo-dev.e
   target:
     group: networking.k8s.io
     version: v1
@@ -13,7 +13,28 @@ patches:
 - patch: |-
     - op: replace
       path: /spec/rules/0/host
-      value: demo-test.k8s.evolveum.com
+      value: demo-dev.e
+  target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+- patch: |-
+    - op: replace
+      path: /spec/tls/0/secretName
+      value: demo-dev-tls
+  target:
+    group: networking.k8s.io
+    version: v1
+    kind: Ingress
+- patch: |-
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: any
+      annotations:
+        cert-manager.io/cluster-issuer: ca-e
+        cert-manager.io/private-key-algorithm: ECDSA
+        cert-manager.io/private-key-size: "256"
   target:
     group: networking.k8s.io
     version: v1
@@ -31,4 +52,3 @@ patches:
 resources:
   - ../../kustomize-base
   - network-policy.yml
-

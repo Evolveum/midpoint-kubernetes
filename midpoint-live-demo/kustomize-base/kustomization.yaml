@@ -59,6 +59,8 @@ resources:
  - kubernetes-objects/tomcat/tomcat-hr-ingress.yml
  - kubernetes-objects/tomcat/tomcat-service.yml
  - kubernetes-objects/tomcat/tomcat-addressbook-ingress.yml
+# Daily demo restart
+ - kubernetes-objects/restart/restart-cronjob.yml
 
 configMapGenerator:
 - name: pio-map

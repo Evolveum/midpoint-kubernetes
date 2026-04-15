@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-renaissance-dev
+  namespace: argocd
+spec:
+  project: midpoint-demo
+  source:
+    repoURL: https://github.com/Evolveum/midpoint-kubernetes.git
+    targetRevision: main
+    path: midpoint-live-demo/overlays/devel
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: midpoint-demo-renaissance-dev
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
