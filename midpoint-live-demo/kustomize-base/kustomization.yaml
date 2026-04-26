@@ -66,6 +66,7 @@ configMapGenerator:
 - name: pio-map
   files:
     - renaissance-demo-config/midpoint/post-initial-objects/015-security-policy.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/002-schema-extension.xml 
     - renaissance-demo-config/midpoint/post-initial-objects/350-roles.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-Approver.xml
     - renaissance-demo-config/midpoint/post-initial-objects/350-Delegator.xml
@@ -135,9 +136,6 @@ configMapGenerator:
   options:
     annotations:
       argocd.argoproj.io/sync-options: Replace=true
-- name: extension-map
-  files:
-    - renaissance-demo-config/midpoint/extension-schema/extension-electra.xsd
 - name: hr-map
   files:
     - renaissance-demo-config/hr/midpoint-source.csv
