@@ -35,10 +35,6 @@ spec:
           configMap:
             name: tomcat-map
             defaultMode: 420
-        - name: extension-schema
-          configMap:
-            name: extension-map
-            defaultMode: 420
       initContainers:
         - name: mp-config-init
           image: 'evolveum/midpoint:4.10.1-alpine'
@@ -180,8 +176,6 @@ spec:
               mountPath: /opt/midpoint-dirs-docker-entrypoint/post-initial-objects
             - name: import
               mountPath: /opt/midpoint-dirs-docker-entrypoint/import
-            - name: extension-schema
-              mountPath: /opt/midpoint-dirs-docker-entrypoint/schema
             - name: nfs-volume
               mountPath: /opt/midpoint/var/import/
             - name: mp-home

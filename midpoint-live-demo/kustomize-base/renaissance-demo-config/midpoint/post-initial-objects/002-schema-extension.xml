@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
+    <name>electra-extension</name>
+    <definition>
+        <xsd:schema elementFormDefault="qualified"
+                    targetNamespace="http://prism.evolveum.com/xml/ns/demo/extension-electra"
+                    xmlns:tns="http://prism.evolveum.com/xml/ns/demo/extension-electra"
+                    xmlns:a="http://prism.evolveum.com/xml/ns/public/annotation-3"
+                    xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+            <xsd:complexType name="UserExtensionType">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <a:extension ref="c:UserType"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="artisticName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:appinfo>
+                                <a:indexed>true</a:indexed>
+                                <a:displayName>Artistic Name</a:displayName>
+                                <a:displayOrder>120</a:displayOrder>
+                                <a:help>The name by which is the artist commonly known in the art community</a:help>
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+
+                    <xsd:element name="artMovement" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:appinfo>
+                                <a:indexed>true</a:indexed>
+                                <a:displayName>Art Movement</a:displayName>
+                                <a:displayOrder>130</a:displayOrder>
+                                <a:help>A tendency or style in art with a specific common philosophy or goal.</a:help>
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+
+                    <xsd:element name="accessCategory" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Access categories of a user, computed from classifications.
+                            </xsd:documentation>
+                            <xsd:appinfo>
+                                <a:displayName>Access category</a:displayName>
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+
+                    <xsd:element name="privilegedAccess" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Set to true if user has privileged access.
+                            </xsd:documentation>
+                            <xsd:appinfo>
+                                <a:displayName>Privileged access</a:displayName>
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+
+            <xsd:complexType name="ServiceExtensionType">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <a:extension ref="c:ServiceType"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element name="accessCategory" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                Access categories of a user, computed from classifications.
+                            </xsd:documentation>
+                            <xsd:appinfo>
+                                <a:displayName>Access category</a:displayName>
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+
+        </xsd:schema>
+    </definition>
+</schema>
