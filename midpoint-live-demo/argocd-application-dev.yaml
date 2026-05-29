@@ -7,7 +7,7 @@ spec:
   project: midpoint-demo
   source:
     repoURL: https://github.com/Evolveum/midpoint-kubernetes.git
-    targetRevision: main
+    targetRevision: devel
     path: midpoint-live-demo/overlays/devel
   destination:
     server: https://kubernetes.default.svc
