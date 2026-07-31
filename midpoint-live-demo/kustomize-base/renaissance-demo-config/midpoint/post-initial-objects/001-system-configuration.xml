@@ -113,11 +113,6 @@
         </objectTemplateRef>
         <type>c:UserType</type>
     </defaultObjectPolicyConfiguration>
-    <notificationConfiguration>
-        <mail>
-            <debug>false</debug>
-        </mail>
-    </notificationConfiguration>
     <profilingConfiguration>
         <enabled>false</enabled>
         <requestFilter>false</requestFilter>
@@ -2233,5 +2228,27 @@
         <useLegacyApproversSpecification>never</useLegacyApproversSpecification>
         <useDefaultApprovalPolicyRules>never</useDefaultApprovalPolicyRules>
     </workflowConfiguration>
+
+    <notificationConfiguration>
+        <handler>
+            <simpleWorkflowNotifier>
+                <name>Access request notifier</name>
+
+                <category>workItemAllocationEvent</category>
+                <operation>add</operation>
+
+                <transport>file</transport>
+                <messageTemplateRef
+                        oid="37e4292a-5c4d-42ff-afa9-5bead0802794"
+                        type="MessageTemplateType"/>
+            </simpleWorkflowNotifier>
+        </handler>
+    </notificationConfiguration>
+    <messageTransportConfiguration>
+        <file>
+            <name>file</name>
+            <file>/tmp/workflow-notification.html</file>
+        </file>
+    </messageTransportConfiguration>
 
 </systemConfiguration>

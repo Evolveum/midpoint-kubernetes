@@ -27,6 +27,9 @@ spec:
         - name: pio
           configMap:
             name: pio-map
+        - name: message-template-items
+          configMap:
+            name: message-template-items
         - name: import
           configMap:
             name: hr-map
@@ -174,6 +177,8 @@ spec:
               mountPath: /opt/midpoint/config-secrets
             - name: pio
               mountPath: /opt/midpoint-dirs-docker-entrypoint/post-initial-objects
+            - name: message-template-items
+              mountPath: /opt/midpoint-dirs-docker-entrypoint/message-template-items
             - name: import
               mountPath: /opt/midpoint-dirs-docker-entrypoint/import
             - name: nfs-volume

@@ -126,6 +126,7 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/432-object-collection-do-not-touch-shadows.xml
     - renaissance-demo-config/midpoint/post-initial-objects/433-object-collection-unmatched-shadows.xml
     - renaissance-demo-config/midpoint/post-initial-objects/450-shadow-marks-dashboard.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/501-message-template-request-access.xml
     - renaissance-demo-config/midpoint/post-initial-objects/801-users.xml
     - renaissance-demo-config/midpoint/post-initial-objects/820-Task-init-addUsersToRolesAndOrgs.xml
     - renaissance-demo-config/midpoint/post-initial-objects/820-Task-recompute-administrator.xml
@@ -160,3 +161,9 @@ configMapGenerator:
 - name: tomcat-map
   files:
     - renaissance-demo-config/tomcat/server.xml
+- name: message-template-items
+  files:
+    - renaissance-demo-config/midpoint/message-template-items/leonardos-workshop.png
+  options:
+    annotations:
+      argocd.argoproj.io/sync-options: Replace=true
