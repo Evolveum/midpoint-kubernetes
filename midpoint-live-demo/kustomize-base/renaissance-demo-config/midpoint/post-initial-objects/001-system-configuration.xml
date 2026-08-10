@@ -2237,18 +2237,23 @@
                 <category>workItemAllocationEvent</category>
                 <operation>add</operation>
 
-                <transport>file</transport>
+                <transport>mail</transport>
                 <messageTemplateRef
                         oid="37e4292a-5c4d-42ff-afa9-5bead0802794"
                         type="MessageTemplateType"/>
             </simpleWorkflowNotifier>
         </handler>
     </notificationConfiguration>
+
     <messageTransportConfiguration>
-        <file>
-            <name>file</name>
-            <file>/tmp/workflow-notification.html</file>
-        </file>
+        <mail>
+            <name>mail</name>
+            <server>
+                <host>mailpit-service</host>
+                <port>1025</port>
+            </server>
+            <defaultFrom>midpoint@example.com</defaultFrom>
+        </mail>
     </messageTransportConfiguration>
 
 </systemConfiguration>
