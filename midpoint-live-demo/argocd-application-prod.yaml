@@ -13,4 +13,9 @@ spec:
     server: https://kubernetes.default.svc
     namespace: midpoint-demo-renaissance
   syncPolicy:
-    automated: {}
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - PruneLast=true
