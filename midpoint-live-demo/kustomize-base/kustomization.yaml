@@ -59,6 +59,10 @@ resources:
  - kubernetes-objects/tomcat/tomcat-hr-ingress.yml
  - kubernetes-objects/tomcat/tomcat-service.yml
  - kubernetes-objects/tomcat/tomcat-addressbook-ingress.yml
+# Mailpit kubernetes base
+ - kubernetes-objects/mailpit/mailpit-ingress.yml
+ - kubernetes-objects/mailpit/mailpit-service.yml
+ - kubernetes-objects/mailpit/mailpit.yml
 # Daily demo restart
  - kubernetes-objects/restart/restart-cronjob.yml
 
@@ -126,7 +130,7 @@ configMapGenerator:
     - renaissance-demo-config/midpoint/post-initial-objects/432-object-collection-do-not-touch-shadows.xml
     - renaissance-demo-config/midpoint/post-initial-objects/433-object-collection-unmatched-shadows.xml
     - renaissance-demo-config/midpoint/post-initial-objects/450-shadow-marks-dashboard.xml
-    - renaissance-demo-config/midpoint/post-initial-objects/501-message-template-request-access.xml
+    - renaissance-demo-config/midpoint/post-initial-objects/500-message-template-request-access.xml
     - renaissance-demo-config/midpoint/post-initial-objects/801-users.xml
     - renaissance-demo-config/midpoint/post-initial-objects/820-Task-init-addUsersToRolesAndOrgs.xml
     - renaissance-demo-config/midpoint/post-initial-objects/820-Task-recompute-administrator.xml

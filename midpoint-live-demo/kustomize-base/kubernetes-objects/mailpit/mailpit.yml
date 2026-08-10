@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mailpit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mailpit
+  template:
+    metadata:
+      labels:
+        app: mailpit
+    spec:
+      volumes:
+        - name: mailpit-data
+          emptyDir: {}
+      containers:
+        - name: mailpit
+          image: axllent/mailpit:v1.24.0
+          ports:
+            - name: smtp
+              containerPort: 1025
+              protocol: TCP
+            - name: http
+              containerPort: 8025
+              protocol: TCP
+          env:
+            - name: MP_WEBROOT
+              value: "/mail"
+            - name: MP_MAX_MESSAGES
+              value: "5000"
+            - name: MP_SMTP_AUTH_ACCEPT_ANY
+              value: "1"
+            - name: MP_SMTP_AUTH_ALLOW_INSECURE
+              value: "1"
+            - name: MP_WEBHOOK_LIMIT
+              value: "100"
+            - name: MP_DATABASE
+              value: "/data/mailpit.db"
+              
+          resources: {}
+          volumeMounts:
+            - name: mailpit-data
+              mountPath: /data
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 10
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
+  serviceName: mailpit-service
+  revisionHistoryLimit: 10
+
