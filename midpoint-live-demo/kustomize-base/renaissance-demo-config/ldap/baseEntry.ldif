@@ -41,7 +41,7 @@ ou: Department of Machines
 sn: da Vinci
 telephonenumber: +39 6 8687797
 uid: leonardo
-userpassword: {SSHA}qI88nuG6ZJLGQGPro57LMwmQpI21A910wHU6Ng==
+userpassword: {SSHA}FpeW2fVCH4cflEt4rErHa8z8qoXLIAE6
 
 dn: uid=michelangelo,ou=people,dc=example,dc=com
 cn: Michelangelo di Lodovico Buonarroti Simoni
