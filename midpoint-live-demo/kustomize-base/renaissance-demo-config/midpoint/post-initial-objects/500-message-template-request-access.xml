@@ -1,0 +1,260 @@
+<messageTemplate xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+                 xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+                 xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3"
+                 xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+                 xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+                 xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3"
+                 xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" oid="37e4292a-5c4d-42ff-afa9-5bead0802794">
+    <name>Request access template HTML</name>
+    <defaultContent>
+        <subjectExpression>
+            <script>
+                <language>velocity</language>
+                <code>$event.caseName</code>
+            </script>
+        </subjectExpression>
+        <attachment>
+            <contentType>image/png</contentType>
+            <contentId>leonardos-workshop.png</contentId>
+            <fileName>leonardos-workshop.png</fileName>
+            <contentFromFile>/opt/midpoint-dirs-docker-entrypoint/message-template-items/leonardos-workshop.png</contentFromFile>
+        </attachment>
+        <bodyExpression>
+            <script>
+                <language>http://midpoint.evolveum.com/xml/ns/public/expression/language#velocity</language>
+                <code><![CDATA[
+<html>
+    <head>
+        <style>
+body {
+    font-family: Source Sans Pro,Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 24px;
+    color: #1f3b73;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+td.label {
+    font-weight: bold;
+    width: 140px;
+}
+
+
+div.footer {
+    border-top: 1px solid #d6eaf8;
+    background-color: #f4f9ff;
+    margin-top: 30px;
+    padding: 4px 16px;
+}
+
+
+table {
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+td {
+    padding: 4px 12px 4px 0;
+    vertical-align: top;
+}
+
+td.label {
+    font-weight: bold;
+    white-space: nowrap;
+}
+        </style>
+    </head>
+
+    <body>
+
+        <h1>Approval Request</h1>
+
+        <p>
+            Dear approver,
+        </p>
+
+        <p>
+            You have been assigned a new approval task.
+        </p>
+
+        <table>
+            <tr>
+                <td class="label">Request:</td>
+                <td>$event.caseName</td>
+            </tr>
+            <tr>
+                <td class="label">Requestee:</td>
+                <td>$event.requesteeDisplayName</td>
+            </tr>
+            <tr>
+                <td class="label">Review request:</td>
+                <td>
+                #if($event.workItemUrl)
+                        <a href="$event.workItemUrl">$!event.workItemUrl</a>
+                    #else
+                        URL is not available.
+                    #end
+                </td>
+            </tr>
+        </table>
+
+ <div class="footer">
+    <table style="width:100%; margin:0;">
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin:0;">
+                    Thank you,<br/>
+                    <b>Leonardo's Workshop</b>
+                </p>
+            </td>
+
+            <td style="text-align:right; vertical-align:middle; padding:0;">
+                <img src="cid:leonardos-workshop.png"
+                     style="width:200px; height:auto; display:block; margin-left:auto;" />
+            </td>
+        </tr>
+    </table>
+</div>
+
+    </body>
+</html>
+]]></code>
+            </script>
+        </bodyExpression>
+        <contentType>text/html; charset=UTF-8</contentType>
+    </defaultContent>
+    <localizedContent>
+        <language>it</language>
+
+        <attachment>
+            <contentType>image/png</contentType>
+            <contentId>leonardos-workshop.png</contentId>
+            <fileName>leonardos-workshop.png</fileName>
+            <contentFromFile>/opt/midpoint-dirs-docker-entrypoint/message-template-items/leonardos-workshop.png</contentFromFile>
+        </attachment>
+
+        <subjectExpression>
+            <script>
+                <language>velocity</language>
+                <code>$!event.caseName</code>
+            </script>
+        </subjectExpression>
+
+        <bodyExpression>
+            <script>
+                <language>http://midpoint.evolveum.com/xml/ns/public/expression/language#velocity</language>
+                <code><![CDATA[
+<html>
+    <head>
+        <style>
+body {
+    font-family: Source Sans Pro,Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 24px;
+    color: #1f3b73;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+td.label {
+    font-weight: bold;
+    width: 140px;
+}
+
+
+div.footer {
+    border-top: 1px solid #d6eaf8;
+    background-color: #f4f9ff;
+    margin-top: 30px;
+    padding: 4px 16px;
+}
+
+
+table {
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+td {
+    padding: 4px 12px 4px 0;
+    vertical-align: top;
+}
+
+td.label {
+    font-weight: bold;
+    white-space: nowrap;
+}
+        </style>
+    </head>
+
+    <body>
+
+        <h1>Richiesta di approvazione</h1>
+
+        <p>
+            Gentile approvatore,
+        </p>
+
+        <p>
+            Ti è stata assegnata una nuova richiesta di approvazione.
+        </p>
+
+        <table>
+            <tr>
+                <td class="label">Richiesta:</td>
+                <td>$!event.caseName</td>
+            </tr>
+            <tr>
+                <td class="label">Richiedente:</td>
+                <td>$!event.requesteeDisplayName</td>
+            </tr>
+            <tr>
+                <td class="label">Apri la richiesta:</td>
+                <td>
+                    #if($event.workItemUrl)
+                        <a href="$event.workItemUrl">Apri la richiesta in midPoint</a>
+                    #else
+                        URL non disponibile.
+                    #end
+                </td>
+            </tr>
+        </table>
+
+    <div class="footer">
+    <table style="width:100%; margin:0;">
+        <tr>
+            <td style="vertical-align:middle;">
+                <p style="margin:0;">
+                    Grazie,<br/>
+                    <b>Leonardo's Workshop</b>
+                </p>
+            </td>
+
+            <td style="text-align:right; vertical-align:middle; padding:0;">
+                <img src="cid:leonardos-workshop.png"
+                     style="width:200px; height:auto; display:block; margin-left:auto;" />
+            </td>
+        </tr>
+    </table>
+    </div>
+
+    </body>
+</html>
+]]></code>
+            </script>
+        </bodyExpression>
+        <contentType>text/html; charset=UTF-8</contentType>
+    </localizedContent>
+</messageTemplate>
