@@ -2225,7 +2225,6 @@
     </expressions>
 
     <workflowConfiguration>
-        <useLegacyApproversSpecification>never</useLegacyApproversSpecification>
         <useDefaultApprovalPolicyRules>never</useDefaultApprovalPolicyRules>
     </workflowConfiguration>
 
