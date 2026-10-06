@@ -1,0 +1,80 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mp-ninja
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: mp-ninja
+
+  template:
+    metadata:
+      labels:
+        app: mp-ninja
+
+    spec:
+      volumes:
+        - name: mp-home
+          emptyDir: {}
+
+        - name: mp-secret
+          secret:
+            secretName: mp-secret
+            defaultMode: 420
+
+      containers:
+        - name: mp-ninja
+          image: evolveum/midpoint:4.10.4-alpine
+
+          command:
+            - /bin/sh
+            - -c
+            - sleep infinity
+
+          env:
+            - name: MP_INIT_CFG
+              value: /opt/midpoint/var
+
+            - name: MP_SET_midpoint_repository_database
+              value: postgresql
+
+            - name: MP_SET_midpoint_repository_jdbcUsername
+              value: midpoint
+
+            - name: MP_SET_midpoint_repository_jdbcPassword_FILE
+              value: /opt/midpoint/config-secrets/password
+
+            - name: MP_SET_midpoint_repository_jdbcUrl
+              value: jdbc:postgresql://mp-db-service:5432/midpoint
+
+            - name: MP_UNSET_midpoint_repository_hibernateHbm2ddl
+              value: "1"
+
+            - name: MP_NO_ENV_COMPAT
+              value: "1"
+
+            - name: TZ
+              value: UTC
+
+          volumeMounts:
+            - name: mp-home
+              mountPath: /opt/midpoint/var
+
+            - name: mp-secret
+              mountPath: /opt/midpoint/config-secrets
+
+          imagePullPolicy: IfNotPresent
+
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 10
+
+  serviceName: mp-ninja
+  podManagementPolicy: OrderedReady
+
+  updateStrategy:
+    type: RollingUpdate
+
+  revisionHistoryLimit: 10
