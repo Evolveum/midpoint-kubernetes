@@ -40,7 +40,7 @@ spec:
             defaultMode: 420
       initContainers:
         - name: mp-config-init
-          image: 'evolveum/midpoint:4.10.1-alpine'
+          image: 'evolveum/midpoint:4.11-nightly'
           command: [ "/bin/bash", "-c" ]
           args:
             - cd /opt/midpoint ;
@@ -72,7 +72,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: init
-          image: 'evolveum/midpoint:4.10.1-alpine'
+          image: 'evolveum/midpoint:4.11-nightly'
           command:
             - /bin/sh
             - '-c'
@@ -118,7 +118,7 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: mp
-          image: 'evolveum/midpoint:4.10.1-alpine'
+          image: 'evolveum/midpoint:4.11-nightly'
           ports:
             - name: gui
               containerPort: 8080
@@ -180,7 +180,8 @@ spec:
             - name: message-template-items
               mountPath: /opt/midpoint-dirs-docker-entrypoint/message-template-items
             - name: import
-              mountPath: /opt/midpoint-dirs-docker-entrypoint/import
+              mountPath: /opt/midpoint-dirs-docker-entrypoint/import/midpoint-source.csv
+              subPath: midpoint-source.csv
             - name: nfs-volume
               mountPath: /opt/midpoint/var/import/
             - name: mp-home
