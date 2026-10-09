@@ -25,9 +25,7 @@
                 </hasNoAssignment>
             </policyConstraints>
             <policyActions>
-                <enforcement>
-                    <documentation>This documentation must be there to make sure midPoint 4.8/4.9 GUI displays enforcement element.</documentation>
-                </enforcement>
+                <enforcement/>
             </policyActions>
         </policyRule>
     </inducement>
@@ -38,6 +36,7 @@
         <focusType>UserType</focusType>
         <focusMappings>
             <mapping>
+                <name>Service assignment to access category (User)</name>
                 <strength>strong</strength>
                 <expression>
                     <value>Category II - Internal Access</value>
@@ -52,6 +51,7 @@
         <focusType>ServiceType</focusType>
         <focusMappings>
             <mapping>
+                <name>Direct service assignment to access category (Service)</name>
                 <strength>strong</strength>
                 <expression>
                     <value>Category II</value>
@@ -63,9 +63,9 @@
                         We do not want to show classification hierarchy.
                     </description>
                     <script>
-                        <code>immediateRole instanceof com.evolveum.midpoint.xml.ns._public.common.common_3.ServiceType</code>
-                    </script>
-                </condition>
+                        <language>mel</language>
+                        <code>immediateRole.type() == 'ServiceType'</code>
+                    </script>                </condition>
                 <target>
                     <path>extension/accessCategory</path>
                 </target>
