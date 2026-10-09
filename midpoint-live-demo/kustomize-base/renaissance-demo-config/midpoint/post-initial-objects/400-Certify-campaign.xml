@@ -20,15 +20,17 @@
         <includeUsers>false</includeUsers>
         <enabledItemsOnly>true</enabledItemsOnly>
         <itemSelectionExpression>
-            <script xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="c:ScriptExpressionEvaluatorType">
-                <code>	
-					roleOids = ["8d62985c-7797-11e2-94a6-001e8c717e5b", "1ba23cd0-8fe4-11e2-86e1-3c970e467874"];
-							
-					if (!roleOids.contains(assignment.targetRef?.getOid())) {
-						return false;
-					}                                 																		             	               
-										 
-					return true;
+            <script>
+                <language>mel</language>
+                <code>
+                    cel.bind(
+                        roleOids,
+                        [
+                            "8d62985c-7797-11e2-94a6-001e8c717e5b",
+                            "1ba23cd0-8fe4-11e2-86e1-3c970e467874"
+                        ],
+                        roleOids.contains(assignment.targetOid())
+                    )
                </code>
             </script>
         </itemSelectionExpression>
@@ -48,10 +50,18 @@
             <useObjectOwner>false</useObjectOwner>
             <useObjectApprover>false</useObjectApprover>
             <reviewerExpression>
-                <script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xsi:type="c:ScriptExpressionEvaluatorType">
+                <script>
+                    <language>mel</language>
                     <code>
-					midpoint.getMembersAsReferences("9a60cdc6-f2ad-4414-964b-5fd1dfaec157"); // Council of Patrons org
-				</code>
+                    cel.bind(
+                    members,
+                    midpoint.searchObjects(
+                    'UserType',
+                    'assignment/targetRef matches (oid = "9a60cdc6-f2ad-4414-964b-5fd1dfaec157")'
+                    ),
+                    members.map(member, member.oid)
+                    )
+                    </code>
                 </script>
             </reviewerExpression>
         </reviewerSpecification>
