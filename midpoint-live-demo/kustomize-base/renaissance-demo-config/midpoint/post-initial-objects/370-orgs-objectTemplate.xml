@@ -47,4 +47,23 @@
             </script>
         </condition>
     </mapping>
+    <mapping>
+        <expression>
+            <script>
+                <language>mel</language>
+                <code>
+                    isPresent(focus.parentOrgRef)
+                    ? cel.bind(
+                    parentOrg,
+                    midpoint.resolveReference(single(focus.parentOrgRef)),
+                    'ou=' + focus.name + ',' + parentOrg.extension.ldapDn
+                    )
+                    : 'ou=' + focus.name + ',ou=Orgs,dc=example,dc=com'
+                </code>
+            </script>
+        </expression>
+        <target>
+            <path>extension/ldapDn</path>
+        </target>
+    </mapping>
 </objectTemplate>

@@ -113,7 +113,8 @@
                     </source>
                     <expression>
                         <script>
-                            <code>'uid=' + name + ',ou=people,dc=example,dc=com'</code>
+                            <language>mel</language>
+                            <code>'uid=' + focus.name + ',ou=people,dc=example,dc=com'</code>
                         </script>
                     </expression>
                 </outbound>
@@ -402,37 +403,12 @@
                 <ref>ri:dn</ref>
                 <matchingRule xmlns:gen868="http://prism.evolveum.com/xml/ns/public/matching-rule-3">gen868:stringIgnoreCase</matchingRule>
                 <outbound>
-                    <name>dn</name>
+                    <name>ldapdn-to-dn</name>
                     <source>
-                        <path>$focus/name</path>
+                        <path>$focus/extension/ldapDn</path>
                     </source>
                     <expression>
-                        <script>
-                            <code>
-                                import javax.naming.ldap.Rdn
-                                import javax.naming.ldap.LdapName
-                                import com.evolveum.midpoint.xml.ns._public.common.common_3.*;
-
-                                dn = new LdapName('ou=Orgs,dc=example,dc=com')
-                                parents = new ArrayList()
-                                currentOrg = focus
-                                while (currentOrg != null) {
-                                parents.add(currentOrg)
-                                // see com.evolveum.midpoint.model.impl.expr.MidpointFunctionsImpl
-                                currentOrg = midpoint.getParentOrgByOrgType(currentOrg, 'functional')
-                                }
-
-                                log.info("parents = {}", parents)
-
-                                for (int i = parents.size() -1 ; i &gt;= 0; i--) {
-                                dn.add(new Rdn('ou', parents.get(i).name.toString()))
-                                }
-
-                                log.info("dn = {}", dn)
-
-                                return dn.toString();
-                            </code>
-                        </script>
+                        <asIs/>
                     </expression>
                 </outbound>
             </attribute>
@@ -512,13 +488,13 @@
                     </source>
                     <expression>
                         <script>
+                            <language>mel</language>
                             <code>
-                                import javax.naming.ldap.Rdn
-                                import javax.naming.ldap.LdapName
-
-                                dn = new LdapName('ou=Projects,dc=example,dc=com')
-                                dn.add(new Rdn('cn', name.toString()))
-                                return dn.toString()
+                                ldap.composeDnWithSuffix(
+                                        'cn',
+                                        focus.name,
+                                        'ou=Projects,dc=example,dc=com'
+                                )
                             </code>
                         </script>
                     </expression>
