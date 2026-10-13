@@ -6,7 +6,6 @@
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-100000000000" version="42">
     <name>F0000</name>
     <description>Famous workshop of Leonardo da Vinci</description>
-    <subtype>functional</subtype>
     <costCenter>CC000</costCenter>
     <locality>Florence</locality>
     <displayName>Leonardo's Workshop</displayName>
@@ -66,7 +65,6 @@
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-100000000100" version="55">
     <name>F0100</name>
     <description>Fine arts and stuff</description>
-    <subtype>functional</subtype>
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:default" type="c:OrgType">
         <!-- F0000 -->
     </parentOrgRef>
@@ -94,7 +92,6 @@
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-100000000110" version="47">
     <name>F0110</name>
     <description>Painting, drawing, carving, scratching whatever</description>
-    <subtype>functional</subtype>
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000100" relation="org:default" type="c:OrgType">
         <!-- F0100 -->
     </parentOrgRef>
@@ -122,7 +119,6 @@
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-100000000120" version="43">
     <name>F0120</name>
     <description>Bigger than life</description>
-    <subtype>functional</subtype>
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000100" relation="org:default" type="c:OrgType">
         <!-- F0100 -->
     </parentOrgRef>
@@ -148,7 +144,6 @@
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-100000000200" version="47">
     <name>F0200</name>
     <description>Everything that moves or otherwise.</description>
-    <subtype>functional</subtype>
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000000" relation="org:default" type="c:OrgType">
         <!-- F0000 -->
     </parentOrgRef>
@@ -178,7 +173,6 @@
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-100000000210" version="51">
     <name>F0210</name>
     <description>We can destroy it for you wholesale</description>
-    <subtype>functional</subtype>
     <parentOrgRef oid="c74a7d86-7798-11e2-964e-100000000200" relation="org:default" type="c:OrgType">
         <!-- F0200 -->
     </parentOrgRef>
@@ -205,7 +199,6 @@
     <name>P0000</name>
     <description>Root object of all projects.</description>
     <documentation>(ISO27001/A.5.8,ISO27001/A.5.15,ISO27001/A.5.16)</documentation>
-    <subtype>project</subtype>
     <displayName>Projects</displayName>
     <indestructible>true</indestructible>
     <displayOrder>150</displayOrder>
@@ -226,7 +219,6 @@
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-200000000001" version="62">
     <name>P0001</name>
     <description>Create the most appealing visual representation of a smile</description>
-    <subtype>project</subtype>
     <parentOrgRef oid="90cc2089-6f00-4fd9-9394-10debdd019eb" relation="org:default" type="c:OrgType">
         <!-- P0000 -->
     </parentOrgRef>
@@ -251,7 +243,6 @@
 
 	<org xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3" xmlns:icfs="http://midpoint.evolveum.com/xml/ns/public/connector/icf-1/resource-schema-3" xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3" xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3" xmlns:ri="http://midpoint.evolveum.com/xml/ns/public/resource/instance-3" xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3" oid="c74a7d86-7798-11e2-964e-200000000002" version="60">
     <name>P0002</name>
-    <subtype>project</subtype>
     <parentOrgRef oid="90cc2089-6f00-4fd9-9394-10debdd019eb" relation="org:default" type="c:OrgType">
         <!-- P0000 -->
     </parentOrgRef>

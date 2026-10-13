@@ -10,9 +10,6 @@
     <mapping>
         <description>A hack to avoid feedback to HR feed - deleting accounts because they are not assigned</description>
         <strength>strong</strength>
-        <source>
-            <c:path>subtype</c:path>
-        </source>
         <expression>
             <value>
                 <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" type="c:RoleType"/>
@@ -22,8 +19,15 @@
             <c:path>assignment</c:path>
         </target>
         <condition>
-            <script>
-                <code>subtype == 'functional'</code>
+                <script>
+                <language>mel</language>
+                <code>
+                    focus.archetypeRef.exists(
+                    ref,
+                    ref.oid == '6a12b965-a1c2-47c9-87bd-19e84c71d814'
+                    )
+                    &amp;&amp; focus.oid != '9a60cdc6-f2ad-4414-964b-5fd1dfaec157'
+                </code>
             </script>
         </condition>
     </mapping>
@@ -43,7 +47,11 @@
         </target>
         <condition>
             <script>
-                <code>subtype == 'project'</code>
+                <language>mel</language>
+                <code>focus.archetypeRef.exists(
+                        ref,
+                        ref.oid == '89a34123-1db7-4fc1-a053-6c42b82ef2ab'
+                )</code>
             </script>
         </condition>
     </mapping>
