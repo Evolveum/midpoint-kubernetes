@@ -56,9 +56,9 @@
                     ? cel.bind(
                     parentOrg,
                     midpoint.resolveReference(single(focus.parentOrgRef)),
-                    'ou=' + str(focus.name) + ',' + str(parentOrg.extension.ldapDn)
+                    'ou=' + focus.name + ',' + parentOrg.extension.ldapDn
                     )
-                    : 'ou=' + str(focus.name) + ',ou=Orgs,dc=example,dc=com'
+                    : 'ou=' + focus.name + ',ou=Orgs,dc=example,dc=com'
                 </code>
             </script>
         </expression>
