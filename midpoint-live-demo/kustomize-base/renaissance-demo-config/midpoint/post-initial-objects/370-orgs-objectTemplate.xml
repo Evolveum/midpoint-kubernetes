@@ -34,9 +34,6 @@
     <mapping>
         <description>A hack to avoid feedback to HR feed - deleting accounts because they are not assigned</description>
         <strength>strong</strength>
-        <source>
-            <c:path>subtype</c:path>
-        </source>
         <expression>
             <value>
                 <targetRef oid="3154fafb-9f9f-4c3b-93ae-7fffd43796bf" type="c:RoleType"/>
