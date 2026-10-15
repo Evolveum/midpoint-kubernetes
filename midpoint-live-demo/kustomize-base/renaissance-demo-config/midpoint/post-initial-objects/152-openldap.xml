@@ -114,7 +114,7 @@
                     <expression>
                         <script>
                             <language>mel</language>
-                            <code>'uid=' + focus.name + ',ou=people,dc=example,dc=com'</code>
+                            <code>'uid=' + str(name) + ',ou=people,dc=example,dc=com'</code>
                         </script>
                     </expression>
                 </outbound>
@@ -490,10 +490,11 @@
                         <script>
                             <language>mel</language>
                             <code>
-                                ldap.composeDnWithSuffix(
+                                ldap.composeDnWithSuffix([
                                         'cn',
-                                        focus.name,
+                                        str(name),
                                         'ou=Projects,dc=example,dc=com'
+                                ]
                                 )
                             </code>
                         </script>
