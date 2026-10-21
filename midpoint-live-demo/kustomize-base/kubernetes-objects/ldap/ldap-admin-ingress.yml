@@ -16,7 +16,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: ldap-admin-service
+                name: apache-service
                 port:
-                  number: 1389
+                  number: 80
 
