@@ -4,9 +4,12 @@
   ~ This work is dual-licensed under the Apache License 2.0
   ~ and European Union Public License. See LICENSE file for details.
   -->
-<archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-            oid="00000000-0000-0000-0000-000000000329">
 
+<archetype oid="00000000-0000-0000-0000-000000000329"
+        xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+        xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+        xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <name>Application</name>
     <description>
         Applications are basic building blocks for defining access.
@@ -66,7 +69,7 @@
                 <panel>
                     <identifier>basic-application</identifier>
                     <display>
-                        <label>Application.panel.basic</label>
+                        <label>Application</label>
                     </display>
                     <displayOrder>10</displayOrder>
                     <container>
@@ -170,7 +173,12 @@
                                 <key>classifications.panel.label</key>
                             </translation>
                         </label>
-                        <tooltip>Information classifications (labels)</tooltip>
+                        <tooltip>
+                            <orig>Information classifications (labels)</orig>
+                            <translation>
+                                <key>classifications.panel.tooltip</key>
+                            </translation>
+                        </tooltip>
                         <icon>
                             <cssClass>fa fa-tags</cssClass>
                         </icon>
@@ -185,6 +193,8 @@
                             <filter>
                                 <q:text>targetRef/@/archetypeRef matches ( oid = "00000000-0000-0000-0000-000000000330" )</q:text>
                             </filter>
+                            <!--                            <collectionRef oid="00000000-0000-0000-0000-000000000330" type="c:ArchetypeType">
+                                                        </collectionRef> -->
                         </collection>
                     </listView>
                 </panel>

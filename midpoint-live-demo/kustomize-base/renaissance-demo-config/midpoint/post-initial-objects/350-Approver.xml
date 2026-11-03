@@ -2,8 +2,7 @@
 <!--
   ~ Copyright (c) 2017-2019 Evolveum and contributors
   ~
-  ~ This work is dual-licensed under the Apache License 2.0
-  ~ and European Union Public License. See LICENSE file for details.
+  ~ Licensed under the EUPL-1.2 or later.
   -->
 <role oid="00000000-0000-0000-0000-00000000000a"
       xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3">
@@ -72,6 +71,7 @@
         <item>stageNumber</item>
         <item>approvalContext</item>
         <item>modelContext</item>
+        <item>manualProvisioningContext</item>
     </authorization>
     <authorization id="5">
         <name>users-read</name>
@@ -87,8 +87,8 @@
         <item>givenName</item>
         <item>familyName</item>
         <item>fullName</item>
-        <item>employeeType</item>
         <item>employeeNumber</item>
+        <item>personalNumber</item>
     </authorization>
     <authorization id="6">
         <name>roles-read</name>
@@ -104,7 +104,6 @@
         <item>identifier</item>
         <item>description</item>
         <item>riskLevel</item>
-        <item>roleType</item>
     </authorization>
     <authorization id="7">
         <name>orgs-read</name>
@@ -120,7 +119,6 @@
         <item>identifier</item>
         <item>description</item>
         <item>riskLevel</item>
-        <item>orgType</item>
     </authorization>
     <authorization id="8">
         <name>services-read</name>
@@ -136,6 +134,5 @@
         <item>identifier</item>
         <item>description</item>
         <item>riskLevel</item>
-        <item>serviceType</item>
     </authorization>
 </role>

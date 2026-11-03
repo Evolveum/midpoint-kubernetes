@@ -6,17 +6,17 @@
   -->
 
 <systemConfiguration oid="00000000-0000-0000-0000-000000000001" version="0"
-        xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-        xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-        xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
-        xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                     xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+                     xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+                     xmlns:org="http://midpoint.evolveum.com/xml/ns/public/common/org-3"
+                     xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
     <name>SystemConfiguration</name>
     <indestructible>true</indestructible>
-        <globalAccountSynchronizationSettings>
+    <globalAccountSynchronizationSettings>
         <assignmentPolicyEnforcement>relative</assignmentPolicyEnforcement>
-        </globalAccountSynchronizationSettings>
+    </globalAccountSynchronizationSettings>
     <globalSecurityPolicyRef oid="00000000-0000-0000-0000-000000000120"/>
     <logging>
         <classLogger id="1">
@@ -74,7 +74,7 @@
         </classLogger>
 
         <appender id="10" xsi:type="c:FileAppenderConfigurationType"
-                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <pattern>%date [%X{subsystem}] [%thread] %level \(%logger\): %msg%n</pattern>
             <name>MIDPOINT_LOG</name>
             <fileName>${midpoint.home}/log/midpoint.log</fileName>
@@ -85,7 +85,7 @@
         </appender>
         <!-- Appender for profiling purposes -->
         <appender id="11" xsi:type="c:FileAppenderConfigurationType"
-                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <pattern>%date %level: %msg%n</pattern>
             <name>MIDPOINT_PROFILE_LOG</name>
             <fileName>${midpoint.home}/log/midpoint-profile.log</fileName>
@@ -189,7 +189,7 @@
                 <collectLogEntries>true</collectLogEntries>
                 <loggingOverride>
                     <levelOverride id="19">
-                        <logger>org.hibernate.SQL</logger>
+                        <logger>com.evolveum.midpoint.repo.sqlbase.querydsl.SqlLogger</logger>
                         <level>TRACE</level>
                     </levelOverride>
                 </loggingOverride>
@@ -205,6 +205,13 @@
             <skipWhenSuccess>true</skipWhenSuccess>
         </operationExecutionRecording>
     </internals>
+    <smartIntegration>
+        <statisticsTtl>P1D</statisticsTtl>
+        <schemaMatchTtl>P1D</schemaMatchTtl>
+        <mappingSuggestionRetryCount>1</mappingSuggestionRetryCount>
+        <connectorFrameworkUrl>https://nexus.evolveum.com/nexus/repository/releases/com/evolveum/polygon/scimrest/connector-scimrest-template/0.2.0/connector-scimrest-template-0.2.0.jar</connectorFrameworkUrl>
+        <connectorSqlFrameworkUrl>https://nexus.evolveum.com/nexus/repository/releases/com/evolveum/polygon/sql/connector-sql-template/0.2.0/connector-sql-template-0.2.0.jar</connectorSqlFrameworkUrl>
+    </smartIntegration>
     <adminGuiConfiguration>
         <homePage id="21">
             <type>UserType</type>
@@ -410,7 +417,12 @@
                             <key>PageSelfDashboard.profile</key>
                         </translation>
                     </label>
-                    <help>PageSelfDashboard.profile.description</help>
+                    <help>
+                        <orig>Profile</orig>
+                        <translation>
+                            <key>PageSelfDashboard.profile.description</key>
+                        </translation>
+                    </help>
                     <cssClass>col-md-3</cssClass>
                     <icon>
                         <cssClass>bg-green fa fa-user</cssClass>
@@ -433,7 +445,12 @@
                             <key>PageSelfDashboard.credentials</key>
                         </translation>
                     </label>
-                    <help>PageSelfDashboard.credentials.description</help>
+                    <help>
+                        <orig>Credentials</orig>
+                        <translation>
+                            <key>PageSelfDashboard.credentials.description</key>
+                        </translation>
+                    </help>
                     <cssClass>col-md-3</cssClass>
                     <icon>
                         <cssClass>bg-blue fa fa-shield-alt</cssClass>
@@ -562,7 +579,12 @@
                             <key>MyCases.title</key>
                         </translation>
                     </pluralLabel>
-                    <singularLabel>My case</singularLabel>
+                    <singularLabel>
+                        <orig>My case</orig>
+                        <translation>
+                            <key>MyCases.objectCollectionView.singularLabel</key>
+                        </translation>
+                    </singularLabel>
                     <icon>
                         <cssClass>fe fe-case-object</cssClass>
                     </icon>
@@ -590,8 +612,18 @@
                             <key>AllManualCases.title</key>
                         </translation>
                     </pluralLabel>
-                    <singularLabel>Manual case</singularLabel>
-                    <tooltip>Manual provisioning cases</tooltip>
+                    <singularLabel>
+                        <orig>Manual case</orig>
+                        <translation>
+                            <key>AllManualCases.objectCollectionView.singularLabel</key>
+                        </translation>
+                    </singularLabel>
+                    <tooltip>
+                        <orig>Manual provisioning cases</orig>
+                        <translation>
+                            <key>AllManualCases.objectCollectionView.tooltip</key>
+                        </translation>
+                    </tooltip>
                 </display>
                 <displayOrder>1010</displayOrder>
                 <type>CaseType</type>
@@ -616,8 +648,18 @@
                             <key>AllRequests.title</key>
                         </translation>
                     </pluralLabel>
-                    <singularLabel>Request</singularLabel>
-                    <tooltip>Operation requests</tooltip>
+                    <singularLabel>
+                        <orig>Request</orig>
+                        <translation>
+                            <key>OperationRequestCase.objectCollectionView.singularLabel</key>
+                        </translation>
+                    </singularLabel>
+                    <tooltip>
+                        <orig>Operation requests</orig>
+                        <translation>
+                            <key>OperationRequestCase.objectCollectionView.tooltip</key>
+                        </translation>
+                    </tooltip>
                 </display>
                 <displayOrder>1020</displayOrder>
                 <type>CaseType</type>
@@ -642,8 +684,18 @@
                             <key>AllApprovals.title</key>
                         </translation>
                     </pluralLabel>
-                    <singularLabel>Approval</singularLabel>
-                    <tooltip>Approval cases</tooltip>
+                    <singularLabel>
+                        <orig>Approval</orig>
+                        <translation>
+                            <key>ApprovalCase.objectCollectionView.singularLabel</key>
+                        </translation>
+                    </singularLabel>
+                    <tooltip>
+                        <orig>Approval cases</orig>
+                        <translation>
+                            <key>ApprovalCase.objectCollectionView.tooltip</key>
+                        </translation>
+                    </tooltip>
                 </display>
                 <displayOrder>1030</displayOrder>
                 <type>CaseType</type>
@@ -668,8 +720,18 @@
                             <key>AllCorrelations.title</key>
                         </translation>
                     </pluralLabel>
-                    <singularLabel>Correlation</singularLabel>
-                    <tooltip>Correlation cases</tooltip>
+                    <singularLabel>
+                        <orig>Correlation</orig>
+                        <translation>
+                            <key>CorrelationCase.objectCollectionView.singularLabel</key>
+                        </translation>
+                    </singularLabel>
+                    <tooltip>
+                        <orig>Correlation cases</orig>
+                        <translation>
+                            <key>CorrelationCase.objectCollectionView.tooltip</key>
+                        </translation>
+                    </tooltip>
                 </display>
                 <displayOrder>1040</displayOrder>
                 <type>CaseType</type>
@@ -1040,12 +1102,13 @@
                             <description>Allow searching for users having account on specific resource. Intent is not considered. The search item is not displayed by default
                                 (visibleByDefault=false).
                             </description>
+                            <displayOrder>30</displayOrder>
                             <visibleByDefault>true</visibleByDefault>
                             <filter>
                                 <q:text>
                                     linkRef/@ matches (
                                     . type ShadowType
-                                    and resourceRef/@/name = `resourceParameter?.getName()?.getOrig()`
+                                    and resourceRef/@/name = mel`resourceParameter.name.orig`
                                     and kind = "account" )
                                 </q:text>
                             </filter>
@@ -1067,12 +1130,13 @@
                             <description>Allow searching for users not having account on specific resource. Intent is not considered. The search item is not displayed by default
                                 (visibleByDefault=false).
                             </description>
+                            <displayOrder>40</displayOrder>
                             <visibleByDefault>true</visibleByDefault>
                             <filter>
                                 <q:text>
                                     linkRef/@ not matches (
                                     . type ShadowType
-                                    and resourceRef/@/name = `resourceParameter?.getName()?.getOrig()`
+                                    and resourceRef/@/name = mel`resourceParameter.name.orig`
                                     and kind = "account" )
                                 </q:text>
                             </filter>
@@ -1089,6 +1153,16 @@
                                 <type>c:ObjectReferenceType</type>
                                 <targetType>ResourceType</targetType>
                             </parameter>
+                        </searchItem>
+                        <searchItem id="280">
+                            <displayOrder>10</displayOrder>
+                            <visibleByDefault>true</visibleByDefault>
+                            <path>fullName</path>
+                        </searchItem>
+                        <searchItem id="281">
+                            <displayOrder>20</displayOrder>
+                            <visibleByDefault>true</visibleByDefault>
+                            <path>name</path>
                         </searchItem>
                     </searchItems>
                 </searchBoxConfiguration>
@@ -1108,7 +1182,12 @@
                             <key>ResourceType.template.all.title</key>
                         </translation>
                     </pluralLabel>
-                    <singularLabel>Resource template</singularLabel>
+                    <singularLabel>
+                        <orig>Resource template</orig>
+                        <translation>
+                            <key>ResourceTemplates.objectCollectionView.singularLabel</key>
+                        </translation>
+                    </singularLabel>
                     <icon>
                         <cssClass>fa fa-file-alt</cssClass>
                     </icon>
@@ -1134,7 +1213,12 @@
                             <key>classification.label</key>
                         </translation>
                     </singularLabel>
-                    <tooltip>Information classifications (labels)</tooltip>
+                    <tooltip>
+                        <orig>Information classifications (labels)</orig>
+                        <translation>
+                            <key>Classification.objectCollectionView.tooltip</key>
+                        </translation>
+                    </tooltip>
                 </display>
                 <displayOrder>200</displayOrder>
                 <type>PolicyType</type>
@@ -1158,7 +1242,12 @@
                             <key>clearance.label</key>
                         </translation>
                     </singularLabel>
-                    <tooltip>Security clearances</tooltip>
+                    <tooltip>
+                        <orig>Security clearances</orig>
+                        <translation>
+                            <key>Clearance.objectCollectionView.tooltip</key>
+                        </translation>
+                    </tooltip>
                 </display>
                 <displayOrder>210</displayOrder>
                 <type>PolicyType</type>
@@ -1429,7 +1518,12 @@
                     <container id="130">
                         <identifier>basic</identifier>
                         <display>
-                            <label>PageResource.wizard.step.objectType.basicSettings</label>
+                            <label>
+                                <orig>Basic information</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.objectType.basicSettings</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="132">
                             <path>schemaHandling/objectType/displayName</path>
@@ -1472,7 +1566,12 @@
                     <container id="138">
                         <identifier>delineation</identifier>
                         <display>
-                            <label>PageResource.wizard.step.objectType.delineation</label>
+                            <label>
+                                <orig>Resource data</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.objectType.delineation</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="140">
                             <path>schemaHandling/objectType/delineation/objectClass</path>
@@ -1507,7 +1606,12 @@
                     <container id="145">
                         <identifier>limitationsMapping</identifier>
                         <display>
-                            <label>PageResource.wizard.step.attributes.limitation</label>
+                            <label>
+                                <orig>Limitations</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.attributes.limitation</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="147">
                             <path>schemaHandling/objectType/attribute/limitations/access/read</path>
@@ -1546,7 +1650,12 @@
                     <container id="153">
                         <identifier>reactionMainSetting</identifier>
                         <display>
-                            <label>PageResource.wizard.step.synchronization.reaction.mainSettings</label>
+                            <label>
+                                <orig>Main configuration</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.synchronization.reaction.mainSettings</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="155">
                             <path>schemaHandling/objectType/synchronization/reaction/name</path>
@@ -1573,7 +1682,12 @@
                     <container id="158">
                         <identifier>reactionOptionalSetting</identifier>
                         <display>
-                            <label>PageResource.wizard.step.synchronization.reaction.optionalSettings</label>
+                            <label>
+                                <orig>Optional settings</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.synchronization.reaction.optionalSettings</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="160">
                             <path>schemaHandling/objectType/synchronization/reaction/condition</path>
@@ -1600,7 +1714,12 @@
                     <container id="262">
                         <identifier>associationReactionMainSetting</identifier>
                         <display>
-                            <label>PageResource.wizard.step.synchronization.reaction.mainSettings</label>
+                            <label>
+                                <orig>Main configuration</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.synchronization.reaction.mainSettings</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="263">
                             <path>schemaHandling/associationType/subject/association/synchronization/reaction/name</path>
@@ -1627,7 +1746,12 @@
                     <container id="256">
                         <identifier>associationReactionOptionalSetting</identifier>
                         <display>
-                            <label>PageResource.wizard.step.synchronization.reaction.optionalSettings</label>
+                            <label>
+                                <orig>Optional settings</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.synchronization.reaction.optionalSettings</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="257">
                             <path>schemaHandling/associationType/subject/association/synchronization/reaction/order</path>
@@ -1646,7 +1770,12 @@
                     <container id="163">
                         <identifier>mainConfigurationAttribute</identifier>
                         <display>
-                            <label>PageResource.wizard.step.attributes.mainConfiguration</label>
+                            <label>
+                                <orig>Main configuration</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.attributes.mainConfiguration</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="165">
                             <path>schemaHandling/objectType/attribute/ref</path>
@@ -1705,7 +1834,12 @@
                     <container id="174">
                         <identifier>association</identifier>
                         <display>
-                            <label>PageResource.wizard.step.associations</label>
+                            <label>
+                                <orig>Configuration of the association</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.associations</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="176">
                             <path>schemaHandling/objectType/association/ref</path>
@@ -1774,7 +1908,12 @@
                     <container id="189">
                         <identifier>required</identifier>
                         <display>
-                            <label>PageResource.wizard.step.configuration</label>
+                            <label>
+                                <orig>Configuration</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.configuration</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="191">
                             <path>connectorConfiguration/configurationProperties/jdbcUrlTemplate</path>
@@ -1818,7 +1957,12 @@
                     <container id="199">
                         <identifier>required</identifier>
                         <display>
-                            <label>PageResource.wizard.step.configuration</label>
+                            <label>
+                                <orig>Configuration</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.configuration</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="201">
                             <path>connectorConfiguration/configurationProperties/host</path>
@@ -1845,6 +1989,70 @@
                     </container>
                     <panelType>rw-connectorConfiguration-partial</panelType>
                 </panel>
+                <panel id="299">
+                    <identifier>rw-type-delineation</identifier>
+                    <container id="300">
+                        <identifier>delineation</identifier>
+                        <display>
+                            <label>
+                                <orig>Resource data</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.objectType.delineation</key>
+                                </translation>
+                            </label>
+                        </display>
+                        <item id="301">
+                            <path>schemaHandling/objectType/delineation/objectClass</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="302">
+                            <path>schemaHandling/objectType/delineation/auxiliaryObjectClass</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="303">
+                            <path>schemaHandling/objectType/delineation/searchHierarchyScope</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="304">
+                            <path>schemaHandling/objectType/delineation/filter</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="305">
+                            <path>schemaHandling/objectType/delineation/classificationCondition</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="306">
+                            <path>schemaHandling/objectType/delineation/baseContext/objectClass</path>
+                            <display>
+                                <label>
+                                    <orig>Object class (base context)</orig>
+                                    <translation>
+                                        <key>PageResource.wizard.step.objectType.baseContext.objectClass</key>
+                                    </translation>
+                                </label>
+                            </display>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="307">
+                            <path>schemaHandling/objectType/delineation/baseContext/filter</path>
+                            <display>
+                                <label>
+                                    <orig>Filter (base context)</orig>
+                                    <translation>
+                                        <key>PageResource.wizard.step.objectType.baseContext.filter</key>
+                                    </translation>
+                                </label>
+                            </display>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="308">
+                        <identifier>delineation-hidden</identifier>
+                        <visibility>hidden</visibility>
+                        <path>schemaHandling/objectType/delineation</path>
+                    </container>
+                    <panelType>rw-type-delineation</panelType>
+                </panel>
                 <connectorRef type="ConnectorType">
                     <resolutionTime>run</resolutionTime>
                     <filter>
@@ -1858,7 +2066,12 @@
                     <container id="207">
                         <identifier>required</identifier>
                         <display>
-                            <label>PageResource.wizard.step.configuration</label>
+                            <label>
+                                <orig>Configuration</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.configuration</key>
+                                </translation>
+                            </label>
                         </display>
                         <item id="209">
                             <path>connectorConfiguration/configurationProperties/host</path>
@@ -1884,6 +2097,70 @@
                         <path>connectorConfiguration/configurationProperties</path>
                     </container>
                     <panelType>rw-connectorConfiguration-partial</panelType>
+                </panel>
+                <panel id="285">
+                    <identifier>rw-type-delineation</identifier>
+                    <container id="286">
+                        <identifier>delineation</identifier>
+                        <display>
+                            <label>
+                                <orig>Resource data</orig>
+                                <translation>
+                                    <key>PageResource.wizard.step.objectType.delineation</key>
+                                </translation>
+                            </label>
+                        </display>
+                        <item id="287">
+                            <path>schemaHandling/objectType/delineation/objectClass</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="288">
+                            <path>schemaHandling/objectType/delineation/auxiliaryObjectClass</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="289">
+                            <path>schemaHandling/objectType/delineation/searchHierarchyScope</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="290">
+                            <path>schemaHandling/objectType/delineation/filter</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="291">
+                            <path>schemaHandling/objectType/delineation/classificationCondition</path>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="292">
+                            <path>schemaHandling/objectType/delineation/baseContext/objectClass</path>
+                            <display>
+                                <label>
+                                    <orig>Object class (base context)</orig>
+                                    <translation>
+                                        <key>PageResource.wizard.step.objectType.baseContext.objectClass</key>
+                                    </translation>
+                                </label>
+                            </display>
+                            <visibility>visible</visibility>
+                        </item>
+                        <item id="293">
+                            <path>schemaHandling/objectType/delineation/baseContext/filter</path>
+                            <display>
+                                <label>
+                                    <orig>Filter (base context)</orig>
+                                    <translation>
+                                        <key>PageResource.wizard.step.objectType.baseContext.filter</key>
+                                    </translation>
+                                </label>
+                            </display>
+                            <visibility>visible</visibility>
+                        </item>
+                    </container>
+                    <container id="294">
+                        <identifier>delineation-hidden</identifier>
+                        <visibility>hidden</visibility>
+                        <path>schemaHandling/objectType/delineation</path>
+                    </container>
+                    <panelType>rw-type-delineation</panelType>
                 </panel>
                 <connectorRef type="ConnectorType">
                     <resolutionTime>run</resolutionTime>
@@ -1975,30 +2252,47 @@
             <c:item>identifier</c:item>
         </indexed>
     </fullTextSearch>
-<!--</systemConfiguration>-->
+    <!--</systemConfiguration>-->
 
     <expressions>
+        <defaultScriptLanguage>http://midpoint.evolveum.com/xml/ns/public/expression/language#mel</defaultScriptLanguage>
         <expressionProfile id="218">
             <identifier>safe</identifier>
             <description>
-                "Safe" expression profile. It is supposed to contain only operations that are "safe",
-                i.e. operations that have very little risk to harm the system, circumvent midPoint security
-                and so on. Use of those operations should be reasonably safe in all expressions.
-                However, there are limitations. This profile may incomplete or it may even be not completely secure.
-                Proper security testing of this profile was not yet conducted. It is provided here "AS IS",
-                without any guarantees. Use at your own risk.
+                "Safe" expression profile. It is supposed to contain only operations that have very little risk
+                to harm the system, circumvent midPoint security and so on. Use of those operations should be
+                reasonably safe in all expressions.
+
+                Use for:
+
+                - admin GUI configuration
+                - role management
+                - policy management
+                - archetypes
+
+                Expressions executed under this profile will not have any observable side effects on the state of midPoint system.
+                But there is still some harm that can be done, like revealing parts of the system configuration or state via
+                "path" expression.
+
+                Please see the documentation for more information:
+
+                https://docs.evolveum.com/midpoint/reference/expressions/expressions/profiles/
             </description>
             <decision>deny</decision> <!-- default decision of those evaluators that are not explicitly enumerated. -->
+            <evaluator id="221">
+                <type>value</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator id="309">
+                <type>null</type>
+                <decision>allow</decision>
+            </evaluator>
             <evaluator id="219">
                 <type>asIs</type>
                 <decision>allow</decision>
             </evaluator>
             <evaluator id="220">
                 <type>path</type>
-                <decision>allow</decision>
-            </evaluator>
-            <evaluator id="221">
-                <type>value</type>
                 <decision>allow</decision>
             </evaluator>
             <evaluator id="222">
@@ -2009,10 +2303,6 @@
                 <type>filter</type>
                 <decision>allow</decision>
             </evaluator>
-            <evaluator id="274">
-                <type>function</type>
-                <decision>allow</decision>
-            </evaluator>
             <evaluator id="278">
                 <type>generate</type>
                 <decision>allow</decision>
@@ -2021,13 +2311,190 @@
                 <type>proportional</type>
                 <decision>allow</decision>
             </evaluator>
-            <bulkActionsProfile>prohibitive</bulkActionsProfile>
+            <evaluator id="310">
+                <type>script</type>
+                <decision>deny</decision> <!-- default decision of those script languages that are not explicitly enumerated. -->
+                <script>
+                    <language>http://midpoint.evolveum.com/xml/ns/public/expression/language#mel</language>
+                    <decision>allow</decision>
+                    <permissionProfile>mel-safe</permissionProfile>
+                </script>
+            </evaluator>
+            <evaluator id="274">
+                <type>function</type>
+                <decision>deny</decision> <!-- allow only after reviewing your callable functions and (optionally) specifying the profile for them -->
+            </evaluator>
+            <bulkActionsProfile>prohibitive</bulkActionsProfile> <!-- allow as needed -->
             <privilegeElevation>deny</privilegeElevation>
         </expressionProfile>
+        <expressionProfile>
+            <identifier>reporting</identifier>
+            <description>
+                Use for:
+
+                - reports
+                - message templates
+
+                Limitation: Review and adapt to your particular situation.
+            </description>
+            <decision>deny</decision> <!-- default decision of those evaluators that are not explicitly enumerated. -->
+            <evaluator>
+                <type>value</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>null</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>asIs</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>path</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>const</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>filter</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>generate</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>proportional</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>script</type>
+                <decision>deny</decision> <!-- default decision of those script languages that are not explicitly enumerated. -->
+                <script> <!-- specific to this profile -->
+                    <language>http://midpoint.evolveum.com/xml/ns/public/expression/language#mel</language>
+                    <decision>allow</decision>
+                    <permissionProfile>mel-reporting</permissionProfile>
+                </script>
+                <script> <!-- specific to this profile -->
+                    <language>http://midpoint.evolveum.com/xml/ns/public/expression/language#safe-velocity</language>
+                    <decision>allow</decision>
+                </script>
+            </evaluator>
+            <evaluator>
+                <type>function</type>
+                <decision>deny</decision> <!-- allow only after reviewing your callable functions and (optionally) specifying the profile for them -->
+            </evaluator>
+            <bulkActionsProfile>prohibitive</bulkActionsProfile> <!-- allow as needed -->
+            <privilegeElevation>deny</privilegeElevation>
+        </expressionProfile>
+        <expressionProfile>
+            <identifier>configuration</identifier>
+            <description>
+                Use for:
+
+                - defining resources
+                - object templates
+                - function libraries
+
+                Limitation: Review and adapt to your particular situation.
+            </description>
+            <decision>deny</decision> <!-- default decision of those evaluators that are not explicitly enumerated. -->
+            <!-- inherited from "template" -->
+            <evaluator>
+                <type>value</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>null</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>asIs</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>path</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>const</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>filter</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>generate</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>proportional</type>
+                <decision>allow</decision>
+            </evaluator>
+            <!-- specific for this one -->
+            <evaluator>
+                <type>const</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>script</type>
+                <decision>deny</decision> <!-- default decision of those script languages that are not explicitly enumerated. -->
+                <script>
+                    <language>http://midpoint.evolveum.com/xml/ns/public/expression/language#mel</language>
+                    <decision>allow</decision>
+                    <!-- all MEL functions -->
+                </script>
+                <script> <!-- inherited from "reporting" profile -->
+                    <language>http://midpoint.evolveum.com/xml/ns/public/expression/language#safe-velocity</language>
+                    <decision>allow</decision>
+                </script>
+            </evaluator>
+            <evaluator>
+                <type>assignmentTargetSearch</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>associationTargetSearch</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>referenceSearch</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>shadowOwnerReferenceSearch</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>associationFromLink</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>sequentialValue</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>associationConstruction</type>
+                <decision>allow</decision>
+            </evaluator>
+            <evaluator>
+                <type>associationSynchronization</type>
+                <decision>allow</decision>
+            </evaluator>
+            <bulkActionsProfile>permissive</bulkActionsProfile>
+            <privilegeElevation>allow</privilegeElevation>
+        </expressionProfile>
+
+
         <expressionProfile id="275">
             <identifier>permissive</identifier>
             <description>Unlimited access to all expressions</description>
             <decision>allow</decision>
+            <bulkActionsProfile>permissive</bulkActionsProfile>
             <privilegeElevation>allow</privilegeElevation>
         </expressionProfile>
         <expressionProfile id="276">
@@ -2037,191 +2504,141 @@
             <bulkActionsProfile>prohibitive</bulkActionsProfile>
             <privilegeElevation>deny</privilegeElevation>
         </expressionProfile>
+
+        <!-- bulk actions -->
         <bulkActionsProfile id="277">
             <identifier>prohibitive</identifier>
             <decision>deny</decision>
         </bulkActionsProfile>
-        <permissionProfile id="225">
-            <identifier>script-limited</identifier>
-            <description>
-                "Limited" script permission profile. It is supposed to contain operations that are mostly "safe",
-                i.e. operations that have very little risk to harm the system, circumvent midPoint security
-                and so on.
-                However, this profile may incomplete, and it is likely it is not completely secure.
-                The very nature of script permission checks (a.k.a. sandbox) does not guarantee complete safety.
-                This profile is meant as a means to limit (mostly unintentional) harm done by the scripts,
-                it is not meant as a strict security measure.
-                It is provided here "AS IS", without any guarantees. Use at your own risk.
-            </description>
-            <decision>deny</decision> <!-- Default decision for those classes that are not explicitly enumerated. -->
-            <package id="226">
-                <name>com.evolveum.midpoint.xml.ns._public.common.common_3</name>
-                <description>MidPoint common schema - generated bean classes</description>
-                <decision>allow</decision>
-            </package>
-            <package id="227">
-                <name>com.evolveum.prism.xml.ns._public.types_3</name>
-                <description>Prism schema - bean classes</description>
-                <decision>allow</decision>
-            </package>
-            <class id="228">
-                <name>java.lang.Integer</name>
-                <decision>allow</decision>
-            </class>
-            <class id="229">
-                <name>java.lang.Object</name>
-                <description>Basic Java operations.</description>
-                <decision>deny</decision>
-                <method id="247">
-                    <name>equals</name>
-                    <decision>allow</decision>
-                </method>
-                <method id="248">
-                    <name>hashCode</name>
-                    <decision>allow</decision>
-                </method>
-            </class>
-            <class id="230">
-                <name>java.lang.String</name>
-                <description>String operations are generally safe. But Groovy is adding execute() method which is very dangerous.</description>
-                <decision>allow</decision> <!-- Default decision for those methods that are not explicitly enumerated. -->
-                <method id="249">
-                    <name>execute</name>
-                    <decision>deny</decision>
-                </method>
-            </class>
-            <class id="231">
-                <name>java.lang.CharSequence</name>
-                <decision>allow</decision>
-            </class>
-            <class id="232">
-                <name>java.lang.Enum</name>
-                <decision>allow</decision>
-            </class>
-            <class id="233">
-                <name>java.util.List</name>
-                <description>List operations are generally safe. But Groovy is adding execute() method which is very dangerous.</description>
-                <decision>allow</decision>
-                <method id="250">
-                    <name>execute</name>
-                    <decision>deny</decision>
-                </method>
-            </class>
-            <class id="234">
-                <name>java.util.ArrayList</name>
-                <description>List operations are generally safe. But Groovy is adding execute() method which is very dangerous.</description>
-                <decision>allow</decision>
-                <method id="251">
-                    <name>execute</name>
-                    <decision>deny</decision>
-                </method>
-            </class>
-            <class id="235">
-                <name>java.util.Map</name>
-                <decision>allow</decision>
-            </class>
-            <class id="236">
-                <name>java.util.HashMap</name>
-                <decision>allow</decision>
-            </class>
-            <class id="237">
-                <name>java.util.Date</name>
-                <decision>allow</decision>
-            </class>
-            <class id="238">
-                <name>javax.xml.namespace.QName</name>
-                <decision>allow</decision>
-            </class>
-            <class id="239">
-                <name>javax.xml.datatype.XMLGregorianCalendar</name>
-                <decision>allow</decision>
-            </class>
-            <class id="240">
-                <name>java.lang.System</name>
-                <description>Just a few methods of System are safe enough.</description>
-                <decision>deny</decision>
-                <method id="252">
-                    <name>currentTimeMillis</name>
-                    <decision>allow</decision>
-                </method>
-            </class>
-            <class id="241">
-                <name>java.lang.IllegalStateException</name>
-                <description>Basic Java exception. Also used in test.</description>
-                <decision>allow</decision>
-            </class>
-            <class id="242">
-                <name>java.lang.IllegalArgumentException</name>
-                <description>Basic Java exception.</description>
-                <decision>allow</decision>
-            </class>
-            <class id="243">
-                <name>com.evolveum.midpoint.model.common.expression.functions.BasicExpressionFunctions</name>
-                <description>MidPoint basic functions library</description>
-                <decision>allow</decision>
-            </class>
-            <class id="244">
-                <name>com.evolveum.midpoint.model.common.expression.functions.LogExpressionFunctions</name>
-                <description>MidPoint logging functions library</description>
-                <decision>allow</decision>
-            </class>
-            <class id="245">
-                <name>com.evolveum.midpoint.report.impl.ReportFunctions</name>
-                <description>MidPoint report functions library</description>
-                <decision>allow</decision>
-            </class>
-            <class id="246">
-                <name>org.apache.commons.lang3.StringUtils</name>
-                <description>Apache Commons: Strings</description>
-                <decision>allow</decision>
-            </class>
+        <bulkActionsProfile>
+            <identifier>permissive</identifier>
+            <decision>allow</decision>
+        </bulkActionsProfile>
 
-            <!-- Following may be needed for audit reports. But they may not be completely safe.
-                 Therefore the following section is commented out. Please closely evaluate those rules
-                 before using them. -->
-            <!--  <class>
-                <name>com.evolveum.midpoint.schema.expression.VariablesMap</name>
-                <description>Expression variables map.</description>
-                <decision>deny</decision>
-                <method>
-                    <name>get</name>
-                    <decision>allow</decision>
-                </method>
-                <method>
-                    <name>remove</name>
-                    <decision>allow</decision>
-                </method>
-            </class>
-            <class>
-                <name>com.evolveum.midpoint.schema.expression.TypedValue</name>
-                <description>Typed values, holding expression variables. Read-only access.</description>
-                <decision>deny</decision>
-                <method>
-                    <name>getValue</name>
-                    <decision>allow</decision>
-                </method>
-            </class>
-            <class>
-                <name>com.evolveum.midpoint.report.impl.ReportUtils</name>
-                <decision>deny</decision>
-                <method>
-                    <name>convertDateTime</name>
-                    <decision>allow</decision>
-                </method>
-                <method>
-                    <name>getPropertyString</name>
-                    <decision>allow</decision>
-                </method>
-                <method>
-                    <name>printDelta</name>
-                    <decision>allow</decision>
-                </method>
-            </class>
-            <class>
-                <name>com.evolveum.midpoint.prism.PrismReferenceValue</name>
+
+        <!-- permissions for MEL -->
+
+        <permissionProfile>
+            <identifier>mel-safe</identifier>
+            <decision>deny</decision>
+            <package>
+                <name>bindings</name>
                 <decision>allow</decision>
-            </class> -->
+            </package>
+            <package>
+                <name>math</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>sets</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>encoders</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>lists</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>regex</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>comprehensions</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>mel</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>format</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>ldap</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>object</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>log</name>
+                <decision>allow</decision>
+            </package>
+            <!-- disallowed: simulation, midpoint, secret -->
         </permissionProfile>
+        <permissionProfile>
+            <identifier>mel-reporting</identifier>
+            <decision>deny</decision>
+            <package>
+                <name>bindings</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>math</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>sets</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>encoders</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>lists</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>regex</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>comprehensions</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>mel</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>format</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>ldap</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>object</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>log</name>
+                <decision>allow</decision>
+            </package>
+            <!-- needed for built-in reports -->
+            <package>
+                <name>simulation</name>
+                <decision>allow</decision>
+            </package>
+            <package>
+                <name>midpoint</name>
+                <decision>allow</decision>
+            </package>
+            <!-- disallowed: secret -->
+        </permissionProfile>
+
+        <defaults>
+            <authorizedObjects>configuration</authorizedObjects>
+            <principal>prohibitive</principal>
+            <privilegedPrincipal>configuration</privilegedPrincipal>
+        </defaults>
     </expressions>
 
     <workflowConfiguration>
@@ -2254,5 +2671,86 @@
             <defaultFrom>midpoint@example.com</defaultFrom>
         </mail>
     </messageTransportConfiguration>
+
+    <defaultObjectPolicyConfiguration>
+        <type>ObjectCollectionType</type>
+        <expressionProfile>safe</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>DashboardType</type>
+        <expressionProfile>safe</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>AccessCertificationDefinitionType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>AccessCertificationCampaignType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>RoleType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>ServiceType</type>
+        <expressionProfile>safe</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>OrgType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>PolicyType</type>
+        <expressionProfile>safe</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>ArchetypeType</type>
+        <expressionProfile>safe</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>ValuePolicyType</type>
+        <expressionProfile>safe</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>ReportType</type>
+        <expressionProfile>reporting</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>MessageTemplateType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>ResourceType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>ObjectTemplateType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>FunctionLibraryType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>MarkType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>SystemConfigurationType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>TaskType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>UserType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
+    <defaultObjectPolicyConfiguration>
+        <type>CaseType</type>
+        <expressionProfile>configuration</expressionProfile>
+    </defaultObjectPolicyConfiguration>
 
 </systemConfiguration>
