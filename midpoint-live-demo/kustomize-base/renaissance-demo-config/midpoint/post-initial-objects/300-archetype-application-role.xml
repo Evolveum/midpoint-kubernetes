@@ -1,12 +1,15 @@
 <!--
-  ~ Copyright (c) 2023 Evolveum and contributors
+  ~ Copyright (c) 2019 Evolveum and contributors
   ~
-  ~ This work is dual-licensed under the Apache License 2.0
-  ~ and European Union Public License. See LICENSE file for details.
+  ~ Licensed under the EUPL-1.2 or later.
   -->
 
-<archetype xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
-           oid="00000000-0000-0000-0000-000000000328">
+<archetype oid="00000000-0000-0000-0000-000000000328"
+        xmlns="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+        xmlns:c="http://midpoint.evolveum.com/xml/ns/public/common/common-3"
+        xmlns:q="http://prism.evolveum.com/xml/ns/public/query-3"
+        xmlns:t="http://prism.evolveum.com/xml/ns/public/types-3"
+        xmlns:org='http://midpoint.evolveum.com/xml/ns/public/common/org-3'>
     <name>Application role</name>
     <description>
         Application roles are basic roles. They are related to applications.
@@ -68,7 +71,7 @@
                 <panel>
                     <identifier>arw-basic</identifier>
                     <display>
-                        <label>Application.panel.basic</label>
+                        <label>Basic</label>
                     </display>
                     <displayOrder>10</displayOrder>
 
@@ -113,7 +116,7 @@
                 <panel>
                     <identifier>basic-role</identifier>
                     <display>
-                        <label>Role.panel.basic</label>
+                        <label>Basic</label>
                     </display>
                     <displayOrder>10</displayOrder>
                     <applicableForOperation>modify</applicableForOperation>

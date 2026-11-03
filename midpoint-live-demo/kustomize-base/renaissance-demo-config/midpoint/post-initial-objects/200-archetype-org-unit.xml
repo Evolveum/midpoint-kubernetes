@@ -39,6 +39,7 @@
             </icon>
         </display>
         <assignmentHolderRelationApproach>closed</assignmentHolderRelationApproach>
+        <expressionProfile>safe</expressionProfile>
     </archetypePolicy>
     <inducement>
         <identifier>membership</identifier>

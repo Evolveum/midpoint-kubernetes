@@ -480,7 +480,7 @@
             </synchronization>
             <attribute>
                 <ref>ri:dn</ref>
-                <matchingRule xmlns:gen868="http://prism.evolveum.com/xml/ns/public/matching-rule-3">gen868:stringIgnoreCase</matchingRule>
+                <matchingRule xmlns:mr="http://prism.evolveum.com/xml/ns/public/matching-rule-3">mr:stringIgnoreCase</matchingRule>
                 <outbound>
                     <name>dn</name>
                     <source>
@@ -489,14 +489,13 @@
                     <expression>
                         <script>
                             <language>mel</language>
-                            <code>
+                            <code><![CDATA[
                                 ldap.composeDnWithSuffix([
-                                        'cn',
-                                        str(name),
-                                        'ou=Projects,dc=example,dc=com'
-                                ]
-                                )
-                            </code>
+                                    'cn',
+                                    str(name),
+                                    'ou=Projects,dc=example,dc=com'
+                                ])
+                            ]]></code>
                         </script>
                     </expression>
                 </outbound>

@@ -21,13 +21,14 @@
         <condition>
                 <script>
                 <language>mel</language>
-                <code>
-                    focus.archetypeRef.exists(
-                    ref,
-                    ref.oid == '6a12b965-a1c2-47c9-87bd-19e84c71d814'
-                    )
-                    &amp;&amp; focus.oid != '9a60cdc6-f2ad-4414-964b-5fd1dfaec157'
-                </code>
+                    <code>
+                        focus.assignment.exists(
+                        a,
+                        isPresent(a.targetRef)
+                        &amp;&amp; a.targetRef.oid == '6a12b965-a1c2-47c9-87bd-19e84c71d814'
+                        )
+                        &amp;&amp; focus.oid != '9a60cdc6-f2ad-4414-964b-5fd1dfaec157'
+                    </code>
             </script>
         </condition>
     </mapping>
@@ -45,9 +46,10 @@
         <condition>
             <script>
                 <language>mel</language>
-                <code>focus.archetypeRef.exists(
-                        ref,
-                        ref.oid == '89a34123-1db7-4fc1-a053-6c42b82ef2ab'
+                <code>focus.assignment.exists(
+                        a,
+                    isPresent(a.targetRef)
+                    &amp;&amp; a.targetRef.oid == '89a34123-1db7-4fc1-a053-6c42b82ef2ab'
                 )</code>
             </script>
         </condition>
@@ -56,15 +58,26 @@
         <expression>
             <script>
                 <language>mel</language>
-                <code>
+                <code><![CDATA[
+                cel.bind(
+                    baseDn,
+                    focus.assignment.exists(
+                        a,
+                        isPresent(a.targetRef)
+                        && a.targetRef.oid == '89a34123-1db7-4fc1-a053-6c42b82ef2ab'
+                    )
+                    ? 'ou=Projects,dc=example,dc=com'
+                    : 'ou=Orgs,dc=example,dc=com',
+
                     isPresent(focus.parentOrgRef)
                     ? cel.bind(
-                    parentOrg,
-                    midpoint.resolveReference(single(focus.parentOrgRef)),
-                    'ou=' + str(focus.name) + ',' + parentOrg.extension.ldapDn
+                        parentOrg,
+                        midpoint.resolveReference(single(focus.parentOrgRef)),
+                        'ou=' + str(focus.name) + ',' + str(parentOrg.extension.ldapDn)
                     )
-                    : 'ou=' + str(focus.name) + ',ou=Orgs,dc=example,dc=com'
-                </code>
+                    : 'ou=' + str(focus.name) + ',' + baseDn
+                )
+            ]]></code>
             </script>
         </expression>
         <target>
