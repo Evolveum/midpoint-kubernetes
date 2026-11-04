@@ -16,46 +16,46 @@
         <help>Identification of the application. &lt;br&gt;
             Name must be unique among all applications (and other services) in midPoint.</help>
         <displayOrder>10</displayOrder>
-        <emphasized>true</emphasized>
+        <displayHint>emphasized</displayHint>
     </item>
     <item>
         <ref>displayName</ref>
         <help>Readable name of the application. Will be displayed in most places instead of name.
             If not filled in, then name is displayed. Doesn't have to be unique.</help>
         <displayOrder>20</displayOrder>
-        <emphasized>true</emphasized>
+        <displayHint>emphasized</displayHint>
     </item>
     <item>
         <ref>description</ref>
         <help>Free form description of the application.</help>
         <displayOrder>30</displayOrder>
-        <emphasized>true</emphasized>
+        <displayHint>emphasized</displayHint>
     </item>
     <item>
         <ref>url</ref>
         <help>URL of the application.</help>
         <displayOrder>40</displayOrder>
-        <emphasized>true</emphasized>
+        <displayHint>emphasized</displayHint>
     </item>
     <item>
         <ref>riskLevel</ref>
         <help>Indication of the level of risk that access to this application provides.
             Can be used also as indication of data sensitivity.</help>
         <displayOrder>50</displayOrder>
-        <emphasized>true</emphasized>
+        <displayHint>emphasized</displayHint>
     </item>
     <item>
         <ref>requestable</ref>
         <help>If set to true, this application may be requested by users.</help>
         <displayOrder>60</displayOrder>
-        <emphasized>true</emphasized>
+        <displayHint>emphasized</displayHint>
     </item>
     <item>
         <ref>jpegPhoto</ref>
         <displayName>Application icon</displayName>
         <help>Icon of the application. &lt;br&gt; Will be displayed during selection of application.</help>
         <displayOrder>70</displayOrder>
-        <emphasized>true</emphasized>
+        <displayHint>emphasized</displayHint>
     </item>
 
 </objectTemplate>

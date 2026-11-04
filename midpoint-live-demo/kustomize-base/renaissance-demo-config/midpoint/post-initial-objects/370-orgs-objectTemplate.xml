@@ -10,9 +10,6 @@
     <mapping>
         <description>A hack to avoid feedback to HR feed - deleting accounts because they are not assigned</description>
         <strength>strong</strength>
-        <source>
-            <c:path>subtype</c:path>
-        </source>
         <expression>
             <value>
                 <targetRef oid="bcf00adb-67c6-43be-bf60-3e6e1a52db25" type="c:RoleType"/>
@@ -22,17 +19,22 @@
             <c:path>assignment</c:path>
         </target>
         <condition>
-            <script>
-                <code>subtype == 'functional'</code>
+                <script>
+                <language>mel</language>
+                    <code>
+                        focus.assignment.exists(
+                        a,
+                        isPresent(a.targetRef)
+                        &amp;&amp; a.targetRef.oid == '6a12b965-a1c2-47c9-87bd-19e84c71d814'
+                        )
+                        &amp;&amp; focus.oid != '9a60cdc6-f2ad-4414-964b-5fd1dfaec157'
+                    </code>
             </script>
         </condition>
     </mapping>
     <mapping>
         <description>A hack to avoid feedback to HR feed - deleting accounts because they are not assigned</description>
         <strength>strong</strength>
-        <source>
-            <c:path>subtype</c:path>
-        </source>
         <expression>
             <value>
                 <targetRef oid="3154fafb-9f9f-4c3b-93ae-7fffd43796bf" type="c:RoleType"/>
@@ -43,8 +45,43 @@
         </target>
         <condition>
             <script>
-                <code>subtype == 'project'</code>
+                <language>mel</language>
+                <code>focus.assignment.exists(
+                        a,
+                    isPresent(a.targetRef)
+                    &amp;&amp; a.targetRef.oid == '89a34123-1db7-4fc1-a053-6c42b82ef2ab'
+                )</code>
             </script>
         </condition>
+    </mapping>
+    <mapping>
+        <expression>
+            <script>
+                <language>mel</language>
+                <code><![CDATA[
+                cel.bind(
+                    baseDn,
+                    focus.assignment.exists(
+                        a,
+                        isPresent(a.targetRef)
+                        && a.targetRef.oid == '89a34123-1db7-4fc1-a053-6c42b82ef2ab'
+                    )
+                    ? 'ou=Projects,dc=example,dc=com'
+                    : 'ou=Orgs,dc=example,dc=com',
+
+                    isPresent(focus.parentOrgRef)
+                    ? cel.bind(
+                        parentOrg,
+                        midpoint.resolveReference(single(focus.parentOrgRef)),
+                        'ou=' + str(focus.name) + ',' + str(parentOrg.extension.ldapDn)
+                    )
+                    : 'ou=' + str(focus.name) + ',' + baseDn
+                )
+            ]]></code>
+            </script>
+        </expression>
+        <target>
+            <path>extension/ldapDn</path>
+        </target>
     </mapping>
 </objectTemplate>

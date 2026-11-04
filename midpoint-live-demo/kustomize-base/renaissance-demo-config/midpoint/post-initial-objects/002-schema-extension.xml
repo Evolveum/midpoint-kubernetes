@@ -81,6 +81,25 @@
                     </xsd:element>
                 </xsd:sequence>
             </xsd:complexType>
+            <xsd:complexType name="OrgExtensionType">
+                <xsd:annotation>
+                    <xsd:appinfo>
+                        <a:extension ref="c:OrgType"/>
+                    </xsd:appinfo>
+                </xsd:annotation>
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="ldapDn" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>
+                                DN derived from the organization hierarchy and LDAP base DN.
+                            </xsd:documentation>
+                            <xsd:appinfo>
+                                <a:displayName>LDAP DN</a:displayName>
+                            </xsd:appinfo>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
 
         </xsd:schema>
     </definition>

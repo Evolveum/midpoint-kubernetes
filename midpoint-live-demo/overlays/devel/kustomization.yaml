@@ -35,6 +35,10 @@ patches:
         cert-manager.io/cluster-issuer: ca-e
         cert-manager.io/private-key-algorithm: ECDSA
         cert-manager.io/private-key-size: "256"
+        traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+        traefik.ingress.kubernetes.io/router.middlewares: midpoint-demo-renaissance-dev-https-redirect@kubernetescrd
+    spec:
+      ingressClassName: traefik
   target:
     group: networking.k8s.io
     version: v1
@@ -52,3 +56,4 @@ patches:
 resources:
   - ../../kustomize-base
   - network-policy.yml
+  - https-redirect.yml
