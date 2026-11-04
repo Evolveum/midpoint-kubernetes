@@ -4,9 +4,10 @@ metadata:
   name: ldap-admin-service
 spec:
   ports:
-    - protocol: TCP
-      port: 1389
-      targetPort: 80
+    - name: ldap-admin-http
+      protocol: TCP
+      port: 8080
+      targetPort: ldap-admin-http
   selector:
     app: demo-ldap
   type: ClusterIP

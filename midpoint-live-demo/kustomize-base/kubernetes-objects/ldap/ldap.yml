@@ -26,26 +26,82 @@ spec:
           configMap:
             name: ldap-dynschema-map
             defaultMode: 256
+        - name: phpldapadmin-config
+          configMap:
+            name: phpldapadmin-config
+            defaultMode: 0444
       containers:
         - name: phpldapadmin
-          image: 'osixia/phpldapadmin:0.9.0'
+          image: 'phpldapadmin/phpldapadmin:2'
           ports:
-            - name: ldap-admin-port
-              containerPort: 1389
+            - name: ldap-admin-http
+              containerPort: 8080
               protocol: TCP
           env:
-            - name: PHPLDAPADMIN_LDAP_HOSTS
-              value: >-
-                #PYTHON2BASH:[{'localhost': [{'login': [{'auth_type':
-                'config'},{'bind_id':
-                'cn=admin,dc=example,dc=com'},{'bind_pass': 'secret'}]}]}]
-            - name: PHPLDAPADMIN_SERVER_PATH
-              value: /ldapadmin
-            - name: PHPLDAPADMIN_HTTPS
-              value: 'false'
-            - name: PHPLDAPADMIN_LDAP_CLIENT_TLS
-              value: 'false'
-          resources: {}
+            - name: APP_DEBUG
+              value: "false"
+            - name: APP_TRUST_PROXIES
+              value: "127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16"
+            - name: LDAP_HOST
+              value: ldap-service
+            - name: LDAP_PORT
+              value: "389"
+            - name: LDAP_NAME
+              value: "Example Com"
+            - name: LDAP_CONNECTION
+              value: "ldap"
+            - name: LDAP_STARTTLS
+              value: "false"
+            - name: LDAP_ALLOW_GUEST
+              value: "true"
+            - name: LDAP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mp-secret
+                  key: ldap-password
+            - name: LDAP_USERNAME
+              value: "cn=admin,dc=example,dc=com"
+            - name: LDAP_BASE_DN
+              value: "dc=example,dc=com"
+          readinessProbe:
+            httpGet:
+              path: /up
+              port: ldap-admin-http
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /up
+              port: ldap-admin-http
+            periodSeconds: 20
+            timeoutSeconds: 3
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /up
+              port: ldap-admin-http
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 24
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              memory: 512Mi
+          volumeMounts:
+            - name: phpldapadmin-config
+              mountPath: /etc/caddy/Caddyfile
+              subPath: phpldapadmin-config-redirect
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            capabilities:
+              drop:
+                - ALL
+              add:
+                - NET_BIND_SERVICE
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
