@@ -32,7 +32,7 @@ spec:
             defaultMode: 0444
       containers:
         - name: phpldapadmin
-          image: 'phpldapadmin/phpldapadmin:2'
+          image: 'phpldapadmin/phpldapadmin:2.3.12'
           ports:
             - name: ldap-admin-http
               containerPort: 8080
@@ -65,21 +65,21 @@ spec:
               value: "dc=example,dc=com"
           readinessProbe:
             httpGet:
-              path: /up
+              path: /ldapadmin/up
               port: ldap-admin-http
             periodSeconds: 10
             timeoutSeconds: 3
             failureThreshold: 3
           livenessProbe:
             httpGet:
-              path: /up
+              path: /ldapadmin/up
               port: ldap-admin-http
             periodSeconds: 20
             timeoutSeconds: 3
             failureThreshold: 3
           startupProbe:
             httpGet:
-              path: /up
+              path: /ldapadmin/up
               port: ldap-admin-http
             periodSeconds: 5
             timeoutSeconds: 3
