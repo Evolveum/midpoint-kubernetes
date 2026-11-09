@@ -1,0 +1,23 @@
+{
+  admin off
+  frankenphp
+}
+
+:8080 {
+  redir /ldapadmin /ldapadmin/ 308
+
+  handle_path /ldapadmin/* {
+    reverse_proxy 127.0.0.1:8081 {
+        header_up Host {host}
+        header_up X-Forwarded-Proto {$EXTERNAL_SCHEME:https}
+        header_up X-Forwarded-Port 443
+        header_up X-Forwarded-Prefix /ldapadmin
+    }
+  }
+}
+
+:8081 {
+  root * /app/public
+  encode zstd br gzip
+  php_server
+}

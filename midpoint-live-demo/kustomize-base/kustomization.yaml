@@ -165,6 +165,9 @@ configMapGenerator:
 - name: tomcat-map
   files:
     - renaissance-demo-config/tomcat/server.xml
+- name: phpldapadmin-config
+  files:
+    - renaissance-demo-config/ldap/phpldapadmin-config-redirect
 - name: message-template-items
   files:
     - renaissance-demo-config/midpoint/message-template-items/leonardos-workshop.png
