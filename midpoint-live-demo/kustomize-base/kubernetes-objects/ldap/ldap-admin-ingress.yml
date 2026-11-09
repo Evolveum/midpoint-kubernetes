@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: phpldapadmin-ingress
 spec:
-  ingressClassName: haproxy
+  ingressClassName: traefik
   tls:
     - hosts:
         - demo.example.com
@@ -16,7 +16,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: apache-service
+                name: ldap-admin-service
                 port:
-                  number: 80
-
+                  number: 8080
