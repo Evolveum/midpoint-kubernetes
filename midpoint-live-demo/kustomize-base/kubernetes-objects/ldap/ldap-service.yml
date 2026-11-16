@@ -6,7 +6,7 @@ spec:
   ports:
     - protocol: TCP
       port: 389
-      targetPort: 389
+      targetPort: 3890
   selector:
     app: demo-ldap
   type: ClusterIP

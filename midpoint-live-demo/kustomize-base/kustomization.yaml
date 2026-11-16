@@ -147,15 +147,17 @@ configMapGenerator:
 - name: hr-script-map
   files:
     - renaissance-demo-config/hr/hr.sh
-- name: ldap-init-map
+- name: ldap-init-config
   files:
-    - renaissance-demo-config/ldap/sssvlv.ldif
-    - renaissance-demo-config/ldap/baseEntry.ldif
-    - renaissance-demo-config/ldap/ppolicy.ldif
-    - renaissance-demo-config/ldap/acl.ldif
-- name: ldap-dynschema-map
+    - renaissance-demo-config/ldap/15-sssvlv-module.ldif
+    - renaissance-demo-config/ldap/190-sssvlv.ldif
+    - renaissance-demo-config/ldap/68-acl.ldif
+- name: ldap-init-schema
   files:
-    - renaissance-demo-config/ldap/dyngroup.schema
+    - renaissance-demo-config/ldap/dyngroup.ldif
+- name: ldap-init-data
+  files:
+    - renaissance-demo-config/ldap/95-baseEntry.ldif
 - name: addressbook-script-map
   files:
     - renaissance-demo-config/addressbook/addressbook.sh

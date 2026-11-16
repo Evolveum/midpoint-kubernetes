@@ -18,14 +18,18 @@ spec:
           emptyDir: {}
         - name: ldap-data
           emptyDir: {}
-        - name: custom-init-base
+        - name: custom-init-config
           configMap:
-            name: ldap-init-map
-            defaultMode: 256
-        - name: dynschema
+            name: ldap-init-config
+            defaultMode: 0644
+        - name: custom-init-schema
           configMap:
-            name: ldap-dynschema-map
-            defaultMode: 256
+            name: ldap-init-schema
+            defaultMode: 0644
+        - name: custom-init-data
+          configMap:
+            name: ldap-init-data
+            defaultMode: 0644
         - name: phpldapadmin-config
           configMap:
             name: phpldapadmin-config
@@ -106,37 +110,78 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
         - name: ldap
-          image: 'osixia/openldap:1.5.0'
-          command:
-            - /container/tool/run
-          args:
-            - '--copy-service'
+          image: 'osixia/openldap:2.6.15-rc'
           ports:
             - name: ldap
-              containerPort: 389
+              containerPort: 3890
               protocol: TCP
           env:
-            - name: LDAP_DOMAIN
-              value: example.com
-            - name: LDAP_ADMIN_PASSWORD
+            - name: CONTAINER_LOG_LEVEL
+              value: "debug"
+            - name: OPENLDAP_DEBUG_LEVEL
+              value: "-1"
+            - name: OPENLDAP_DATA_DIR
+              value: /var/lib/openldap/openldap-data
+            - name: OPENLDAP_CONF_DIR
+              value: /etc/openldap/slapd.d
+            - name: OPENLDAP_BOOTSTRAP_SUFFIX
+              value: "dc=example,dc=com"
+            - name: OPENLDAP_BOOTSTRAP_CONFIG_ROOT_PASSWORD_HASHED
               valueFrom:
                 secretKeyRef:
                   name: mp-secret
-                  key: ldap-password
-            - name: LDAP_TLS
-              value: 'false'
+                  key: ldap-password-hashed
+            - name: OPENLDAP_BOOTSTRAP_DATA_ROOT_DN
+              value: "cn=admin,dc=example,dc=com"
+            - name: OPENLDAP_BOOTSTRAP_DATA_ROOT_PASSWORD_HASHED
+              valueFrom:
+                secretKeyRef:
+                  name: mp-secret
+                  key: ldap-password-hashed
+            - name : OPENLDAP_BOOTSTRAP_SCHEMAS
+              value: "core.ldif cosine.ldif inetorgperson.ldif rfc2307bis.ldif dyngroup.ldif"
+            - name: OPENLDAP_BOOTSTRAP_MEMBEROF
+              value: "true"
+            - name: OPENLDAP_BOOTSTRAP_MEMBEROF_GROUP_OC
+              value: "groupOfNames"
+            - name: OPENLDAP_BOOTSTRAP_MEMBEROF_MEMBER_AD
+              value: "member"
+            - name: OPENLDAP_BOOTSTRAP_MEMBEROF_MEMBEROF_AD
+              value: "memberOf"
+            - name: OPENLDAP_BOOTSTRAP_PPOLICY
+              value: "true"
+            - name: OPENLDAP_BOOTSTRAP_PPOLICY_HASH_CLEAR_TEXT
+              value: "true"
+            - name: OPENLDAP_BOOTSTRAP_PPOLICY_USE_LOCKOUT
+              value: "true"
+            - name: OPENLDAP_BOOTSTRAP_PPOLICY_DEFAULT_POLICY_DN
+              value: "cn=default,ou=policies,dc=example,dc=com"
           resources: {}
           volumeMounts:
             - name: ldap-conf
-              mountPath: /etc/ldap/slapd.d
+              mountPath: /etc/openldap/slapd.d
             - name: ldap-data
-              mountPath: /var/lib/ldap
-            - name: custom-init-base
-              mountPath: /container/service/slapd/assets/config/bootstrap/ldif/custom/
-            - name: dynschema
-              mountPath: >-
-                /container/service/slapd/assets/config/bootstrap/schema/dyngroup.schema
-              subPath: dyngroup.schema
+              mountPath: /var/lib/openldap/openldap-data
+            - name: custom-init-config
+              mountPath: /container/services/openldap-bootstrap/assets/ldif/config/custom/68-acl.ldif
+              subPath: 68-acl.ldif
+              readOnly: true
+            - name: custom-init-config
+              mountPath: /container/services/openldap-bootstrap/assets/ldif/config/custom/190-sssvlv.ldif
+              subPath: 190-sssvlv.ldif
+              readOnly: true
+            - name: custom-init-config
+              mountPath: /container/services/openldap-bootstrap/assets/ldif/config/custom/15-sssvlv-module.ldif
+              subPath: 15-sssvlv-module.ldif
+              readOnly: true
+            - name: custom-init-schema
+              mountPath: /container/services/openldap/assets/schema/dyngroup.ldif
+              subPath: dyngroup.ldif
+              readOnly: true
+            - name: custom-init-data
+              mountPath: /container/services/openldap-bootstrap/assets/ldif/data/custom/95-baseEntry.ldif
+              subPath: 95-baseEntry.ldif
+              readOnly: true
           terminationMessagePath: /dev/termination-log
           terminationMessagePolicy: File
           imagePullPolicy: IfNotPresent
