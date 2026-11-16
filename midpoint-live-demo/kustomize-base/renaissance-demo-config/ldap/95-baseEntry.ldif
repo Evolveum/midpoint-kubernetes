@@ -1,4 +1,4 @@
-dn: ou=administrators,{{ LDAP_BASE_DN }}
+dn: ou=administrators,dc=example,dc=com
 objectClass: top
 objectClass: organizationalUnit
 ou: administrators
@@ -11,17 +11,12 @@ sn: IDM Administrator
 description: Special LDAP acccount used by the IDM to access the LDAP data.
 userpassword: secret
 
-dn: ou=groups,{{ LDAP_BASE_DN }}
-#aci: (targetattr="*")(version 3.0; acl "IDM Access"; allow (all) userdn="lda
-# p:///cn=idm,ou=administrators,dc=example,dc=com";)
+dn: ou=groups,dc=example,dc=com
 objectClass: top
 objectClass: organizationalUnit
 ou: groups
 
-dn: ou=people,{{ LDAP_BASE_DN }}
-#aci: (targetattr="*||ds-pwp-account-disabled")(version 3.0; acl "IDM Access"
-# ; allow (all) userdn="ldap:///cn=idm,ou=Administrators,dc=example,dc=com";
-# )
+dn: ou=people,dc=example,dc=com
 objectClass: top
 objectClass: organizationalUnit
 ou: people
@@ -105,4 +100,3 @@ ou: Projects
 dn: ou=Orgs,dc=example,dc=com
 objectClass: organizationalUnit
 ou: Orgs
-
