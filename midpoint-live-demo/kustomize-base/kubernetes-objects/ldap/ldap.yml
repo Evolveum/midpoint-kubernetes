@@ -36,7 +36,7 @@ spec:
             defaultMode: 0444
       containers:
         - name: phpldapadmin
-          image: 'phpldapadmin/phpldapadmin:2.3.12'
+          image: 'phpldapadmin/phpldapadmin:2.3.13'
           ports:
             - name: ldap-admin-http
               containerPort: 8080
